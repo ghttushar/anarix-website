@@ -184,9 +184,13 @@
   .max-h-\[400px\] { max-height: 400px; }
 
   // ----------------------------------------------------------------------- text
-  @each $name, $size in $text-sizes {
-    .text-#{$name} { font-size: $size; }
+  @each $name, $pair in $text-sizes {
+    .text-#{$name} {
+      font-size: nth($pair, 1);
+      line-height: nth($pair, 2);
+    }
   }
+
   .text-\[7px\] { font-size: 7px; }
   .text-\[8px\] { font-size: 8px; }
   .text-\[9px\] { font-size: 9px; }
