@@ -62,7 +62,7 @@ function TeaserBody({ cs }: { cs: CaseStudyData }) {
   return (
     <div
       ref={ref}
-      className={`flex flex-col transition-all duration-700 ${
+      className={`flex flex-1 flex-col transition-all duration-700 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
     >
@@ -81,7 +81,7 @@ function TeaserBody({ cs }: { cs: CaseStudyData }) {
         {cs.hero.statLine}
       </p>
 
-      <div className="mt-5 flex flex-wrap gap-2">
+      <div className="mt-5 flex flex-wrap content-start gap-2 min-h-[4.75rem]">
         {cs.kpis.slice(0, 3).map((k) => (
           <span
             key={k.label}
@@ -100,7 +100,7 @@ function TeaserBody({ cs }: { cs: CaseStudyData }) {
 
       <Link
         to={`/case-studies#${cs.id}`}
-        className="group mt-6 self-start inline-flex items-center gap-2 rounded-pill px-6 h-11 bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-strong active:translate-y-0 active:scale-[0.97] will-change-transform btn-shine"
+        className="group mt-auto pt-6 self-start inline-flex items-center gap-2 rounded-pill px-6 h-11 bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-strong active:translate-y-0 active:scale-[0.97] will-change-transform btn-shine"
       >
         Explore Case Study
         <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
