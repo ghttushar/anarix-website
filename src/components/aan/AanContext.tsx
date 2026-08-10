@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, useMemo, ReactNode } from "react";
-import { useActivePanel } from "@/contexts/ActivePanelContext";
 
 export type AanMode = "closed" | "copilot" | "split" | "workspace";
 export type ConversationType = "general" | "report" | "audit" | "creative" | "rule" | "agent";
@@ -119,7 +118,10 @@ const initialConversations: Conversation[] = [
 ];
 
 export function AanProvider({ children }: { children: ReactNode }) {
-  const { aiPanel, setAiPanel, closeAiPanel } = useActivePanel();
+  // Panel visibility is local to the marketing site: the copilot panel is the
+  // only AI surface here, so it needs no cross-panel arbitration.
+  const [aiPanel, setAiPanel] = useState<"none" | "copilot">("none");
+  const closeAiPanel = useCallback(() => setAiPanel("none"), []);
 
   const [internalMode, setInternalMode] = useState<"workspace" | null>(null);
 
