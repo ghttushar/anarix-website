@@ -1,22 +1,53 @@
 import { motion } from "framer-motion";
-import { Link } from "@/lib/router";
 import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import NextStep from "@/website/components/marketing/NextStep";
 import PageLayout from "@/website/components/PageLayout";
 import ScrollProgress from "@/website/components/ScrollProgress";
-import { caseStudies, apparelStudy } from "@/website/data/case-studies";
+import { caseStudies, type CaseStudyData } from "@/website/data/case-studies";
 import { CaseStudyChapter } from "@/website/components/case-studies/CaseStudyChapter";
-import {
-  CtaSection,
-  ChapterDivider,
-} from "@/website/components/case-studies/primitives";
+import { CtaSection, ChapterDivider } from "@/website/components/case-studies/primitives";
+
+/** "+234%", "409 → 57", "~6x" — the single loud number for a nav card. */
+const headlineNumber = (cs: CaseStudyData): string => {
+  const { prepend = "", prefix = "", value, decimals = 0, suffix = "" } = cs.hero;
+  return `${prepend}${prefix}${value.toFixed(decimals)}${suffix}`;
+};
+
+const scrollToChapter = (id: string) => {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
+const NavCard = ({ cs, active, delay }: { cs: CaseStudyData; active: boolean; delay: number }) => (
+  <motion.button
+    type="button"
+    onClick={() => scrollToChapter(cs.id)}
+    aria-current={active ? "true" : undefined}
+    className={`group text-left pad-card-sm rounded-2xl border bg-card shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-0.5 ${
+      active ? "border-primary/60" : "border-border hover:border-primary/40"
+    }`}
+    initial={{ opacity: 0, y: 16 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay }}
+  >
+    <p className="font-display text-lg font-bold text-foreground leading-tight">{cs.brand}</p>
+    <p className="mt-3 font-numeric text-4xl sm:text-5xl font-bold tracking-tight leading-none">
+      <span className="text-gradient-primary">{headlineNumber(cs)}</span>
+    </p>
+    <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+      {cs.marketplace}
+    </p>
+    <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-primary">
+      Read the story
+      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+    </span>
+  </motion.button>
+);
 
 const CaseStudies = () => {
   const [activeId, setActiveId] = useState<string | null>(null);
 
   useEffect(() => {
-    const ids = caseStudies.map((cs) => cs.id);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -25,8 +56,8 @@ const CaseStudies = () => {
       },
       { rootMargin: "-35% 0px -55% 0px" }
     );
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
+    caseStudies.forEach((cs) => {
+      const el = document.getElementById(cs.id);
       if (el) observer.observe(el);
     });
     return () => observer.disconnect();
@@ -37,9 +68,7 @@ const CaseStudies = () => {
       <ScrollProgress
         sections={[
           { label: "Overview", shape: "◆" },
-          { label: "Walmart", shape: "●" },
-          { label: "Amazon", shape: "●" },
-          { label: "CTA", shape: "◆" },
+          ...caseStudies.map((cs) => ({ label: cs.brand, shape: "●" })),
         ]}
       />
       <div className="container-page px-6">
@@ -56,77 +85,36 @@ const CaseStudies = () => {
               Proof, <span className="text-gradient-primary">not promises.</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Two partners, two marketplaces, one outcome — real numbers from real accounts.
+              Four partners, two marketplaces, one way of working — real numbers from real accounts.
             </p>
           </motion.div>
 
-          <div className="mt-8 grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto text-left">
-            {caseStudies.map((cs, i) => {
-              const isActive = activeId === cs.id;
-              return (
-                <motion.div
-                  key={cs.id}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.15 + i * 0.1 }}
-                >
-                  <Link
-                    to={`/case-studies#${cs.id}`}
-                    className={`group flex items-center justify-between gap-4 pad-card-sm rounded-2xl border bg-card shadow-soft hover:shadow-medium transition-all duration-300 ${
-                      isActive
-                        ? "border-primary/60 bg-primary/5"
-                        : "border-border hover:border-primary/40"
-                    }`}
-                    aria-current={isActive ? "true" : undefined}
-                  >
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                        {cs.metadata[0].value} · {cs.metadata[3].value}
-                      </p>
-                      <p className="mt-1.5 font-display text-lg font-semibold text-foreground leading-snug">
-                        {cs.title}
-                      </p>
-                      <div className="mt-3 flex items-center gap-2">
-                        <span
-                          className={`w-1.5 h-1.5 rounded-full transition-colors ${
-                            isActive ? "bg-primary" : "bg-muted-foreground/40"
-                          }`}
-                        />
-                        <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                          {cs.index} / 02
-                        </span>
-                      </div>
-                    </div>
-                    <ArrowRight
-                      className={`w-4 h-4 shrink-0 transition-all ${
-                        isActive
-                          ? "text-primary translate-x-0.5"
-                          : "text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5"
-                      }`}
-                    />
-                  </Link>
-                </motion.div>
-              );
-            })}
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {caseStudies.map((cs, i) => (
+              <NavCard key={cs.id} cs={cs} active={activeId === cs.id} delay={0.15 + i * 0.08} />
+            ))}
           </div>
         </div>
 
-        <CaseStudyChapter data={caseStudies[0]} />
-
-        <ChapterDivider
-          index={apparelStudy.index}
-          eyebrow={apparelStudy.eyebrow}
-          title={apparelStudy.title}
-          meta={apparelStudy.metadata.map((m) => `${m.value} · ${m.label}`)}
-        />
-
-        <CaseStudyChapter data={caseStudies[1]} />
+        {caseStudies.map((cs, i) => (
+          <div key={cs.id}>
+            {i > 0 ? (
+              <ChapterDivider
+                index={cs.index}
+                eyebrow={cs.marketplace}
+                title={cs.brand}
+                meta={[headlineNumber(cs), cs.period]}
+              />
+            ) : null}
+            <CaseStudyChapter data={cs} />
+          </div>
+        ))}
 
         <CtaSection />
       </div>
       <NextStep
         title="See the platform behind these results"
-        description="The same profitability views our team used on both accounts."
+        description="The same profitability views our team used on every one of these accounts."
         to="/products/platform"
         label="Explore the platform"
       />
