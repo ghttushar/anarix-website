@@ -165,8 +165,8 @@ const COMMENTS = [
 ];
 
 export const CompareVisual = () => (
-  <div className="relative h-full">
-    <Panel className="h-full">
+  <div className="flex h-full gap-3">
+    <Panel className="min-w-0 flex-1">
       <PanelHead title="Compare images" />
       <div className="grid min-h-0 flex-1 grid-cols-2 gap-3 p-3">
         {[
@@ -187,13 +187,13 @@ export const CompareVisual = () => (
       </ul>
     </Panel>
 
-    <div className="absolute bottom-3 left-3 flex flex-col gap-1.5" style={{ width: "58%" }}>
+    <div className="flex flex-shrink-0 flex-col justify-center gap-2" style={{ width: "32%" }}>
       {COMMENTS.map((comment, i) => (
         <motion.div
           key={comment.name}
-          className="rounded-2xl border border-border bg-card px-2.5 py-1.5 shadow-strong"
+          className="rounded-2xl border border-border bg-card px-2.5 py-2 shadow-strong"
           variants={{
-            hidden: { opacity: 0, x: -18 },
+            hidden: { opacity: 0, x: 18 },
             show: { opacity: 1, x: 0, transition: { delay: 0.5 + i * 0.18, duration: 0.45 } },
           }}
         >
@@ -206,6 +206,7 @@ export const CompareVisual = () => (
     </div>
   </div>
 );
+
 
 /* ── 5. Click to fix ────────────────────────────────────────── */
 
