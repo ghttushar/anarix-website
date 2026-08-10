@@ -252,13 +252,13 @@ export function CtaSection({ dark = true }: { dark?: boolean }) {
         }`}
       >
         <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-pill bg-primary/10 text-primary text-xs font-medium uppercase tracking-[0.14em]">
-          Ready?
+          Your turn
         </div>
         <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight leading-[1.1] mb-4">
           Your numbers could be the <span className="text-gradient-primary">next case study.</span>
         </h2>
         <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-          Start with a free audit. We&apos;ll show you what your account is losing before you pay a thing.
+          Bring us your accounts and we&apos;ll show you which levers move first.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button
@@ -267,7 +267,7 @@ export function CtaSection({ dark = true }: { dark?: boolean }) {
             className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 btn-shine group"
           >
             <Link to="/demo">
-              Get your free audit
+              Book a demo
               <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </Button>

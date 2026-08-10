@@ -7,7 +7,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import EmbedKpiStrip from "@/website/components/embeds/EmbedKpiStrip";
 import EmbedRuleCard from "@/website/components/embeds/EmbedRuleCard";
 import EmbedInsightCard from "@/website/components/embeds/EmbedInsightCard";
-import LeadCaptureSection from "@/website/components/lead-capture/LeadCaptureSection";
+import NextStep from "@/website/components/marketing/NextStep";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -205,7 +205,7 @@ function ProductRow({ product, index }: { product: ProductSection; index: number
     <section className="relative pad-section-compact">
       <div
         ref={ref}
-        className={`container-wide px-4 grid lg:grid-cols-2 gap-grid-lg items-center transition-all duration-700 ${
+        className={`grid lg:grid-cols-2 gap-grid items-center transition-all duration-700 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
@@ -270,7 +270,7 @@ const Products = () => {
                 size="lg"
                 className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 btn-shine"
               >
-                <Link to="/demo">Get your free audit</Link>
+                <Link to="/demo">Book a demo</Link>
               </Button>
               <Button
                 asChild
@@ -296,14 +296,14 @@ const Products = () => {
             }`}
           >
             <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-pill bg-primary/10 text-primary text-xs font-medium uppercase tracking-[0.14em]">
-              Ready?
+              One suite
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground leading-[1.1] mb-4">
-              Hand it over.{" "}
-              <span className="text-gradient-primary">We&apos;ve got the night shift.</span>
+              Four products,{" "}
+              <span className="text-gradient-primary">one operating system.</span>
             </h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              Start with a free audit. We&apos;ll show you what your account is losing before you pay a thing.
+              Pick the piece you need first — the rest of the stack is already wired to it.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
@@ -312,7 +312,7 @@ const Products = () => {
                 className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 btn-shine group"
               >
                 <Link to="/demo">
-                  Get your free audit
+                  Book a demo
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
               </Button>
@@ -320,7 +320,12 @@ const Products = () => {
           </div>
         </section>
 
-        <LeadCaptureSection />
+        <NextStep
+          title="Start with the Insight Engine Platform"
+          description="The layer everything else reads from: true profit by ASIN, channel and campaign."
+          to="/products/platform"
+          label="Explore the platform"
+        />
       </div>
     </PageLayout>
   );

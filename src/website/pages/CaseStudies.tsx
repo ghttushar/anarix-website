@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "@/lib/router";
 import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
+import NextStep from "@/website/components/marketing/NextStep";
 import PageLayout from "@/website/components/PageLayout";
 import ScrollProgress from "@/website/components/ScrollProgress";
 import { caseStudies, apparelStudy } from "@/website/data/case-studies";
@@ -123,6 +124,12 @@ const CaseStudies = () => {
 
         <CtaSection />
       </div>
+      <NextStep
+        title="See the platform behind these results"
+        description="The same profitability views our team used on both accounts."
+        to="/products/platform"
+        label="Explore the platform"
+      />
     </PageLayout>
   );
 };

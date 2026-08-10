@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
 import type { Severity } from "@/website/lib/listingOptimization";
-import Disclosure from "@/website/components/ui/Disclosure";
 
 interface Rule {
   title: string;
@@ -66,15 +65,19 @@ const GradingRulesSection = () => (
         Walmart, scoring it to predict how well it converts.
       </p>
       <div className="mt-6 space-y-2.5">
-        {RULES.map((rule, i) => (
-          <Disclosure
+        {RULES.map((rule) => (
+          <div
             key={rule.title}
-            title={rule.title}
-            defaultOpen={i === 0}
-            leading={<span className={`mt-1.5 w-2 h-2 rounded-full ${dotStyles[rule.severity]} flex-shrink-0`} />}
+            className="pad-card-sm rounded-xl border border-border bg-card shadow-soft"
           >
-            <p className="text-xs leading-relaxed">{rule.detail}</p>
-          </Disclosure>
+            <div className="flex items-start gap-3">
+              <span className={`mt-1.5 w-2 h-2 rounded-full ${dotStyles[rule.severity]} flex-shrink-0`} />
+              <div>
+                <p className="text-sm font-semibold text-foreground leading-snug">{rule.title}</p>
+                <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{rule.detail}</p>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </div>

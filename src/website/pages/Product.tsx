@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Sparkles, Activity, TrendingUp, Shield, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/lib/router";
+import NextStep from "@/website/components/marketing/NextStep";
 import PageLayout from "@/website/components/PageLayout";
 import CapabilityGrid from "@/website/components/product/CapabilityGrid";
 import DashboardPreview from "@/website/components/product/DashboardPreview";
@@ -38,7 +39,7 @@ const results = [
 const Product = () => {
   return (
     <PageLayout>
-      <div className="container-wide px-4">
+      <div className="container-page px-6">
         {/* Hero with Lottie loader animation */}
         <div className="grid lg:grid-cols-12 gap-grid items-center gap-block pt-8">
           <div className="lg:col-span-8">
@@ -253,6 +254,12 @@ const Product = () => {
           </a>
         </motion.div>
       </div>
+      <NextStep
+        title="Meet Jiva, the analyst on top of the data"
+        description="The platform surfaces the numbers. Jiva explains what to do about them."
+        to="/products/aan-ai"
+        label="Explore Jiva AI"
+      />
     </PageLayout>
   );
 };

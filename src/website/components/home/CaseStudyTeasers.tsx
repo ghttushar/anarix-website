@@ -4,7 +4,6 @@ import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useCountUp } from "@/hooks/useCountUp";
 import { caseStudies, type CaseStudyData } from "@/website/data/case-studies";
-import { Eyebrow } from "@/website/components/case-studies/primitives";
 import { smoothPath } from "@/website/components/case-studies/charts";
 
 const CaseStudyTeasers = () => {
@@ -12,7 +11,7 @@ const CaseStudyTeasers = () => {
     <section className="relative pad-section overflow-hidden">
       <div className="container-page px-6 sm:px-8">
         <TeasersIntro />
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 items-stretch">
           {caseStudies.map((cs) => (
             <TeaserCard key={cs.id} cs={cs} />
           ))}
@@ -46,12 +45,10 @@ function TeasersIntro() {
 
 function TeaserCard({ cs }: { cs: CaseStudyData }) {
   return (
-    <div className="rounded-3xl border border-border bg-card shadow-soft overflow-hidden">
-      <div className="p-6 sm:p-8 grid lg:grid-cols-12 lg:gap-grid">
-        <div className="lg:col-span-7 min-w-0">
-          <TeaserBody cs={cs} />
-        </div>
-        <div className="lg:col-span-5 min-w-0 lg:mt-[11rem]">
+    <div className="h-full flex flex-col rounded-3xl border border-border bg-card shadow-soft overflow-hidden">
+      <div className="p-6 sm:p-8 flex flex-col flex-1 gap-6">
+        <TeaserBody cs={cs} />
+        <div className="mt-auto">
           <TeaserDashboard cs={cs} />
         </div>
       </div>
@@ -62,19 +59,14 @@ function TeaserCard({ cs }: { cs: CaseStudyData }) {
 function TeaserBody({ cs }: { cs: CaseStudyData }) {
   const { ref, isVisible } = useScrollReveal();
   const value = useCountUp(cs.hero.value, { duration: 1800, start: isVisible });
-  const industry = `${cs.metadata[0].value} · ${cs.metadata[3].value}`;
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ${
+      className={`flex flex-1 flex-col transition-all duration-700 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
     >
-      <Eyebrow>{cs.eyebrow}</Eyebrow>
-      <p className="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-        {industry}
-      </p>
-      <h3 className="mt-3 font-display text-2xl sm:text-3xl font-semibold tracking-tight text-foreground leading-[1.12]">
+      <h3 className="font-display text-2xl sm:text-3xl font-semibold tracking-tight text-foreground leading-[1.12]">
         {cs.title}
       </h3>
 
@@ -89,9 +81,10 @@ function TeaserBody({ cs }: { cs: CaseStudyData }) {
         {cs.hero.statLine}
       </p>
 
-      <p className="mt-4 text-sm text-muted-foreground leading-relaxed max-w-xl">{cs.intro}</p>
-
-      <div className="mt-5 flex flex-wrap gap-2">
+      <div
+        className="mt-5 flex flex-wrap gap-2"
+        style={{ alignContent: "flex-start", minHeight: "6.25rem" }}
+      >
         {cs.kpis.slice(0, 3).map((k) => (
           <span
             key={k.label}
@@ -108,13 +101,15 @@ function TeaserBody({ cs }: { cs: CaseStudyData }) {
         ))}
       </div>
 
+      <div className="mt-auto pt-6">
       <Link
         to={`/case-studies#${cs.id}`}
-        className="group mt-6 inline-flex items-center gap-2 rounded-pill px-6 h-11 bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-strong active:translate-y-0 active:scale-[0.97] will-change-transform btn-shine"
+        className="group self-start inline-flex items-center gap-2 rounded-pill px-6 h-11 bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-strong active:translate-y-0 active:scale-[0.97] will-change-transform btn-shine"
       >
         Explore Case Study
         <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
       </Link>
+      </div>
     </div>
   );
 }
@@ -131,7 +126,7 @@ function TeaserDashboard({ cs }: { cs: CaseStudyData }) {
         isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-6 scale-[0.98]"
       }`}
     >
-      <div className="flex items-baseline justify-between gap-4">
+      <div className="flex items-baseline justify-between gap-4" style={{ minHeight: "2.5rem" }}>
         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
           {chart.title}
         </p>

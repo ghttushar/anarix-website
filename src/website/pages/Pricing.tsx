@@ -5,7 +5,6 @@ import { useNavigate } from "@/lib/router";
 import { Button } from "@/components/ui/button";
 import PageLayout from "@/website/components/PageLayout";
 import { pricingMajors, PricingMode, PricingPlan } from "@/website/data/pricingPlans";
-import LeadCaptureSection from "@/website/components/lead-capture/LeadCaptureSection";
 
 const Pricing = () => {
   const navigate = useNavigate();
@@ -249,7 +248,6 @@ const Pricing = () => {
           </div>
         </div>
 
-        <LeadCaptureSection />
       </div>
     </PageLayout>
   );

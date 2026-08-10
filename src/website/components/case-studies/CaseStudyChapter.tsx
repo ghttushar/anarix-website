@@ -14,7 +14,6 @@ import {
   SoftDivider,
 } from "./primitives";
 import { CaseChartBlock } from "./charts";
-import Disclosure from "@/website/components/ui/Disclosure";
 
 function ChapterHero({ data }: { data: CaseStudyData }) {
   const { ref, isVisible } = useScrollReveal();
@@ -115,13 +114,15 @@ function ChallengeCard({
       ref={ref}
       className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
     >
-      <Disclosure
-        title={title}
-        defaultOpen={index === 1}
-        leading={<span className="font-display text-xs font-bold text-primary mt-0.5">{String(index).padStart(2, "0")}</span>}
-      >
-        <p className="text-sm leading-relaxed">{text}</p>
-      </Disclosure>
+      <div className="h-full pad-card-sm rounded-2xl border border-border bg-card shadow-soft">
+        <div className="flex items-start gap-3">
+          <span className="font-display text-xs font-bold text-primary mt-0.5 font-numeric">
+            {String(index).padStart(2, "0")}
+          </span>
+          <p className="text-sm font-semibold text-foreground leading-snug">{title}</p>
+        </div>
+        <p className="mt-2.5 text-sm text-muted-foreground leading-relaxed">{text}</p>
+      </div>
     </div>
   );
 }

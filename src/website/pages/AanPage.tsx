@@ -3,6 +3,7 @@ import { Bot, Sparkles, Shield, TrendingUp, BarChart3, Search, Bell, FileText, Z
 import { Button } from "@/components/ui/button";
 import { Link } from "@/lib/router";
 import { AanMascot } from "@/components/aan/AanMascot";
+import NextStep from "@/website/components/marketing/NextStep";
 import PageLayout from "@/website/components/PageLayout";
 
 const surfaces = [
@@ -202,6 +203,12 @@ const AanPage = () => {
           </div>
         </motion.div>
       </div>
+      <NextStep
+        title="Never wait for a weekly report again"
+        description="Signals watches your accounts and tells Jiva the moment something moves."
+        to="/products/signals"
+        label="See Signals"
+      />
     </PageLayout>
   );
 };

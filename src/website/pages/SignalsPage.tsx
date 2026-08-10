@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Bell, FileText, Shield, Zap, CheckCircle, ArrowRight, AlertTriangle, TrendingUp, Clock, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/lib/router";
+import NextStep from "@/website/components/marketing/NextStep";
 import PageLayout from "@/website/components/PageLayout";
 
 const signalComponents = [
@@ -47,7 +48,7 @@ const executionSteps = [
 const SignalsPage = () => {
   return (
     <PageLayout>
-      <div className="container-wide px-4">
+      <div className="container-page px-6">
         {/* Hero */}
         <div className="text-center pad-hero">
           <motion.div
@@ -321,6 +322,12 @@ const SignalsPage = () => {
           </div>
         </motion.div>
       </div>
+      <NextStep
+        title="Pipe it all into your own stack"
+        description="MCP exposes the same data to any agent, notebook or internal tool."
+        to="/products/mcp"
+        label="Explore MCP"
+      />
     </PageLayout>
   );
 };

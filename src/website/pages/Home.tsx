@@ -11,8 +11,7 @@ import ServicesGrid from "@/website/components/home/ServicesGrid";
 import CaseStudyTeasers from "@/website/components/home/CaseStudyTeasers";
 import ScrollProgress from "@/website/components/ScrollProgress";
 import Footer from "@/website/components/Footer";
-import ScrollToTop from "@/website/components/ScrollToTop";
-import LeadCaptureSection from "@/website/components/lead-capture/LeadCaptureSection";
+import NextStep from "@/website/components/marketing/NextStep";
 import { ArrowRight } from "lucide-react";
 
 const Home = () => {
@@ -25,6 +24,8 @@ const Home = () => {
 
       <CaseStudyTeasers />
 
+      <ServicesGrid />
+
       <PainPointsSection />
 
       <TestimonialsWrapper />
@@ -32,8 +33,6 @@ const Home = () => {
       <ProcessSteps />
 
       <PhilosophySection />
-
-      <ServicesGrid />
 
       {/* CTA Section */}
       <section className="relative pad-cta overflow-hidden">
@@ -45,19 +44,19 @@ const Home = () => {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-pill bg-primary/10 text-primary text-xs font-medium uppercase tracking-[0.14em]">
-              Ready?
+              The night shift
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight leading-[1.1] mb-4">
               Hand it over.{" "}
-              <span className="text-gradient-primary">We&apos;ve got the night shift.</span>
+              <span className="text-gradient-primary">Sleep through the 11pm check.</span>
             </h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              Start with a free audit. We&apos;ll show you what your account is losing before you pay a thing.
+              Thirty minutes with our team is enough to see how your accounts would run under Anarix.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a href="https://calendly.com/sunil-anarix/30min" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 btn-shine group">
-                  Hand it over
+                  Book a demo
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
                 </Button>
               </a>
@@ -71,10 +70,14 @@ const Home = () => {
         </div>
       </section>
 
-      <LeadCaptureSection />
+      <NextStep
+        title="See the numbers behind the claims"
+        description="Two accounts, two marketplaces — what changed, month by month."
+        to="/case-studies"
+        label="Read the case studies"
+      />
 
       <Footer />
-      <ScrollToTop />
     </div>
   );
 };
