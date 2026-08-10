@@ -64,17 +64,18 @@ const GradingRulesSection = () => (
         evaluates your main image against 40+ rules and recommendations culled from Amazon and
         Walmart, scoring it to predict how well it converts.
       </p>
-      <ul className="mt-6 space-y-3">
-        {RULES.map((rule) => (
-          <li key={rule.title} className="flex items-start gap-3">
-            <span className={`mt-1.5 w-2 h-2 rounded-full ${dotStyles[rule.severity]} flex-shrink-0`} />
-            <div>
-              <p className="text-sm font-semibold text-foreground">{rule.title}</p>
-              <p className="text-xs text-muted-foreground mt-0.5">{rule.detail}</p>
-            </div>
-          </li>
+      <div className="mt-6 space-y-2.5">
+        {RULES.map((rule, i) => (
+          <Disclosure
+            key={rule.title}
+            title={rule.title}
+            defaultOpen={i === 0}
+            leading={<span className={`mt-1.5 w-2 h-2 rounded-full ${dotStyles[rule.severity]} flex-shrink-0`} />}
+          >
+            <p className="text-xs leading-relaxed">{rule.detail}</p>
+          </Disclosure>
         ))}
-      </ul>
+      </div>
     </div>
 
     <div className="pad-card rounded-2xl border border-border bg-card shadow-soft">
