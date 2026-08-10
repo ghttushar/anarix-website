@@ -42,14 +42,6 @@ const navItems: NavItem[] = [
     ],
   },
   { label: "Case Studies", href: "/case-studies" },
-  {
-    label: "Company",
-    dropdown: [
-      { label: "About", href: "/company/about" },
-      { label: "Careers", href: "/company/career" },
-    ],
-  },
-  { label: "Pricing", href: "/pricing" },
   { label: "Listing Optimization", href: "/listing-optimization" },
   { label: "Contact Us", href: "/company/contact" },
 ];
