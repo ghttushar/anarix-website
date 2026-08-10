@@ -128,9 +128,9 @@ export const RulesVisual = () => (
     <motion.div variants={itemIn} className="grid grid-cols-[1fr_auto] gap-3">
       <div className="relative">
         <Tile src={frameGood} className="w-full" style={{ aspectRatio: "4 / 3" }} />
-        <Tile src={lightBad} className="absolute -left-4 top-8 w-24 h-32 shadow-medium" />
+        <Tile src={lightBad} className="absolute left-3 top-8 w-24 h-32 shadow-medium" />
         <motion.span
-          className="absolute left-1/3 -top-3 rounded-pill bg-destructive px-3 py-1 text-[11px] font-semibold text-primary-foreground shadow-medium"
+          className="absolute left-3 top-3 rounded-pill bg-destructive px-3 py-1 text-[11px] font-semibold text-primary-foreground shadow-medium"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -203,7 +203,7 @@ export const PenaltyVisual = () => (
     </Panel>
 
     <motion.div
-      className="absolute right-10 top-8 w-1/2 rounded-2xl border border-border bg-card shadow-strong overflow-hidden"
+      className="absolute right-6 top-8 w-1/2 rounded-2xl border border-border bg-card shadow-strong overflow-hidden"
       initial={{ opacity: 0, y: 28, rotate: -2 }}
       whileInView={{ opacity: 1, y: 0, rotate: 0 }}
       viewport={{ once: true }}
@@ -220,7 +220,7 @@ export const PenaltyVisual = () => (
       </div>
     </motion.div>
 
-    <div className="absolute right-0 top-6 bottom-6 w-2 rounded-pill bg-accent/60 overflow-hidden" aria-hidden="true">
+    <div className="absolute right-2 top-6 bottom-6 w-2 rounded-pill bg-accent/60 overflow-hidden" aria-hidden="true">
       <motion.div
         className="w-full rounded-pill bg-primary"
         initial={{ height: "10%" }}
