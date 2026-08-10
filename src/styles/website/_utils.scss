@@ -243,6 +243,12 @@
   .font-serif { font-family: $font-display-stack; }
   .font-mono { font-family: $font-mono-stack; }
   .font-aan { font-family: var(--font-aan); }
+  .font-numeric {
+    font-family: var(--font-body);
+    font-optical-sizing: auto;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
 
   // ---------------------------------------------------------------- overflow
   .overflow-hidden { overflow: hidden; }
