@@ -37,7 +37,7 @@ function TeasersIntro() {
         We&apos;ve <span className="text-gradient-primary">done this before.</span>
       </h2>
       <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-        Real numbers from real accounts — the way we measure is the way we work.
+        Four accounts, four rebuilds — the way we measure is the way we work.
       </p>
     </div>
   );
@@ -66,9 +66,13 @@ function TeaserBody({ cs }: { cs: CaseStudyData }) {
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
     >
-      <h3 className="font-display text-2xl sm:text-3xl font-semibold tracking-tight text-foreground leading-[1.12]">
-        {cs.title}
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+        {cs.marketplace}
+      </p>
+      <h3 className="mt-2 font-display text-2xl sm:text-3xl font-bold tracking-tight text-foreground leading-[1.12]">
+        {cs.brand}
       </h3>
+      <p className="mt-2 text-sm text-muted-foreground leading-snug">{cs.title}</p>
 
       <p className="mt-5 font-numeric text-3xl sm:text-4xl font-bold tracking-tight leading-none">
         <span className="text-gradient-primary">
