@@ -83,7 +83,7 @@ function TeaserBody({ cs }: { cs: CaseStudyData }) {
 
       <div
         className="mt-5 flex flex-wrap gap-2"
-        style={{ alignContent: "flex-start", minHeight: "5.5rem" }}
+        style={{ alignContent: "flex-start", minHeight: "6.25rem" }}
       >
         {cs.kpis.slice(0, 3).map((k) => (
           <span
