@@ -1,4 +1,5 @@
 import { Link } from "@/lib/router";
+import { BrandLogo } from "@/website/components/BrandLogo";
 
 const productHref = "/products/platform";
 const aanHref = "/products/aan-ai";
