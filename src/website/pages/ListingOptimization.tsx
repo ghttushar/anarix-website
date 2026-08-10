@@ -498,7 +498,7 @@ const ListingOptimization = () => {
                           className="w-full rounded-pill h-11 bg-primary text-primary-foreground btn-shine"
                         >
                           <Download className="w-4 h-4" />
-                          Download Image
+                          Get image
                         </Button>
                         <button
                           onClick={handleReset}
