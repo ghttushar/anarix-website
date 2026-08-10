@@ -530,20 +530,8 @@ const ListingOptimization = () => {
           accuracy depends on marketplace data availability.
         </motion.p>
 
-        {/* Why good images win — glass showcase */}
-        <ShowcaseSection />
+        <FeatureStory />
 
-        {/* Stats band */}
-        <StatsBand />
-
-        {/* Grading rules */}
-        <GradingRulesSection />
-
-        {/* Testimonials */}
-        <TestimonialsSection />
-
-        {/* Final CTA */}
-        <FinalCtaSection />
       </div>
 
       {/* Email capture dialog */}
