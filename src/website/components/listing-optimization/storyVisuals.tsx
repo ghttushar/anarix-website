@@ -181,8 +181,8 @@ const POLICIES: { label: string; ok: boolean }[] = [
 ];
 
 export const PenaltyVisual = () => (
-  <div className="relative pr-10">
-    <Panel className="w-3/4">
+  <div className="flex items-start gap-4">
+    <Panel className="flex-1">
       <motion.div variants={itemIn} className="px-5 py-3 bg-surface-elevated border-b border-border">
         <p className="text-sm font-semibold text-foreground">Policy check</p>
       </motion.div>
@@ -203,7 +203,7 @@ export const PenaltyVisual = () => (
     </Panel>
 
     <motion.div
-      className="absolute right-6 top-8 w-1/2 rounded-2xl border border-border bg-card shadow-strong overflow-hidden"
+      className="w-1/2 flex-shrink-0 rounded-2xl border border-border bg-card shadow-strong overflow-hidden"
       initial={{ opacity: 0, y: 28, rotate: -2 }}
       whileInView={{ opacity: 1, y: 0, rotate: 0 }}
       viewport={{ once: true }}
@@ -219,18 +219,9 @@ export const PenaltyVisual = () => (
         </span>
       </div>
     </motion.div>
-
-    <div className="absolute right-2 top-6 bottom-6 w-2 rounded-pill bg-accent/60 overflow-hidden" aria-hidden="true">
-      <motion.div
-        className="w-full rounded-pill bg-primary"
-        initial={{ height: "10%" }}
-        whileInView={{ height: "72%" }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.7, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-      />
-    </div>
   </div>
 );
+
 
 /* ── 4. Compare to the competition ──────────────────────────── */
 
