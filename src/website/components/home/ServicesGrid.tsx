@@ -62,27 +62,25 @@ const ServicesGrid = () => {
             return (
               <motion.div
                 key={service.title}
-                className="group pad-card-sm rounded-xl border border-border/40 bg-card/20 hover:bg-card/50 hover:border-primary/20 transition-all duration-500 relative overflow-hidden"
-                initial={{ opacity: 0, y: 12, scale: 0.97 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ delay: (i % 6) * 0.04, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div className="absolute -top-8 -right-8 w-16 h-16 rounded-full bg-primary/5 group-hover:bg-primary/10 transition-colors duration-500 blur-xl" />
-                <div className="flex items-start gap-3 mb-3">
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                    <service.icon className="w-4 h-4 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-foreground">{service.title}</h3>
-                  </div>
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">{service.desc}</p>
-                {pun && (
-                  <p className="text-[11px] text-primary/60 italic mt-2 pt-2 border-t border-border/20 leading-relaxed">
-                    {pun}
-                  </p>
-                )}
+                <Disclosure
+                  title={service.title}
+                  defaultOpen={i === 0}
+                  leading={
+                    <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                      <service.icon className="w-4 h-4 text-primary" />
+                    </span>
+                  }
+                >
+                  <p className="text-xs leading-relaxed">{service.desc}</p>
+                  {pun && (
+                    <p className="text-[11px] text-primary/60 italic pt-2 border-t border-border/20 leading-relaxed">{pun}</p>
+                  )}
+                </Disclosure>
               </motion.div>
             );
           })}
