@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { Menu, X, ChevronDown, ChevronRight, ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "@/lib/router";
+import { BrandLogo } from "@/website/components/BrandLogo";
 import { useLeadCapture } from "@/website/components/lead-capture/LeadCaptureContext";
 
 interface MegaMenuColumn {
