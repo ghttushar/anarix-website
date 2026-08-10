@@ -6,7 +6,7 @@ const team = [
   { initials: "RK", role: "Strategist · Amazon", color: "bg-amber-500/15 text-amber-700" },
   { initials: "MS", role: "Strategist · Walmart", color: "bg-blue-500/15 text-blue-700" },
   { initials: "AT", role: "Analyst · Profitability", color: "bg-emerald-500/15 text-emerald-700" },
-  { initials: "JL", role: "Engineer · Aan", color: "bg-purple-500/15 text-purple-700" },
+  { initials: "JL", role: "Engineer · Jiva", color: "bg-purple-500/15 text-purple-700" },
 ];
 
 /**

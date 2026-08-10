@@ -18,7 +18,7 @@ const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/website-aan`
 
 const SUGGESTED = [
   "What does Anarix do?",
-  "How is Aan different?",
+  "How is Jiva different?",
   "Pricing & onboarding",
   "Which marketplaces?",
 ];
@@ -27,7 +27,7 @@ const PAGE_LABELS: Record<string, string> = {
   "/": "Home",
   "/products": "Product Overview",
   "/products/platform": "Anarix Insight Engine",
-  "/products/aan-ai": "AAN AI",
+  "/products/aan-ai": "Jiva AI",
   "/products/signals": "Signals",
   "/products/mcp": "MCP",
   "/pricing": "Pricing",
@@ -39,7 +39,7 @@ const PAGE_LABELS: Record<string, string> = {
 };
 
 /**
- * Right-side fixed Aan chatbot for the website. Internally provides its own
+ * Right-side fixed Jiva chatbot for the website. Internally provides its own
  * AanPresenceProvider so the morphing mascot from the app travels into the
  * input slot above the textarea - exact same shape-morph behavior as the
  * in-app AanCopilotPanel + AanInput.
@@ -58,7 +58,7 @@ function PanelInner() {
   const isOpen = mode === "copilot";
 
   const [messages, setMessages] = useState<Msg[]>([
-    { role: "assistant", content: "Hi, I'm **Aan**. Ask me anything about Anarix - products, pricing, integrations, or how I work." },
+    { role: "assistant", content: "Hi, I'm **Jiva**. Ask me anything about Anarix - products, pricing, integrations, or how I work." },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -78,7 +78,7 @@ function PanelInner() {
     return () => registerAnchor("input", null);
   }, [anchorEl, registerAnchor]);
 
-  // Drive the mascot "thinking" state via the shared Aan context.
+  // Drive the mascot "thinking" state via the shared Jiva context.
   useEffect(() => {
     setGenerationState(loading, null, 0);
   }, [loading, setGenerationState]);
@@ -233,14 +233,14 @@ function PanelInner() {
             )}
             role="dialog"
             aria-modal="true"
-            aria-label="Chat with Aan"
+            aria-label="Chat with Jiva"
             aria-labelledby="aan-panel-title"
             onKeyDown={handlePanelKeyDown}
           >
             {/* Header - AanLogo + context bar (mirrors AanCopilotPanel) */}
             <div className="border-b border-border shrink-0">
               <div className="flex items-center justify-between px-4 py-4">
-                <h2 id="aan-panel-title" className="sr-only">Chat with Aan</h2>
+                <h2 id="aan-panel-title" className="sr-only">Chat with Jiva</h2>
                 <AanLogo />
                 <button
                   ref={closeBtnRef}
@@ -341,7 +341,7 @@ function PanelInner() {
                     className="w-[52px] h-[52px] flex items-center justify-center shrink-0"
                   />
                   <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/70">
-                    {loading ? "Thinking…" : "Ask Aan"}
+                    {loading ? "Thinking…" : "Ask Jiva"}
                   </span>
                 </div>
 
@@ -361,7 +361,7 @@ function PanelInner() {
                     onKeyDown={handleKey}
                     onFocus={() => setInputFocused(true)}
                     onBlur={() => setInputFocused(input.trim().length > 0)}
-                    placeholder="Ask Aan anything…"
+                    placeholder="Ask Jiva anything…"
                     rows={1}
                     disabled={loading}
                     className="min-h-[44px] max-h-[120px] resize-none border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 pr-12 pl-0"

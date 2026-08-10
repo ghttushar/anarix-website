@@ -35,7 +35,7 @@ const FEATURES = [
     desc: "Export-ready structured reporting. Audit trails, scheduled deliveries, and stakeholder-ready summaries.",
   },
   {
-    title: "Aan Copilot",
+    title: "Jiva Copilot",
     desc: "Our AI copilot for operators. Ask questions in plain English and apply suggested fixes in one click.",
   },
 ];

@@ -13,7 +13,7 @@ import LeadCaptureModal from "./components/lead-capture/LeadCaptureModal";
 
 /**
  * Shell for every marketing route: providers, the scoped design-system wrapper
- * and the persistent surfaces (Aan panel, action island, lead capture modal).
+ * and the persistent surfaces (Jiva panel, action island, lead capture modal).
  */
 export default function WebsiteLayout() {
   return (
@@ -24,7 +24,7 @@ export default function WebsiteLayout() {
             <LeadCaptureProvider>
               <div className="website-scope relative min-h-screen bg-background text-foreground antialiased">
                 <Outlet />
-                {/* Single Aan surface for the website, opened from the action island. */}
+                {/* Single Jiva surface for the website, opened from the action island. */}
                 <FloatingActionIsland />
                 <AanWebsitePanel />
                 <LeadCaptureModal />

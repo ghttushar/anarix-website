@@ -27,7 +27,7 @@ const navItems: NavItem[] = [
         items: [
           { label: "Product Overview", href: "/products", desc: "Everything Anarix offers." },
           { label: "Insight Engine Platform", href: "/products/platform", desc: "The unified commerce intelligence platform." },
-          { label: "AAN AI", href: "/products/aan-ai", desc: "The AI-powered strategic assistant." },
+          { label: "Jiva AI", href: "/products/aan-ai", desc: "The AI-powered strategic assistant." },
           { label: "Signals", href: "/products/signals", desc: "Real-time market intelligence." },
           { label: "MCP", href: "/products/mcp", desc: "Model Context Protocol integrations." },
         ],

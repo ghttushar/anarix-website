@@ -22,7 +22,7 @@ const FinalCtaSection = () => {
         <div className="pointer-events-none absolute -bottom-20 -left-10 w-72 h-72 rounded-full bg-white/10 blur-3xl" aria-hidden="true" />
 
         <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white">
-          Start Now With Aan
+          Start Now With Jiva
         </h2>
         <p className="mt-3 text-white/85 max-w-md mx-auto">
           All the features you need. None of the hassle you don&apos;t.

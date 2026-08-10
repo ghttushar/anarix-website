@@ -12,7 +12,7 @@ const footerLinks: Record<string, { label: string; href: string; external?: bool
     { label: "Campaign", href: productHref },
     { label: "Rules", href: productHref },
     { label: "Profitability", href: productHref },
-    { label: "AAN (AI)", href: aanHref },
+    { label: "Jiva (AI)", href: aanHref },
     { label: "Signals", href: signalsHref },
     { label: "MCP", href: mcpHref },
   ],

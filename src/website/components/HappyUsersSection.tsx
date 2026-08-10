@@ -143,7 +143,7 @@ const HappyUsersSection = () => {
                       backdropFilter: "blur(8px)",
                     }}
                   >
-                    Talk to Aan
+                    Talk to Jiva
                   </button>
                 </div>
               </div>

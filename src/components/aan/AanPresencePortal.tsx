@@ -5,7 +5,7 @@ import { useAanPresence } from "./AanPresenceContext";
 import { useAan } from "./AanContext";
 
 /**
- * Renders the single travelling Aan mascot into whichever anchor is currently active.
+ * Renders the single travelling Jiva mascot into whichever anchor is currently active.
  * Uses Framer Motion's `layoutId` so the same DOM element animates between anchor positions.
  */
 export function AanPresencePortal() {

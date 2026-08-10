@@ -187,7 +187,7 @@ const Product = () => {
         {/* Interactive Charts */}
         <PlatformCharts />
 
-        {/* Aan AI Section */}
+        {/* Jiva AI Section */}
         <motion.div
           className="gap-block text-center"
           initial={{ opacity: 0, y: 12 }}
@@ -204,12 +204,12 @@ const Product = () => {
             What else do you need?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            Okayyy&hellip; here are the other boring things Aan also does.
+            Okayyy&hellip; here are the other boring things Jiva also does.
           </p>
           <div className="grid md:grid-cols-3 gap-4 text-left">
             {[
               { icon: Sparkles, title: "Ask Anything", desc: "Analyze DSP and Sponsored Products overlap, calculate ROAS improvements, recommend audience segments with highest conversion rates." },
-              { icon: Shield, title: "Proactive Alerts", desc: "Get notified of anomalies before they become problems. Aan monitors your accounts 24/7 and surfaces what needs attention." },
+              { icon: Shield, title: "Proactive Alerts", desc: "Get notified of anomalies before they become problems. Jiva monitors your accounts 24/7 and surfaces what needs attention." },
               { icon: TrendingUp, title: "Automated Reporting", desc: "Client-ready reports generated automatically. Morning briefings, weekly summaries, and custom analysis on demand." },
             ].map((item) => (
               <div key={item.title} className="pad-card-sm rounded-xl border border-border/40 bg-card/30 hover:bg-card/50 transition-colors">

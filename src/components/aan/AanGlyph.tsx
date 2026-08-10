@@ -13,7 +13,7 @@ interface AanGlyphProps {
 
 /**
  * AanGlyph - drop-in replacement for the legacy `<Sparkles />` icon used to
- * mark Aan AI surfaces. Renders the original Sparkles when New Branding is
+ * mark Jiva AI surfaces. Renders the original Sparkles when New Branding is
  * OFF; renders the AanMascot diamond when ON.
  */
 export function AanGlyph({ className, state = "idle", size, interactive = false, staticEyes = false }: AanGlyphProps) {

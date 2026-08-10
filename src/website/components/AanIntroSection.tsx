@@ -31,7 +31,7 @@ const AanIntroSection = () => {
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
           >
-            <Bot className="w-4 h-4" /> Aan AI
+            <Bot className="w-4 h-4" /> Jiva AI
           </motion.div>
           <motion.h2
             className="text-3xl sm:text-5xl font-bold text-foreground mb-4"
@@ -49,7 +49,7 @@ const AanIntroSection = () => {
             animate={isVisible ? { opacity: 1 } : {}}
             transition={{ delay: 0.3, duration: 0.5 }}
           >
-            Okayyy… here are the other boring things Aan also does.
+            Okayyy… here are the other boring things Jiva also does.
           </motion.p>
         </div>
 
@@ -88,7 +88,7 @@ const AanIntroSection = () => {
                 <span className="w-3 h-3 rounded-full bg-yellow-400" />
                 <span className="w-3 h-3 rounded-full bg-green-400" />
               </div>
-              <span className="text-xs text-muted-foreground ml-2">Aan AI Copilot</span>
+              <span className="text-xs text-muted-foreground ml-2">Jiva AI Copilot</span>
             </div>
             <div className="p-4 space-y-3 max-h-[400px] overflow-y-auto">
               {chatMessages.map((msg, i) => (
