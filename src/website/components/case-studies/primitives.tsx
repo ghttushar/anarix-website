@@ -224,7 +224,62 @@ export function BeforeStrategyResult({
   );
 }
 
-export function QuoteBlock({ text, attribution }: { text: string; attribution: string }) {
+export function BeforeAfterTable({ table }: { table: BeforeAfterTableData }) {
+  const { ref, isVisible } = useScrollReveal();
+  return (
+    <div
+      ref={ref}
+      className={`rounded-3xl border border-border bg-card shadow-soft overflow-hidden transition-all duration-700 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+      }`}
+    >
+      <div className="px-6 py-5 sm:px-8 border-b border-border/70">
+        <h4 className="font-display text-lg font-semibold text-foreground">{table.title}</h4>
+        {table.note ? <p className="mt-1 text-xs text-muted-foreground">{table.note}</p> : null}
+      </div>
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="bg-muted/40">
+              {table.columns.map((c, i) => (
+                <th
+                  key={c}
+                  className={`px-6 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground ${
+                    i === 0 ? "text-left" : "text-right"
+                  }`}
+                >
+                  {c}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {table.rows.map((row) => (
+              <tr key={row[0]} className="border-t border-border/60">
+                <td className="px-6 py-3 text-foreground">{row[0]}</td>
+                <td className="px-6 py-3 text-right font-numeric text-muted-foreground">{row[1]}</td>
+                <td className="px-6 py-3 text-right font-numeric font-semibold text-foreground">{row[2]}</td>
+                <td className="px-6 py-3 text-right font-numeric font-semibold text-primary">{row[3]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+export function QuoteBlock({
+  text,
+  name,
+  title,
+  brand,
+}: {
+  text: string;
+  name: string;
+  title: string;
+  brand: string;
+}) {
   const { ref, isVisible } = useScrollReveal();
   return (
     <figure
@@ -239,15 +294,19 @@ export function QuoteBlock({ text, attribution }: { text: string; attribution: s
       <blockquote className="font-display text-2xl sm:text-3xl font-medium tracking-tight text-foreground leading-[1.25]">
         {text}
       </blockquote>
-      <figcaption className="mt-6 text-sm text-muted-foreground">{attribution}</figcaption>
+      <figcaption className="mt-6 text-sm">
+        <span className="font-semibold text-foreground">{name}</span>
+        <span className="text-muted-foreground"> · {title} · {brand}</span>
+      </figcaption>
     </figure>
   );
 }
 
-export function CtaSection({ dark = true }: { dark?: boolean }) {
+export function CtaSection() {
   const { ref, isVisible } = useScrollReveal();
   return (
-    <section ref={ref} className={`relative pad-cta ${dark ? "section-dark" : ""}`}>
+    <section ref={ref} className="relative pad-cta section-panel">
+
       <div
         className={`container-page px-6 sm:px-8 text-center transition-all duration-700 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
