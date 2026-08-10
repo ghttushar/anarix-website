@@ -11,9 +11,11 @@ import PlatformCharts from "@/website/components/product/PlatformCharts";
 
 /** lottie-react touches the DOM on import, so it is only ever loaded in the browser. */
 const LottiePlayer = lazy(async () => {
-  const mod = await import("lottie-react");
-  const Component = (mod as { default?: unknown }).default ?? mod;
-  return { default: Component as React.ComponentType<Record<string, unknown>> };
+  let resolved: unknown = await import("lottie-react");
+  while (resolved && typeof resolved === "object" && "default" in resolved) {
+    resolved = (resolved as { default: unknown }).default;
+  }
+  return { default: resolved as React.ComponentType<Record<string, unknown>> };
 });
 
 import loaderBlue from "@/assets/lottie/loader-blue.json";
