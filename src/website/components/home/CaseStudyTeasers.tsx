@@ -101,13 +101,15 @@ function TeaserBody({ cs }: { cs: CaseStudyData }) {
         ))}
       </div>
 
+      <div className="mt-auto pt-6">
       <Link
         to={`/case-studies#${cs.id}`}
-        className="group mt-auto pt-6 self-start inline-flex items-center gap-2 rounded-pill px-6 h-11 bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-strong active:translate-y-0 active:scale-[0.97] will-change-transform btn-shine"
+        className="group self-start inline-flex items-center gap-2 rounded-pill px-6 h-11 bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-strong active:translate-y-0 active:scale-[0.97] will-change-transform btn-shine"
       >
         Explore Case Study
         <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
       </Link>
+      </div>
     </div>
   );
 }
