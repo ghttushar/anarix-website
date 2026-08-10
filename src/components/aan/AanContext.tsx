@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useMemo, ReactNode } from "react";
+import { createContext, useContext, useState, useMemo, useCallback, ReactNode } from "react";
 
 export type AanMode = "closed" | "copilot" | "split" | "workspace";
 export type ConversationType = "general" | "report" | "audit" | "creative" | "rule" | "agent";
