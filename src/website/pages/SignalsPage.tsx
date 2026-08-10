@@ -47,7 +47,7 @@ const executionSteps = [
 const SignalsPage = () => {
   return (
     <PageLayout>
-      <div className="container-wide px-4">
+      <div className="container-page px-6">
         {/* Hero */}
         <div className="text-center pad-hero">
           <motion.div

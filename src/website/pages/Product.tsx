@@ -38,7 +38,7 @@ const results = [
 const Product = () => {
   return (
     <PageLayout>
-      <div className="container-wide px-4">
+      <div className="container-page px-6">
         {/* Hero with Lottie loader animation */}
         <div className="grid lg:grid-cols-12 gap-grid items-center gap-block pt-8">
           <div className="lg:col-span-8">

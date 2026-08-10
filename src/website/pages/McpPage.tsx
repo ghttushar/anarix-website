@@ -57,7 +57,7 @@ const marketplaces = [
 const McpPage = () => {
   return (
     <PageLayout>
-      <div className="container-wide px-6">
+      <div className="container-page px-6">
         {/* Hero */}
         <div className="grid lg:grid-cols-12 gap-grid items-center pad-hero">
           <motion.div
