@@ -17,12 +17,9 @@ const footerLinks: Record<string, { label: string; href: string; external?: bool
     { label: "MCP", href: mcpHref },
   ],
   Resources: [
-    { label: "Pricing", href: "/pricing" },
     { label: "Documentation", href: "/documentation" },
-  ],
-  Company: [
-    { label: "About", href: "/company/about" },
-    { label: "Careers", href: "/company/career" },
+    { label: "Listing Optimization", href: "/listing-optimization" },
+    { label: "Case Studies", href: "/case-studies" },
     { label: "Contact", href: "/company/contact" },
   ],
   Account: [
