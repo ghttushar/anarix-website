@@ -65,7 +65,7 @@ const ToolBanner = () => (
         </ul>
 
         <div className="flex flex-col items-start lg:items-end gap-3">
-          <ScoreChip />
+
           <span className="inline-flex items-center gap-1.5 rounded-pill bg-primary px-6 h-11 text-sm font-semibold text-primary-foreground btn-shine">
             Analyze my listing
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
