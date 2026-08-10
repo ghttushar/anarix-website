@@ -22,6 +22,9 @@ const Home = () => {
 
       <HeroSectionNew />
 
+      <ToolBanner />
+
+
       <CaseStudyTeasers />
 
       <ServicesGrid />
