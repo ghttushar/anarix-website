@@ -66,7 +66,7 @@ function TeaserBody({ cs }: { cs: CaseStudyData }) {
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
     >
-      <h3 className=" font-display text-2xl sm:text-3xl font-semibold tracking-tight text-foreground leading-[1.12]">
+      <h3 className="font-display text-2xl sm:text-3xl font-semibold tracking-tight text-foreground leading-[1.12]">
         {cs.title}
       </h3>
 
