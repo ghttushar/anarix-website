@@ -230,6 +230,18 @@ export const FixVisual = () => (
       >
         <img src={shoeMain} alt="" loading="lazy" className="w-full h-full" style={{ objectFit: "contain", background: "white" }} />
       </motion.span>
+      {/* Wipe handle that travels with the reveal */}
+      <motion.span
+        className="absolute inset-y-0 flex items-center justify-center"
+        style={{ width: 2, background: "hsl(var(--primary))" }}
+        variants={{ hidden: { left: "0%", opacity: 0 }, show: { left: "100%", opacity: [0, 1, 1, 0] } }}
+        transition={{ delay: 0.5, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <span
+          className="block rounded-full bg-primary shadow-strong"
+          style={{ width: 14, height: 14 }}
+        />
+      </motion.span>
       <span className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-pill bg-primary px-2.5 py-1 text-[10px] font-bold text-primary-foreground">
         <Sparkles className="w-3 h-3" />
         After · Fix it
