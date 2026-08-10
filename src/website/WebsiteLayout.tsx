@@ -1,6 +1,6 @@
 import { Outlet } from "@tanstack/react-router";
 import { MotionConfig } from "framer-motion";
-import "./website.css";
+import "@/styles/website/website.scss";
 import AanWebsitePanel from "./components/AanWebsitePanel";
 import { FloatingActionIsland } from "./components/FloatingActionIsland";
 import { LeadCaptureProvider } from "./components/lead-capture/LeadCaptureContext";
