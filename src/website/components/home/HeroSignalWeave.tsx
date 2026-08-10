@@ -125,15 +125,12 @@ export function HeroSignalWeave() {
           animate={{ pathLength: 1 }}
           transition={{ duration: 2.4, delay: 0.6, repeat: Infinity, repeatDelay: 1.4, ease: [0.22, 1, 0.36, 1] }}
         />
-        <motion.circle
-          cx={258}
-          cy={190}
-          r="4.5"
-          fill="hsl(var(--primary))"
-          initial={{ cx: 258, cy: 190 }}
-          animate={{ cx: [258, 320, 382], cy: [190, 120, 58] }}
+        <motion.g
+          animate={{ x: [0, 62, 124], y: [0, -70, -132] }}
           transition={{ duration: 2.4, delay: 0.6, repeat: Infinity, repeatDelay: 1.4, ease: [0.22, 1, 0.36, 1] }}
-        />
+        >
+          <circle cx="258" cy="190" r="4.5" fill="hsl(var(--primary))" />
+        </motion.g>
         <text x="300" y="228" className="fill-muted-foreground" style={{ fontSize: 11 }}>
           profit
         </text>
