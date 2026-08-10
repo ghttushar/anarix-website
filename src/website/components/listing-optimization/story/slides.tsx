@@ -20,6 +20,7 @@ import {
   Photo,
   Rail,
   ScoreRow,
+  CountUp,
   itemIn,
 } from "./primitives";
 
@@ -88,7 +89,7 @@ export const RulesVisual = () => (
     <Panel>
       <motion.div variants={itemIn} className="flex items-center justify-between gap-3 px-4 pt-3">
         <p className="text-[13px] font-semibold text-foreground">Amazon overall score</p>
-        <p className="font-numeric text-xl font-bold text-foreground tabular-nums">34%</p>
+        <CountUp value={34} className="font-numeric text-xl font-bold text-foreground tabular-nums" />
       </motion.div>
       <motion.div variants={itemIn} className="px-4 pb-3 pt-2">
         <Bar value={34} />
@@ -106,7 +107,7 @@ export const RulesVisual = () => (
 
 const POLICIES: { label: string; ok: boolean }[] = [
   { label: "Pure white background", ok: false },
-  { label: "No text, logo or watermark", ok: false },
+  { label: "No text, logo or watermark", ok: true },
   { label: "No promotional badges", ok: false },
   { label: "Zoom-ready at 1600px", ok: true },
   { label: "Product fills 85% of frame", ok: true },
@@ -139,11 +140,11 @@ export const PenaltyVisual = () => (
       <Flag className="left-2 top-2" delay={0.6}>
         Promo badge
       </Flag>
-      <Flag className="bottom-2 left-2" delay={0.8}>
-        Watermark detected
-      </Flag>
-      <Flag className="bottom-10 left-2" delay={1}>
+      <Flag className="bottom-10 left-2" delay={0.8}>
         Off-white background
+      </Flag>
+      <Flag className="bottom-2 left-2" delay={1}>
+        Harsh shadow
       </Flag>
     </motion.div>
   </div>
@@ -229,6 +230,18 @@ export const FixVisual = () => (
       >
         <img src={shoeMain} alt="" loading="lazy" className="w-full h-full" style={{ objectFit: "contain", background: "white" }} />
       </motion.span>
+      {/* Wipe handle that travels with the reveal */}
+      <motion.span
+        className="absolute inset-y-0 flex items-center justify-center"
+        style={{ width: 2, background: "hsl(var(--primary))" }}
+        variants={{ hidden: { left: "0%", opacity: 0 }, show: { left: "100%", opacity: [0, 1, 1, 0] } }}
+        transition={{ delay: 0.5, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <span
+          className="block rounded-full bg-primary shadow-strong"
+          style={{ width: 14, height: 14 }}
+        />
+      </motion.span>
       <span className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-pill bg-primary px-2.5 py-1 text-[10px] font-bold text-primary-foreground">
         <Sparkles className="w-3 h-3" />
         After · Fix it
@@ -272,7 +285,7 @@ export const MarketplaceVisual = () => (
         ].map((cell) => (
           <motion.div key={cell.label} variants={itemIn} className="border-r border-border p-3 last:border-0">
             <p className="text-[11px] text-muted-foreground">{cell.label}</p>
-            <p className="font-numeric text-lg font-bold text-foreground tabular-nums">{cell.value}%</p>
+            <CountUp value={cell.value} className="font-numeric text-lg font-bold text-foreground tabular-nums" />
             <span className="mt-1.5 block">
               <Bar value={cell.value} />
             </span>
