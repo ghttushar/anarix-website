@@ -30,11 +30,6 @@ const navItems: NavItem[] = [
           { label: "Jiva AI", href: "/products/aan-ai", desc: "The AI-powered strategic assistant." },
           { label: "Signals", href: "/products/signals", desc: "Real-time market intelligence." },
           { label: "MCP", href: "/products/mcp", desc: "Model Context Protocol integrations." },
-        ],
-      },
-      {
-        heading: "Developers",
-        items: [
           { label: "Documentation", href: "/documentation", desc: "Developer guides & APIs.", external: true },
         ],
       },
@@ -212,18 +207,15 @@ const Navbar = () => {
                       exit={{ opacity: 0, y: 8, scale: 0.96 }}
                       transition={{ duration: 0.15, ease: [0.22, 1, 0.36, 1] }}
                       className="absolute top-full left-1/2 -translate-x-1/2 mt-2 py-6 px-8 bg-surface-elevated rounded-2xl border border-border shadow-strong z-50"
-                      style={{ width: "720px" }}
+                      style={{ width: "420px" }}
                     >
-                      <div className="grid grid-cols-2 gap-x-8">
+                      <div className="grid grid-cols-1">
                         {item.megaMenu.map((col, ci) => (
                           <div key={col.heading} className={ci > 0 ? "border-l border-border/40 pl-8" : ""}>
                             <div className="flex items-baseline justify-between mb-3">
                               <h4 className="text-[10px] font-bold text-primary/70 uppercase tracking-[0.16em]">
                                 {col.heading}
                               </h4>
-                              {ci === 0 ? (
-                                <p className="text-xs text-muted-foreground italic">Build. Measure. Scale.</p>
-                              ) : null}
                             </div>
                             <ul className="space-y-1">
                               {col.items.map((sub) => (
@@ -258,17 +250,6 @@ const Navbar = () => {
                             </ul>
                           </div>
                         ))}
-                      </div>
-                      <div className="mt-5 pt-4 border-t border-border/40">
-                        <Link
-                          to="/products"
-                          className="flex items-center gap-2 text-xs font-medium text-primary hover:text-primary/80 transition-colors"
-                        >
-                          View Product Overview
-                          <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M4.5 2.5L8 6L4.5 9.5" />
-                          </svg>
-                        </Link>
                       </div>
                     </motion.div>
                   )}
