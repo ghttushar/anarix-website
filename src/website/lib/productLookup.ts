@@ -161,6 +161,7 @@ async function scrape(marketplace: Marketplace, productId: string): Promise<Prod
     });
     if (!res.ok) return null;
     const html = await res.text();
+    if (isBotWall(html)) return null;
     const heroImage = firstImageFromHtml(html);
     if (!heroImage) return null;
     return {
