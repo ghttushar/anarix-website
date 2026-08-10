@@ -63,7 +63,7 @@ export const DiagnoseVisual = () => (
         <motion.span
           className="block h-full rounded-pill bg-primary"
           variants={{ hidden: { width: "0%" }, show: { width: "100%" } }}
-          transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1.6, ease: EASE }}
         />
       </motion.span>
     </motion.div>
@@ -207,7 +207,7 @@ export const GrowVisual = () => (
             show: {
               height: `${h}%`,
               opacity: 1,
-              transition: { delay: 0.15 + i * 0.09, duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+              transition: { delay: 0.15 + i * 0.09, duration: 0.7, ease: EASE },
             },
           }}
         />
