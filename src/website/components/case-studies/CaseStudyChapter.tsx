@@ -14,6 +14,7 @@ import {
   SoftDivider,
 } from "./primitives";
 import { CaseChartBlock } from "./charts";
+import Disclosure from "@/website/components/ui/Disclosure";
 
 function ChapterHero({ data }: { data: CaseStudyData }) {
   const { ref, isVisible } = useScrollReveal();
