@@ -366,7 +366,7 @@ export const MarketplaceVisual = () => (
     </Panel>
 
     <motion.div
-      className="absolute -right-2 sm:-right-8 -top-8 w-52 rounded-2xl border border-border bg-card p-4 shadow-strong"
+      className="absolute right-3 -top-10 w-52 rounded-2xl border border-border bg-card p-4 shadow-strong"
       initial={{ opacity: 0, y: -16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -387,7 +387,7 @@ export const MarketplaceVisual = () => (
     </motion.div>
 
     <motion.div
-      className="absolute -left-6 bottom-8 hidden sm:block"
+      className="absolute left-3 -bottom-6 hidden sm:block"
       initial={{ opacity: 0, scale: 0.92 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
