@@ -78,7 +78,7 @@ function TeaserBody({ cs }: { cs: CaseStudyData }) {
         {cs.title}
       </h3>
 
-      <p className="mt-5 font-display text-3xl sm:text-4xl font-bold tracking-tight leading-none">
+      <p className="mt-5 font-numeric text-3xl sm:text-4xl font-bold tracking-tight leading-none">
         <span className="text-gradient-primary">
           {cs.hero.prefix}
           {value.toFixed(cs.hero.decimals ?? 0)}

@@ -44,7 +44,7 @@ const StatsBand = () => (
           i % 2 === 1 ? "border-l border-border/40" : "lg:border-l lg:border-border/40"
         } ${i >= 2 ? "border-t border-border/40 lg:border-t-0" : ""}`}
       >
-        <p className="text-3xl font-bold text-foreground">
+        <p className="font-numeric text-3xl font-bold text-foreground">
           <StatNumber stat={stat} />
         </p>
         <p className="mt-1 text-sm font-semibold text-foreground">{stat.label}</p>
