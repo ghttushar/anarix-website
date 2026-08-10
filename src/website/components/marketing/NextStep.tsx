@@ -28,7 +28,7 @@ export default function NextStep({
   label,
 }: NextStepProps) {
   return (
-    <section className="pad-section-sm">
+    <section className="pad-section-compact">
       <div className="container-page px-6">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
