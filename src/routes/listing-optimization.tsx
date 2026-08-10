@@ -5,7 +5,7 @@ import ListingOptimization from "@/website/pages/ListingOptimization";
 export const Route = createFileRoute("/listing-optimization")({
   head: () => ({
     meta: [
-      { title: "Listing optimization — Rank and convert better | Anarix" },
+      { title: "Listing optimization — Rank and convert better | Anarix.ai" },
       { name: "description", content: "Audit and improve Amazon listings with keyword, content and imagery guidance driven by Anarix data." },
       { property: "og:title", content: "Listing optimization — Rank and convert better | Anarix" },
       { property: "og:description", content: "Audit and improve Amazon listings with keyword, content and imagery guidance driven by Anarix data." },
