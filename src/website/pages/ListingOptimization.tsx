@@ -608,12 +608,6 @@ const ListingOptimization = () => {
           </form>
         </DialogContent>
       </Dialog>
-      <NextStep
-        title="What this looks like on a real account"
-        description="Two partners, two marketplaces, the numbers in full."
-        to="/case-studies"
-        label="Read the case studies"
-      />
     </PageLayout>
   );
 };
