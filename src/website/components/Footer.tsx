@@ -75,7 +75,7 @@ const Footer = () => {
 
         <div className="border-t border-border pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Anarix. All rights reserved.
+            &copy; {new Date().getFullYear()}&nbsp;Anarix E-commerce LLC. All rights reserved.
           </p>
           <div className="flex gap-4">
             <Link to="/privacy-policy" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-300">
