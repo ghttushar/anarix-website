@@ -92,13 +92,14 @@ export function HeroSignalWeave() {
 
         {/* Convergence core — the Anarix peaks mark */}
         <motion.circle
-          cx="232"
-          cy="130"
-          r="46"
+          cx={232}
+          cy={130}
+          r={46}
           fill="url(#hsw-core)"
+          initial={{ scale: 0.9, opacity: 0.6 }}
           animate={{ scale: [0.9, 1.06, 0.9], opacity: [0.6, 1, 0.6] }}
           transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
-          style={{ transformOrigin: "232px 130px" }}
+          style={{ transformBox: "fill-box", transformOrigin: "center" }}
         />
         <motion.g
           animate={{ y: [0, -3, 0] }}
