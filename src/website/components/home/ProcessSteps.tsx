@@ -65,7 +65,7 @@ const STEPS: StorySlide[] = [
 ];
 
 const ProcessSteps = () => (
-  <section className="relative pad-section overflow-hidden">
+  <section className="relative pad-section">
     <div className="container-wide px-4">
       <motion.div
         className="text-center gap-heading"
