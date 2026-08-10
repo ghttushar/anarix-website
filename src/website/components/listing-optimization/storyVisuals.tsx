@@ -128,7 +128,7 @@ export const RulesVisual = () => (
     <motion.div variants={itemIn} className="grid grid-cols-[1fr_auto] gap-3">
       <div className="relative">
         <Tile src={frameGood} className="w-full" style={{ aspectRatio: "4 / 3" }} />
-        <Tile src={lightBad} className="absolute left-3 top-8 w-24 h-32 shadow-medium" />
+        <Tile src={lightBad} className="absolute right-3 bottom-3 w-24 h-24 shadow-medium" />
         <motion.span
           className="absolute left-3 top-3 rounded-pill bg-destructive px-3 py-1 text-[11px] font-semibold text-primary-foreground shadow-medium"
           initial={{ opacity: 0, scale: 0.9 }}
@@ -139,6 +139,7 @@ export const RulesVisual = () => (
           Missing lifestyle image
         </motion.span>
       </div>
+
       <div className="flex flex-col gap-2">
         {[bgGood, lightGood, frameBad].map((src) => (
           <Tile key={src} src={src} className="w-14 h-14" />
