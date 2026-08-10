@@ -126,7 +126,7 @@ function TeaserDashboard({ cs }: { cs: CaseStudyData }) {
         isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-6 scale-[0.98]"
       }`}
     >
-      <div className="flex items-baseline justify-between gap-4">
+      <div className="flex items-baseline justify-between gap-4" style={{ minHeight: "2.5rem" }}>
         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
           {chart.title}
         </p>
