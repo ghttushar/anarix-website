@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Loader2, ScanSearch, Download, Mail, RotateCcw, ImagePlus, Link2, Check } from "lucide-react";
 import { toast } from "sonner";
+import NextStep from "@/website/components/marketing/NextStep";
 import PageLayout from "@/website/components/PageLayout";
 import { Button } from "@/components/ui/button";
 import {
@@ -607,6 +608,12 @@ const ListingOptimization = () => {
           </form>
         </DialogContent>
       </Dialog>
+      <NextStep
+        title="What this looks like on a real account"
+        description="Two partners, two marketplaces, the numbers in full."
+        to="/case-studies"
+        label="Read the case studies"
+      />
     </PageLayout>
   );
 };

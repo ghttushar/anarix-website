@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Database, Plug, Shield, Zap, Code, Globe, ArrowRight, Server, Cpu, GitBranch } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/lib/router";
+import NextStep from "@/website/components/marketing/NextStep";
 import PageLayout from "@/website/components/PageLayout";
 
 const features = [
@@ -280,6 +281,12 @@ const McpPage = () => {
           </div>
         </motion.div>
       </div>
+      <NextStep
+        title="Ready to wire it up?"
+        description="Endpoints, schemas and auth — everything a developer needs to start."
+        to="/documentation"
+        label="Read the docs"
+      />
     </PageLayout>
   );
 };
