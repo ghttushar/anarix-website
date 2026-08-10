@@ -103,10 +103,8 @@ const Navbar = () => {
         style={{ scaleX }}
       />
       <nav
-        className={`grid grid-cols-[auto_1fr_auto] items-center px-6 py-3 w-full container-wide rounded-pill border backdrop-blur-xl transition-all duration-500 ${
-          scrolled
-            ? "bg-surface-elevated/95 shadow-medium border-border/80"
-            : "bg-surface-elevated/60 shadow-soft border-border/30"
+        className={`grid grid-cols-[auto_1fr_auto] items-center gap-4 px-6 py-3 w-full container-wide rounded-pill nav-glass transition-all duration-500 ${
+          scrolled ? "nav-glass--scrolled shadow-medium" : "shadow-soft"
         }`}
       >
         {/* Logo */}
@@ -283,28 +281,21 @@ const Navbar = () => {
         </div>
 
         {/* Right side */}
-        <div className="hidden lg:flex items-center gap-2 justify-end">
-          <Link
-            to="/login"
-            className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 group px-2"
-          >
-            Sign In
-            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
-          </Link>
-          <Button
-            onClick={openLeadCapture}
-            variant="outline"
-            className="rounded-pill px-5 border-border text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all duration-200"
-          >
-            Get Free Audit
-          </Button>
-          <a href="https://calendly.com/sunil-anarix/30min" target="_blank" rel="noopener noreferrer">
+        <div className="hidden lg:flex items-center gap-3 justify-end">
+          <a href="https://calendly.com/sunil-anarix/30min" target="_blank" rel="noopener noreferrer" className="inline-flex">
             <Button
-              className="rounded-pill px-6 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-strong active:translate-y-0 active:scale-[0.97] will-change-transform btn-shine"
+              className="rounded-pill h-10 px-6 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-strong active:translate-y-0 active:scale-[0.97] will-change-transform btn-shine"
             >
               Schedule Demo
             </Button>
           </a>
+          <Link
+            to="/login"
+            className="inline-flex items-center gap-1 h-10 px-3 rounded-pill text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 group"
+          >
+            Sign In
+            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </Link>
         </div>
 
         {/* Mobile hamburger */}
@@ -469,17 +460,14 @@ const Navbar = () => {
                 );
               })}
               <div className="pt-3 border-t border-border space-y-2">
-                <Link to="/login" className="flex items-center gap-1 px-3 py-2 text-sm text-muted-foreground">
-                  Sign In <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-                <Button onClick={openLeadCapture} variant="outline" className="w-full rounded-pill border-border text-muted-foreground">
-                  Get Free Audit
-                </Button>
                 <a href="https://calendly.com/sunil-anarix/30min" target="_blank" rel="noopener noreferrer">
                   <Button className="w-full rounded-pill bg-primary text-primary-foreground">
                     Schedule Demo
                   </Button>
                 </a>
+                <Link to="/login" className="flex items-center gap-1 px-3 py-2 text-sm text-muted-foreground">
+                  Sign In <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
             </div>
           </motion.div>
