@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, ScanSearch, ShieldCheck, Timer, Store } from "lucide-react";
 
 import { Link } from "@/lib/router";
-import { useCountUp } from "@/hooks/useCountUp";
 
 const PROOF = [
   { icon: ShieldCheck, label: "40+ marketplace rules", sub: "checked per image" },
@@ -10,28 +9,6 @@ const PROOF = [
   { icon: Store, label: "Amazon & Walmart", sub: "separate rule sets" },
 ];
 
-const ScoreChip = () => {
-  const score = useCountUp(87, { duration: 1600 });
-  return (
-    <span className="inline-flex items-center gap-2 rounded-pill border border-border bg-card px-3 py-1.5 shadow-soft">
-      <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-        Score
-      </span>
-      <span className="font-numeric text-base font-bold text-foreground tabular-nums">
-        {Math.round(score)}%
-      </span>
-      <span className="relative w-16 h-1.5 rounded-pill bg-accent/60 overflow-hidden">
-        <motion.span
-          className="absolute inset-y-0 left-0 rounded-pill bg-primary"
-          initial={{ width: "12%" }}
-          whileInView={{ width: "87%" }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-        />
-      </span>
-    </span>
-  );
-};
 
 /** Full-bleed call-out band for the free listing image analyzer. */
 const ToolBanner = () => (
@@ -88,7 +65,7 @@ const ToolBanner = () => (
         </ul>
 
         <div className="flex flex-col items-start lg:items-end gap-3">
-          <ScoreChip />
+
           <span className="inline-flex items-center gap-1.5 rounded-pill bg-primary px-6 h-11 text-sm font-semibold text-primary-foreground btn-shine">
             Analyze my listing
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
