@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Search, Settings, FileText, TrendingUp, type LucideIcon } from "lucide-react";
 
@@ -52,7 +52,9 @@ const StepPanel = ({
   const trackRef = useRef<HTMLDivElement>(null);
   const active = useInView(trackRef, { margin: "-45% 0px -45% 0px" });
 
-  if (active) onActive(index);
+  useEffect(() => {
+    if (active) onActive(index);
+  }, [active, index, onActive]);
 
   return (
     <div ref={trackRef} className="h-[85vh] lg:h-screen flex items-center">
