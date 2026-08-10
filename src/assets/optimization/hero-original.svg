@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000" role="img" aria-label="Product listing placeholder">
+  <rect width="1000" height="1000" fill="#f4f6fb"/>
+  <rect x="250" y="260" width="500" height="480" rx="36" fill="#ffffff" stroke="#dbe3f0" stroke-width="6"/>
+  <rect x="330" y="350" width="340" height="160" rx="24" fill="#e6edf9"/>
+  <rect x="330" y="540" width="260" height="34" rx="17" fill="#dbe3f0"/>
+  <rect x="330" y="600" width="200" height="34" rx="17" fill="#eef2f9"/>
+  <circle cx="730" cy="330" r="14" fill="#cbd8ee"/>
+  <text x="500" y="820" font-family="Arial, sans-serif" font-size="40" fill="#94a3b8" text-anchor="middle">Product image</text>
+</svg>

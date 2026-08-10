@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="32%" r="65%">
+      <stop offset="0" stop-color="#6E82F5" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#6E82F5" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="600" rx="24" fill="#ffffff"/>
+  <rect width="600" height="600" rx="24" fill="url(#glow)"/>
+  <rect x="120" y="120" width="360" height="360" rx="28" fill="#ffffff" stroke="#4A62D9" stroke-width="6"/>
+  <rect x="200" y="200" width="200" height="120" rx="18" fill="#e8ecfb"/>
+  <rect x="200" y="340" width="150" height="34" rx="17" fill="#dfe5f8"/>
+  <path d="M120 450c60-50 140-50 200 0s140 50 200 0" stroke="#dfe5f8" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <circle cx="492" cy="108" r="26" fill="#27c07f"/>
+  <path d="M480 108l8 9 16-18" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="300" y="545" font-family="Arial, sans-serif" font-size="30" fill="#8d97ad" text-anchor="middle">PRODUCT FILLS 85% · ZOOM READY</text>
+</svg>

@@ -1,0 +1,58 @@
+import { createContext, useContext, useState, useCallback, useEffect, ReactNode } from "react";
+
+const STORAGE_KEY = "anarix-new-branding";
+
+interface BrandingContextType {
+  newBranding: boolean;
+  toggleNewBranding: () => void;
+  setNewBranding: (v: boolean) => void;
+}
+
+const BrandingContext = createContext<BrandingContextType>({
+  newBranding: false,
+  toggleNewBranding: () => {},
+  setNewBranding: () => {},
+});
+
+export function BrandingProvider({ children }: { children: ReactNode }) {
+  const [newBranding, setNewBrandingState] = useState<boolean>(() => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      return stored !== null ? JSON.parse(stored) : false;
+    } catch {
+      return false;
+    }
+  });
+
+  const setNewBranding = useCallback((v: boolean) => {
+    setNewBrandingState(v);
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(v)); } catch { void 0; }
+  }, []);
+
+  const toggleNewBranding = useCallback(() => {
+    setNewBrandingState((prev) => {
+      const next = !prev;
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); } catch { void 0; }
+      return next;
+    });
+  }, []);
+
+  // Sync favicon with branding state
+  useEffect(() => {
+    const link = document.getElementById("app-favicon") as HTMLLinkElement | null;
+    if (link) {
+      link.href = newBranding ? "/favicon-new.svg" : "/favicon-legacy.svg";
+      link.type = "image/svg+xml";
+    }
+  }, [newBranding]);
+
+  return (
+    <BrandingContext.Provider value={{ newBranding, toggleNewBranding, setNewBranding }}>
+      {children}
+    </BrandingContext.Provider>
+  );
+}
+
+export function useBranding() {
+  return useContext(BrandingContext);
+}

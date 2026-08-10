@@ -1,0 +1,64 @@
+@use 'tokens' as *;
+@use 'mixins' as *;
+
+// ===========================================================================
+// Semantic components for the marketing site (design-system layer).
+// These are the idiomatic SCSS classes introduced while migrating JSX off
+// Tailwind utilities: layout shell, nav, footer, buttons, cards, headings.
+// ===========================================================================
+
+.website-scope {
+  // ------------------------------------------------------ containers / rhythm
+  .ws-section { padding: $pad-section 1.5rem; }
+  .ws-section--compact { padding: $pad-section-compact 1.5rem; }
+  .ws-section--tint { background-color: hsl(var(--muted) / 0.35); }
+  .ws-section--dark {
+    --background: 209 28% 11%;
+    --card: 209 28% 14%;
+    --foreground: 228 20% 94%;
+    --muted-foreground: 215 12% 60%;
+    --border: 209 25% 18%;
+    --muted: 209 25% 16%;
+    --secondary: 209 25% 16%;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+  .ws-container { max-width: 80rem; margin-inline: auto; }
+  .ws-container--wide { max-width: 88rem; margin-inline: auto; }
+
+  // ------------------------------------------------------------- site header
+  .ws-heading { font-family: $font-display-stack; font-weight: 600; letter-spacing: -0.02em; color: hsl(var(--foreground)); }
+  .ws-heading--gradient { @include gradient-text; }
+  .ws-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.25rem 0.75rem; border-radius: 9999px;
+    background-color: hsl(var(--primary) / 0.12); color: hsl(var(--primary));
+    font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .ws-subtitle { color: hsl(var(--muted-foreground)); line-height: 1.7; }
+
+  // ---------------------------------------------------------------- site card
+  .ws-card {
+    border: 1px solid hsl(var(--border));
+    background-color: hsl(var(--card));
+    border-radius: 1rem;
+  }
+  .ws-card--soft { box-shadow: var(--shadow-soft); }
+  .ws-hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; &:hover { box-shadow: var(--shadow-strong); } }
+
+  // -------------------------------------------------------------- site button
+  .ws-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    border-radius: 9999px; font-size: 0.875rem; font-weight: 600;
+    height: 2.75rem; padding-inline: 1.5rem; cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    line-height: 1;
+  }
+  .ws-btn--primary { background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground)); &:hover { background-color: hsl(var(--primary) / 0.9); } }
+  .ws-btn--outline { border: 1px solid hsl(var(--border)); color: hsl(var(--foreground)); background-color: transparent; &:hover { border-color: hsl(var(--primary) / 0.4); } }
+  .ws-btn--lg { height: 3rem; padding-inline: 2rem; font-size: 1rem; }
+
+  // ------------------------------------------------------------------ inverse
+  .ws-link-inverse { color: hsl(var(--foreground)); &:hover { color: hsl(var(--primary)); } }
+}

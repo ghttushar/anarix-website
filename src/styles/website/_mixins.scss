@@ -1,0 +1,94 @@
+@use 'tokens' as *;
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:string';
+
+// Replace all occurrences of $search in $string with $replace.
+@function replace($string, $search, $replace) {
+  $result: '';
+  $rest: $string;
+  $index: string.index($rest, $search);
+  @while $index != null {
+    $result: $result + string.slice($rest, 1, $index - 1) + $replace;
+    $rest: string.slice($rest, $index + string.length($search));
+    $index: string.index($rest, $search);
+  }
+  @return $result + $rest;
+}
+
+// Escape a token key ('0.5', '1/2') for use inside a CSS class name.
+@function cls($key) {
+  $result: "#{$key}";
+  $result: replace($result, "/", "\\/");
+  $result: replace($result, ".", "\\.");
+  @return $result;
+}
+
+// Arbitrary-value slot: '1.05' -> '\[' -> [1\.05\]
+@function arb($value) {
+  $result: "#{$value}";
+  $result: replace($result, ".", "\\.");
+  $result: replace($result, "/", "\\/");
+  @return "\\[" + $result + "\\]";
+}
+
+// Raw color key ('#0E1020', 'hsl(240_30%_8%)') -> CSS-safe class fragment.
+@function raw($key) {
+  $result: "#{$key}";
+  $result: replace($result, "#", "\\#");
+  $result: replace($result, "%", "\\%");
+  $result: replace($result, "(", "\\(");
+  $result: replace($result, ")", "\\)");
+  $result: replace($result, "_", "\\_");
+  @return $result;
+}
+
+// Breakpoint up: @include bp(lg) { ... }
+@mixin bp($name) {
+  @media (min-width: map-get($bp, $name)) {
+    @content;
+  }
+}
+
+// Gradient text used by .text-gradient-primary
+@mixin gradient-text($from: var(--primary), $to: var(--periwinkle-glow)) {
+  background-image: linear-gradient(135deg, hsl(#{$from}), hsl(#{$to}));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+// Semantic color value — hsl(var(--name) / opacity)
+// 'white' and 'transparent' are literals, not CSS vars.
+@function color-hsl($name, $opacity: null) {
+  @if $name == white {
+    @if $opacity != null {
+      @return unquote("rgb(255 255 255 / #{$opacity})");
+    }
+    @return #fff;
+  }
+  @if $name == transparent {
+    @return transparent;
+  }
+  @if $opacity != null {
+    @return hsl(var(--#{$name}) / #{$opacity});
+  }
+  @return hsl(var(--#{$name}));
+}
+
+// Tailwind palette color — rgb(triplet / opacity) emitted verbatim
+@function palette-rgb($triplet, $opacity: null) {
+  @if $opacity != null {
+    @return unquote("rgb(#{$triplet} / #{$opacity})");
+  }
+  @return unquote("rgb(#{$triplet})");
+}
+
+// Opacity-safe shadow helper (tailwind colored shadows)
+@mixin tw-shadow($shadow-value) {
+  box-shadow: $shadow-value;
+}
+
+$tw-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+$tw-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+$tw-shadow-lg: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
