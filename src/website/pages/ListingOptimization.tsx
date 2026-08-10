@@ -31,11 +31,7 @@ import {
   type Severity,
 } from "@/website/lib/listingOptimization";
 import heroOriginalUrl from "@/assets/optimization/hero-original.svg";
-import ShowcaseSection from "@/website/components/listing-optimization/ShowcaseSection";
-import StatsBand from "@/website/components/listing-optimization/StatsBand";
-import GradingRulesSection from "@/website/components/listing-optimization/GradingRulesSection";
-import TestimonialsSection from "@/website/components/listing-optimization/TestimonialsSection";
-import FinalCtaSection from "@/website/components/listing-optimization/FinalCtaSection";
+import FeatureStory from "@/website/components/listing-optimization/FeatureStory";
 
 type ListingOptimizationState =
   | "input"
