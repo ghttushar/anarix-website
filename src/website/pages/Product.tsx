@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { ClientOnly } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Sparkles, Activity, TrendingUp, Shield, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,9 +9,8 @@ import CapabilityGrid from "@/website/components/product/CapabilityGrid";
 import DashboardPreview from "@/website/components/product/DashboardPreview";
 import PlatformCharts from "@/website/components/product/PlatformCharts";
 
-const LottiePlayer = lazy(() =>
-  import("lottie-react").then((mod) => ({ default: mod.default }))
-);
+/** lottie-react touches the DOM on import, so it is only ever loaded in the browser. */
+const LottiePlayer = lazy(() => import("lottie-react"));
 
 import loaderBlue from "@/assets/lottie/loader-blue.json";
 
@@ -63,7 +63,9 @@ const Product = () => {
             <div className="relative">
               <div className="absolute inset-0 rounded-full bg-primary/5 blur-3xl scale-150" />
               <Suspense fallback={<div className="w-80 h-80" />}>
-                <LottiePlayer animationData={loaderBlue} loop className="w-80 h-80" />
+                <ClientOnly>
+                  <LottiePlayer animationData={loaderBlue} loop className="w-80 h-80" />
+                </ClientOnly>
               </Suspense>
             </div>
           </motion.div>

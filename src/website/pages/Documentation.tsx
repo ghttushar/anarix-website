@@ -239,10 +239,7 @@ const sections: { icon: LucideIcon; title: string; articles: Article[] }[] = [
 
 const Documentation = () => {
   const allArticles = sections.flatMap((s) => s.articles);
-  const [activeId, setActiveId] = useState<string>(() => {
-    const hash = window.location.hash.replace("#", "");
-    return allArticles.some((a) => a.id === hash) ? hash : "quickstart";
-  });
+  const [activeId, setActiveId] = useState<string>("quickstart");
   const article = allArticles.find((a) => a.id === activeId) || allArticles[0];
 
   const selectArticle = useCallback(
@@ -256,6 +253,10 @@ const Documentation = () => {
   );
 
   useEffect(() => {
+    // Adopt the incoming hash after hydration: `window` is unavailable on the server.
+    const initialHash = window.location.hash.replace("#", "");
+    if (allArticles.some((a) => a.id === initialHash)) setActiveId(initialHash);
+
     const onHashChange = () => {
       const hash = window.location.hash.replace("#", "");
       if (allArticles.some((a) => a.id === hash)) setActiveId(hash);

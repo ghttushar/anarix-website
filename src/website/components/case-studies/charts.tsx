@@ -492,9 +492,7 @@ export function StackedBarChart({ chart }: { chart: Extract<CaseChart, { type: "
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ duration: 0.9, delay: i * 0.05 + si * 0.06, ease: EASE }}
                   >
-                    <title>
-                      {s.name}: {chart.format(s.values[i])}
-                    </title>
+                    <title>{`${s.name}: ${chart.format(s.values[i])}`}</title>
                   </motion.rect>
                 );
               })}
