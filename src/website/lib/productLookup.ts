@@ -106,11 +106,25 @@ function firstImageFromHtml(html: string): string | null {
 
   // Walmart / generic JSON-LD.
   const ld = html.match(/"image"\s*:\s*"(https:[^"]+)"/i)?.[1];
-  if (ld) return decode(ld);
-  const walmartAsset = html.match(/(https:\/\/i5\.walmartimages\.com\/[^\s"'\\]+)/i)?.[1];
-  if (walmartAsset) return decode(walmartAsset);
+  if (ld && isImageUrl(decode(ld))) return decode(ld);
+  const walmartAsset = html.match(
+    /(https:\/\/i5\.walmartimages\.com\/(?:asr|seo)\/[^\s"'\\]+)/i
+  )?.[1];
+  if (walmartAsset && isImageUrl(decode(walmartAsset))) return decode(walmartAsset);
 
   return null;
+}
+
+/** Guards against non-image assets (fonts, scripts) matched by loose regexes. */
+function isImageUrl(url: string): boolean {
+  return /\.(jpe?g|png|webp|avif|gif)(\?|$)/i.test(url) || /\/images?\//i.test(url);
+}
+
+/** Marketplaces serve interstitial bot checks with 200 status. */
+function isBotWall(html: string): boolean {
+  return /Robot or human|Type the characters you see|api-services-support@amazon|captcha/i.test(
+    html.slice(0, 4000)
+  );
 }
 
 function titleFromHtml(html: string): string | null {
