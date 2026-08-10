@@ -11,13 +11,14 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function Section({
   id,
-  dark = false,
+  panel = false,
   tint = false,
   className = "",
   children,
 }: {
   id?: string;
-  dark?: boolean;
+  /** Light card-surface band — never an inverted/dark section. */
+  panel?: boolean;
   tint?: boolean;
   className?: string;
   children: ReactNode;
@@ -27,7 +28,7 @@ export function Section({
     <section
       id={id}
       ref={ref}
-      className={`relative pad-section-compact ${dark ? "section-dark" : ""} ${tint ? "section-tint" : ""} ${className}`}
+      className={`relative pad-section-compact ${panel ? "section-panel" : ""} ${tint ? "section-tint" : ""} ${className}`}
     >
       <div
         className={`container-page px-6 sm:px-8 transition-all duration-700 ${
@@ -39,6 +40,7 @@ export function Section({
     </section>
   );
 }
+
 
 export function Eyebrow({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
