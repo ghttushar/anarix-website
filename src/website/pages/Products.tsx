@@ -205,7 +205,7 @@ function ProductRow({ product, index }: { product: ProductSection; index: number
     <section className="relative pad-section-compact">
       <div
         ref={ref}
-        className={`container-wide px-4 grid lg:grid-cols-2 gap-grid-lg items-center transition-all duration-700 ${
+        className={`grid lg:grid-cols-2 gap-grid items-center transition-all duration-700 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
