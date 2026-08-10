@@ -1,22 +1,15 @@
 import { useRef } from "react";
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, Moon } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useEffect } from "react";
 import HeroDataViz from "./HeroDataViz";
+import HeroSignalWeave from "./HeroSignalWeave";
 
 const stats = [
   { label: "GMV driven", numeric: 1.2, prefix: "$", suffix: "B", decimals: 1 },
   { label: "Brands managed", numeric: 500, prefix: "", suffix: "+", decimals: 0 },
   { label: "Avg TACoS", numeric: 12.8, prefix: "", suffix: "%", decimals: 1 },
-];
-
-const managedRows = [
-  { label: "Advertising", detail: "bids, budgets, targeting" },
-  { label: "Listings", detail: "catalog & compliance" },
-  { label: "Inventory", detail: "stockouts & overstock" },
-  { label: "Compliance", detail: "policy & account health" },
-  { label: "Reporting", detail: "plain-English P&L" },
 ];
 
 const CountUp = ({ target, prefix, suffix, decimals = 0 }: { target: number; prefix: string; suffix: string; decimals?: number }) => {
@@ -32,73 +25,6 @@ const CountUp = ({ target, prefix, suffix, decimals = 0 }: { target: number; pre
   }, [isInView, count, target]);
 
   return <motion.span ref={ref}>{rounded}</motion.span>;
-};
-
-const ManagedForYouCard = () => {
-  return (
-    <motion.div
-      className="bg-card/60 backdrop-blur-md border border-border shadow-medium rounded-3xl p-6 sm:p-7"
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <div className="flex items-center justify-between mb-5">
-        <p className="text-sm font-semibold text-foreground">Managed for you</p>
-        <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-primary">
-          <motion.span
-            className="w-1.5 h-1.5 rounded-full bg-primary"
-            animate={{ opacity: [1, 0.35, 1] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          />
-          night shift: on
-        </span>
-      </div>
-
-      <div className="space-y-2.5">
-        {managedRows.map((row, i) => (
-          <motion.div
-            key={row.label}
-            className="flex items-center gap-3 p-3 rounded-xl border border-border/40 bg-background/40"
-            initial={{ opacity: 0, x: 16 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ delay: 0.35 + i * 0.12, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <motion.span
-              className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0"
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ delay: 0.5 + i * 0.12, duration: 0.35, type: "spring", stiffness: 300, damping: 18 }}
-            >
-              <Check className="w-3.5 h-3.5 text-primary" />
-            </motion.span>
-            <div className="min-w-0">
-              <p className="text-sm font-semibold text-foreground leading-tight">{row.label}</p>
-              <p className="text-xs text-muted-foreground truncate">{row.detail}</p>
-            </div>
-          </motion.div>
-        ))}
-
-        <motion.div
-          className="flex items-center gap-3 p-3 rounded-xl border border-dashed border-border/60"
-          initial={{ opacity: 0, x: 16 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ delay: 1.05, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <span className="w-6 h-6 rounded-full bg-muted flex items-center justify-center shrink-0">
-            <Moon className="w-3.5 h-3.5 text-muted-foreground" />
-          </span>
-          <div className="min-w-0">
-            <p className="text-sm font-semibold text-foreground leading-tight">You</p>
-            <p className="text-xs text-muted-foreground truncate">check in anytime. Sleep well.</p>
-          </div>
-        </motion.div>
-      </div>
-    </motion.div>
-  );
 };
 
 const HeroSectionNew = () => {
@@ -164,7 +90,7 @@ const HeroSectionNew = () => {
           </div>
 
           <div className="lg:col-span-5 mt-10 lg:mt-0 max-w-md lg:max-w-none mx-auto w-full">
-            <ManagedForYouCard />
+            <HeroSignalWeave />
           </div>
         </div>
 
