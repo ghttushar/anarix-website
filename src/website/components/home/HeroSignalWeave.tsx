@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 
 /** Marketplace inputs that feed the converging signal lanes. */
 const LANES = [
-  { label: "Amazon", d: "M12 40 C 120 40, 140 130, 210 130", delay: 0 },
-  { label: "Walmart", d: "M12 130 C 110 130, 130 130, 210 130", delay: 0.5 },
-  { label: "Shopify", d: "M12 220 C 120 220, 140 130, 210 130", delay: 1 },
+  { label: "Amazon", y: 40, d: "M12 40 C 120 40, 140 130, 210 130", delay: 0 },
+  { label: "Walmart", y: 130, d: "M12 130 C 110 130, 130 130, 210 130", delay: 0.5 },
+  { label: "Shopify", y: 220, d: "M12 220 C 120 220, 140 130, 210 130", delay: 1 },
 ];
 
 /** Work Anarix picks up while the founder sleeps — cycles one line at a time. */
@@ -78,10 +78,10 @@ export function HeroSignalWeave() {
               animate={{ strokeDashoffset: [204, 0], opacity: [0, 1, 1, 0] }}
               transition={{ duration: 2.6, delay: lane.delay, repeat: Infinity, ease: "linear" }}
             />
-            <circle cx="12" cy={lane.d.match(/M12 (\d+)/)?.[1]} r="4" fill="hsl(var(--primary))" opacity="0.5" />
+            <circle cx="12" cy={lane.y} r="4" fill="hsl(var(--primary))" opacity="0.5" />
             <text
               x="22"
-              y={Number(lane.d.match(/M12 (\d+)/)?.[1]) + 4}
+              y={lane.y + 4}
               className="fill-muted-foreground"
               style={{ fontSize: 11 }}
             >
