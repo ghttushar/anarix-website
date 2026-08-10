@@ -98,7 +98,7 @@ const HeroSectionNew = () => {
               key={stat.label}
               className="rounded-2xl border border-primary/20 bg-primary/5 px-4 py-3.5"
             >
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight font-numeric text-gradient-primary">
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight font-numeric text-primary">
                 <CountUp target={stat.numeric} prefix={stat.prefix} suffix={stat.suffix} decimals={stat.decimals} />
               </div>
               <div className="text-xs text-muted-foreground mt-1.5 uppercase tracking-[0.12em] font-medium">
