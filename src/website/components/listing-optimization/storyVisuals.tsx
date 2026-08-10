@@ -335,7 +335,28 @@ export const FixVisual = () => (
 /* ── 6. Multiple marketplaces ───────────────────────────────── */
 
 export const MarketplaceVisual = () => (
-  <div className="relative">
+  <div>
+    <motion.div
+      className="mb-3 ml-auto w-52 rounded-2xl border border-border bg-card p-4 shadow-strong"
+      initial={{ opacity: 0, y: -16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.2, duration: 0.5 }}
+    >
+      <p className="text-xs font-semibold text-foreground">Listing URL</p>
+      <p className="mt-1.5 truncate rounded-xl border border-border bg-background px-3 py-2 text-[11px] text-muted-foreground">
+        https://www.amazon.com/dp/…
+      </p>
+      <p className="mt-3 text-xs font-semibold text-foreground">Marketplace</p>
+      <p className="mt-1.5 flex items-center justify-between rounded-xl border border-border bg-background px-3 py-2 text-[11px] text-foreground">
+        Walmart US
+        <ChevronDown className="w-3 h-3 text-muted-foreground" />
+      </p>
+      <p className="mt-3 flex items-center justify-center rounded-pill bg-primary h-9 text-[11px] font-semibold text-primary-foreground">
+        New listing report
+      </p>
+    </motion.div>
+
     <Panel>
       <motion.div variants={itemIn} className="px-5 py-4 bg-surface-elevated border-b border-border">
         <p className="text-sm font-semibold text-foreground">Your report is ready</p>
@@ -347,6 +368,9 @@ export const MarketplaceVisual = () => (
             <Tile key={src} src={src} className="w-10 h-10" />
           ))}
         </div>
+        <span className="ml-auto rounded-md bg-primary px-2 py-0.5 text-[10px] font-semibold text-primary-foreground whitespace-nowrap">
+          Walmart <span className="font-numeric tabular-nums">1000 × 1000</span>
+        </span>
       </motion.div>
       <ScoreRow label="Walmart US, overall score" sub="Same asset, Walmart rule set" value={34} />
       <div className="grid grid-cols-2 border-t border-border">
@@ -364,41 +388,6 @@ export const MarketplaceVisual = () => (
         ))}
       </div>
     </Panel>
-
-    <motion.div
-      className="absolute right-3 -top-10 w-52 rounded-2xl border border-border bg-card p-4 shadow-strong"
-      initial={{ opacity: 0, y: -16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.4, duration: 0.5 }}
-    >
-      <p className="text-xs font-semibold text-foreground">Listing URL</p>
-      <p className="mt-1.5 truncate rounded-xl border border-border bg-background px-3 py-2 text-[11px] text-muted-foreground">
-        https://www.amazon.com/dp/…
-      </p>
-      <p className="mt-3 text-xs font-semibold text-foreground">Marketplace</p>
-      <p className="mt-1.5 flex items-center justify-between rounded-xl border border-border bg-background px-3 py-2 text-[11px] text-foreground">
-        Walmart US
-        <ChevronDown className="w-3 h-3 text-muted-foreground" />
-      </p>
-      <p className="mt-3 flex items-center justify-center rounded-pill bg-primary h-9 text-[11px] font-semibold text-primary-foreground">
-        New listing report
-      </p>
-    </motion.div>
-
-    <motion.div
-      className="absolute left-3 -bottom-6 hidden sm:block"
-      initial={{ opacity: 0, scale: 0.92 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.6, duration: 0.5 }}
-    >
-      <div className="relative rounded-2xl border-2 border-primary p-1 bg-card shadow-strong">
-        <img src={heroOriginal} alt="" className="w-24 h-24 rounded-xl object-cover" />
-        <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 rounded-md bg-primary px-2 py-0.5 text-[10px] font-semibold text-primary-foreground whitespace-nowrap">
-          Walmart <span className="font-numeric tabular-nums">1000 × 1000</span>
-        </span>
-      </div>
-    </motion.div>
   </div>
 );
+
