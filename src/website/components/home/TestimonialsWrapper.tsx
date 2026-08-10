@@ -52,37 +52,16 @@ const JOEY: Person = {
   image: joeyImg,
 };
 
-/** Quote with an inline expander so long quotes don't stretch the collage. */
+/** Full quote — no truncation, no expander. */
 const QuoteText = ({
   text,
   className = "",
-  inverted,
-  limit = 165,
 }: {
   text: string;
   className?: string;
   inverted?: boolean;
   limit?: number;
-}) => {
-  const [open, setOpen] = useState(false);
-  const long = text.length > limit;
-  return (
-    <p className={className}>
-      &ldquo;{open || !long ? text : `${text.slice(0, limit - 5).trimEnd()}…`}&rdquo;{" "}
-      {long && (
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className={`text-xs font-semibold underline underline-offset-2 ${
-            inverted ? "text-background/80 hover:text-background" : "text-primary hover:opacity-80"
-          }`}
-        >
-          {open ? "Read less" : "Read more"}
-        </button>
-      )}
-    </p>
-  );
-};
+}) => <p className={className}>&ldquo;{text}&rdquo;</p>;
 
 const Byline = ({ person, inverted }: { person: Person; inverted?: boolean }) => (
   <div className={`flex items-center gap-3 pt-4 border-t ${inverted ? "border-background/15" : "border-border"}`}>

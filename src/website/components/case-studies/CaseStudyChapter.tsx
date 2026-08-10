@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { useCountUp } from "@/hooks/useCountUp";
 import type { CaseStudyData } from "../../data/case-studies";
 import {
   Section,
@@ -10,14 +9,19 @@ import {
   InsightCard,
   TimelineStep,
   BeforeStrategyResult,
+  BeforeAfterTable,
   QuoteBlock,
   SoftDivider,
 } from "./primitives";
 import { CaseChartBlock } from "./charts";
 
+/**
+ * One chapter template, used unchanged by every case study: hero band with the
+ * loud numbers, the challenge, the approach, the numbers, the quote, the recap.
+ */
+
 function ChapterHero({ data }: { data: CaseStudyData }) {
   const { ref, isVisible } = useScrollReveal();
-  const value = useCountUp(data.hero.value, { duration: 1800, start: isVisible });
   return (
     <div ref={ref} id={data.id} className="scroll-mt-28">
       <div
@@ -26,7 +30,7 @@ function ChapterHero({ data }: { data: CaseStudyData }) {
         }`}
       >
         <div className="flex items-center justify-between gap-6 flex-wrap gap-block-sm">
-          <span className="font-display text-5xl sm:text-6xl font-bold text-foreground/10 tracking-tight select-none">
+          <span className="font-numeric text-5xl sm:text-6xl font-bold text-foreground/10 tracking-tight select-none">
             {data.index}
           </span>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
@@ -34,28 +38,17 @@ function ChapterHero({ data }: { data: CaseStudyData }) {
           </p>
         </div>
 
-        <Eyebrow className="mb-4">{data.eyebrow}</Eyebrow>
-        <h2 className="font-display text-3xl sm:text-5xl font-semibold tracking-tight text-foreground leading-[1.08] max-w-3xl gap-heading-sm">
+        <Eyebrow className="mb-4">{data.marketplace}</Eyebrow>
+        <p className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-foreground leading-none">
+          {data.brand}
+        </p>
+        <h2 className="mt-3 font-display text-2xl sm:text-4xl font-semibold tracking-tight text-foreground leading-[1.1] max-w-3xl gap-heading-sm">
           {data.title}
         </h2>
 
-        <div className="grid lg:grid-cols-[auto_1fr] gap-grid items-start mb-8">
-          <div className="min-w-0">
-            <p className="font-display text-6xl sm:text-7xl font-bold tracking-tight leading-none">
-              <span className="text-gradient-primary">
-                {data.hero.prefix}
-                {value.toFixed(data.hero.decimals ?? 0)}
-                {data.hero.suffix}
-              </span>
-            </p>
-            <p className="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-              {data.hero.label}
-            </p>
-          </div>
-          <div>
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">{data.intro}</p>
-          </div>
-        </div>
+        <p className="max-w-3xl text-base sm:text-lg text-muted-foreground leading-relaxed gap-block-sm">
+          {data.intro}
+        </p>
 
         <div className="flex flex-wrap gap-2 gap-block-sm">
           {data.metadata.map((m) => (
@@ -79,35 +72,7 @@ function ChapterHero({ data }: { data: CaseStudyData }) {
   );
 }
 
-function ChallengeSection({ data }: { data: CaseStudyData }) {
-  return (
-    <Section tint>
-      <div className="max-w-3xl gap-heading-sm">
-        <Eyebrow>Challenge</Eyebrow>
-        <h3 className="mt-4 font-display text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">
-          {data.challenge.heading}
-        </h3>
-        <p className="mt-2 text-muted-foreground">{data.challenge.sub}</p>
-      </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mb-10">
-        {data.challenge.cards.map((c, i) => (
-          <ChallengeCard key={c.title} index={i + 1} title={c.title} text={c.text} />
-        ))}
-      </div>
-      <ChallengeVisual visual={data.challenge.visual} />
-    </Section>
-  );
-}
-
-function ChallengeCard({
-  index,
-  title,
-  text,
-}: {
-  index: number;
-  title: string;
-  text: string;
-}) {
+function ChallengeCard({ index, title, text }: { index: number; title: string; text: string }) {
   const { ref, isVisible } = useScrollReveal();
   return (
     <div
@@ -116,7 +81,7 @@ function ChallengeCard({
     >
       <div className="h-full pad-card-sm rounded-2xl border border-border bg-card shadow-soft">
         <div className="flex items-start gap-3">
-          <span className="font-display text-xs font-bold text-primary mt-0.5 font-numeric">
+          <span className="font-numeric text-xs font-bold text-primary mt-0.5">
             {String(index).padStart(2, "0")}
           </span>
           <p className="text-sm font-semibold text-foreground leading-snug">{title}</p>
@@ -127,11 +92,7 @@ function ChallengeCard({
   );
 }
 
-function ChallengeVisual({
-  visual,
-}: {
-  visual: CaseStudyData["challenge"]["visual"];
-}) {
+function ChallengeVisual({ visual }: { visual: CaseStudyData["challenge"]["visual"] }) {
   const { ref, isVisible } = useScrollReveal();
   const maxRowPct = Math.max(...visual.rows.map((r) => r.pct));
   return (
@@ -147,7 +108,7 @@ function ChallengeVisual({
           <div key={row.label}>
             <div className="flex items-baseline justify-between gap-4">
               <p className="text-sm text-muted-foreground">{row.label}</p>
-              <p className="font-display text-base font-bold text-foreground">{row.value}</p>
+              <p className="font-numeric text-base font-bold text-foreground">{row.value}</p>
             </div>
             <div className="mt-2 h-2 rounded-full bg-muted overflow-hidden">
               <motion.div
@@ -168,68 +129,15 @@ function ChallengeVisual({
   );
 }
 
-function StrategySection({ data }: { data: CaseStudyData }) {
+function ChapterHeading({ eyebrow, heading, sub }: { eyebrow: string; heading: string; sub: string }) {
   return (
-    <Section dark>
-      <div className="max-w-3xl gap-heading-sm">
-        <Eyebrow>Strategy</Eyebrow>
-        <h3 className="mt-4 font-display text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">
-          {data.strategy.heading}
-        </h3>
-        <p className="mt-2 text-muted-foreground">{data.strategy.sub}</p>
-      </div>
-      <div className="space-y-8">
-        {data.strategy.steps.map((s, i) => (
-          <TimelineStep
-            key={s.title}
-            index={i + 1}
-            title={s.title}
-            text={s.text}
-            last={i === data.strategy.steps.length - 1}
-          />
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-function InsightsSection({ data }: { data: CaseStudyData }) {
-  return (
-    <Section tint>
-      <div className="max-w-3xl gap-heading-sm">
-        <Eyebrow>Insights</Eyebrow>
-        <h3 className="mt-4 font-display text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">
-          {data.insights.heading}
-        </h3>
-        <p className="mt-2 text-muted-foreground">{data.insights.sub}</p>
-      </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {data.insights.items.map((item, i) => (
-          <div key={item.value} style={{ transitionDelay: `${i * 80}ms` }}>
-            <InsightCard value={item.value} text={item.text} />
-          </div>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-function TransitionSection({ data }: { data: CaseStudyData }) {
-  return (
-    <Section dark>
-      <div className="max-w-3xl gap-heading-sm">
-        <Eyebrow>Outcome</Eyebrow>
-        <h3 className="mt-4 font-display text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">
-          {data.transition.heading}
-        </h3>
-        <p className="mt-2 text-muted-foreground">{data.transition.sub}</p>
-      </div>
-      <BeforeStrategyResult
-        before={data.transition.before}
-        strategy={data.transition.strategy}
-        result={data.transition.result}
-      />
-    </Section>
+    <div className="max-w-3xl gap-heading-sm">
+      <Eyebrow>{eyebrow}</Eyebrow>
+      <h3 className="mt-4 font-display text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">
+        {heading}
+      </h3>
+      <p className="mt-2 text-muted-foreground">{sub}</p>
+    </div>
   );
 }
 
@@ -241,35 +149,79 @@ export function CaseStudyChapter({ data }: { data: CaseStudyData }) {
           <ChapterHero data={data} />
         </div>
       </div>
-      <ChallengeSection data={data} />
-      <StrategySection data={data} />
-      <Section>
-        <div className="mb-10 max-w-3xl">
-          <Eyebrow>Dashboard</Eyebrow>
-          <h3 className="mt-4 font-display text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">
-            The data that told the story
-          </h3>
-          <p className="mt-2 text-muted-foreground">Every point below is real reporting from the partner account.</p>
+
+      <Section tint>
+        <ChapterHeading eyebrow="Challenge" heading={data.challenge.heading} sub={data.challenge.sub} />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-10">
+          {data.challenge.cards.map((c, i) => (
+            <ChallengeCard key={c.title} index={i + 1} title={c.title} text={c.text} />
+          ))}
         </div>
+        <ChallengeVisual visual={data.challenge.visual} />
+      </Section>
+
+      <Section panel>
+        <ChapterHeading eyebrow="Approach" heading={data.strategy.heading} sub={data.strategy.sub} />
+        <div className="space-y-8">
+          {data.strategy.steps.map((s, i) => (
+            <TimelineStep
+              key={s.title}
+              index={i + 1}
+              title={s.title}
+              text={s.text}
+              last={i === data.strategy.steps.length - 1}
+            />
+          ))}
+        </div>
+      </Section>
+
+      <Section>
+        <ChapterHeading
+          eyebrow="The numbers"
+          heading="The data that told the story"
+          sub="Every point below comes from the partner account."
+        />
         <div className="space-y-10">
           {data.charts.map((chart, i) => (
             <CaseChartBlock key={i} chart={chart} />
           ))}
+          {data.beforeAfter ? <BeforeAfterTable table={data.beforeAfter} /> : null}
         </div>
       </Section>
-      <InsightsSection data={data} />
-      <TransitionSection data={data} />
-      <Section>
-        <QuoteBlock text={data.quote.text} attribution={data.quote.attribution} />
-      </Section>
+
       <Section tint>
-        <div className="max-w-3xl gap-heading-sm">
-          <Eyebrow>By the numbers</Eyebrow>
-          <h3 className="mt-4 font-display text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">
-            {data.finalMetrics.heading}
-          </h3>
-          <p className="mt-2 text-muted-foreground">{data.finalMetrics.sub}</p>
+        <ChapterHeading eyebrow="Insights" heading={data.insights.heading} sub={data.insights.sub} />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {data.insights.items.map((item) => (
+            <InsightCard key={item.value} value={item.value} text={item.text} />
+          ))}
         </div>
+      </Section>
+
+      <Section panel>
+        <ChapterHeading eyebrow="Outcome" heading={data.transition.heading} sub={data.transition.sub} />
+        <BeforeStrategyResult
+          before={data.transition.before}
+          strategy={data.transition.strategy}
+          result={data.transition.result}
+        />
+      </Section>
+
+      <Section>
+        <QuoteBlock
+          text={data.quote.text}
+          name={data.quote.name}
+          title={data.quote.title}
+          brand={data.quote.brand}
+        />
+      </Section>
+
+      <Section tint>
+        <ChapterHeading
+          eyebrow="By the numbers"
+          heading={data.finalMetrics.heading}
+          sub={data.finalMetrics.sub}
+        />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {data.finalMetrics.items.map((item) => (
             <MetricStat key={item.label} item={item} />
