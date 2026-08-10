@@ -111,7 +111,7 @@ const initialConversations: Conversation[] = [
     id: "conv-3", title: "New Bid Strategy Discussion", type: "general",
     createdAt: new Date(Date.now() - 604800000), updatedAt: new Date(Date.now() - 604800000),
     messages: [
-      { id: "msg-3-1", role: "assistant", content: "Hello! I'm Aan, your AI assistant for Anarix. I can help you analyze campaign performance, create rules, and optimize your advertising strategy. What would you like to explore?", timestamp: new Date(Date.now() - 604800000) },
+      { id: "msg-3-1", role: "assistant", content: "Hello! I'm Jiva, your AI assistant for Anarix. I can help you analyze campaign performance, create rules, and optimize your advertising strategy. What would you like to explore?", timestamp: new Date(Date.now() - 604800000) },
     ],
     artifacts: [],
   },

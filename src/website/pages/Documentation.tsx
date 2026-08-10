@@ -27,8 +27,8 @@ const sections: { icon: LucideIcon; title: string; articles: Article[] }[] = [
           { p: "Open Settings → Integrations and pick Amazon or Walmart. OAuth flows take ~2 minutes per channel. Historical data syncs in the background - usually within an hour for the past 90 days." },
           { h: "3. Set spend guardrails" },
           { p: "Settings → Preferences → Guardrails. Default daily and monthly spend caps per campaign. These are enforced by the rule engine before any automation can apply." },
-          { h: "4. Meet Aan" },
-          { p: "Open the Aan workspace from the sidebar. Ask: \"What should I look at first?\" Aan generates an audit of your account in under 60 seconds." },
+          { h: "4. Meet Jiva" },
+          { p: "Open the Jiva workspace from the sidebar. Ask: \"What should I look at first?\" Jiva generates an audit of your account in under 60 seconds." },
         ],
       },
       {
@@ -38,11 +38,11 @@ const sections: { icon: LucideIcon; title: string; articles: Article[] }[] = [
           { h: "Marketplace" },
           { p: "A connected ad account on Amazon or Walmart. Switch between marketplaces using the Marketplace Selector at the top of every page." },
           { h: "Workspace" },
-          { p: "Your team's container. Holds connected accounts, rules, reports, dashboards, and Aan history. Roles are managed separately from profile data for security." },
+          { p: "Your team's container. Holds connected accounts, rules, reports, dashboards, and Jiva history. Roles are managed separately from profile data for security." },
           { h: "Rule" },
           { p: "A condition + action pair. Example: \"If ACoS > 35% for 3 days, lower bid by 15%.\" Rules require explicit approval before activation. All runs are logged." },
           { h: "Audit" },
-          { p: "An on-demand scan Aan runs across your account looking for waste, broken campaigns, or missed opportunities. Returns ranked findings with one-click drill-downs." },
+          { p: "An on-demand scan Jiva runs across your account looking for waste, broken campaigns, or missed opportunities. Returns ranked findings with one-click drill-downs." },
         ],
       },
     ],
@@ -170,18 +170,18 @@ const sections: { icon: LucideIcon; title: string; articles: Article[] }[] = [
   },
   {
     icon: Bot,
-    title: "Aan",
+    title: "Jiva",
     articles: [
       {
         id: "aan-overview",
-        title: "How Aan works",
+        title: "How Jiva works",
         body: [
-          { p: "Aan is the AI layer sitting on top of your Anarix data. It reads, diagnoses, drafts, and explains. It never auto-applies destructive changes." },
-          { h: "Where Aan shows up" },
+          { p: "Jiva is the AI layer sitting on top of your Anarix data. It reads, diagnoses, drafts, and explains. It never auto-applies destructive changes." },
+          { h: "Where Jiva shows up" },
           { list: [
-            "Aan workspace - full chat with audits, rule drafts, and reports.",
+            "Jiva workspace - full chat with audits, rule drafts, and reports.",
             "Insights panel - prioritized findings ranked by revenue impact.",
-            "Ask Aan tooltip - select any number in any table for instant context.",
+            "Ask Jiva tooltip - select any number in any table for instant context.",
             "Floating action island - quick capture and conversation from anywhere.",
           ] },
         ],
@@ -221,7 +221,7 @@ const sections: { icon: LucideIcon; title: string; articles: Article[] }[] = [
         body: [
           { h: "May 2026" },
           { list: [
-            "Aan agents - autonomous workflows for budget pacing and anomaly response.",
+            "Jiva agents - autonomous workflows for budget pacing and anomaly response.",
 
             "Improved scatter chart margins on Profitability dashboard.",
           ] },
@@ -345,7 +345,7 @@ const Documentation = () => {
             </div>
           </motion.article>
 
-          {/* Live Aan docs chat */}
+          {/* Live Jiva docs chat */}
           <aside className="lg:sticky lg:top-28 lg:self-start">
             <div className="text-xs uppercase tracking-[0.14em] text-muted-foreground mb-2">Ask the docs</div>
             <WebsiteAanChat

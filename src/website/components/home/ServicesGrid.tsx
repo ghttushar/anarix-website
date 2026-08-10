@@ -5,24 +5,26 @@ import {
   Building2,
 } from "lucide-react";
 
+import Disclosure from "@/website/components/ui/Disclosure";
+
 const services = [
-  { icon: Megaphone, title: "Advertising management", desc: "We run your campaigns daily — bids, budgets, targeting — so every dollar chases what&apos;s actually converting." },
+  { icon: Megaphone, title: "Advertising management", desc: "We run your campaigns daily — bids, budgets, targeting — so every dollar chases what's actually converting." },
   { icon: TrendingUp, title: "Profit & margin tracking", desc: "We track what you really keep after fees, ad spend, and returns — not just top-line sales." },
   { icon: LayoutPanelTop, title: "Listing & catalog management", desc: "We keep your listings optimized, compliant, and free of the quiet errors that bleed sales." },
-  { icon: Package, title: "Inventory & fulfillment oversight", desc: "We watch stock so you never lose the Buy Box to a stockout — or overpay to store what isn&apos;t moving." },
+  { icon: Package, title: "Inventory & fulfillment oversight", desc: "We watch stock so you never lose the Buy Box to a stockout — or overpay to store what isn't moving." },
   { icon: Shield, title: "Account health monitoring", desc: "We catch policy risks and performance issues before they become suspensions." },
   { icon: Crosshair, title: "Competitive tracking", desc: "We watch what competitors are doing to your rankings and visibility, and move before it costs you sales." },
   { icon: FileText, title: "Reporting, done for you", desc: "You get a clear monthly readout in plain English. No dashboard required — though you can log in anytime you want one." },
   { icon: Radio, title: "Demand-Side Platform (DSP)", desc: "We run programmatic ads off-platform to bring new shoppers in, not just fight for the ones already searching." },
-  { icon: Building2, title: "Amazon brand support", desc: "We manage your Brand Registry, storefront, and IP protection so counterfeiters and hijackers don&apos;t get the upper hand." },
+  { icon: Building2, title: "Amazon brand support", desc: "We manage your Brand Registry, storefront, and IP protection so counterfeiters and hijackers don't get the upper hand." },
 ];
 
 const puns: Record<string, string> = {
-  "Advertising management": "Every dollar should chase what&apos;s converting. Not what&apos;s comfortable.",
+  "Advertising management": "Every dollar should chase what's converting. Not what's comfortable.",
   "Inventory & fulfillment oversight": "Stockouts cost more than storage fees. They cost you the Buy Box.",
-  "Demand-Side Platform (DSP)": "Programmatic ads. You don&apos;t need to know what &ldquo;programmatic&rdquo; means. We handle that part.",
-  "Reporting, done for you": "If your current report looks like a tax return, we&apos;ve already failed.",
-  "Account health monitoring": "We don&apos;t just watch for violations. We watch for the ones that haven&apos;t happened yet. Yet.",
+  "Demand-Side Platform (DSP)": "Programmatic ads. You don't need to know what “programmatic” means. We handle that part.",
+  "Reporting, done for you": "If your current report looks like a tax return, we've already failed.",
+  "Account health monitoring": "We don't just watch for violations. We watch for the ones that haven't happened yet. Yet.",
 };
 
 const ServicesGrid = () => {
@@ -52,7 +54,7 @@ const ServicesGrid = () => {
             <span className="text-gradient-primary">run for you.</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Every marketplace function, managed end-to-end. No gaps, no handoffs, no &ldquo;that&apos;s not our department.&rdquo;
+            Every marketplace function, managed end-to-end. No gaps, no handoffs, no “that's not our department.”
           </p>
         </motion.div>
 
@@ -62,27 +64,25 @@ const ServicesGrid = () => {
             return (
               <motion.div
                 key={service.title}
-                className="group pad-card-sm rounded-xl border border-border/40 bg-card/20 hover:bg-card/50 hover:border-primary/20 transition-all duration-500 relative overflow-hidden"
-                initial={{ opacity: 0, y: 12, scale: 0.97 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ delay: (i % 6) * 0.04, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div className="absolute -top-8 -right-8 w-16 h-16 rounded-full bg-primary/5 group-hover:bg-primary/10 transition-colors duration-500 blur-xl" />
-                <div className="flex items-start gap-3 mb-3">
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                    <service.icon className="w-4 h-4 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-foreground">{service.title}</h3>
-                  </div>
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">{service.desc}</p>
-                {pun && (
-                  <p className="text-[11px] text-primary/60 italic mt-2 pt-2 border-t border-border/20 leading-relaxed">
-                    {pun}
-                  </p>
-                )}
+                <Disclosure
+                  title={service.title}
+                  defaultOpen={i === 0}
+                  leading={
+                    <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                      <service.icon className="w-4 h-4 text-primary" />
+                    </span>
+                  }
+                >
+                  <p className="text-xs leading-relaxed">{service.desc}</p>
+                  {pun && (
+                    <p className="text-[11px] text-primary/60 italic pt-2 border-t border-border/20 leading-relaxed">{pun}</p>
+                  )}
+                </Disclosure>
               </motion.div>
             );
           })}

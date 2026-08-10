@@ -170,10 +170,10 @@ const products: ProductSection[] = [
     visual: "platform",
   },
   {
-    eyebrow: "AAN AI",
+    eyebrow: "Jiva AI",
     name: "An AI that reads the account like an operator.",
     solves:
-      "Ask anything, get answers with evidence. Aan monitors every account around the clock and surfaces what needs attention before it hits the P&L.",
+      "Ask anything, get answers with evidence. Jiva monitors every account around the clock and surfaces what needs attention before it hits the P&L.",
     chips: ["Ask Anything", "Proactive Alerts", "Automated Reporting", "Anomaly Detection", "Keyword Intelligence"],
     href: "/products/aan-ai",
     visual: "aan",

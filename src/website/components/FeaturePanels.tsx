@@ -31,7 +31,7 @@ const FEATURES = [
     desc: "Campaign inefficiency surfaced in minutes. Profitability at SKU level. One dashboard that replaces five.",
   },
   {
-    title: "AI-Powered Insights\nwith Aan",
+    title: "AI-Powered Insights\nwith Jiva",
     desc: "Rules applied with audit-safe previews. Your AI copilot that understands e-commerce complexity, not just data.",
   },
   {
@@ -99,7 +99,7 @@ const AanChatMock = () => (
   <div className="w-full h-full bg-white rounded-2xl shadow-strong p-5 overflow-hidden flex flex-col">
     <div className="flex items-center gap-2 mb-4">
       <div className="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold">A</div>
-      <span className="text-xs font-semibold text-gray-800">Aan AI</span>
+      <span className="text-xs font-semibold text-gray-800">Jiva AI</span>
       <div className="ml-auto flex gap-1 fp-status-dot"><div className="w-1.5 h-1.5 rounded-full bg-emerald-400" /><span className="text-[9px] text-emerald-600">Online</span></div>
     </div>
     <div className="flex-1 space-y-2.5 overflow-hidden">
@@ -429,7 +429,7 @@ const FeaturePanels = () => {
         .fp-tab-active { animation: fpTabSlide 4s ease infinite; }
         @keyframes fpTabSlide { 0%,100% { box-shadow: 0 2px 0 0 white; } 50% { box-shadow: 0 2px 0 0 hsl(245,58%,51%); } }
 
-        /* ── Aan Chat ── */
+        /* ── Jiva Chat ── */
         .fp-chat-msg-left { opacity: 0; animation: fpSlideLeft 8s ease infinite; }
         @keyframes fpSlideLeft { 0%,5% { opacity: 0; transform: translateX(-20px); } 10%,85% { opacity: 1; transform: translateX(0); } 90%,100% { opacity: 0; } }
 

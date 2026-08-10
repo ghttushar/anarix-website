@@ -8,33 +8,33 @@ import PageLayout from "@/website/components/PageLayout";
 const surfaces = [
   {
     icon: MessageSquare,
-    title: "Aan Copilot",
+    title: "Jiva Copilot",
     desc: "A right-side workspace that follows you everywhere. Ask questions, get answers, and take action without leaving the page you're on.",
     detail: "Analyzes DSP and Sponsored Products overlap, calculates ROAS improvements, and recommends audience segments with highest conversion rates.",
   },
   {
     icon: Eye,
-    title: "Ask Aan",
-    desc: "Highlight any number in the app. A tooltip appears — click it and Aan explains the metric, traces the source, and offers next steps.",
+    title: "Ask Jiva",
+    desc: "Highlight any number in the app. A tooltip appears — click it and Jiva explains the metric, traces the source, and offers next steps.",
     detail: "When a stakeholder asks 'what is this number' and you need an answer that doesn't make you look bad.",
   },
   {
     icon: BrainCircuit,
-    title: "Full-Screen Aan",
+    title: "Full-Screen Jiva",
     desc: "/aan — a dedicated workspace with chat history, multi-artifact reasoning, and long context for audits, weekly reviews, and rule design.",
     detail: "When the question is bigger than a sidebar.",
   },
   {
     icon: Zap,
     title: "Floating Action Island",
-    desc: "A persistent control hub at the bottom-right. System alerts, Ask Aan, quick-create rules, command palette — one reach, every action.",
+    desc: "A persistent control hub at the bottom-right. System alerts, Ask Jiva, quick-create rules, command palette — one reach, every action.",
     detail: "When you live in the app and need everything one motion away.",
   },
 ];
 
 const capabilities = [
   { icon: Sparkles, title: "Ask Anything", desc: "Natural language queries about any metric across advertising, inventory, profitability, and operations." },
-  { icon: Shield, title: "Proactive Alerts", desc: "Get notified of anomalies before they become problems. Aan monitors your accounts 24/7 and surfaces what needs attention." },
+  { icon: Shield, title: "Proactive Alerts", desc: "Get notified of anomalies before they become problems. Jiva monitors your accounts 24/7 and surfaces what needs attention." },
   { icon: TrendingUp, title: "Automated Reporting", desc: "Client-ready reports generated automatically. Morning briefings, weekly summaries, and custom analysis on demand." },
   { icon: BarChart3, title: "Data-Driven Insights", desc: "Combines advertising data with inventory, pricing, competition, and operational signals to optimize for real business outcomes." },
   { icon: Search, title: "Keyword Intelligence", desc: "Segment keywords into branded, generic, and competitor buckets. Surface high-intent terms your competitors are missing." },
@@ -71,7 +71,7 @@ const AanPage = () => {
               <span className="text-gradient-primary">glows</span>.
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Aan is not a chatbot in a corner. It's an intelligence layer that meets you where the work is happening — across advertising, profitability, inventory, and operations.
+              Jiva is not a chatbot in a corner. It's an intelligence layer that meets you where the work is happening — across advertising, profitability, inventory, and operations.
             </p>
           </motion.div>
         </div>
@@ -91,7 +91,7 @@ const AanPage = () => {
                 <span className="w-3 h-3 rounded-full bg-yellow-400" />
                 <span className="w-3 h-3 rounded-full bg-green-400" />
               </div>
-              <span className="text-xs text-muted-foreground ml-2">Aan AI Copilot</span>
+              <span className="text-xs text-muted-foreground ml-2">Jiva AI Copilot</span>
             </div>
             <div className="pad-card-sm space-y-4">
               {chatDemo.map((msg, i) => (
@@ -126,7 +126,7 @@ const AanPage = () => {
           >
             <div className="text-center gap-heading-sm">
               <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-pill bg-primary/10 text-primary text-xs font-medium uppercase tracking-[0.14em]">
-                Where Aan Lives
+                Where Jiva Lives
               </div>
               <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight text-foreground">
                 Four surfaces. <span className="text-gradient-primary">Same brain.</span>
@@ -184,9 +184,9 @@ const AanPage = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
         >
-          <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight text-foreground mb-4">Meet Aan in action</h2>
+          <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight text-foreground mb-4">Meet Jiva in action</h2>
           <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-            See how Aan transforms your marketplace operations with intelligent, context-aware AI.
+            See how Jiva transforms your marketplace operations with intelligent, context-aware AI.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="https://calendly.com/sunil-anarix/30min" target="_blank" rel="noopener noreferrer">

@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { Menu, X, ChevronDown, ChevronRight, ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "@/lib/router";
+import { BrandLogo } from "@/website/components/BrandLogo";
 import { useLeadCapture } from "@/website/components/lead-capture/LeadCaptureContext";
 
 interface MegaMenuColumn {
@@ -18,7 +19,7 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: "Home", href: "/" },
+  
   {
     label: "Products",
     megaMenu: [
@@ -27,7 +28,7 @@ const navItems: NavItem[] = [
         items: [
           { label: "Product Overview", href: "/products", desc: "Everything Anarix offers." },
           { label: "Insight Engine Platform", href: "/products/platform", desc: "The unified commerce intelligence platform." },
-          { label: "AAN AI", href: "/products/aan-ai", desc: "The AI-powered strategic assistant." },
+          { label: "Jiva AI", href: "/products/aan-ai", desc: "The AI-powered strategic assistant." },
           { label: "Signals", href: "/products/signals", desc: "Real-time market intelligence." },
           { label: "MCP", href: "/products/mcp", desc: "Model Context Protocol integrations." },
         ],
@@ -41,14 +42,6 @@ const navItems: NavItem[] = [
     ],
   },
   { label: "Case Studies", href: "/case-studies" },
-  {
-    label: "Company",
-    dropdown: [
-      { label: "About", href: "/company/about" },
-      { label: "Careers", href: "/company/career" },
-    ],
-  },
-  { label: "Pricing", href: "/pricing" },
   { label: "Listing Optimization", href: "/listing-optimization" },
   { label: "Contact Us", href: "/company/contact" },
 ];
@@ -117,8 +110,8 @@ const Navbar = () => {
         }`}
       >
         {/* Logo */}
-        <Link to="/" className="text-xl font-bold text-foreground tracking-tight whitespace-nowrap">
-          Anarix<span className="text-primary">.ai</span>
+        <Link to="/" className="flex items-center" aria-label="Anarix home">
+          <BrandLogo className="h-6 sm:h-7" />
         </Link>
 
         {/* Desktop Nav - centered */}

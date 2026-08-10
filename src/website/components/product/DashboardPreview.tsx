@@ -70,7 +70,7 @@ const DashboardPreview = () => (
                 severity="high"
                 title="Campaign ROAS dropped 22% on SKU #B-4201"
                 body="Search Term Impression Share declined 14pp in the last 7 days. Competitor increased bids on 12 overlapping keywords."
-                source="Aan · 3m ago"
+                source="Jiva · 3m ago"
               />
               <EmbedRuleCard />
             </div>

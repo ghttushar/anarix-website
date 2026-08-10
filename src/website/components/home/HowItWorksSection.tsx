@@ -5,19 +5,19 @@ const steps = [
   {
     icon: Plug,
     title: "Connect your marketplaces",
-    body: "Link Amazon, Walmart, Shopify — once. Aan ingests every transaction, ad click, inventory event, and policy change continuously.",
+    body: "Link Amazon, Walmart, Shopify — once. Jiva ingests every transaction, ad click, inventory event, and policy change continuously.",
     stat: "47 data sources",
   },
   {
     icon: Brain,
-    title: "Aan finds what's leaking",
+    title: "Jiva finds what's leaking",
     body: "AI scans across profitability, advertising, catalog, and compliance. Surfaces what matters with severity, evidence, and a recommended action.",
     stat: "Signals in <8 seconds",
   },
   {
     icon: Users,
     title: "We act. You approve. You grow.",
-    body: "Your strategist drafts rules, adjusts bids, reallocates budget. You review and approve — or let Aan execute within guardrails you set.",
+    body: "Your strategist drafts rules, adjusts bids, reallocates budget. You review and approve — or let Jiva execute within guardrails you set.",
     stat: "14% margin recovered",
   },
 ];

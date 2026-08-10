@@ -22,7 +22,7 @@ const PlatformSection = () => (
           The tech that makes the team <span className="text-gradient-primary">10x more effective</span>.
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
-          Aan AI reads every data source. Signals surface what matters. You approve. Done.
+          Jiva AI reads every data source. Signals surface what matters. You approve. Done.
         </p>
       </motion.div>
 
@@ -30,9 +30,9 @@ const PlatformSection = () => (
         {[
           {
             icon: Brain,
-            title: "Aan AI",
+            title: "Jiva AI",
             tagline: "Your second analyst. No second guessing.",
-            desc: "Aan reads your data, diagnoses issues, drafts rules, and explains every decision — so you can move fast without flying blind.",
+            desc: "Jiva reads your data, diagnoses issues, drafts rules, and explains every decision — so you can move fast without flying blind.",
             caps: ["Reads 47 data sources", "Drafts in <8s", "100% auditable"],
           },
           {
@@ -192,7 +192,7 @@ const PlatformSection = () => (
         className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16"
       >
         {[
-          { icon: Zap, title: "Insights", desc: "Severity-coded, sourced, one click from data. Aan watches everything so you don't have to." },
+          { icon: Zap, title: "Insights", desc: "Severity-coded, sourced, one click from data. Jiva watches everything so you don't have to." },
           { icon: Shield, title: "Rules", desc: "Drafted in plain language with guardrails. Simulated before you approve. Nothing executes silently." },
           { icon: Eye, title: "Signals", desc: "What happened, why it matters, what to do next, what if you ignore it. Every time." },
           { icon: Users, title: "Agents", desc: "Persistent workflows for budget pacing, anomaly detection, bid management. Always reversible." },

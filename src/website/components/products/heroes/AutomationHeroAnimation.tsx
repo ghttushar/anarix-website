@@ -3,7 +3,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { CheckCircle2, Eye, ShieldCheck, Play } from "lucide-react";
 
 const steps = [
-  { icon: Eye, label: "Draft", sub: "Aan or you" },
+  { icon: Eye, label: "Draft", sub: "Jiva or you" },
   { icon: ShieldCheck, label: "Simulate", sub: "Historical preview" },
   { icon: CheckCircle2, label: "Approve", sub: "One-click" },
   { icon: Play, label: "Execute", sub: "Logged & reversible" },

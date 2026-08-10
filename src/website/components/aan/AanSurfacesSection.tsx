@@ -8,14 +8,14 @@ function CopilotMock() {
     <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-sm">
       <div className="flex items-center gap-2 px-3 py-2 border-b border-border bg-muted/30">
         <div className="w-5 h-5 rounded-full bg-gradient-to-br from-primary to-primary/40" />
-        <div className="text-xs font-semibold">Aan Copilot</div>
+        <div className="text-xs font-semibold">Jiva Copilot</div>
         <div className="ml-auto text-[10px] text-muted-foreground">v3 - this chat</div>
       </div>
       <div className="p-3 space-y-2">
         <div className="text-[11px] text-muted-foreground">You</div>
         <div className="text-xs">Why did Sponsored Display ROAS drop yesterday?</div>
         <div className="text-[11px] text-muted-foreground pt-2 flex items-center gap-1.5">
-          <Sparkles className="w-3 h-3 text-primary" /> Aan
+          <Sparkles className="w-3 h-3 text-primary" /> Jiva
         </div>
         <div className="text-xs leading-relaxed">
           Loss is concentrated on retargeting placements for ASIN B07X9. Likely a competitor launch.
@@ -45,7 +45,7 @@ function AskAanMock() {
             <div className="absolute -top-2 left-full ml-2 w-44 z-10">
               <div className="rounded-lg border border-primary/40 bg-card shadow-lg p-2 text-[10px]">
                 <div className="flex items-center gap-1 text-primary font-semibold mb-1">
-                  <Sparkles className="w-2.5 h-2.5" /> Ask Aan
+                  <Sparkles className="w-2.5 h-2.5" /> Ask Jiva
                 </div>
                 <div className="text-muted-foreground leading-relaxed">Explain this number, find anomalies, draft a fix.</div>
               </div>
@@ -80,7 +80,7 @@ function FullScreenMock() {
             <div className="h-1.5 w-2/3 bg-muted rounded" />
             <div className="h-12 rounded bg-gradient-to-br from-primary/10 to-accent/30 mt-2" />
           </div>
-          <div className="text-[10px] text-muted-foreground">Aan is drafting...</div>
+          <div className="text-[10px] text-muted-foreground">Jiva is drafting...</div>
         </div>
       </div>
     </div>
@@ -104,7 +104,7 @@ function FloatingIslandMock() {
           <Sparkles className="w-3.5 h-3.5" />
         </button>
         <button className="px-2.5 py-1 ml-1 rounded-full bg-primary text-primary-foreground text-[10px] font-medium flex items-center gap-1">
-          Ask Aan <ArrowUpRight className="w-2.5 h-2.5" />
+          Ask Jiva <ArrowUpRight className="w-2.5 h-2.5" />
         </button>
       </div>
     </div>
@@ -113,21 +113,21 @@ function FloatingIslandMock() {
 
 const surfaces = [
   {
-    title: "Aan Copilot",
+    title: "Jiva Copilot",
     sub: "The right-side workspace",
     body: "\n",
     use: "\n",
     Mock: CopilotMock,
   },
   {
-    title: "Ask Aan",
+    title: "Ask Jiva",
     sub: "Highlight any number, get the why",
-    body: "Select text anywhere in the app. A small tooltip appears - click it and Aan explains the metric, traces the source, and offers next steps without leaving the page.",
+    body: "Select text anywhere in the app. A small tooltip appears - click it and Jiva explains the metric, traces the source, and offers next steps without leaving the page.",
     use: "When a stakeholder asks 'what is this number' and you need an answer that doesn't make you look bad.",
     Mock: AskAanMock,
   },
   {
-    title: "Full-Screen Aan",
+    title: "Full-Screen Jiva",
     sub: "/aan - the deep work room",
     body: "A dedicated workspace with chat history, multi-artifact reasoning, and long context. Use it for audits, weekly reviews, and rule design that needs room to breathe.",
     use: "When the question is bigger than a sidebar.",
@@ -136,7 +136,7 @@ const surfaces = [
   {
     title: "Floating Action Island",
     sub: "Always nearby. Never in the way.",
-    body: "A persistent control hub at the bottom-right. System alerts, Ask Aan, quick-create rules, command palette - one reach, every action.",
+    body: "A persistent control hub at the bottom-right. System alerts, Ask Jiva, quick-create rules, command palette - one reach, every action.",
     use: "When you live in the app and need everything one motion away.",
     Mock: FloatingIslandMock,
   },
@@ -148,13 +148,13 @@ export default function AanSurfacesSection() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="inline-flex items-center px-3 py-1 mb-4 rounded-pill bg-primary/10 text-primary text-xs font-medium uppercase tracking-[0.14em]">
-            Where Aan lives
+            Where Jiva lives
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground leading-[1.1]">
             Four surfaces. <span className="text-gradient-primary">Same brain.</span>
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Aan is not a chatbot in a corner. It's an intelligence layer that meets you where the work is happening.
+            Jiva is not a chatbot in a corner. It's an intelligence layer that meets you where the work is happening.
           </p>
         </div>
 

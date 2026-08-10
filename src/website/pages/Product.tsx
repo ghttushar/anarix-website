@@ -187,37 +187,44 @@ const Product = () => {
         {/* Interactive Charts */}
         <PlatformCharts />
 
-        {/* Aan AI Section */}
+        {/* Where Jiva plugs into the platform — full story lives on the Jiva AI page */}
         <motion.div
-          className="gap-block text-center"
+          className="gap-block"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-pill bg-primary/10 text-primary text-xs font-medium uppercase tracking-[0.14em]">
-            <Sparkles className="w-3.5 h-3.5" /> Anarix Analytical Neural
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Because our AI <span className="text-gradient-primary">glows</span>.
-            <br />
-            What else do you need?
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            Okayyy&hellip; here are the other boring things Aan also does.
-          </p>
-          <div className="grid md:grid-cols-3 gap-4 text-left">
-            {[
-              { icon: Sparkles, title: "Ask Anything", desc: "Analyze DSP and Sponsored Products overlap, calculate ROAS improvements, recommend audience segments with highest conversion rates." },
-              { icon: Shield, title: "Proactive Alerts", desc: "Get notified of anomalies before they become problems. Aan monitors your accounts 24/7 and surfaces what needs attention." },
-              { icon: TrendingUp, title: "Automated Reporting", desc: "Client-ready reports generated automatically. Morning briefings, weekly summaries, and custom analysis on demand." },
-            ].map((item) => (
-              <div key={item.title} className="pad-card-sm rounded-xl border border-border/40 bg-card/30 hover:bg-card/50 transition-colors">
-                <item.icon className="w-5 h-5 text-primary mb-3" />
-                <h3 className="text-sm font-bold text-foreground mb-2">{item.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+          <div className="rounded-3xl border border-border/60 bg-card/40 pad-card-sm sm:p-10">
+            <div className="grid lg:grid-cols-[1fr_auto] lg:items-end gap-6 mb-8">
+              <div>
+                <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-pill bg-primary/10 text-primary text-xs font-medium uppercase tracking-[0.14em]">
+                  <Sparkles className="w-3.5 h-3.5" /> Jiva AI
+                </div>
+                <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight text-foreground mb-3">
+                  Where Jiva plugs into your workflow
+                </h2>
+                <p className="text-muted-foreground max-w-xl">
+                  The intelligence layer sits on the same data you just saw — so every number in the platform can be questioned, diagnosed and acted on without leaving the screen.
+                </p>
               </div>
-            ))}
+              <Link to="/products/aan-ai" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all">
+                See how Jiva works <ChevronRight className="w-4 h-4" />
+              </Link>
+            </div>
+            <div className="grid md:grid-cols-3 gap-4">
+              {[
+                { icon: Activity, title: "On every metric", desc: "Select a number anywhere in the platform and get the source, the trend and the likely cause in one step." },
+                { icon: Shield, title: "In your guardrails", desc: "Drafts changes against the limits you set. Nothing destructive applies without an approval you can reverse." },
+                { icon: TrendingUp, title: "In your inbox", desc: "A short written read on what moved and what to do next, before the working day starts." },
+              ].map((item) => (
+                <div key={item.title} className="pad-card-sm rounded-xl border border-border/40 bg-background/40">
+                  <item.icon className="w-5 h-5 text-primary mb-3" />
+                  <h3 className="text-sm font-bold text-foreground mb-2">{item.title}</h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </motion.div>
 

@@ -1,4 +1,5 @@
 import { Link } from "@/lib/router";
+import { BrandLogo } from "@/website/components/BrandLogo";
 
 const productHref = "/products/platform";
 const aanHref = "/products/aan-ai";
@@ -12,17 +13,14 @@ const footerLinks: Record<string, { label: string; href: string; external?: bool
     { label: "Campaign", href: productHref },
     { label: "Rules", href: productHref },
     { label: "Profitability", href: productHref },
-    { label: "AAN (AI)", href: aanHref },
+    { label: "Jiva (AI)", href: aanHref },
     { label: "Signals", href: signalsHref },
     { label: "MCP", href: mcpHref },
   ],
   Resources: [
-    { label: "Pricing", href: "/pricing" },
     { label: "Documentation", href: "/documentation" },
-  ],
-  Company: [
-    { label: "About", href: "/company/about" },
-    { label: "Careers", href: "/company/career" },
+    { label: "Listing Optimization", href: "/listing-optimization" },
+    { label: "Case Studies", href: "/case-studies" },
     { label: "Contact", href: "/company/contact" },
   ],
   Account: [
@@ -35,10 +33,10 @@ const Footer = () => {
   return (
     <footer className="px-6 pb-6">
       <div className="container-wide mx-auto bg-card rounded-3xl border border-border shadow-soft p-10 sm:p-14">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
           <div className="col-span-2 md:col-span-1">
-            <Link to="/" className="text-2xl font-display font-semibold text-foreground tracking-tight">
-              Anarix<span className="text-primary">.</span>ai
+            <Link to="/" className="inline-flex items-center" aria-label="Anarix home">
+              <BrandLogo className="h-7" />
             </Link>
             <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
               Expert-managed marketplace growth powered by the Anarix Insight Engine.

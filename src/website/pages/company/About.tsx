@@ -16,7 +16,7 @@ const milestones = [
   { year: "2019", event: "Founded in New York. First Amazon brand onboarded." },
   { year: "2020", event: "Expanded to Walmart. $10M ad spend managed." },
   { year: "2021", event: "Launched automation engine. 50+ brands." },
-  { year: "2022", event: "Aan AI copilot beta. $100M ad spend milestone." },
+  { year: "2022", event: "Jiva AI copilot beta. $100M ad spend milestone." },
   { year: "2023", event: "Series A funding. Global expansion." },
   { year: "2024", event: "$200M+ ad spend. $1.2B GMV driven." },
 ];

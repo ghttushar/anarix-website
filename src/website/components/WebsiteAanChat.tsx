@@ -21,13 +21,13 @@ export default function WebsiteAanChat({
   scope = "general",
   suggested = [
     "What does Anarix do?",
-    "How is Aan different from other AI tools?",
+    "How is Jiva different from other AI tools?",
     "What does it cost?",
     "Which channels do you support?",
   ],
   className,
   height = "h-[460px]",
-  initialMessage = "Hi, I'm Aan. Ask me anything about Anarix - products, pricing, integrations, or how I work.",
+  initialMessage = "Hi, I'm Jiva. Ask me anything about Anarix - products, pricing, integrations, or how I work.",
 }: Props) {
   const [messages, setMessages] = useState<Msg[]>([
     { role: "assistant", content: initialMessage },
@@ -118,7 +118,7 @@ export default function WebsiteAanChat({
       <div className="flex items-center gap-3 px-4 py-3 border-b border-border bg-muted/30">
         <AanMascot state={aanState} size={28} interactive={false} />
         <div className="flex-1">
-          <div className="text-sm font-semibold text-foreground">Aan</div>
+          <div className="text-sm font-semibold text-foreground">Jiva</div>
           <div className="text-[11px] text-muted-foreground flex items-center gap-1">
             <span className={cn("w-1.5 h-1.5 rounded-full", loading ? "bg-yellow-500" : "bg-green-500")} />
             {loading ? "Thinking…" : "Online"}
@@ -189,7 +189,7 @@ export default function WebsiteAanChat({
         <input
           value={input}
           onChange={(e) => { setInput(e.target.value); setAanState(e.target.value ? "listening" : "idle"); }}
-          placeholder="Ask Aan…"
+          placeholder="Ask Jiva…"
           disabled={loading}
           className="flex-1 px-3 py-2 rounded-xl bg-background border border-border text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
         />
