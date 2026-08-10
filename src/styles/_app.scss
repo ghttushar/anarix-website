@@ -1,0 +1,85 @@
+// Application chrome rendered outside `.website-scope`: router fallbacks such
+// as the not-found and error boundaries. Kept deliberately small — everything
+// brand-facing belongs to the website design system.
+
+:root {
+  --app-bg: #f7f8fb;
+  --app-fg: #1e242c;
+  --app-muted: #5f6b7a;
+  --app-accent: #4a5ee0;
+  --app-accent-fg: #ffffff;
+  --app-border: #e2e6ef;
+  --app-radius: 0.75rem;
+  --app-font: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  font-family: var(--app-font);
+  background: var(--app-bg);
+  color: var(--app-fg);
+}
+
+.fallback {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+
+  &__inner {
+    max-width: 28rem;
+    text-align: center;
+  }
+
+  &__code {
+    font-size: clamp(3.5rem, 10vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__title {
+    margin-top: 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  &__text {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--app-muted);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    border-radius: var(--app-radius);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    background: var(--app-accent);
+    color: var(--app-accent-fg);
+    transition: opacity 150ms ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &--secondary {
+      background: transparent;
+      border-color: var(--app-border);
+      color: var(--app-fg);
+    }
+  }
+}

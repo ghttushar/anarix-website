@@ -1,0 +1,69 @@
+@use 'tokens' as *;
+@use 'mixins' as *;
+
+// ===========================================================================
+// Color utilities — bg / text / border / gradient stops / shadows.
+// Scoped under .website-scope.
+// ===========================================================================
+
+.website-scope {
+  // ------------------------------------------------------------- backgrounds
+  @each $c in $semantic-colors {
+    .bg-#{$c} { background-color: color-hsl($c); }
+    .text-#{$c} { color: color-hsl($c); }
+    .border-#{$c} { border-color: color-hsl($c); }
+    .from-#{$c} { --tw-gradient-stops: color-hsl($c), rgb(255 255 255 / 0); }
+    .to-#{$c} { --tw-gradient-to: color-hsl($c); --tw-gradient-stops: var(--tw-gradient-from, color-hsl($c)), var(--tw-gradient-to); }
+    .via-#{$c} { --tw-gradient-stops: var(--tw-gradient-from), color-hsl($c), var(--tw-gradient-to); }
+    @each $n, $d in $opacity {
+      .bg-#{$c}\/#{$n} { background-color: color-hsl($c, $d); }
+      .text-#{$c}\/#{$n} { color: color-hsl($c, $d); }
+      .border-#{$c}\/#{$n} { border-color: color-hsl($c, $d); }
+      .from-#{$c}\/#{$n} { --tw-gradient-stops: color-hsl($c, $d), rgb(255 255 255 / 0); }
+      .to-#{$c}\/#{$n} { --tw-gradient-to: color-hsl($c, $d); --tw-gradient-stops: var(--tw-gradient-from, color-hsl($c, $d)), var(--tw-gradient-to); }
+      .via-#{$c}\/#{$n} { --tw-gradient-stops: var(--tw-gradient-from), color-hsl($c, $d), var(--tw-gradient-to); }
+    }
+  }
+
+  // Consumers also color-hsl('periwinkle-light') etc.
+
+  // -------------------------------------------------- palette (rgb triplets)
+  @each $name, $trip in $palette {
+    .bg-#{$name} { background-color: palette-rgb($trip); }
+    .text-#{$name} { color: palette-rgb($trip); }
+    .border-#{$name} { border-color: palette-rgb($trip); }
+    @each $n, $d in $opacity {
+      .bg-#{$name}\/#{$n} { background-color: palette-rgb($trip, $d); }
+      .text-#{$name}\/#{$n} { color: palette-rgb($trip, $d); }
+      .border-#{$name}\/#{$n} { border-color: palette-rgb($trip, $d); }
+    }
+  }
+
+  // ------------------------------------------------------- arbitrary raw colors
+  @each $name, $val in $raw-colors {
+    .bg-\[#{raw($name)}\] { background-color: $val; }
+    .text-\[#{raw($name)}\] { color: $val; }
+  }
+  .bg-\[hsl\(240_30\%_8\%\)\] { background-color: hsl(240 30% 8%); }
+  .text-\[hsl\(240_30\%_8\%\)\] { color: hsl(240 30% 8%); }
+  .text-\[hsl\(0_0\%_60\%\)\] { color: hsl(0 0% 60%); }
+  .text-\[hsl\(0_0\%_75\%\)\] { color: hsl(0 0% 75%); }
+  .text-\[hsl\(0_0\%_98\%\)\] { color: hsl(0 0% 98%); }
+
+  // ------------------------------------------------------------ gradients dir
+  .bg-gradient-to-r { background-image: linear-gradient(to right, var(--tw-gradient-stops)); }
+  .bg-gradient-to-b { background-image: linear-gradient(to bottom, var(--tw-gradient-stops)); }
+  .bg-gradient-to-l { background-image: linear-gradient(to left, var(--tw-gradient-stops)); }
+  .bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)); }
+
+  // --------------------------------------------- one-off semantic fills
+  .bg-muted-foreground { background-color: hsl(var(--muted-foreground)); }
+  .bg-border { background-color: hsl(var(--border)); }
+  .text-border { color: hsl(var(--border)); }
+
+  // ------------------------------- custom shadows (site tokens, from entry)
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-medium { box-shadow: var(--shadow-medium); }
+  .shadow-strong { box-shadow: var(--shadow-strong); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+}

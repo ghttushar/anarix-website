@@ -1,0 +1,131 @@
+@use 'tokens' as *;
+@use 'mixins' as *;
+
+// ===========================================================================
+// Responsive (sm/md/lg/xl) variants of the exact tokens used by the site.
+// ===========================================================================
+
+.website-scope {
+  @include bp(sm) {
+    .sm\:block { display: block; }
+    .sm\:inline-block { display: inline-block; }
+    .sm\:flex { display: flex; }
+    .sm\:grid { display: grid; }
+    .sm\:hidden { display: none; }
+    .sm\:flex-row { flex-direction: row; }
+    .sm\:flex-col { flex-direction: column; }
+    .sm\:items-center { align-items: center; }
+    .sm\:justify-between { justify-content: space-between; }
+    .sm\:text-left { text-align: left; }
+    .sm\:text-right { text-align: right; }
+    .sm\:text-center { text-align: center; }
+    .sm\:text-base { font-size: 1rem; }
+    .sm\:text-lg { font-size: 1.125rem; }
+    .sm\:text-xl { font-size: 1.25rem; }
+    .sm\:text-2xl { font-size: 1.5rem; }
+    .sm\:text-3xl { font-size: 1.875rem; }
+    .sm\:text-4xl { font-size: 2.25rem; }
+    .sm\:text-5xl { font-size: 3rem; }
+    .sm\:text-6xl { font-size: 3.75rem; }
+    .sm\:text-7xl { font-size: 4.5rem; }
+    .sm\:text-\[28px\] { font-size: 28px; }
+    .sm\:text-sm { font-size: 0.875rem; }
+    @for $i from 1 through 5 {
+      .sm\:grid-cols-#{$i} { grid-template-columns: repeat($i, minmax(0, 1fr)); }
+    }
+    .sm\:mt-16 { margin-top: 4rem; }
+    .sm\:pt-16 { padding-top: 4rem; }
+    .sm\:pb-16 { padding-bottom: 4rem; }
+    .sm\:px-8 { padding-inline: 2rem; }
+    .sm\:p-5 { padding: 1.25rem; }
+    .sm\:p-6 { padding: 1.5rem; }
+    .sm\:p-7 { padding: 1.75rem; }
+    .sm\:p-8 { padding: 2rem; }
+    .sm\:p-10 { padding: 2.5rem; }
+    .sm\:p-14 { padding: 3.5rem; }
+    .sm\:py-14 { padding-block: 3.5rem; }
+    .sm\:py-28 { padding-block: 7rem; }
+    .sm\:py-32 { padding-block: 8rem; }
+    .sm\:gap-5 { gap: 1.25rem; }
+    .sm\:gap-6 { gap: 1.5rem; }
+    .sm\:gap-grid-lg { gap: $gap-grid-lg; }
+    .sm\:max-w-md { max-width: 28rem; }
+    .sm\:w-\[180px\] { width: 180px; }
+    .sm\:w-\[320px\] { width: 320px; }
+    .sm\:h-\[440px\] { height: 440px; }
+    .sm\:-left-36 { left: -9rem; }
+    .sm\:w-2\/3 { width: 66.666667%; }
+  }
+
+  @include bp(md) {
+    .md\:block { display: block; }
+    .md\:flex { display: flex; }
+    .md\:grid { display: grid; }
+    .md\:hidden { display: none; }
+    .md\:sticky { position: sticky; }
+    .md\:top-28 { top: 7rem; }
+    .md\:col-span-1 { grid-column: span 1 / span 1; }
+    @for $i from 1 through 5 {
+      .md\:grid-cols-#{$i} { grid-template-columns: repeat($i, minmax(0, 1fr)); }
+    }
+    .md\:grid-cols-\[220px_1fr\] { grid-template-columns: 220px 1fr; }
+    .md\:gap-grid-lg { gap: $gap-grid-lg; }
+  }
+
+  @include bp(lg) {
+    .lg\:block { display: block; }
+    .lg\:flex { display: flex; }
+    .lg\:grid { display: grid; }
+    .lg\:hidden { display: none; }
+    .lg\:flex-row { flex-direction: row; }
+    .lg\:items-center { align-items: center; }
+    .lg\:justify-between { justify-content: space-between; }
+    .lg\:justify-self-end { justify-self: end; }
+    .lg\:self-start { align-self: flex-start; }
+    .lg\:sticky { position: sticky; }
+    .lg\:top-28 { top: 7rem; }
+    .lg\:text-left { text-align: left; }
+    .lg\:text-center { text-align: center; }
+    .lg\:text-right { text-align: right; }
+    .lg\:text-lg { font-size: 1.125rem; }
+    .lg\:text-2xl { font-size: 1.5rem; }
+    .lg\:text-3xl { font-size: 1.875rem; }
+    .lg\:text-4xl { font-size: 2.25rem; }
+    .lg\:text-5xl { font-size: 3rem; }
+    .lg\:text-6xl { font-size: 3.75rem; }
+    .lg\:text-7xl { font-size: 4.5rem; }
+    .lg\:text-\[44px\] { font-size: 44px; }
+    .lg\:text-\[8rem\] { font-size: 8rem; }
+    @for $i from 1 through 12 {
+      .lg\:grid-cols-#{$i} { grid-template-columns: repeat($i, minmax(0, 1fr)); }
+    }
+    .lg\:grid-cols-\[1fr_auto\] { grid-template-columns: 1fr auto; }
+    .lg\:grid-cols-\[240px_1fr_360px\] { grid-template-columns: 240px 1fr 360px; }
+    .lg\:grid-cols-\[5fr_7fr\] { grid-template-columns: 5fr 7fr; }
+    .lg\:grid-cols-\[7fr_5fr\] { grid-template-columns: 7fr 5fr; }
+    .lg\:grid-cols-\[auto_1fr\] { grid-template-columns: auto 1fr; }
+    .lg\:max-w-none { max-width: none; }
+    .lg\:max-h-\[calc\(100vh-8rem\)\] { max-height: calc(100vh - 8rem); }
+    .lg\:overflow-y-auto { overflow-y: auto; }
+    .lg\:mt-0 { margin-top: 0; }
+    .lg\:mx-0 { margin-inline: 0; }
+    .lg\:mt-\[11rem\] { margin-top: 11rem; }
+    .lg\:gap-6 { gap: 1.5rem; }
+    .lg\:gap-12 { gap: 3rem; }
+    .lg\:gap-16 { gap: 4rem; }
+    .lg\:gap-20 { gap: 5rem; }
+    .lg\:gap-grid { gap: $gap-grid; }
+    .lg\:p-10 { padding: 2.5rem; }
+    .lg\:px-8 { padding-inline: 2rem; }
+    .lg\:px-10 { padding-inline: 2.5rem; }
+    .lg\:py-32 { padding-block: 8rem; }
+    .lg\:py-36 { padding-block: 9rem; }
+  }
+
+  @include bp(xl) {
+    .xl\:text-2xl { font-size: 1.5rem; }
+    .xl\:text-6xl { font-size: 3.75rem; }
+    .xl\:text-7xl { font-size: 4.5rem; }
+    .xl\:text-\[56px\] { font-size: 56px; }
+  }
+}

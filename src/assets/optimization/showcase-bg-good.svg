@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <defs>
+    <radialGradient id="shadow" cx="50%" cy="82%" r="60%">
+      <stop offset="0" stop-color="#0a0f2e" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#0a0f2e" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="600" rx="24" fill="#ffffff"/>
+  <rect width="600" height="600" rx="24" fill="url(#shadow)"/>
+  <rect x="120" y="110" width="360" height="380" rx="24" fill="#ffffff" stroke="#4A62D9" stroke-width="6"/>
+  <rect x="180" y="180" width="240" height="150" rx="18" fill="#e8ecfb"/>
+  <rect x="180" y="360" width="190" height="34" rx="17" fill="#dfe5f8"/>
+  <rect x="180" y="410" width="140" height="26" rx="13" fill="#e6eaf8"/>
+  <circle cx="492" cy="108" r="26" fill="#27c07f"/>
+  <path d="M480 108l8 9 16-18" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="300" y="545" font-family="Arial, sans-serif" font-size="30" fill="#8d97ad" text-anchor="middle">PURE WHITE · 100%</text>
+</svg>

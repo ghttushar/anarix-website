@@ -1,0 +1,8 @@
+// Global stylesheet entry.
+//
+// 1. reset      - normalisation shared by every surface
+// 2. app        - chrome that lives outside the marketing scope (404, errors)
+// 3. website/*  - the marketing site design system, scoped to .website-scope
+@use 'reset';
+@use 'app';
+@use 'website/website';

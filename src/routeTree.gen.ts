@@ -10,33 +10,310 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AanAiRouteImport } from './routes/aan-ai'
+import { Route as CaseStudiesRouteImport } from './routes/case-studies'
+import { Route as DemoRouteImport } from './routes/demo'
+import { Route as DocumentationRouteImport } from './routes/documentation'
+import { Route as ListingOptimizationRouteImport } from './routes/listing-optimization'
+import { Route as McpRouteImport } from './routes/mcp'
+import { Route as PlatformRouteImport } from './routes/platform'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as ProductRouteImport } from './routes/product'
+import { Route as SignalsRouteImport } from './routes/signals'
+import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
+import { Route as CompanyIndexRouteImport } from './routes/company.index'
+import { Route as CompanyAboutRouteImport } from './routes/company.about'
+import { Route as CompanyCareerRouteImport } from './routes/company.career'
+import { Route as CompanyContactRouteImport } from './routes/company.contact'
+import { Route as ProductsIndexRouteImport } from './routes/products.index'
+import { Route as ProductsAanAiRouteImport } from './routes/products.aan-ai'
+import { Route as ProductsMcpRouteImport } from './routes/products.mcp'
+import { Route as ProductsPlatformRouteImport } from './routes/products.platform'
+import { Route as ProductsSignalsRouteImport } from './routes/products.signals'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AanAiRoute = AanAiRouteImport.update({
+  id: '/aan-ai',
+  path: '/aan-ai',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CaseStudiesRoute = CaseStudiesRouteImport.update({
+  id: '/case-studies',
+  path: '/case-studies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoRoute = DemoRouteImport.update({
+  id: '/demo',
+  path: '/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocumentationRoute = DocumentationRouteImport.update({
+  id: '/documentation',
+  path: '/documentation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ListingOptimizationRoute = ListingOptimizationRouteImport.update({
+  id: '/listing-optimization',
+  path: '/listing-optimization',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformRoute = PlatformRouteImport.update({
+  id: '/platform',
+  path: '/platform',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductRoute = ProductRouteImport.update({
+  id: '/product',
+  path: '/product',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignalsRoute = SignalsRouteImport.update({
+  id: '/signals',
+  path: '/signals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
+  id: '/terms-and-conditions',
+  path: '/terms-and-conditions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompanyIndexRoute = CompanyIndexRouteImport.update({
+  id: '/company/',
+  path: '/company/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompanyAboutRoute = CompanyAboutRouteImport.update({
+  id: '/company/about',
+  path: '/company/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompanyCareerRoute = CompanyCareerRouteImport.update({
+  id: '/company/career',
+  path: '/company/career',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompanyContactRoute = CompanyContactRouteImport.update({
+  id: '/company/contact',
+  path: '/company/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsIndexRoute = ProductsIndexRouteImport.update({
+  id: '/products/',
+  path: '/products/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsAanAiRoute = ProductsAanAiRouteImport.update({
+  id: '/products/aan-ai',
+  path: '/products/aan-ai',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsMcpRoute = ProductsMcpRouteImport.update({
+  id: '/products/mcp',
+  path: '/products/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsPlatformRoute = ProductsPlatformRouteImport.update({
+  id: '/products/platform',
+  path: '/products/platform',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsSignalsRoute = ProductsSignalsRouteImport.update({
+  id: '/products/signals',
+  path: '/products/signals',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/aan-ai': typeof AanAiRoute
+  '/case-studies': typeof CaseStudiesRoute
+  '/demo': typeof DemoRoute
+  '/documentation': typeof DocumentationRoute
+  '/listing-optimization': typeof ListingOptimizationRoute
+  '/mcp': typeof McpRoute
+  '/platform': typeof PlatformRoute
+  '/pricing': typeof PricingRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/product': typeof ProductRoute
+  '/signals': typeof SignalsRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/company/about': typeof CompanyAboutRoute
+  '/company/career': typeof CompanyCareerRoute
+  '/company/contact': typeof CompanyContactRoute
+  '/products/aan-ai': typeof ProductsAanAiRoute
+  '/products/mcp': typeof ProductsMcpRoute
+  '/products/platform': typeof ProductsPlatformRoute
+  '/products/signals': typeof ProductsSignalsRoute
+  '/company/': typeof CompanyIndexRoute
+  '/products/': typeof ProductsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/aan-ai': typeof AanAiRoute
+  '/case-studies': typeof CaseStudiesRoute
+  '/demo': typeof DemoRoute
+  '/documentation': typeof DocumentationRoute
+  '/listing-optimization': typeof ListingOptimizationRoute
+  '/mcp': typeof McpRoute
+  '/platform': typeof PlatformRoute
+  '/pricing': typeof PricingRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/product': typeof ProductRoute
+  '/signals': typeof SignalsRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/company/about': typeof CompanyAboutRoute
+  '/company/career': typeof CompanyCareerRoute
+  '/company/contact': typeof CompanyContactRoute
+  '/products/aan-ai': typeof ProductsAanAiRoute
+  '/products/mcp': typeof ProductsMcpRoute
+  '/products/platform': typeof ProductsPlatformRoute
+  '/products/signals': typeof ProductsSignalsRoute
+  '/company': typeof CompanyIndexRoute
+  '/products': typeof ProductsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/aan-ai': typeof AanAiRoute
+  '/case-studies': typeof CaseStudiesRoute
+  '/demo': typeof DemoRoute
+  '/documentation': typeof DocumentationRoute
+  '/listing-optimization': typeof ListingOptimizationRoute
+  '/mcp': typeof McpRoute
+  '/platform': typeof PlatformRoute
+  '/pricing': typeof PricingRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/product': typeof ProductRoute
+  '/signals': typeof SignalsRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/company/about': typeof CompanyAboutRoute
+  '/company/career': typeof CompanyCareerRoute
+  '/company/contact': typeof CompanyContactRoute
+  '/products/aan-ai': typeof ProductsAanAiRoute
+  '/products/mcp': typeof ProductsMcpRoute
+  '/products/platform': typeof ProductsPlatformRoute
+  '/products/signals': typeof ProductsSignalsRoute
+  '/company/': typeof CompanyIndexRoute
+  '/products/': typeof ProductsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/aan-ai'
+    | '/case-studies'
+    | '/demo'
+    | '/documentation'
+    | '/listing-optimization'
+    | '/mcp'
+    | '/platform'
+    | '/pricing'
+    | '/privacy-policy'
+    | '/product'
+    | '/signals'
+    | '/terms-and-conditions'
+    | '/company/about'
+    | '/company/career'
+    | '/company/contact'
+    | '/products/aan-ai'
+    | '/products/mcp'
+    | '/products/platform'
+    | '/products/signals'
+    | '/company/'
+    | '/products/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/aan-ai'
+    | '/case-studies'
+    | '/demo'
+    | '/documentation'
+    | '/listing-optimization'
+    | '/mcp'
+    | '/platform'
+    | '/pricing'
+    | '/privacy-policy'
+    | '/product'
+    | '/signals'
+    | '/terms-and-conditions'
+    | '/company/about'
+    | '/company/career'
+    | '/company/contact'
+    | '/products/aan-ai'
+    | '/products/mcp'
+    | '/products/platform'
+    | '/products/signals'
+    | '/company'
+    | '/products'
+  id:
+    | '__root__'
+    | '/'
+    | '/aan-ai'
+    | '/case-studies'
+    | '/demo'
+    | '/documentation'
+    | '/listing-optimization'
+    | '/mcp'
+    | '/platform'
+    | '/pricing'
+    | '/privacy-policy'
+    | '/product'
+    | '/signals'
+    | '/terms-and-conditions'
+    | '/company/about'
+    | '/company/career'
+    | '/company/contact'
+    | '/products/aan-ai'
+    | '/products/mcp'
+    | '/products/platform'
+    | '/products/signals'
+    | '/company/'
+    | '/products/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AanAiRoute: typeof AanAiRoute
+  CaseStudiesRoute: typeof CaseStudiesRoute
+  DemoRoute: typeof DemoRoute
+  DocumentationRoute: typeof DocumentationRoute
+  ListingOptimizationRoute: typeof ListingOptimizationRoute
+  McpRoute: typeof McpRoute
+  PlatformRoute: typeof PlatformRoute
+  PricingRoute: typeof PricingRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  ProductRoute: typeof ProductRoute
+  SignalsRoute: typeof SignalsRoute
+  TermsAndConditionsRoute: typeof TermsAndConditionsRoute
+  CompanyAboutRoute: typeof CompanyAboutRoute
+  CompanyCareerRoute: typeof CompanyCareerRoute
+  CompanyContactRoute: typeof CompanyContactRoute
+  ProductsAanAiRoute: typeof ProductsAanAiRoute
+  ProductsMcpRoute: typeof ProductsMcpRoute
+  ProductsPlatformRoute: typeof ProductsPlatformRoute
+  ProductsSignalsRoute: typeof ProductsSignalsRoute
+  CompanyIndexRoute: typeof CompanyIndexRoute
+  ProductsIndexRoute: typeof ProductsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +325,180 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/aan-ai': {
+      id: '/aan-ai'
+      path: '/aan-ai'
+      fullPath: '/aan-ai'
+      preLoaderRoute: typeof AanAiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/case-studies': {
+      id: '/case-studies'
+      path: '/case-studies'
+      fullPath: '/case-studies'
+      preLoaderRoute: typeof CaseStudiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo': {
+      id: '/demo'
+      path: '/demo'
+      fullPath: '/demo'
+      preLoaderRoute: typeof DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/documentation': {
+      id: '/documentation'
+      path: '/documentation'
+      fullPath: '/documentation'
+      preLoaderRoute: typeof DocumentationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/listing-optimization': {
+      id: '/listing-optimization'
+      path: '/listing-optimization'
+      fullPath: '/listing-optimization'
+      preLoaderRoute: typeof ListingOptimizationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform': {
+      id: '/platform'
+      path: '/platform'
+      fullPath: '/platform'
+      preLoaderRoute: typeof PlatformRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/product': {
+      id: '/product'
+      path: '/product'
+      fullPath: '/product'
+      preLoaderRoute: typeof ProductRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signals': {
+      id: '/signals'
+      path: '/signals'
+      fullPath: '/signals'
+      preLoaderRoute: typeof SignalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-and-conditions': {
+      id: '/terms-and-conditions'
+      path: '/terms-and-conditions'
+      fullPath: '/terms-and-conditions'
+      preLoaderRoute: typeof TermsAndConditionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/company/': {
+      id: '/company/'
+      path: '/company'
+      fullPath: '/company/'
+      preLoaderRoute: typeof CompanyIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/company/about': {
+      id: '/company/about'
+      path: '/company/about'
+      fullPath: '/company/about'
+      preLoaderRoute: typeof CompanyAboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/company/career': {
+      id: '/company/career'
+      path: '/company/career'
+      fullPath: '/company/career'
+      preLoaderRoute: typeof CompanyCareerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/company/contact': {
+      id: '/company/contact'
+      path: '/company/contact'
+      fullPath: '/company/contact'
+      preLoaderRoute: typeof CompanyContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/': {
+      id: '/products/'
+      path: '/products'
+      fullPath: '/products/'
+      preLoaderRoute: typeof ProductsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/aan-ai': {
+      id: '/products/aan-ai'
+      path: '/products/aan-ai'
+      fullPath: '/products/aan-ai'
+      preLoaderRoute: typeof ProductsAanAiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/mcp': {
+      id: '/products/mcp'
+      path: '/products/mcp'
+      fullPath: '/products/mcp'
+      preLoaderRoute: typeof ProductsMcpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/platform': {
+      id: '/products/platform'
+      path: '/products/platform'
+      fullPath: '/products/platform'
+      preLoaderRoute: typeof ProductsPlatformRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/signals': {
+      id: '/products/signals'
+      path: '/products/signals'
+      fullPath: '/products/signals'
+      preLoaderRoute: typeof ProductsSignalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AanAiRoute: AanAiRoute,
+  CaseStudiesRoute: CaseStudiesRoute,
+  DemoRoute: DemoRoute,
+  DocumentationRoute: DocumentationRoute,
+  ListingOptimizationRoute: ListingOptimizationRoute,
+  McpRoute: McpRoute,
+  PlatformRoute: PlatformRoute,
+  PricingRoute: PricingRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  ProductRoute: ProductRoute,
+  SignalsRoute: SignalsRoute,
+  TermsAndConditionsRoute: TermsAndConditionsRoute,
+  CompanyAboutRoute: CompanyAboutRoute,
+  CompanyCareerRoute: CompanyCareerRoute,
+  CompanyContactRoute: CompanyContactRoute,
+  ProductsAanAiRoute: ProductsAanAiRoute,
+  ProductsMcpRoute: ProductsMcpRoute,
+  ProductsPlatformRoute: ProductsPlatformRoute,
+  ProductsSignalsRoute: ProductsSignalsRoute,
+  CompanyIndexRoute: CompanyIndexRoute,
+  ProductsIndexRoute: ProductsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
