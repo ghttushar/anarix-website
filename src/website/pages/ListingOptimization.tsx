@@ -327,13 +327,28 @@ const ListingOptimization = () => {
                           alt={state === "generation-complete" && productId
                             ? `Optimized image for ${productId}`
                             : productId ? `${productId} main listing image` : "Product image"}
-                          className={`w-full h-full object-cover ${state === "generating" ? "blur-md scale-105" : ""}`}
+                          className={`w-full h-full object-cover ${
+                            state === "generating" || state === "generation-complete"
+                              ? "blur-md scale-105"
+                              : ""
+                          }`}
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
                           transition={{ duration: 0.3 }}
                         />
                       </AnimatePresence>
+                      {state === "generation-complete" && (
+                        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-background/40 p-4 text-center">
+                          <span className="inline-flex items-center gap-1.5 rounded-pill bg-card border border-border px-3 py-1 text-xs font-semibold text-primary">
+                            <Sparkles className="w-3.5 h-3.5" />
+                            Optimized preview
+                          </span>
+                          <p className="text-xs font-medium text-foreground max-w-[16rem]">
+                            Your full-resolution image is ready — we&apos;ll email it to you.
+                          </p>
+                        </div>
+                      )}
                       {state === "generating" && (
                         <div className="absolute inset-0 bg-primary/10 flex items-center justify-center">
                           <motion.div
