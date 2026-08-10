@@ -1,4 +1,4 @@
-import StoryScroller, { type StorySlide } from "./StoryScroller";
+import StoryScroller, { type StorySlide } from "@/website/components/marketing/StoryScroller";
 import {
   CompareVisual,
   FixVisual,
