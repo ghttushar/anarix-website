@@ -100,7 +100,7 @@ function KpiCard({ item, delay }: { item: MetricStatData; delay: number }) {
       }`}
       style={{ transitionDelay: isVisible ? undefined : `${delay}ms` }}
     >
-      <div className="font-display text-3xl sm:text-4xl font-bold tracking-tight">
+      <div className="font-numeric text-3xl sm:text-4xl font-bold tracking-tight">
         <CountUpValue item={item} className="text-gradient-primary" start={isVisible} />
       </div>
       <p className="mt-2 text-sm font-medium text-foreground">{item.label}</p>
@@ -136,7 +136,7 @@ export function MetricStat({ item }: { item: MetricStatData }) {
         isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-6 scale-[0.98]"
       }`}
     >
-      <div className="font-display text-2xl sm:text-3xl font-bold tracking-tight">
+      <div className="font-numeric text-2xl sm:text-3xl font-bold tracking-tight">
         <CountUpValue item={item} className="text-gradient-primary" start={isVisible} />
       </div>
       <p className="mt-2 text-sm font-medium text-foreground">{item.label}</p>
@@ -154,7 +154,7 @@ export function InsightCard({ value, text }: { value: string; text: string }) {
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
     >
-      <span className="shrink-0 font-display text-xl sm:text-2xl font-bold text-primary">{value}</span>
+      <span className="shrink-0 font-numeric text-xl sm:text-2xl font-bold text-primary">{value}</span>
       <p className="text-sm text-muted-foreground leading-relaxed">{text}</p>
     </div>
   );
@@ -325,7 +325,7 @@ export function ChapterDivider({
           Next case study
         </p>
         <div className="mt-8 flex items-center justify-center gap-6">
-          <span className="font-display text-5xl sm:text-6xl font-bold text-foreground/10 tracking-tight select-none">
+          <span className="font-numeric text-5xl sm:text-6xl font-bold text-foreground/10 tracking-tight select-none">
             {index}
           </span>
           <div className="text-left">

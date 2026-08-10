@@ -28,7 +28,7 @@ const BigNumberStrip = ({ items, className }: Props) => (
           transition={{ delay: i * 0.06, duration: 0.22, ease: [0.2, 0, 0, 1] }}
           className="group p-6 sm:p-8 rounded-2xl border border-border bg-card hover:-translate-y-0.5 hover:border-primary/30 transition-all duration-200"
         >
-          <div className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground tabular-nums leading-none tracking-tight">
+          <div className="font-numeric text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground tabular-nums leading-none tracking-tight">
             {it.value}
           </div>
           <div className="mt-5 text-[11px] uppercase tracking-[0.18em] text-muted-foreground font-semibold">
