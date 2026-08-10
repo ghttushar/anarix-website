@@ -32,10 +32,10 @@ const Footer = () => {
   return (
     <footer className="px-6 pb-6">
       <div className="container-wide mx-auto bg-card rounded-3xl border border-border shadow-soft p-10 sm:p-14">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
           <div className="col-span-2 md:col-span-1">
-            <Link to="/" className="text-2xl font-display font-semibold text-foreground tracking-tight">
-              Anarix<span className="text-primary">.</span>ai
+            <Link to="/" className="inline-flex items-center" aria-label="Anarix home">
+              <BrandLogo className="h-7" />
             </Link>
             <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
               Expert-managed marketplace growth powered by the Anarix Insight Engine.
