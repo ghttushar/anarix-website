@@ -249,22 +249,21 @@ export const FixVisual = () => (
 export const MarketplaceVisual = () => (
   <div className="relative h-full">
     <Panel className="h-full">
-      <PanelHead
-        title="Your report is ready"
-        right={
-          <span className="rounded-md bg-primary px-2 py-0.5 text-[10px] font-semibold text-primary-foreground whitespace-nowrap">
+      <PanelHead title="Your report is ready" />
+      <motion.div variants={itemIn} className="flex min-h-0 flex-1 items-center gap-3 p-3">
+        <span className="relative flex min-h-0 flex-shrink-0 flex-col" style={{ width: "42%", height: "100%" }}>
+          <Photo src={shoeMain} className="min-h-0 flex-1" fit="contain" />
+          <span className="mt-1.5 self-start rounded-md bg-primary px-2 py-0.5 text-[10px] font-semibold text-primary-foreground whitespace-nowrap">
             Walmart <span className="font-numeric tabular-nums">1000 × 1000</span>
           </span>
-        }
-      />
-      <motion.div variants={itemIn} className="flex min-h-0 flex-1 items-center gap-3 p-3">
-        <Photo src={shoeMain} className="min-h-0 flex-shrink-0" style={{ width: "42%", height: "100%" }} fit="contain" />
+        </span>
         <span className="flex flex-col gap-2">
           {VARIANTS.map((src) => (
             <Photo key={src} src={src} style={{ width: 40, height: 40 }} fit="contain" />
           ))}
         </span>
       </motion.div>
+
       <ScoreRow label="Walmart US, overall score" sub="Same asset, Walmart rule set" value={34} />
       <div className="grid grid-cols-2 border-t border-border">
         {[
