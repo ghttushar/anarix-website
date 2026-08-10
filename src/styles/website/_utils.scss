@@ -340,6 +340,7 @@
   .rounded-t { border-top-left-radius: map-get($radii, DEFAULT); border-top-right-radius: map-get($radii, DEFAULT); }
   .rounded-t-sm { border-top-left-radius: map-get($radii, sm); border-top-right-radius: map-get($radii, sm); }
   .rounded-t-md { border-top-left-radius: map-get($radii, md); border-top-right-radius: map-get($radii, md); }
+  .rounded-t-lg { border-top-left-radius: map-get($radii, lg); border-top-right-radius: map-get($radii, lg); }
   .rounded-t-2xl { border-top-left-radius: map-get($radii, 2xl); border-top-right-radius: map-get($radii, 2xl); }
   .rounded-tl-sm { border-top-left-radius: map-get($radii, sm); }
   .rounded-tr-sm { border-top-right-radius: map-get($radii, sm); }
