@@ -3,10 +3,13 @@ import { AlertTriangle, ArrowUpRight, Check, FileText, Search } from "lucide-rea
 
 /** Small animated panels used as the right-hand visual for each home step. */
 
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 const itemIn = {
   hidden: { opacity: 0, y: 12 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
 };
+
 
 const Panel = ({ title, right, children }: { title: string; right?: React.ReactNode; children: React.ReactNode }) => (
   <motion.div
