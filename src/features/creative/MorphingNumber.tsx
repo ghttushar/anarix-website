@@ -88,7 +88,7 @@ export function MorphingNumber({
 
   return (
     <div className={cn("flex items-center gap-2", className)}>
-      <span className="tabular-nums font-medium transition-colors duration-300">
+      <span className="font-numeric tabular-nums font-medium transition-colors duration-300">
         {formatValue(displayValue, format, decimals)}
       </span>
       

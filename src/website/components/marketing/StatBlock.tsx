@@ -34,7 +34,7 @@ const StatBlock = ({ value, label, delta, align = "left" }: StatBlockProps) => {
   return (
     <div ref={ref} className={align === "center" ? "text-center" : "text-left"}>
       <motion.div
-        className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-none"
+        className="font-numeric text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-none"
         initial={{ opacity: 0, y: 8 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, ease: [0.2, 0, 0, 1] }}

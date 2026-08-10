@@ -1,84 +1,112 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { Search, Settings, FileText, TrendingUp } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { Search, Settings, FileText, TrendingUp, type LucideIcon } from "lucide-react";
 
-const steps = [
+interface Step {
+  icon: LucideIcon;
+  title: string;
+  subtitle: string;
+  body: string;
+}
+
+const steps: Step[] = [
   {
     icon: Search,
     title: "Diagnose",
     subtitle: "We find the leaks. You decide what to fix.",
-    body: "Every account has its own history — and its own blind spots. We don&apos;t run a generic checklist; we dig into your numbers until we find exactly where the money&apos;s leaking, whether that&apos;s ad spend with no return, listings losing the buy box, or compliance risks nobody&apos;s flagged. No obligation, no fluff — just the truth about where you stand.",
+    body: "Every account has its own history — and its own blind spots. We don’t run a generic checklist; we dig into your numbers until we find exactly where the money’s leaking, whether that’s ad spend with no return, listings losing the buy box, or compliance risks nobody’s flagged. No obligation, no fluff — just the truth about where you stand.",
   },
   {
     icon: Settings,
     title: "Take Over",
-    subtitle: "The work that eats your nights becomes someone else&apos;s full-time job.",
-    body: "Once we know what&apos;s broken, we get to work fixing it. Your dedicated team steps into the day-to-day — reallocating ad budget, cleaning up listings, managing inventory, staying ahead of compliance. The work that&apos;s been eating your nights and weekends becomes someone&apos;s full-time job instead of your second one.",
+    subtitle: "The work that eats your nights becomes someone else’s full-time job.",
+    body: "Once we know what’s broken, we get to work fixing it. Your dedicated team steps into the day-to-day — reallocating ad budget, cleaning up listings, managing inventory, staying ahead of compliance. The work that’s been eating your nights and weekends becomes someone’s full-time job instead of your second one.",
   },
   {
     icon: FileText,
     title: "Report",
     subtitle: "Real P&L clarity, not vanity metrics.",
-    body: "You shouldn&apos;t have to dig through a 40-tab spreadsheet to find out if things are working. We break down exactly what changed, what it cost, and what it earned — real P&L clarity, not vanity metrics. Monthly or weekly, whichever you want. Ask us anything, anytime.",
+    body: "You shouldn’t have to dig through a 40-tab spreadsheet to find out if things are working. We break down exactly what changed, what it cost, and what it earned — real P&L clarity, not vanity metrics. Monthly or weekly, whichever you want. Ask us anything, anytime.",
   },
   {
     icon: TrendingUp,
     title: "Grow & Scale",
     subtitle: "Once fundamentals are solid, we push for the next level.",
-    body: "Once the fundamentals are solid — costs under control, compliance clean, reporting you trust — we shift into growth mode. Based on what we&apos;ve learned about your account and where you want to go, we scale up spend, expand into new channels, and push for the next level of growth.",
+    body: "Once the fundamentals are solid — costs under control, compliance clean, reporting you trust — we shift into growth mode. Based on what we’ve learned about your account and where you want to go, we scale up spend, expand into new channels, and push for the next level of growth.",
   },
 ];
 
-const StepCard = ({ step, i }: { step: typeof steps[0]; i: number }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const inBand = useInView(cardRef, { margin: "-35% 0px -35% 0px" });
+/**
+ * One step at a time: each card owns a tall scroll track and pins centred in the
+ * viewport while it is the active step, then hands over to the next one.
+ */
+const StepPanel = ({
+  step,
+  index,
+  onActive,
+}: {
+  step: Step;
+  index: number;
+  onActive: (i: number) => void;
+}) => {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const active = useInView(trackRef, { margin: "-45% 0px -45% 0px" });
+
+  useEffect(() => {
+    if (active) onActive(index);
+  }, [active, index, onActive]);
 
   return (
-    <motion.div
-      ref={cardRef}
-      className="sticky"
-      style={{ top: "24vh" }}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-20% 0px -20% 0px" }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <div ref={trackRef} className="h-[85vh] lg:h-screen flex items-center">
       <motion.div
-        className={`p-6 sm:p-8 rounded-2xl border bg-card/30 backdrop-blur-sm transition-colors duration-700 ${
-          inBand ? "border-primary/30" : "border-border/40"
-        }`}
+        className="sticky w-full"
+        style={{ top: "22vh" }}
         animate={{
-          scale: inBand ? 1 : 0.92,
-          opacity: inBand ? 1 : 0.35,
-          boxShadow: inBand
-            ? "0 8px 30px -8px hsl(var(--primary) / 0.12), 0 4px 12px -4px hsl(var(--primary) / 0.06)"
-            : "0 1px 3px -1px hsl(var(--primary) / 0.04)",
+          opacity: active ? 1 : 0.18,
+          scale: active ? 1 : 0.94,
+          y: active ? 0 : 16,
         }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
-            <step.icon className="w-4 h-4 text-primary" />
-          </div>
-          <span className="text-xs font-semibold text-primary uppercase tracking-[0.14em]">
-            Step {i + 1}
+        <div
+          className={`relative p-8 sm:p-12 lg:p-14 rounded-3xl border bg-card/70 backdrop-blur-xl transition-colors duration-500 ${
+            active ? "border-primary/30 shadow-strong" : "border-border/40 shadow-soft"
+          }`}
+        >
+          <span
+            aria-hidden="true"
+            className="absolute right-8 top-6 text-5xl sm:text-6xl font-bold text-primary/10 font-numeric select-none"
+          >
+            {String(index + 1).padStart(2, "0")}
           </span>
+
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+              <step.icon className="w-5 h-5 text-primary" />
+            </div>
+            <span className="text-xs font-semibold text-primary uppercase tracking-[0.16em] font-numeric">
+              Step {index + 1}
+            </span>
+          </div>
+
+          <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground tracking-tight mb-2">
+            {step.title}
+          </h3>
+          <p className="text-sm sm:text-base text-primary/75 mb-5">{step.subtitle}</p>
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+            {step.body}
+          </p>
         </div>
-        <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-1">{step.title}</h3>
-        <p className="text-sm text-primary/70 italic mb-4">{step.subtitle}</p>
-        <p className="text-muted-foreground leading-relaxed">{step.body}</p>
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 
 const ProcessSteps = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const lineHeight = useTransform(scrollYProgress, [0, 0.95], ["0%", "100%"]);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section ref={ref} className="relative pad-section overflow-hidden">
+    <section className="relative pad-section overflow-hidden">
       <div className="container-wide px-4">
         <motion.div
           className="text-center gap-heading"
@@ -97,24 +125,25 @@ const ProcessSteps = () => {
           </h2>
         </motion.div>
 
-        <div className="relative max-w-3xl mx-auto">
-          <motion.div
-            className="absolute left-6 top-0 w-px bg-border/40"
-            style={{ height: "100%" }}
-          >
-            <motion.div
-              className="w-full bg-gradient-to-b from-primary via-primary/60 to-primary/20"
-              style={{ height: lineHeight }}
-            />
-          </motion.div>
-
-          <div className="pl-16">
-            {steps.map((step, i) => (
-              <div key={step.title} className="mb-16 last:mb-0">
-                <StepCard step={step} i={i} />
-              </div>
-            ))}
+        <div className="relative max-w-5xl mx-auto">
+          {/* Step progress rail */}
+          <div className="hidden lg:flex flex-col gap-3 items-center absolute -left-10 top-0 h-full pt-[24vh]">
+            <div className="sticky top-[24vh] flex flex-col gap-3">
+              {steps.map((step, i) => (
+                <span
+                  key={step.title}
+                  aria-hidden="true"
+                  className={`block w-1.5 rounded-pill transition-all duration-500 ${
+                    i === activeIndex ? "h-10 bg-primary" : "h-4 bg-border"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
+
+          {steps.map((step, i) => (
+            <StepPanel key={step.title} step={step} index={i} onActive={setActiveIndex} />
+          ))}
         </div>
       </div>
     </section>

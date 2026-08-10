@@ -243,6 +243,12 @@
   .font-serif { font-family: $font-display-stack; }
   .font-mono { font-family: $font-mono-stack; }
   .font-aan { font-family: var(--font-aan); }
+  .font-numeric {
+    font-family: var(--font-body);
+    font-optical-sizing: auto;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
 
   // ---------------------------------------------------------------- overflow
   .overflow-hidden { overflow: hidden; }
@@ -431,3 +437,25 @@
   .bg-transparent { background-color: transparent; }
   .text-inherit { color: inherit; }
 }
+// -------------------------------------------------------------- nav glass
+// Frosted nav that stays legible over bright buttons, gradients and imagery:
+// heavy blur + desaturation of what passes beneath, plus an inner hairline.
+.website-scope {
+  .nav-glass {
+    background-color: hsl(var(--surface-elevated) / 0.88);
+    backdrop-filter: blur(24px) saturate(65%) brightness(1.05);
+    border: 1px solid hsl(var(--border) / 0.55);
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.3);
+  }
+
+  .nav-glass--scrolled {
+    background-color: hsl(var(--surface-elevated) / 0.96);
+    border-color: hsl(var(--border) / 0.85);
+  }
+}
+
+.dark .website-scope .nav-glass {
+  backdrop-filter: blur(24px) saturate(65%) brightness(0.9);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06);
+}
+

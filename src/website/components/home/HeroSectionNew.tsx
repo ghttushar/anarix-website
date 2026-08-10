@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useEffect } from "react";
 import HeroDataViz from "./HeroDataViz";
-import HeroSignalWeave from "./HeroSignalWeave";
+import HeroOpsConsole from "./HeroOpsConsole";
 
 const stats = [
   { label: "GMV driven", numeric: 1.2, prefix: "$", suffix: "B", decimals: 1 },
@@ -79,18 +79,10 @@ const HeroSectionNew = () => {
               </a>
             </motion.div>
 
-            <motion.p
-              className="text-xs text-muted-foreground/60 max-w-md"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.5 }}
-            >
-              Start with a free audit. We&apos;ll show you what your account is losing before you pay a thing.
-            </motion.p>
           </div>
 
           <div className="lg:col-span-5 mt-10 lg:mt-0 max-w-md lg:max-w-none mx-auto w-full">
-            <HeroSignalWeave />
+            <HeroOpsConsole />
           </div>
         </div>
 
@@ -103,7 +95,7 @@ const HeroSectionNew = () => {
         >
           {stats.map((stat) => (
             <div key={stat.label}>
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground tracking-tight">
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground tracking-tight font-numeric">
                 <CountUp target={stat.numeric} prefix={stat.prefix} suffix={stat.suffix} decimals={stat.decimals} />
               </div>
               <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
@@ -111,16 +103,6 @@ const HeroSectionNew = () => {
           ))}
         </motion.div>
 
-        <motion.div
-          className="mt-8 pt-6 border-t border-border/40"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.6 }}
-        >
-          <p className="text-xs text-muted-foreground/50 uppercase tracking-[0.15em]">
-            Trusted by 500+ brands on Amazon and Walmart
-          </p>
-        </motion.div>
       </div>
     </section>
   );
