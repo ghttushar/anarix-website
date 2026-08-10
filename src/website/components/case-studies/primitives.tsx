@@ -5,7 +5,7 @@ import { Link } from "@/lib/router";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import type { ReactNode } from "react";
-import type { MetricStatData } from "../../data/case-studies";
+import type { BeforeAfterTable as BeforeAfterTableData, MetricStatData } from "../../data/case-studies";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
