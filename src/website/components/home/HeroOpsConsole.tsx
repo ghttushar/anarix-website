@@ -140,25 +140,25 @@ const HeroOpsConsole = () => {
 
         {/* Channel ledger */}
         <div className="px-5 pt-4">
-          <div className="grid grid-cols-[1fr_auto_auto_auto] gap-x-4 text-[10px] uppercase tracking-[0.12em] text-muted-foreground/60 pb-2">
-            <span>Channel</span>
-            <span className="text-right">Rev</span>
-            <span className="text-right">TACoS</span>
-            <span className="text-right">Margin</span>
+          <div className="flex items-center text-[10px] uppercase tracking-[0.12em] text-muted-foreground/60 pb-2">
+            <span className="flex-1">Channel</span>
+            <span className="w-16 text-right">Rev</span>
+            <span className="w-16 text-right">TACoS</span>
+            <span className="w-16 text-right">Margin</span>
           </div>
           <div className="space-y-1.5">
             {CHANNELS.map((c, i) => (
               <motion.div
                 key={c.name}
-                className="grid grid-cols-[1fr_auto_auto_auto] gap-x-4 items-center py-1.5 px-2 -mx-2 rounded-lg hover:bg-primary/5 transition-colors"
+                className="flex items-center py-1.5 px-2 -mx-2 rounded-lg hover:bg-primary/5 transition-colors"
                 initial={reduced ? false : { opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5 + i * 0.12, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               >
-                <span className="text-sm font-medium text-foreground">{c.name}</span>
-                <span className="text-sm text-foreground font-numeric text-right">{money(c.revenue)}</span>
-                <span className="text-sm text-muted-foreground font-numeric text-right">{c.tacos.toFixed(1)}%</span>
-                <span className="text-sm text-primary font-numeric text-right">{c.margin.toFixed(1)}%</span>
+                <span className="flex-1 text-sm font-medium text-foreground">{c.name}</span>
+                <span className="w-16 text-sm text-foreground font-numeric text-right">{money(c.revenue)}</span>
+                <span className="w-16 text-sm text-muted-foreground font-numeric text-right">{c.tacos.toFixed(1)}%</span>
+                <span className="w-16 text-sm text-primary font-numeric text-right">{c.margin.toFixed(1)}%</span>
               </motion.div>
             ))}
           </div>
@@ -170,7 +170,7 @@ const HeroOpsConsole = () => {
             <span className="text-xs text-muted-foreground">Contribution margin</span>
             <span className="text-xs text-muted-foreground/60 font-numeric">Last 12 weeks</span>
           </div>
-          <svg viewBox={`0 0 ${w} ${h}`} className="w-full h-24" role="img" aria-label="Contribution margin trending up under Anarix management">
+          <svg viewBox={`0 0 ${w} ${h}`} className="w-full" style={{ width: "100%", height: 96, display: "block" }} preserveAspectRatio="none" role="img" aria-label="Contribution margin trending up under Anarix management">
             <defs>
               <linearGradient id="hero-margin-fill" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.28" />
