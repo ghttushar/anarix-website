@@ -31,6 +31,7 @@ import { Route as ProductsAanAiRouteImport } from './routes/products.aan-ai'
 import { Route as ProductsMcpRouteImport } from './routes/products.mcp'
 import { Route as ProductsPlatformRouteImport } from './routes/products.platform'
 import { Route as ProductsSignalsRouteImport } from './routes/products.signals'
+import { Route as ApiListingOptimizationProductRouteImport } from './routes/api/listing-optimization/product'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -142,6 +143,12 @@ const ProductsSignalsRoute = ProductsSignalsRouteImport.update({
   path: '/products/signals',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiListingOptimizationProductRoute =
+  ApiListingOptimizationProductRouteImport.update({
+    id: '/api/listing-optimization/product',
+    path: '/api/listing-optimization/product',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -166,6 +173,7 @@ export interface FileRoutesByFullPath {
   '/products/signals': typeof ProductsSignalsRoute
   '/company/': typeof CompanyIndexRoute
   '/products/': typeof ProductsIndexRoute
+  '/api/listing-optimization/product': typeof ApiListingOptimizationProductRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -190,6 +198,7 @@ export interface FileRoutesByTo {
   '/products/signals': typeof ProductsSignalsRoute
   '/company': typeof CompanyIndexRoute
   '/products': typeof ProductsIndexRoute
+  '/api/listing-optimization/product': typeof ApiListingOptimizationProductRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -215,6 +224,7 @@ export interface FileRoutesById {
   '/products/signals': typeof ProductsSignalsRoute
   '/company/': typeof CompanyIndexRoute
   '/products/': typeof ProductsIndexRoute
+  '/api/listing-optimization/product': typeof ApiListingOptimizationProductRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -241,6 +251,7 @@ export interface FileRouteTypes {
     | '/products/signals'
     | '/company/'
     | '/products/'
+    | '/api/listing-optimization/product'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -265,6 +276,7 @@ export interface FileRouteTypes {
     | '/products/signals'
     | '/company'
     | '/products'
+    | '/api/listing-optimization/product'
   id:
     | '__root__'
     | '/'
@@ -289,6 +301,7 @@ export interface FileRouteTypes {
     | '/products/signals'
     | '/company/'
     | '/products/'
+    | '/api/listing-optimization/product'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -314,6 +327,7 @@ export interface RootRouteChildren {
   ProductsSignalsRoute: typeof ProductsSignalsRoute
   CompanyIndexRoute: typeof CompanyIndexRoute
   ProductsIndexRoute: typeof ProductsIndexRoute
+  ApiListingOptimizationProductRoute: typeof ApiListingOptimizationProductRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -472,6 +486,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsSignalsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/listing-optimization/product': {
+      id: '/api/listing-optimization/product'
+      path: '/api/listing-optimization/product'
+      fullPath: '/api/listing-optimization/product'
+      preLoaderRoute: typeof ApiListingOptimizationProductRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -498,17 +519,8 @@ const rootRouteChildren: RootRouteChildren = {
   ProductsSignalsRoute: ProductsSignalsRoute,
   CompanyIndexRoute: CompanyIndexRoute,
   ProductsIndexRoute: ProductsIndexRoute,
+  ApiListingOptimizationProductRoute: ApiListingOptimizationProductRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
