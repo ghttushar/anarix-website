@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { animate, motion, useMotionValue, useTransform } from "framer-motion";
+import { useEffect } from "react";
 import { AlertTriangle, Check, X } from "lucide-react";
 
 /** Shared building blocks for the analyzer story slides. */
@@ -12,6 +13,31 @@ export const itemIn = {
 export const slideStagger = {
   hidden: {},
   show: { transition: { staggerChildren: 0.07, delayChildren: 0.12 } },
+};
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+/** Number that counts up to `value` once the slide lands. */
+export const CountUp = ({
+  value,
+  suffix = "%",
+  delay = 0.15,
+  className = "",
+}: {
+  value: number;
+  suffix?: string;
+  delay?: number;
+  className?: string;
+}) => {
+  const raw = useMotionValue(0);
+  const text = useTransform(raw, (v) => `${Math.round(v)}${suffix}`);
+
+  useEffect(() => {
+    const controls = animate(raw, value, { duration: 1.1, delay, ease: EASE });
+    return () => controls.stop();
+  }, [raw, value, delay]);
+
+  return <motion.span className={className}>{text}</motion.span>;
 };
 
 export const Panel = ({
@@ -42,9 +68,10 @@ export const PanelHead = ({ title, right }: { title: string; right?: React.React
 export const Bar = ({ value }: { value: number }) => (
   <span className="block h-1.5 overflow-hidden rounded-pill bg-accent/60">
     <motion.span
-      className="block h-full rounded-pill bg-primary"
+      className="block h-full rounded-pill"
+      style={{ background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--periwinkle)))" }}
       variants={{ hidden: { width: 0 }, show: { width: `${value}%` } }}
-      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 1.2, ease: EASE }}
     />
   </span>
 );
@@ -64,7 +91,7 @@ export const ScoreRow = ({
         <span className="block text-[13px] font-semibold text-foreground truncate">{label}</span>
         {sub && <span className="block text-[11px] text-muted-foreground truncate">{sub}</span>}
       </span>
-      <span className="font-numeric text-xl font-bold text-foreground tabular-nums">{value}%</span>
+      <CountUp value={value} className="font-numeric text-xl font-bold text-foreground tabular-nums" />
     </div>
     <span className="mt-2 block">
       <Bar value={value} />
@@ -100,14 +127,23 @@ export const Photo = ({
 );
 
 export const Rail = ({ items, size = 34 }: { items: string[]; size?: number }) => (
-  <motion.span variants={itemIn} className="flex gap-1.5">
+  <motion.span variants={itemIn} className="flex gap-1.5" style={{ perspective: 600 }}>
     {items.map((src, i) => (
-      <Photo
+      <motion.span
         key={`${src}-${i}`}
-        src={src}
-        className="flex-shrink-0"
-        style={{ width: size, height: size }}
-      />
+        className="block flex-shrink-0"
+        variants={{
+          hidden: { opacity: 0, y: 10, rotateY: -25 },
+          show: {
+            opacity: 1,
+            y: 0,
+            rotateY: 0,
+            transition: { delay: 0.35 + i * 0.09, duration: 0.55, ease: EASE },
+          },
+        }}
+      >
+        <Photo src={src} style={{ width: size, height: size }} />
+      </motion.span>
     ))}
   </motion.span>
 );
@@ -180,8 +216,13 @@ export const Flag = ({
   <motion.span
     className={`absolute rounded-pill bg-destructive px-2.5 py-1 text-[10px] font-semibold text-primary-foreground shadow-strong ${className}`}
     variants={{
-      hidden: { opacity: 0, scale: 0.85 },
-      show: { opacity: 1, scale: 1, transition: { delay, duration: 0.35 } },
+      hidden: { opacity: 0, scale: 0.8, y: 6 },
+      show: {
+        opacity: 1,
+        scale: [0.8, 1.08, 1],
+        y: 0,
+        transition: { delay, duration: 0.55, ease: EASE, times: [0, 0.6, 1] },
+      },
     }}
   >
     {children}
