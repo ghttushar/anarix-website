@@ -117,8 +117,8 @@ const Navbar = () => {
         }`}
       >
         {/* Logo */}
-        <Link to="/" className="text-xl font-bold text-foreground tracking-tight whitespace-nowrap">
-          Anarix<span className="text-primary">.ai</span>
+        <Link to="/" className="flex items-center" aria-label="Anarix home">
+          <BrandLogo className="h-6 sm:h-7" />
         </Link>
 
         {/* Desktop Nav - centered */}
