@@ -5,8 +5,6 @@ import {
   Building2,
 } from "lucide-react";
 
-import Disclosure from "@/website/components/ui/Disclosure";
-
 const services = [
   { icon: Megaphone, title: "Advertising management", desc: "We run your campaigns daily — bids, budgets, targeting — so every dollar chases what's actually converting." },
   { icon: TrendingUp, title: "Profit & margin tracking", desc: "We track what you really keep after fees, ad spend, and returns — not just top-line sales." },
@@ -69,20 +67,18 @@ const ServicesGrid = () => {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ delay: (i % 6) * 0.04, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               >
-                <Disclosure
-                  title={service.title}
-                  defaultOpen={i === 0}
-                  leading={
+                <div className="h-full pad-card-sm rounded-2xl border border-border bg-card shadow-soft hover:border-primary/40 hover:shadow-medium transition-all duration-300">
+                  <div className="flex items-start gap-3">
                     <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                       <service.icon className="w-4 h-4 text-primary" />
                     </span>
-                  }
-                >
-                  <p className="text-xs leading-relaxed">{service.desc}</p>
+                    <p className="text-sm font-semibold text-foreground leading-snug">{service.title}</p>
+                  </div>
+                  <p className="mt-3 text-xs text-muted-foreground leading-relaxed">{service.desc}</p>
                   {pun && (
-                    <p className="text-[11px] text-primary/60 italic pt-2 border-t border-border/20 leading-relaxed">{pun}</p>
+                    <p className="mt-3 pt-2 border-t border-border/40 text-[11px] text-primary/70 italic leading-relaxed">{pun}</p>
                   )}
-                </Disclosure>
+                </div>
               </motion.div>
             );
           })}
