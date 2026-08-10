@@ -39,8 +39,10 @@ const money = (n: number) =>
 
 const toPath = (values: number[], w: number, h: number) => {
   const step = w / (values.length - 1);
+  const pad = 6;
+  const plot = h - pad * 2;
   return values
-    .map((v, i) => `${i === 0 ? "M" : "L"}${(i * step).toFixed(1)},${(h - (v / 100) * h).toFixed(1)}`)
+    .map((v, i) => `${i === 0 ? "M" : "L"}${(i * step).toFixed(1)},${(pad + plot - (v / 100) * plot).toFixed(1)}`)
     .join(" ");
 };
 
