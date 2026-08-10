@@ -23,19 +23,21 @@ const NavCard = ({ cs, active, delay }: { cs: CaseStudyData; active: boolean; de
     type="button"
     onClick={() => scrollToChapter(cs.id)}
     aria-current={active ? "true" : undefined}
-    className={`group text-left pad-card-sm rounded-2xl border bg-card shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-0.5 ${
+    className={`group flex flex-col h-full text-left pad-card-sm rounded-2xl border bg-card shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-0.5 ${
       active ? "border-primary/60" : "border-border hover:border-primary/40"
     }`}
     initial={{ opacity: 0, y: 16 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay }}
   >
-    <p className="font-display text-lg font-bold text-foreground leading-tight">{cs.brand}</p>
-    <p className="mt-3 font-numeric text-4xl sm:text-5xl font-bold tracking-tight leading-none">
-      <span className="text-gradient-primary">{headlineNumber(cs)}</span>
+    <p className="font-display text-lg font-bold text-foreground leading-tight min-h-[1.75rem]">
+      {cs.brand}
     </p>
-    <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+    <p className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground min-h-[2rem]">
       {cs.marketplace}
+    </p>
+    <p className="mt-2 font-numeric text-4xl sm:text-5xl font-bold tracking-tight leading-none">
+      <span className="text-gradient-primary">{headlineNumber(cs)}</span>
     </p>
     <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-primary">
       Read the story
