@@ -81,7 +81,10 @@ function TeaserBody({ cs }: { cs: CaseStudyData }) {
         {cs.hero.statLine}
       </p>
 
-      <div className="mt-5 flex flex-wrap content-start gap-2 min-h-[4.75rem]">
+      <div
+        className="mt-5 flex flex-wrap gap-2"
+        style={{ alignContent: "flex-start", minHeight: "4.75rem" }}
+      >
         {cs.kpis.slice(0, 3).map((k) => (
           <span
             key={k.label}
