@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Loader2, ScanSearch, Download, Mail, RotateCcw, ImagePlus, Link2, Check } from "lucide-react";
+import { Sparkles, Loader2, ScanSearch, Download, Mail, ImagePlus, Link2, Check } from "lucide-react";
 import { toast } from "sonner";
 
 import PageLayout from "@/website/components/PageLayout";
@@ -153,21 +153,6 @@ const ListingOptimization = () => {
     setState("generation-complete");
   };
 
-  const handleReset = () => {
-    setState("input");
-    setRawInput("");
-    setMarketplace(null);
-    setProductId(null);
-    setProductTitle(null);
-    setHeroImageUrl(null);
-    setScore(null);
-    setIssues([]);
-    setOptimizedImageUrl(null);
-    setErrorMessage(null);
-    setEmail("");
-    setEmailError(null);
-    setEmailSending(false);
-  };
 
   const handleSendImage = async () => {
     const normalized = email.trim();
@@ -500,13 +485,6 @@ const ListingOptimization = () => {
                           <Download className="w-4 h-4" />
                           Get image
                         </Button>
-                        <button
-                          onClick={handleReset}
-                          className="mx-auto flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
-                        >
-                          <RotateCcw className="w-3.5 h-3.5" />
-                          Analyze another product
-                        </button>
                       </motion.div>
                     )}
                   </div>
