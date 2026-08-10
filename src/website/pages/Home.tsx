@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "@/lib/router";
 import Navbar from "@/website/components/Navbar";
 import HeroSectionNew from "@/website/components/home/HeroSectionNew";
+import ToolBanner from "@/website/components/home/ToolBanner";
 import PainPointsSection from "@/website/components/home/PainPointsSection";
 import TestimonialsWrapper from "@/website/components/home/TestimonialsWrapper";
 import ProcessSteps from "@/website/components/home/ProcessSteps";
