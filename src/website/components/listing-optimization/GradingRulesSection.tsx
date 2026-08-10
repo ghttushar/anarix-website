@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
 import type { Severity } from "@/website/lib/listingOptimization";
+import Disclosure from "@/website/components/ui/Disclosure";
 
 interface Rule {
   title: string;
