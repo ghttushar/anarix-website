@@ -463,3 +463,15 @@
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06);
 }
 
+
+// ------------------------------------------------------- editorial surfaces
+// Light panel band used by case-study chapters. The site keeps every
+// full-width section on a light surface in light mode; separation comes from
+// the border and shadow rather than an inverted background.
+.website-scope {
+  .section-panel {
+    background-color: hsl(var(--card));
+    border-top: 1px solid hsl(var(--border) / 0.7);
+    border-bottom: 1px solid hsl(var(--border) / 0.7);
+  }
+}
