@@ -270,7 +270,7 @@ const Products = () => {
                 size="lg"
                 className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 btn-shine"
               >
-                <Link to="/demo">Get your free audit</Link>
+                <Link to="/demo">Book a demo</Link>
               </Button>
               <Button
                 asChild
