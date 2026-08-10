@@ -130,6 +130,7 @@ export function HeroSignalWeave() {
           cy={190}
           r="4.5"
           fill="hsl(var(--primary))"
+          initial={{ cx: 258, cy: 190 }}
           animate={{ cx: [258, 320, 382], cy: [190, 120, 58] }}
           transition={{ duration: 2.4, delay: 0.6, repeat: Infinity, repeatDelay: 1.4, ease: [0.22, 1, 0.36, 1] }}
         />
