@@ -4,7 +4,6 @@ import { Menu, X, ChevronDown, ChevronRight, ArrowRight, ExternalLink } from "lu
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "@/lib/router";
 import { BrandLogo } from "@/website/components/BrandLogo";
-import { useLeadCapture } from "@/website/components/lead-capture/LeadCaptureContext";
 
 interface MegaMenuColumn {
   heading: string;
@@ -67,7 +66,6 @@ const Navbar = () => {
   const location = useLocation();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
-  const { openLeadCapture } = useLeadCapture();
 
   const activePath = location.pathname;
 
