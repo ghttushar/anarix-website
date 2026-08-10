@@ -296,14 +296,14 @@ const Products = () => {
             }`}
           >
             <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-pill bg-primary/10 text-primary text-xs font-medium uppercase tracking-[0.14em]">
-One suite
+              One suite
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground leading-[1.1] mb-4">
-Four products,{" "}
+              Four products,{" "}
               <span className="text-gradient-primary">one operating system.</span>
             </h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-Pick the piece you need first — the rest of the stack is already wired to it.
+              Pick the piece you need first — the rest of the stack is already wired to it.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button

@@ -258,7 +258,7 @@ export function CtaSection({ dark = true }: { dark?: boolean }) {
           Your numbers could be the <span className="text-gradient-primary">next case study.</span>
         </h2>
         <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-Bring us your accounts and we&apos;ll show you which levers move first.
+          Bring us your accounts and we&apos;ll show you which levers move first.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button
