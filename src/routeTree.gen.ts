@@ -32,6 +32,7 @@ import { Route as ProductsMcpRouteImport } from './routes/products.mcp'
 import { Route as ProductsPlatformRouteImport } from './routes/products.platform'
 import { Route as ProductsSignalsRouteImport } from './routes/products.signals'
 import { Route as ApiListingOptimizationProductRouteImport } from './routes/api/listing-optimization/product'
+import { Route as ApiListingOptimizationSendImageRouteImport } from './routes/api/listing-optimization/send-image'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -149,6 +150,12 @@ const ApiListingOptimizationProductRoute =
     path: '/api/listing-optimization/product',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiListingOptimizationSendImageRoute =
+  ApiListingOptimizationSendImageRouteImport.update({
+    id: '/api/listing-optimization/send-image',
+    path: '/api/listing-optimization/send-image',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -174,6 +181,7 @@ export interface FileRoutesByFullPath {
   '/company/': typeof CompanyIndexRoute
   '/products/': typeof ProductsIndexRoute
   '/api/listing-optimization/product': typeof ApiListingOptimizationProductRoute
+  '/api/listing-optimization/send-image': typeof ApiListingOptimizationSendImageRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -199,6 +207,7 @@ export interface FileRoutesByTo {
   '/company': typeof CompanyIndexRoute
   '/products': typeof ProductsIndexRoute
   '/api/listing-optimization/product': typeof ApiListingOptimizationProductRoute
+  '/api/listing-optimization/send-image': typeof ApiListingOptimizationSendImageRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -225,6 +234,7 @@ export interface FileRoutesById {
   '/company/': typeof CompanyIndexRoute
   '/products/': typeof ProductsIndexRoute
   '/api/listing-optimization/product': typeof ApiListingOptimizationProductRoute
+  '/api/listing-optimization/send-image': typeof ApiListingOptimizationSendImageRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -252,6 +262,7 @@ export interface FileRouteTypes {
     | '/company/'
     | '/products/'
     | '/api/listing-optimization/product'
+    | '/api/listing-optimization/send-image'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -277,6 +288,7 @@ export interface FileRouteTypes {
     | '/company'
     | '/products'
     | '/api/listing-optimization/product'
+    | '/api/listing-optimization/send-image'
   id:
     | '__root__'
     | '/'
@@ -302,6 +314,7 @@ export interface FileRouteTypes {
     | '/company/'
     | '/products/'
     | '/api/listing-optimization/product'
+    | '/api/listing-optimization/send-image'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -328,6 +341,7 @@ export interface RootRouteChildren {
   CompanyIndexRoute: typeof CompanyIndexRoute
   ProductsIndexRoute: typeof ProductsIndexRoute
   ApiListingOptimizationProductRoute: typeof ApiListingOptimizationProductRoute
+  ApiListingOptimizationSendImageRoute: typeof ApiListingOptimizationSendImageRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -493,6 +507,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiListingOptimizationProductRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/listing-optimization/send-image': {
+      id: '/api/listing-optimization/send-image'
+      path: '/api/listing-optimization/send-image'
+      fullPath: '/api/listing-optimization/send-image'
+      preLoaderRoute: typeof ApiListingOptimizationSendImageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -520,6 +541,7 @@ const rootRouteChildren: RootRouteChildren = {
   CompanyIndexRoute: CompanyIndexRoute,
   ProductsIndexRoute: ProductsIndexRoute,
   ApiListingOptimizationProductRoute: ApiListingOptimizationProductRoute,
+  ApiListingOptimizationSendImageRoute: ApiListingOptimizationSendImageRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
