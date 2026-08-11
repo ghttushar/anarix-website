@@ -72,8 +72,8 @@ const CaseStudyTeasers = () => {
         >
           {/* Desktop / tablet: rotating ring */}
           <div
-            className="relative hidden sm:block h-[420px]"
-            style={{ perspective: "1400px" }}
+            className="relative hidden sm:block"
+            style={{ perspective: "1400px", height: 440 }}
             role="group"
             aria-label="Featured case studies carousel"
           >
@@ -81,8 +81,8 @@ const CaseStudyTeasers = () => {
               {slots.map((slot) => (
                 <motion.div
                   key={slot.cs.id}
-                  className="absolute w-[310px]"
-                  style={{ zIndex: slot.zIndex }}
+                  className="absolute"
+                  style={{ zIndex: slot.zIndex, width: 310 }}
                   animate={{ x: slot.x, z: slot.z, scale: slot.scale, opacity: slot.opacity }}
                   transition={
                     reduceMotion
