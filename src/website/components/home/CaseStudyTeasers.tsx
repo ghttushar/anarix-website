@@ -6,7 +6,7 @@ import { Link } from "@/lib/router";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { caseStudies, type CaseStudyData } from "@/website/data/case-studies";
 
-const SPACING = 260;
+const SPACING = 345;
 const DEPTH = 130;
 
 /** Shortest signed distance from `i` to `active` on a ring of `n` slots. */
@@ -72,7 +72,7 @@ const CaseStudyTeasers = () => {
         >
           {/* Desktop / tablet: rotating ring */}
           <div
-            className="relative hidden sm:block h-[360px]"
+            className="relative hidden sm:block h-[420px]"
             style={{ perspective: "1400px" }}
             role="group"
             aria-label="Featured case studies carousel"
@@ -81,7 +81,7 @@ const CaseStudyTeasers = () => {
               {slots.map((slot) => (
                 <motion.div
                   key={slot.cs.id}
-                  className="absolute w-[300px]"
+                  className="absolute w-[310px]"
                   style={{ zIndex: slot.zIndex }}
                   animate={{ x: slot.x, z: slot.z, scale: slot.scale, opacity: slot.opacity }}
                   transition={
@@ -167,7 +167,7 @@ function TeasersIntro() {
   return (
     <div
       ref={ref}
-      className={`text-center max-w-2xl mx-auto pb-12 transition-all duration-700 ${
+      className={`text-center max-w-2xl mx-auto pb-16 transition-all duration-700 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       }`}
     >
