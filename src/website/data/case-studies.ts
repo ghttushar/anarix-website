@@ -634,10 +634,10 @@ export const karmaOrganicsStudy: CaseStudyData = {
   },
 };
 
-export const brooklynApparelStudy: CaseStudyData = {
-  id: "amazon-brooklyn-apparel",
+export const apparelSellerStudy: CaseStudyData = {
+  id: "amazon-apparel-seller",
   index: "04",
-  brand: "Brooklyn Apparel",
+  brand: "A well-known apparel seller",
   marketplace: "Amazon · Apparel",
   period: "Aug 2025 → Jul 2026",
   partnerLine: PARTNER_LINE,
@@ -650,7 +650,8 @@ export const brooklynApparelStudy: CaseStudyData = {
     label: "REVENUE GROWTH",
   },
   intro:
-    "Brooklyn Apparel wanted to grow fast through Black Friday and Cyber Monday, without spending more on ads to do it. The Anarix team rebuilt the ad setup before the rush: Sponsored Products became the volume engine, Sponsored Brands took new-to-brand demand, and Sponsored Display carried the peak. Revenue grew 131% in a year and blended TACoS was cut nearly in half.",
+    "This apparel seller wanted to grow fast through Black Friday and Cyber Monday, without spending more on ads to do it. The Anarix team rebuilt the ad setup before the rush: Sponsored Products became the volume engine, Sponsored Brands took new-to-brand demand, and Sponsored Display carried the peak. Revenue grew 131% in a year and blended TACoS was cut nearly in half.",
+
   metadata: [
     { label: "Marketplace", value: "Amazon" },
     { label: "Model", value: "SP · SB · SD" },
