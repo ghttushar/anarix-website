@@ -778,7 +778,7 @@ export const apparelSellerStudy: CaseStudyData = {
     text: "We kept the pedal down through Black Friday without ever losing efficiency.",
     name: "Founder",
     title: "Ecommerce lead",
-    brand: "Brooklyn Apparel",
+    brand: "Anarix partner · apparel",
   },
   finalMetrics: {
     heading: "The numbers",
@@ -794,9 +794,321 @@ export const apparelSellerStudy: CaseStudyData = {
   },
 };
 
+export const specialtyFoodStudy: CaseStudyData = {
+  id: "walmart-specialty-food-launch",
+  index: "05",
+  brand: "Specialty Food Brand",
+  marketplace: "Walmart · Grocery",
+  period: "Launch month → month 9",
+  partnerLine: PARTNER_LINE,
+  title: "Zero to a Walmart growth engine.",
+  hero: {
+    value: 394,
+    prefix: "+",
+    suffix: "%",
+    statLine: "Total growth from launch month to month nine",
+    label: "TOTAL GROWTH",
+  },
+  intro:
+    "This specialty food brand had never sold a single unit on Walmart — no catalog, no reviews, no ad presence, no track record on the platform. Anarix built the account from a standing start: launch strategy, catalog and content, a layered ad program, and a scaling plan built for a brand with no Walmart history to lean on.",
+  metadata: [
+    { label: "Marketplace", value: "Walmart" },
+    { label: "Model", value: "From-scratch launch" },
+    { label: "Period", value: "First 9 months" },
+    { label: "Sector", value: "Grocery · specialty food" },
+  ],
+  kpis: [
+    { value: 394, prefix: "+", suffix: "%", label: "Total growth", sub: "launch month → month 9" },
+    { value: 8, prepend: "8 of ", label: "Months grew", sub: "no month declined" },
+    { value: 22.5, prefix: "+", suffix: "%", decimals: 1, label: "Average MoM growth", sub: "across the period" },
+    { value: 5, prepend: "100 → ", suffix: "00", label: "Sales index", sub: "launch month = 100" },
+  ],
+  challenge: {
+    heading: "The challenge",
+    sub: "Launching with no signal to aim the first move at.",
+    cards: [
+      {
+        title: "No track record",
+        text: "Walmart rewards brands that already have proof — reviews, sales velocity, a fulfillment history. A first-time seller has none of it.",
+      },
+      {
+        title: "No data to decide with",
+        text: "Pricing, fulfillment model and which items to lead with all had to be chosen without the usual account data.",
+      },
+      {
+        title: "Habitual shoppers",
+        text: "Grocery and CPG shoppers stay loyal to what they already buy, so earning a first trial takes more than a live listing.",
+      },
+      {
+        title: "Nothing to improve on",
+        text: "Catalog, content, reviews, ads and fulfillment all had to be built rather than optimized.",
+      },
+    ],
+    visual: {
+      title: "The starting point",
+      rows: [
+        { label: "Items live on Walmart", value: "None", pct: 5 },
+        { label: "Customer reviews", value: "Zero", pct: 5 },
+        { label: "Advertising history", value: "No campaigns", pct: 5 },
+      ],
+      footnote: "Every one of these had to be built, not improved — which changes what a launch plan has to do.",
+    },
+  },
+  strategy: {
+    heading: "The playbook",
+    sub: "A launch built in phases, not a single big bet.",
+    steps: [
+      {
+        title: "Foundation, before anything goes live",
+        text: "Catalog, imagery and content built for a shopper who has never heard of the brand. Pricing set against the category and a fulfillment model matched to margin and delivery speed.",
+      },
+      {
+        title: "Launch with a full ad program from day one",
+        text: "No slow ramp. Sponsored Products, Search Brand Amplifier and a discovery layer went live together, so the brand had a real chance to be seen next to established players.",
+      },
+      {
+        title: "Optimize on early signal",
+        text: "The first weeks were about listening — which items, keywords and placements actually convert — then moving budget off what did not.",
+      },
+      {
+        title: "Scale and defend",
+        text: "Spend grew only behind proven items and keywords, then expanded the line and protected what had been won.",
+      },
+    ],
+  },
+  charts: [
+    {
+      type: "line",
+      title: "Sales index by month",
+      sub: "Nine months of month-over-month growth, from a standing start.",
+      caption: "Sales index · launch month = 100",
+      source: "Walmart marketplace · partner reporting",
+      labels: ["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9"],
+      series: [
+        { name: "Sales index", color: primary, values: [100, 150, 190, 220, 270, 325, 385, 430, 500] },
+      ],
+      anchors: [
+        { i: 0, label: "Launch · 100", series: 0 },
+        { i: 3, label: "Optimize", series: 0 },
+        { i: 8, label: "500 · +394%", series: 0 },
+      ],
+      format: (v) => `${v}`,
+      yFormat: (v) => `${v}`,
+      yTicks: [100, 200, 300, 400, 500],
+      max: 560,
+    },
+  ],
+  beforeAfter: {
+    title: "The account in two states",
+    note: "What the playbook changes across the first two quarters.",
+    columns: ["Area", "Before launch", "After the playbook", "Change"],
+    rows: [
+      ["Monthly sales", "Zero, pre-launch", "Up 394% by month 9", "+394%"],
+      ["Catalog", "Not listed on Walmart", "Full line live, optimized content", "Built"],
+      ["Social proof", "Zero reviews or ratings", "Active review generation program", "Live"],
+      ["Advertising", "No ad presence at all", "Layered Sponsored campaign structure", "Live"],
+      ["Fulfillment", "1P, 3P and WFS undecided", "Model matched to margin and speed", "Decided"],
+      ["Visibility", "No account performance data", "Daily visibility through Jiva", "Daily"],
+      ["Budget logic", "No basis to set one", "Set and moved by what converts", "Signal-led"],
+    ],
+  },
+  insights: {
+    heading: "Why it works",
+    sub: "What the launch taught us.",
+    items: [
+      { value: "1 team", text: "owns catalog, ads and fulfillment together, not three vendors" },
+      { value: "Day one", text: "daily visibility through Jiva, starting before launch" },
+      { value: "4 phases", text: "each one scoped before it starts, so budget scales last" },
+      { value: "+22.5%", text: "average month-over-month growth across the period" },
+    ],
+  },
+  transition: {
+    heading: "What changed",
+    sub: "Before, strategy, result.",
+    before: "No catalog · no reviews · no ad presence · no fulfillment decision",
+    strategy: "Foundation before launch · full ad program day one · optimize on signal · scale on proof",
+    result: "+394% total growth · 8 of 8 months up · +22.5% average month-over-month growth",
+  },
+  quote: {
+    text: "We didn't just want to be listed on Walmart. We wanted a real shot at being found there. Anarix treated the launch like it had to earn every phase that came after it, not like flipping a switch.",
+    name: "Brand leadership",
+    title: "Specialty food brand",
+    brand: "Anarix partner · Walmart launch",
+  },
+  finalMetrics: {
+    heading: "By the numbers",
+    sub: "Launch month through month nine.",
+    items: [
+      { value: 394, prefix: "+", suffix: "%", label: "Total growth", sub: "month 1 → month 9" },
+      { value: 22.5, prefix: "+", suffix: "%", decimals: 1, label: "Average MoM growth", sub: "across the period" },
+      { value: 8, prepend: "8 of ", label: "Months grew", sub: "no month declined" },
+      { value: 45, prefix: "+", suffix: "%", label: "Fastest month", sub: "month 2, off the smallest base" },
+      { value: 500, label: "Sales index at month 9", sub: "launch month = 100" },
+      { value: 4, label: "Launch phases", sub: "foundation, launch, optimize, scale" },
+    ],
+  },
+};
+
+export const amazonDistributorStudy: CaseStudyData = {
+  id: "amazon-multi-category-distributor",
+  index: "06",
+  brand: "Multi-Category Amazon Distributor",
+  marketplace: "Amazon · Travel, beauty and food accessories",
+  period: "Jan → Jun 2026",
+  partnerLine: PARTNER_LINE,
+  title: "Scaling a distribution business through a six-month growth phase.",
+  hero: {
+    value: 380,
+    prefix: "+",
+    suffix: "%",
+    statLine: "Growth in monthly total sales, Jan → Jun 2026",
+    label: "MONTHLY TOTAL SALES",
+  },
+  intro:
+    "Monthly total sales climbed from $36.3K in January to a peak of $174.3K in June — six consecutive months of growth across travel bags, sunscreen brushes and snack boxes. Sponsored Products stayed the primary engine while Sponsored Display scaled into a major secondary contributor, expanding reach without giving up efficiency.",
+  metadata: [
+    { label: "Marketplace", value: "Amazon" },
+    { label: "Model", value: "SP · SD · SB" },
+    { label: "Period", value: "Jan → Jun 2026" },
+    { label: "Sector", value: "Multi-category distribution" },
+  ],
+  kpis: [
+    { value: 380, prefix: "+", suffix: "%", label: "Total sales growth", sub: "Jan → Jun 2026" },
+    { value: 393, prefix: "+", suffix: "%", label: "Units sold growth", sub: "Jan → Jun 2026" },
+    { value: 261, prefix: "+", suffix: "%", label: "Ad sales growth", sub: "Jan → Jun 2026" },
+    { value: 6.25, suffix: "x", decimals: 2, label: "Peak ROAS in June", sub: "up from 4.28x" },
+  ],
+  challenge: {
+    heading: "The challenge",
+    sub: "Growth that could not come at the cost of efficiency.",
+    cards: [
+      {
+        title: "Single-format dependence",
+        text: "Almost all revenue came through Sponsored Products, which capped how much new reach the account could buy.",
+      },
+      {
+        title: "Three categories, one budget",
+        text: "Travel bags, sunscreen brushes and snack boxes each behaved differently but shared the same monthly spend.",
+      },
+      {
+        title: "Efficiency under pressure",
+        text: "Monthly ad spend needed to nearly triple, and ROAS had to hold up while it did.",
+      },
+      {
+        title: "Momentum had to compound",
+        text: "One strong month proves nothing. The plan had to produce growth every month, not a single spike.",
+      },
+    ],
+    visual: {
+      title: "Where the account started",
+      rows: [
+        { label: "Monthly total sales, January", value: "$36.3K", pct: 21 },
+        { label: "Core SP investment", value: "$5.1K / month", pct: 42 },
+        { label: "ROAS at baseline", value: "4.28x", pct: 68 },
+      ],
+      footnote: "The upside was in ad formats the account was not using yet.",
+    },
+  },
+  strategy: {
+    heading: "Our approach",
+    sub: "Scaling spend while expanding beyond Sponsored Products.",
+    steps: [
+      {
+        title: "Scaled Sponsored Products",
+        text: "Core SP investment grew from $5.1K to $12.2K a month and stayed the primary growth engine throughout the phase.",
+      },
+      {
+        title: "Expanded Sponsored Display",
+        text: "SD ad sales grew nearly 6x from January to June, turning a minor line item into a major secondary contributor.",
+      },
+      {
+        title: "Layered in Sponsored Brands",
+        text: "SB spend was built out alongside SP and SD to add incremental top-of-funnel visibility.",
+      },
+      {
+        title: "Protected efficiency while scaling",
+        text: "ROAS improved from 4.28x to 6.25x even as monthly ad spend nearly tripled.",
+      },
+    ],
+  },
+  charts: [
+    {
+      type: "line",
+      title: "Monthly total sales",
+      sub: "Six consecutive months of growth, from a $36.3K baseline to a $174.3K peak.",
+      caption: "Monthly total sales · Aug 2025 → Jun 2026 · Jul 2026 excluded",
+      source: "Amazon Seller Central · partner reporting",
+      labels: ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+      series: [
+        { name: "Total sales", color: primary, values: [14, 12, 12, 40, 37, 36.3, 71, 101, 122, 160, 174.3] },
+      ],
+      anchors: [
+        { i: 5, label: "$36.3K baseline", series: 0 },
+        { i: 7, label: "Crossed $100K", series: 0 },
+        { i: 10, label: "$174.3K peak", series: 0 },
+      ],
+      format: (v) => `$${v}K`,
+      yFormat: (v) => `$${v}K`,
+      yTicks: [50, 100, 150],
+      max: 190,
+    },
+  ],
+  beforeAfter: {
+    title: "January versus June",
+    note: "The growth phase, start to peak.",
+    columns: ["Metric", "January 2026", "June 2026", "Change"],
+    rows: [
+      ["Monthly total sales", "$36.3K", "$174.3K", "+380%"],
+      ["Units sold", "Baseline", "Peak month", "+393%"],
+      ["Ad sales", "Baseline", "Peak month", "+261%"],
+      ["ROAS", "4.28x", "6.25x", "+46%"],
+      ["Core SP investment", "$5.1K / month", "$12.2K / month", "+139%"],
+      ["Sponsored Display ad sales", "Minor contributor", "Major contributor", "~6x"],
+    ],
+  },
+  insights: {
+    heading: "Key takeaways",
+    sub: "What's driving the growth.",
+    items: [
+      { value: "Full funnel", text: "layering SD and SB onto SP multiplied reach beyond what SP alone could deliver" },
+      { value: "6.25x", text: "ROAS improved even as monthly ad spend nearly tripled" },
+      { value: "6 months", text: "of consistent increased investment produced a compounding climb" },
+      { value: "3 categories", text: "ran on one strategy: travel bags, sunscreen brushes, snack boxes" },
+    ],
+  },
+  transition: {
+    heading: "What changed",
+    sub: "Before, strategy, result.",
+    before: "$36.3K months · almost all revenue through Sponsored Products · 4.28x ROAS",
+    strategy: "Scale SP · expand SD · layer SB · protect efficiency month over month",
+    result: "$174.3K peak month · +380% total sales · +393% units · 6.25x ROAS",
+  },
+  quote: {
+    text: "A repeatable growth playbook — scaling spend, expanding ad formats, and protecting efficiency along the way.",
+    name: "Account leadership",
+    title: "Amazon distribution partner",
+    brand: "Anarix partner · Amazon",
+  },
+  finalMetrics: {
+    heading: "By the numbers",
+    sub: "Growth phase, January through June 2026.",
+    items: [
+      { value: 380, prefix: "+", suffix: "%", label: "Total sales growth", sub: "Jan → Jun 2026" },
+      { value: 393, prefix: "+", suffix: "%", label: "Units sold growth", sub: "Jan → Jun 2026" },
+      { value: 261, prefix: "+", suffix: "%", label: "Ad sales growth", sub: "Jan → Jun 2026" },
+      { value: 6.25, suffix: "x", decimals: 2, label: "Peak ROAS", sub: "June, up from 4.28x" },
+      { value: 174.3, prefix: "$", suffix: "K", decimals: 1, label: "Peak month sales", sub: "June 2026" },
+      { value: 12.2, prefix: "$", suffix: "K", decimals: 1, label: "Monthly SP investment", sub: "up from $5.1K" },
+    ],
+  },
+};
+
 export const caseStudies: CaseStudyData[] = [
   driveMedicalStudy,
   mountItStudy,
   karmaOrganicsStudy,
-  brooklynApparelStudy,
+  apparelSellerStudy,
+  specialtyFoodStudy,
+  amazonDistributorStudy,
 ];
+
