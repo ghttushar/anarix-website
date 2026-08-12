@@ -38,11 +38,14 @@ const HeroManagedStudio = () => {
   }, [reduce]);
 
   return (
-    <div className="relative isolate">
+    <div className="relative">
       <div
         aria-hidden
-        className="absolute -inset-8 -z-10 rounded-[3rem] opacity-80"
+        className="absolute opacity-80"
         style={{
+          inset: "-2rem",
+          zIndex: -1,
+          borderRadius: "3rem",
           background:
             "radial-gradient(ellipse 65% 60% at 55% 40%, hsl(var(--primary) / 0.16), transparent 72%)",
         }}

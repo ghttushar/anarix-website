@@ -67,7 +67,7 @@ export function ExpandingCapabilityGrid({
 
 
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-border/50 bg-surface-elevated/60 p-4 sm:p-6 lg:p-8">
+    <div className="relative overflow-hidden rounded-3xl border border-border/50 bg-card/40 p-4 sm:p-6 lg:p-8">
       {/* Layered backdrop: grid mesh, guide rules, glow, vignette */}
       <motion.div
         className="pointer-events-none absolute inset-0 z-0"

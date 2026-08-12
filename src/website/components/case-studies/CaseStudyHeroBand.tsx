@@ -25,7 +25,7 @@ function StepButton({
       type="button"
       aria-label={label}
       onClick={onClick}
-      className="flex h-11 w-11 items-center justify-center rounded-pill border border-border bg-card text-foreground shadow-soft transition-colors hover:border-primary/50 hover:text-primary"
+      className="flex h-10 w-10 items-center justify-center rounded-pill border border-border bg-card text-foreground shadow-soft transition-colors hover:border-primary/50 hover:text-primary"
     >
       {children}
     </button>
@@ -91,7 +91,7 @@ export function CaseStudyHeroBand({
         <AnimatePresence mode="wait">
           <motion.div
             key={cs.id}
-            className="mt-8 grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)]"
+            className="mt-8 grid items-center gap-10 lg:grid-cols-[7fr_5fr]"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}

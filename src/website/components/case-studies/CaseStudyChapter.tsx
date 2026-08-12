@@ -153,7 +153,7 @@ export function CaseStudyChapter({ data }: { data: CaseStudyData }) {
       </Section>
 
       <Section>
-        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1fr)]">
+        <div className="grid items-center gap-10 lg:grid-cols-[5fr_7fr]">
           <CaseStudyVisual data={data} />
           <div>
             <ChapterHeading

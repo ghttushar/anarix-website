@@ -31,12 +31,15 @@ export function CaseStudyVisual({
   const kpis = data.kpis.slice(0, 2);
 
   return (
-    <div className="relative isolate">
+    <div className="relative">
       {/* Soft field behind the card */}
       <div
         aria-hidden
-        className="absolute -inset-6 -z-10 rounded-[2.5rem] opacity-70"
+        className="absolute opacity-70"
         style={{
+          inset: "-1.5rem",
+          zIndex: -1,
+          borderRadius: "2.5rem",
           background:
             "radial-gradient(ellipse 70% 70% at 50% 40%, hsl(var(--primary) / 0.14), transparent 70%)",
         }}
@@ -63,7 +66,8 @@ export function CaseStudyVisual({
             loading="lazy"
             width={1024}
             height={768}
-            className={`w-full object-cover ${compact ? "h-52" : "h-64 sm:h-80"}`}
+            className="w-full object-cover"
+            style={{ height: compact ? 208 : 300 }}
             initial={{ scale: 1.08 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
@@ -74,7 +78,8 @@ export function CaseStudyVisual({
           {reduce ? null : (
             <motion.div
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-background/40 to-transparent"
+              className="pointer-events-none absolute inset-y-0 bg-gradient-to-r from-transparent via-background/40 to-transparent"
+              style={{ width: "33%" }}
               initial={{ x: "-120%" }}
               whileInView={{ x: "320%" }}
               viewport={{ once: true }}
@@ -112,9 +117,9 @@ export function CaseStudyVisual({
       <div className="pointer-events-none absolute inset-0 hidden lg:block">
         {media.chips.map((chip, i) => {
           const spots = [
-            { top: "12%", right: "-12%" },
-            { top: "46%", left: "-14%" },
-            { bottom: "14%", right: "-9%" },
+            { top: "8%", right: "4%" },
+            { top: "46%", left: "-6%" },
+            { bottom: "22%", right: "6%" },
           ][i];
           return (
             <motion.div

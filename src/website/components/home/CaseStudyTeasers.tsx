@@ -202,7 +202,7 @@ function TeaserCard({ cs, interactive }: { cs: CaseStudyData; interactive: boole
       to={`/case-studies#${cs.id}`}
       tabIndex={interactive ? 0 : -1}
       aria-hidden={interactive ? undefined : true}
-      className={`group flex h-[470px] flex-col rounded-3xl border bg-card shadow-medium p-6 sm:p-7 transition-colors duration-300 ${
+      className={`group flex h-[400px] flex-col rounded-3xl border bg-card shadow-medium p-6 sm:p-7 transition-colors duration-300 ${
         interactive
           ? "border-border hover:border-primary/45 pointer-events-auto"
           : "border-border/60 pointer-events-none"
