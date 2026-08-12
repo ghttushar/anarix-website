@@ -71,8 +71,8 @@ const PainPointsSection = () => {
             A note from the founders
           </p>
           <blockquote className="mt-3 max-w-3xl font-display text-xl sm:text-2xl leading-snug text-foreground">
-            We built Anarix because brand owners kept telling us the same thing, not &ldquo;I need
-            better software,&rdquo; but{" "}
+            Brand owners kept telling us the same thing, not &ldquo;I need better software,&rdquo;
+            but{" "}
             <span className="text-primary font-bold">&ldquo;I need someone to just handle this.&rdquo;</span>
           </blockquote>
         </motion.figure>

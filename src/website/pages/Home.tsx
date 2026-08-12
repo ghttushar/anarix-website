@@ -30,6 +30,7 @@ const Home = () => {
 
       <ServicesGrid />
 
+      <LeadCaptureBand />
 
       <TestimonialsWrapper />
 
@@ -72,8 +73,6 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
-
-      <LeadCaptureBand />
 
       <NextStep
         title="See the numbers behind the claims"
