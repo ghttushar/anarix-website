@@ -6,8 +6,10 @@ const pains = [
   "You don't know if you're one policy violation away from a suspension.",
   "Your \"agency\" sends a monthly report nobody has time to read.",
   "You're the one still checking Seller Central at 11pm.",
+  "Half your week goes to reconciling reports, fees and returns by hand.",
   "You built a brand. Not a second job managing Amazon ads.",
 ];
+
 
 const PainPointsSection = () => {
   const ref = useRef<HTMLDivElement>(null);
