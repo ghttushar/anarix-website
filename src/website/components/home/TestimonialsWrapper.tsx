@@ -188,7 +188,7 @@ const TestimonialsWrapper = () => (
             transition={{ delay: 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             style={VIDEO_GRADIENT}
           >
-            <div className="relative flex-1 min-h-0" style={{ aspectRatio: "16 / 10" }}>
+            <div className="relative flex-1 min-h-0" style={{ aspectRatio: "16 / 9", maxHeight: "20rem" }}>
               <VideoBody person={JOEY} />
             </div>
             <div className="p-5 flex flex-col gap-3 text-background">
@@ -204,7 +204,7 @@ const TestimonialsWrapper = () => (
           transition={{ delay: 0.15, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           style={VIDEO_GRADIENT}
         >
-          <div className="relative flex-1 min-h-0" style={{ aspectRatio: "3 / 4" }}>
+          <div className="relative flex-1 min-h-0" style={{ aspectRatio: "4 / 5", maxHeight: "24rem" }}>
             <VideoBody person={NAUSIL} />
           </div>
           <div className="p-5 flex flex-col gap-3 text-background">
