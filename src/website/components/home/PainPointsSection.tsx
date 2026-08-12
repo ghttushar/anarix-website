@@ -6,8 +6,10 @@ const pains = [
   "You don't know if you're one policy violation away from a suspension.",
   "Your \"agency\" sends a monthly report nobody has time to read.",
   "You're the one still checking Seller Central at 11pm.",
+  "Half your week goes to reconciling reports, fees and returns by hand.",
   "You built a brand. Not a second job managing Amazon ads.",
 ];
+
 
 const PainPointsSection = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -56,19 +58,25 @@ const PainPointsSection = () => {
               </p>
             </motion.div>
           ))}
-          <motion.div
-            className="flex items-center p-5 sm:p-6 rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-card/40 to-periwinkle/10 backdrop-blur-sm"
-            initial={{ opacity: 0, y: 12, scale: 0.97 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <p className="text-base sm:text-lg text-foreground leading-relaxed">
-              We built Anarix because brand owners kept telling us the same thing, not &ldquo;I need better software,&rdquo; but{" "}
-              <span className="text-primary font-bold">&ldquo;I need someone to just handle this.&rdquo;</span>
-            </p>
-          </motion.div>
         </div>
+
+        <motion.figure
+          className="relative mt-6 overflow-hidden rounded-3xl border border-primary/25 bg-gradient-to-br from-primary/10 via-card/50 to-periwinkle/10 p-6 sm:p-8 backdrop-blur-sm"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+            A note from the founders
+          </p>
+          <blockquote className="mt-3 max-w-3xl font-display text-xl sm:text-2xl leading-snug text-foreground">
+            We built Anarix because brand owners kept telling us the same thing, not &ldquo;I need
+            better software,&rdquo; but{" "}
+            <span className="text-primary font-bold">&ldquo;I need someone to just handle this.&rdquo;</span>
+          </blockquote>
+        </motion.figure>
+
       </div>
     </section>
   );
