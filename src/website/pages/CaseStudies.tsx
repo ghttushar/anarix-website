@@ -67,7 +67,7 @@ const CaseStudies = () => {
         onStep={(dir) => select(active + dir)}
       />
 
-      <CaseStudyHero data={study} />
+      <CaseStudyHero data={study} index={active} />
 
       <AnimatePresence mode="wait">
         <motion.div
