@@ -75,15 +75,15 @@ const HeroManagedOps = () => {
               />
               {!reduceMotion && (
                 <motion.circle
-                  cx={p.x}
-                  cy={p.y}
+                  cx={0}
+                  cy={0}
                   r={3}
                   fill="currentColor"
                   className="text-primary"
-                  initial={{ opacity: 0 }}
+                  initial={{ opacity: 0, x: p.x, y: p.y }}
                   animate={{
-                    cx: [p.x, 0, p.x],
-                    cy: [p.y, 0, p.y],
+                    x: [p.x, 0, p.x],
+                    y: [p.y, 0, p.y],
                     opacity: [0, 1, 0],
                   }}
                   transition={{
@@ -94,6 +94,7 @@ const HeroManagedOps = () => {
                   }}
                 />
               )}
+
 
             </g>
           );
