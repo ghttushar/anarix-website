@@ -15,10 +15,49 @@ const heroNumber = (cs: CaseStudyData): string => {
 const shortBrand = (brand: string): string =>
   brand.length > 18 ? `${brand.slice(0, 17).trimEnd()}...` : brand;
 
+/** One circular arrow button with a hover label for the brand it leads to. */
+function ArrowButton({
+  dir,
+  brand,
+  onClick,
+}: {
+  dir: -1 | 1;
+  brand: string;
+  onClick: () => void;
+}) {
+  const isNext = dir === 1;
+  return (
+    <div className="group relative shrink-0">
+      <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-pill border border-border bg-card px-2.5 py-1 text-[11px] font-medium text-foreground opacity-0 shadow-soft transition-opacity duration-200 group-hover:opacity-100">
+        {shortBrand(brand)}
+      </span>
+      <button
+        type="button"
+        onClick={onClick}
+        aria-label={isNext ? "Next case study" : "Previous case study"}
+        className={
+          isNext
+            ? "flex h-10 w-10 items-center justify-center rounded-pill bg-primary/10 text-primary ring-1 ring-primary/40 transition-colors hover:bg-primary/20"
+            : "flex h-10 w-10 items-center justify-center rounded-pill text-muted-foreground ring-1 ring-border transition-colors hover:text-foreground hover:ring-primary/40"
+        }
+      >
+        <motion.span
+          className="flex"
+          animate={isNext ? { x: [0, 3, 0] } : undefined}
+          transition={
+            isNext ? { duration: 1.6, repeat: Infinity, ease: "easeInOut", repeatDelay: 1.2 } : undefined
+          }
+        >
+          {isNext ? <ArrowRight className="h-4 w-4" /> : <ArrowLeft className="h-4 w-4" />}
+        </motion.span>
+      </button>
+    </div>
+  );
+}
+
 /**
- * Big, obvious pager. The next button carries the next brand and its headline
- * number so the affordance explains itself, and a labelled rail underneath
- * shows every study with the current one filled in.
+ * Slim pager: arrows on the outside, the current position and brand in the
+ * middle, and a numbered rail for direct jumps.
  */
 function Pager({
   studies,
@@ -33,83 +72,57 @@ function Pager({
 }) {
   const prev = studies[(active - 1 + studies.length) % studies.length];
   const next = studies[(active + 1) % studies.length];
+  const current = studies[active];
 
   return (
-    <div className="rounded-3xl border-2 border-primary/25 bg-card p-4 shadow-medium sm:p-5">
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
-          Browse case studies
-        </p>
-        <p className="text-[11px] text-muted-foreground">
-          Use the arrows to switch, or pick a brand below
-        </p>
-      </div>
+    <div className="flex items-center gap-3 rounded-pill border border-border bg-card/90 px-3 py-2 shadow-soft backdrop-blur">
+      <ArrowButton dir={-1} brand={prev.brand} onClick={() => onStep(-1)} />
 
-      <div className="mt-3 grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
-        <button
-          type="button"
-          onClick={() => onStep(-1)}
-          className="group flex items-center gap-3 rounded-2xl border border-border bg-background px-4 py-4 text-left transition-colors hover:border-primary/50"
-        >
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-pill border border-border text-foreground transition-colors group-hover:border-primary/50 group-hover:text-primary">
-            <ArrowLeft className="h-4 w-4" />
-          </span>
-          <span className="min-w-0">
-            <span className="block text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-              Previous
+      <div className="flex min-w-0 flex-1 items-center gap-3 overflow-hidden">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current.id}
+            className="flex min-w-0 items-baseline gap-2"
+            initial={{ opacity: 0, x: 8 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -8 }}
+            transition={{ duration: 0.28, ease: EASE }}
+          >
+            <span className="font-numeric text-xs font-semibold text-muted-foreground">
+              {String(active + 1).padStart(2, "0")} / {String(studies.length).padStart(2, "0")}
             </span>
-            <span className="block truncate text-sm font-semibold text-foreground">
-              {shortBrand(prev.brand)}
+            <span className="truncate text-sm font-semibold text-foreground">
+              {shortBrand(current.brand)}
             </span>
-          </span>
-        </button>
+          </motion.div>
+        </AnimatePresence>
 
-        <button
-          type="button"
-          onClick={() => onStep(1)}
-          className="group flex items-center justify-between gap-3 rounded-2xl border-2 border-primary bg-primary px-5 py-4 text-left text-primary-foreground transition-transform hover:-translate-y-0.5"
-        >
-          <span className="min-w-0">
-            <span className="block text-[10px] font-semibold uppercase tracking-[0.16em] opacity-80">
-              Click for the next case study
-            </span>
-            <span className="block truncate text-base font-semibold">
-              {shortBrand(next.brand)}
-              <span className="font-numeric ml-2 opacity-90">{heroNumber(next)}</span>
-            </span>
-          </span>
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-pill bg-primary-foreground/15 ring-1 ring-primary-foreground/40">
-            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
-          </span>
-        </button>
-      </div>
-
-      <div className="mt-4 border-t border-border pt-3">
-        <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-          Jump to a brand
-        </p>
-        <div className="flex flex-wrap gap-2">
+        <div className="ml-auto hidden items-center gap-1.5 sm:flex">
           {studies.map((s, i) => (
             <button
               key={s.id}
               type="button"
+              title={s.brand}
+              aria-label={`Go to ${s.brand}`}
               aria-current={i === active ? "true" : undefined}
               onClick={() => onSelect(i)}
               className={
                 i === active
-                  ? "flex items-center gap-2 rounded-pill bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground"
-                  : "flex items-center gap-2 rounded-pill border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
+                  ? "font-numeric rounded-pill bg-primary px-2 py-1 text-[11px] font-semibold text-primary-foreground"
+                  : "font-numeric rounded-pill px-2 py-1 text-[11px] font-medium text-muted-foreground ring-1 ring-border transition-colors hover:text-foreground hover:ring-primary/40"
               }
             >
-              <span className="font-numeric opacity-70">{String(i + 1).padStart(2, "0")}</span>
-              <span className="max-w-[10rem] truncate">{shortBrand(s.brand)}</span>
+              {String(i + 1).padStart(2, "0")}
             </button>
           ))}
         </div>
       </div>
+
+      <ArrowButton dir={1} brand={next.brand} onClick={() => onStep(1)} />
     </div>
   );
 }
+
 
 
 /**
