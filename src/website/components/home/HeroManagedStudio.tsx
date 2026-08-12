@@ -165,34 +165,34 @@ const HeroManagedStudio = () => {
               {account.channel}
             </span>
 
-            <div className="absolute inset-x-3 bottom-3 flex items-end justify-between gap-3">
-              <div className="min-w-0">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-                  {account.category}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={account.metric.value}
+                className="absolute right-3 top-3 rounded-xl border border-border/70 bg-card/95 px-3 py-2 text-right backdrop-blur"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.45, ease: EASE }}
+              >
+                <p className="font-numeric text-xl font-bold leading-none text-foreground">
+                  {account.metric.value}
                 </p>
-                <p className="mt-1 truncate text-sm font-medium text-foreground">
-                  Managed end to end by Anarix
+                <p className="mt-1 text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
+                  {account.metric.label}
                 </p>
-              </div>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={account.metric.value}
-                  className="shrink-0 rounded-xl border border-border/70 bg-card/95 px-3 py-2 text-right backdrop-blur"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.45, ease: EASE }}
-                >
-                  <p className="font-numeric text-xl font-bold leading-none text-foreground">
-                    {account.metric.value}
-                  </p>
-                  <p className="mt-1 text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
-                    {account.metric.label}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
+              </motion.div>
+            </AnimatePresence>
+
+            <div className="absolute inset-x-3 bottom-3">
+              <p className="truncate text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                {account.category}
+              </p>
+              <p className="mt-1 truncate text-sm font-medium text-foreground">
+                Run end to end by the Anarix team
+              </p>
             </div>
           </div>
+
 
           {/* The rest of the book, waiting in the rail */}
           <div className="grid grid-cols-3 gap-3 sm:grid-cols-1">
