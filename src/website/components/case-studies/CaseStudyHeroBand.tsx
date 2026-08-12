@@ -111,10 +111,10 @@ function CaseStudyPager({
 
   return (
     <div className="overflow-hidden rounded-2xl border border-border bg-muted/30">
-      <div className="flex flex-col gap-4 p-5 sm:p-6 lg:flex-row lg:items-stretch">
+      <div className="grid gap-4 p-5 sm:p-6 lg:grid-cols-[320px_1fr_320px] lg:items-stretch">
         <StepZone dir={-1} study={prev} onClick={() => onStep(-1)} />
 
-        <div className="flex flex-1 flex-col items-center justify-center py-2 text-center lg:px-4">
+        <div className="flex flex-col items-center justify-center py-2 text-center lg:px-4">
           <span className="font-numeric text-xs font-semibold uppercase tracking-[0.18em] text-primary">
             Case Study {String(active + 1).padStart(2, "0")} / {String(studies.length).padStart(2, "0")}
           </span>
