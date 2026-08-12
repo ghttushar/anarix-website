@@ -72,6 +72,8 @@ const Home = () => {
         </div>
       </section>
 
+      <LeadCaptureBand />
+
       <NextStep
         title="See the numbers behind the claims"
         description="Two accounts, two marketplaces, what changed, month by month."
