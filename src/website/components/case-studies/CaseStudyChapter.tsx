@@ -135,9 +135,9 @@ function ChapterHeading({ eyebrow, heading, sub }: { eyebrow: string; heading: s
 export function CaseStudyChapter({ data }: { data: CaseStudyData }) {
   return (
     <article>
-      <div className="pt-12 sm:pt-16 pb-12 sm:pb-16">
+      <div className="pt-4 pb-12 sm:pb-16">
         <div className="container-page px-6 sm:px-8">
-          <ChapterHero data={data} />
+          <ChapterOpening data={data} />
         </div>
       </div>
 
@@ -151,9 +151,27 @@ export function CaseStudyChapter({ data }: { data: CaseStudyData }) {
         <ChallengeVisual visual={data.challenge.visual} />
       </Section>
 
+      <Section>
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1fr)]">
+          <CaseStudyVisual data={data} />
+          <div>
+            <ChapterHeading
+              eyebrow="On the ground"
+              heading="What the catalog actually looked like"
+              sub={data.transition.sub}
+            />
+            <p className="mt-4 text-muted-foreground leading-relaxed">{data.transition.before}</p>
+            <p className="mt-4 text-foreground leading-relaxed font-medium">
+              {data.transition.strategy}
+            </p>
+          </div>
+        </div>
+      </Section>
+
       <Section panel>
         <ChapterHeading eyebrow="Approach" heading={data.strategy.heading} sub={data.strategy.sub} />
         <div className="space-y-8">
+
           {data.strategy.steps.map((s, i) => (
             <TimelineStep
               key={s.title}
