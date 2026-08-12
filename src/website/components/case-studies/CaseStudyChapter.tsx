@@ -20,7 +20,7 @@ import { CaseChartBlock } from "./charts";
  * loud numbers, the challenge, the approach, the numbers, the quote, the recap.
  */
 
-function ChapterHero({ data }: { data: CaseStudyData }) {
+function ChapterOpening({ data }: { data: CaseStudyData }) {
   const { ref, isVisible } = useScrollReveal();
   return (
     <div ref={ref} id={data.id} className="scroll-mt-28">
@@ -29,24 +29,14 @@ function ChapterHero({ data }: { data: CaseStudyData }) {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         }`}
       >
-        <div className="flex items-center justify-between gap-6 flex-wrap gap-block-sm">
-          <span className="font-numeric text-5xl sm:text-6xl font-bold text-foreground/10 tracking-tight select-none">
-            {data.index}
-          </span>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <Eyebrow>Overview</Eyebrow>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
             {data.partnerLine}
           </p>
         </div>
 
-        <Eyebrow className="mb-4">{data.marketplace}</Eyebrow>
-        <p className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-foreground leading-none">
-          {data.brand}
-        </p>
-        <h2 className="mt-3 font-display text-2xl sm:text-4xl font-semibold tracking-tight text-foreground leading-[1.1] max-w-3xl gap-heading-sm">
-          {data.title}
-        </h2>
-
-        <p className="max-w-3xl text-base sm:text-lg text-muted-foreground leading-relaxed gap-block-sm">
+        <p className="mt-6 max-w-3xl text-base sm:text-lg text-muted-foreground leading-relaxed">
           {data.intro}
         </p>
 
@@ -56,7 +46,7 @@ function ChapterHero({ data }: { data: CaseStudyData }) {
               key={m.label}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-pill bg-card border border-border text-xs text-muted-foreground"
             >
-              <span className="font-semibold text-foreground">{m.value}</span>
+              <span className="font-numeric font-semibold text-foreground">{m.value}</span>
               {m.label}
             </span>
           ))}
@@ -71,6 +61,7 @@ function ChapterHero({ data }: { data: CaseStudyData }) {
     </div>
   );
 }
+
 
 function ChallengeCard({ index, title, text }: { index: number; title: string; text: string }) {
   const { ref, isVisible } = useScrollReveal();
