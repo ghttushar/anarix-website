@@ -14,49 +14,53 @@ const Contact = () => (
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
-          {/* Gradient illustration area */}
-          <div className="relative rounded-3xl bg-gradient-to-br from-primary/10 via-accent to-primary/5 pad-card-lg overflow-hidden min-h-[360px] flex flex-col justify-center">
-            {/* Floating icons */}
-            {[
-              { icon: MessageSquare, x: "15%", y: "20%", delay: 0 },
-              { icon: Mail, x: "70%", y: "15%", delay: 0.5 },
-              { icon: Globe, x: "80%", y: "65%", delay: 1 },
-              { icon: Send, x: "20%", y: "75%", delay: 1.5 },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-10 h-10 rounded-xl bg-background/80 shadow-soft flex items-center justify-center"
-                style={{ left: item.x, top: item.y }}
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 3 + i * 0.5, delay: item.delay, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <item.icon className="w-5 h-5 text-primary" />
-              </motion.div>
-            ))}
+          {/* Card behind the copy so the headline always reads clearly */}
+          <div className="rounded-3xl border border-border bg-card shadow-strong">
+            <div className="relative m-2 overflow-hidden rounded-[1.35rem] bg-gradient-to-br from-primary/12 via-accent to-primary/5 pad-card-lg min-h-[360px] flex flex-col justify-center">
+              {/* Floating icons */}
+              {[
+                { icon: MessageSquare, x: "15%", y: "20%", delay: 0 },
+                { icon: Mail, x: "70%", y: "15%", delay: 0.5 },
+                { icon: Globe, x: "80%", y: "65%", delay: 1 },
+                { icon: Send, x: "20%", y: "75%", delay: 1.5 },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-10 h-10 rounded-xl bg-card/90 border border-border/60 shadow-soft flex items-center justify-center"
+                  style={{ left: item.x, top: item.y }}
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 3 + i * 0.5, delay: item.delay, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <item.icon className="w-5 h-5 text-primary" />
+                </motion.div>
+              ))}
 
-            <div className="relative z-10">
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground leading-[1.08] mb-4">
-                Get in <span className="text-gradient-primary">Touch</span>
-              </h1>
-              <p className="text-lg text-muted-foreground mb-8">We'd love to hear from you.</p>
+              <div className="relative z-10">
+                <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground leading-[1.08] mb-4">
+                  Get in <span className="text-gradient-primary">Touch</span>
+                </h1>
+                <p className="text-lg text-muted-foreground mb-8">We'd love to hear from you.</p>
 
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 p-3 rounded-xl bg-background/80 backdrop-blur-sm">
-                  <Mail className="w-5 h-5 text-primary" />
-                  <span className="text-sm text-foreground">hello@anarix.ai</span>
-                </div>
-                <div className="flex items-center gap-3 p-3 rounded-xl bg-background/80 backdrop-blur-sm">
-                  <MapPin className="w-5 h-5 text-primary" />
-                  <span className="text-sm text-foreground">New York, NY</span>
-                </div>
-                <div className="flex items-center gap-3 p-3 rounded-xl bg-background/80 backdrop-blur-sm">
-                  <Phone className="w-5 h-5 text-primary" />
-                  <span className="text-sm text-foreground">+1 (555) 000-0000</span>
+                <div className="space-y-3">
+                  {[
+                    { icon: Mail, text: "hello@anarix.ai" },
+                    { icon: MapPin, text: "New York, NY" },
+                    { icon: Phone, text: "+1 (555) 000-0000" },
+                  ].map((row) => (
+                    <div
+                      key={row.text}
+                      className="flex items-center gap-3 p-3 rounded-xl border border-primary/20 bg-primary/10 backdrop-blur-sm"
+                    >
+                      <row.icon className="w-5 h-5 text-primary" />
+                      <span className="text-sm font-medium text-foreground">{row.text}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
         </motion.div>
+
 
         {/* Right - form */}
         <motion.form

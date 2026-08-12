@@ -10,6 +10,7 @@ import AanWebsitePanel from "./components/AanWebsitePanel";
 import { FloatingActionIsland } from "./components/FloatingActionIsland";
 import { LeadCaptureProvider } from "./components/lead-capture/LeadCaptureContext";
 import LeadCaptureModal from "./components/lead-capture/LeadCaptureModal";
+import LeadCapturePrompt from "./components/lead-capture/LeadCapturePrompt";
 
 /**
  * Shell for every marketing route: providers, the scoped design-system wrapper
@@ -28,6 +29,8 @@ export default function WebsiteLayout() {
                 <FloatingActionIsland />
                 <AanWebsitePanel />
                 <LeadCaptureModal />
+                <LeadCapturePrompt />
+
                 <Toaster position="bottom-right" />
               </div>
             </LeadCaptureProvider>

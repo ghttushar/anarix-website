@@ -12,6 +12,7 @@ import CaseStudyTeasers from "@/website/components/home/CaseStudyTeasers";
 import ScrollProgress from "@/website/components/ScrollProgress";
 import Footer from "@/website/components/Footer";
 import NextStep from "@/website/components/marketing/NextStep";
+import LeadCaptureBand from "@/website/components/lead-capture/LeadCaptureBand";
 import { ArrowRight } from "lucide-react";
 
 const Home = () => {
@@ -71,6 +72,8 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
+
+      <LeadCaptureBand />
 
       <NextStep
         title="See the numbers behind the claims"

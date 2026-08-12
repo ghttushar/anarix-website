@@ -18,7 +18,7 @@ export interface CaseMedia {
 
 const FALLBACK: CaseMedia = {
   image: distribution,
-  alt: "Assorted consumer products in a catalog grid",
+  alt: "Premium consumer products arranged in a studio catalog grid",
   chips: ["Catalog audited", "Ads restructured", "Margin protected"],
   category: "Marketplace catalog",
 };
@@ -26,37 +26,37 @@ const FALLBACK: CaseMedia = {
 const MEDIA: Record<string, CaseMedia> = {
   "walmart-drive-medical": {
     image: medicalSupply,
-    alt: "Aluminium medical rollator walker on a light background",
+    alt: "Lightweight aluminium rollator walker photographed in a bright studio",
     chips: ["Item pages fixed", "Search share won", "Spend rebalanced"],
     category: "Mobility and medical supply",
   },
   "walmart-mount-it": {
     image: mounts,
-    alt: "Adjustable dual monitor desk mount on a light background",
+    alt: "Matte black dual monitor arm on a walnut desk under cinematic light",
     chips: ["Variants merged", "Keywords harvested", "ROAS held"],
-    category: "Ergonomic mounts",
+    category: "Ergonomic mounts and electronics",
   },
   "amazon-karma-organics": {
     image: organicCare,
-    alt: "Organic care bottles with wooden caps on a light background",
+    alt: "Glass nail lacquer and cuticle oil bottles with wooden caps on warm marble",
     chips: ["Listings rewritten", "Bids day-parted", "TACoS trimmed"],
-    category: "Organic personal care",
+    category: "Beauty and personal care",
   },
   "amazon-apparel-seller": {
     image: apparel,
-    alt: "Folded cotton hoodie and t-shirts photographed flat",
+    alt: "Folded premium cotton knitwear in neutral tones on a pale stone surface",
     chips: ["Peak plan built", "Formats expanded", "Efficiency kept"],
     category: "Apparel",
   },
   "walmart-specialty-food-launch": {
     image: specialtyFood,
-    alt: "Glass jars of spices and sauce on a light background",
+    alt: "Artisan spice jars and a bottle of chilli sauce in warm low light",
     chips: ["Launch phased", "Content indexed", "Demand compounded"],
     category: "Specialty food",
   },
   "amazon-multi-category-distributor": {
     image: distribution,
-    alt: "Assorted consumer product boxes and bottles in a grid",
+    alt: "Travel, beauty and pantry products laid out in a clean studio grid",
     chips: ["Portfolio ranked", "Spend scaled", "ROAS improved"],
     category: "Multi-brand distribution",
   },
