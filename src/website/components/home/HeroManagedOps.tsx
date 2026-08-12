@@ -6,8 +6,8 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 /** Channels the pod runs, placed around the ring. */
 const channels = [
   { name: "Amazon", angle: -90 },
-  { name: "Walmart", angle: 30 },
-  { name: "Shopify", angle: 150 },
+  { name: "Walmart", angle: 55 },
+  { name: "Shopify", angle: 125 },
 ];
 
 /** The work that arrives, and what the pod turns it into. */
@@ -203,26 +203,6 @@ const HeroManagedOps = () => {
       </div>
 
 
-      {/* Standing proof chips, anchored for symmetry */}
-      <motion.div
-        className="absolute left-[2%] top-[22%] rounded-2xl border border-border bg-card px-3 py-2 shadow-soft"
-        initial={{ opacity: 0, x: -14 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.9, duration: 0.6, ease: EASE }}
-      >
-        <p className="font-numeric text-sm font-bold text-foreground">24/7</p>
-        <p className="text-[10px] text-muted-foreground">Account cover</p>
-      </motion.div>
-
-      <motion.div
-        className="absolute right-[2%] bottom-[22%] rounded-2xl border border-border bg-card px-3 py-2 text-right shadow-soft"
-        initial={{ opacity: 0, x: 14 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1.05, duration: 0.6, ease: EASE }}
-      >
-        <p className="font-numeric text-sm font-bold text-foreground">1 team</p>
-        <p className="text-[10px] text-muted-foreground">Every channel</p>
-      </motion.div>
     </div>
   );
 };
