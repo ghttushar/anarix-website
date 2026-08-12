@@ -67,17 +67,42 @@ export function ExpandingCapabilityGrid({
 
 
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden rounded-3xl border border-border/50 bg-surface-elevated/60 p-4 sm:p-6 lg:p-8">
+      {/* Layered backdrop: grid mesh, guide rules, glow, vignette */}
       <motion.div
         className="pointer-events-none absolute inset-0 z-0"
         initial={{ opacity: 0 }}
         animate={{ opacity: isInView ? 1 : 0 }}
         transition={{ duration: 0.8, ease: EASE }}
       >
-        <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-          <line x1="4" y1="26" x2="96" y2="26" stroke="hsl(var(--primary) / 0.08)" strokeWidth="0.2" />
-          <line x1="4" y1="74" x2="96" y2="74" stroke="hsl(var(--primary) / 0.08)" strokeWidth="0.2" />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, hsl(var(--primary) / 0.06) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--primary) / 0.06) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+            maskImage: "radial-gradient(ellipse 75% 70% at 50% 45%, black, transparent)",
+            WebkitMaskImage: "radial-gradient(ellipse 75% 70% at 50% 45%, black, transparent)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 55% 60% at 50% 40%, hsl(var(--primary) / 0.10), transparent 70%)",
+          }}
+        />
+        <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <line x1="2" y1="26" x2="98" y2="26" stroke="hsl(var(--primary) / 0.10)" strokeWidth="0.15" />
+          <line x1="2" y1="74" x2="98" y2="74" stroke="hsl(var(--primary) / 0.10)" strokeWidth="0.15" />
         </svg>
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 90% 90% at 50% 50%, transparent 55%, hsl(var(--background) / 0.75))",
+          }}
+        />
       </motion.div>
 
       <div
@@ -89,6 +114,7 @@ export function ExpandingCapabilityGrid({
         }}
 
       >
+
         {cards.map((card, i) => {
           const pos = getCardPosition(i);
           const isActive = i === activeCard;
