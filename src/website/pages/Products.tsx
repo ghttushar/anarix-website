@@ -65,7 +65,7 @@ function SectionHead({
 /* ---------------------------------------------------------------- 01 Platform */
 
 const platformPillars = [
-  { icon: BarChart3, title: "Unified P&L", text: "Ads, fees, COGS and returns in one contribution-margin view." },
+  { icon: BarChart3, title: "Unified profit and loss", text: "Ads, fees, COGS and returns in one contribution-margin view." },
   { icon: Radar, title: "Bid intelligence", text: "Campaign, keyword and placement decisions scored daily." },
   { icon: ShieldCheck, title: "Guardrails", text: "Rules that cannot spend past the limits you set." },
 ];
@@ -128,7 +128,7 @@ function PlatformSection() {
 
 const jivaThread = [
   { icon: Search, title: "Ask anything", text: "Plain questions about spend, margin, rank or returns. Answers come with the evidence attached." },
-  { icon: Bell, title: "Proactive alerts", text: "Jiva watches the account overnight and flags what moved before it hits the P&L." },
+  { icon: Bell, title: "Proactive alerts", text: "Jiva watches the account overnight and flags what moved before it hits the profit and loss." },
   { icon: BarChart3, title: "Reporting on tap", text: "Any slice of the account written up in plain English, ready to forward." },
 ];
 
@@ -382,7 +382,7 @@ const Products = () => {
                 size="lg"
                 className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 btn-shine"
               >
-                <Link to="/demo">Book a demo</Link>
+                <a href="https://calendly.com/sunil-anarix/30min" target="_blank" rel="noopener noreferrer">Book a demo</a>
               </Button>
               <Button
                 asChild
@@ -400,6 +400,13 @@ const Products = () => {
         <JivaSection />
         <SignalsSection />
         <McpSection />
+
+        <LeadCaptureBand
+          eyebrow="See it on your data"
+          title="Get a walkthrough built on your own account"
+          description="Leave your email and we will send a short teardown using your listings and ad spend."
+          label="Email me the walkthrough"
+        />
 
         <section className="relative pad-cta">
           <Reveal className="text-center max-w-2xl mx-auto">
@@ -419,24 +426,17 @@ const Products = () => {
                 size="lg"
                 className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 btn-shine group"
               >
-                <Link to="/demo">
+                <a href="https://calendly.com/sunil-anarix/30min" target="_blank" rel="noopener noreferrer">
                   Book a demo
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
-                </Link>
+                </a>
               </Button>
             </div>
           </Reveal>
         </section>
 
-        <LeadCaptureBand
-          eyebrow="See it on your data"
-          title="Get a walkthrough built on your own account"
-          description="Leave your email and we will send a short teardown using your listings and ad spend."
-          label="Email me the walkthrough"
-        />
-
         <NextStep
-          title="See what it does to a real P&L"
+          title="See what it does to a real profit and loss"
           description="Six accounts, two marketplaces. What changed, month by month."
           to="/case-studies"
           label="Read the case studies"

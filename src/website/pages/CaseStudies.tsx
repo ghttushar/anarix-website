@@ -77,19 +77,19 @@ const CaseStudies = () => {
         </motion.div>
       </AnimatePresence>
 
+      <LeadCaptureBand
+        eyebrow="Your account next"
+        title="Want a read like this on your own account?"
+        description="Leave your email and our team will send a short teardown of your listings and ad spend."
+        label="Send me my teardown"
+      />
+
       <CaseStudyHeroBand
         studies={caseStudies}
         active={active}
         position="bottom"
         onSelect={(i) => select(i, true)}
         onStep={(dir) => select(active + dir, true)}
-      />
-
-      <LeadCaptureBand
-        eyebrow="Your account next"
-        title="Want a read like this on your own account?"
-        description="Leave your email and our team will send a short teardown of your listings and ad spend."
-        label="Send me my teardown"
       />
 
       <CtaSection />

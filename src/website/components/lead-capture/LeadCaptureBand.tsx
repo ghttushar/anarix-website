@@ -21,7 +21,7 @@ export interface LeadCaptureBandProps {
 export default function LeadCaptureBand({
   eyebrow = "Free teardown",
   title = "Get the marketplace profit teardown",
-  description = "Send us your email and we will show you where your P&L is leaking, before you pay a thing.",
+  description = "Send us your email and we will show you where your profit and loss is leaking, before you pay a thing.",
   label = "Email me the teardown",
 }: LeadCaptureBandProps) {
   const { openLeadCapture } = useLeadCapture();
