@@ -1,25 +1,9 @@
 import { Link } from "@/lib/router";
 import { BrandLogo } from "@/website/components/BrandLogo";
 
-const productHref = "/products/platform";
-const aanHref = "/products/aan-ai";
-const mcpHref = "/products/mcp";
-const signalsHref = "/products/signals";
-
 const footerLinks: Record<string, { label: string; href: string; external?: boolean }[]> = {
-  Product: [
-    { label: "Product Overview", href: "/products" },
-    { label: "Advertising", href: productHref },
-    { label: "Campaign", href: productHref },
-    { label: "Rules", href: productHref },
-    { label: "Profitability", href: productHref },
-    { label: "Jiva (AI)", href: aanHref },
-    { label: "Signals", href: signalsHref },
-    { label: "MCP", href: mcpHref },
-  ],
+  Product: [{ label: "Product Overview", href: "/products" }],
   Resources: [
-    { label: "Documentation", href: "/documentation" },
-    { label: "Listing Optimization", href: "/listing-optimization" },
     { label: "Case Studies", href: "/case-studies" },
     { label: "Contact", href: "/company/contact" },
   ],
@@ -28,6 +12,7 @@ const footerLinks: Record<string, { label: string; href: string; external?: bool
     { label: "Schedule Demo", href: "https://calendly.com/sunil-anarix/30min", external: true },
   ],
 };
+
 
 const Footer = () => {
   return (
