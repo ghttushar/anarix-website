@@ -114,7 +114,7 @@ const TermsAndConditions = () => (
           Houston, Texas 77036
         </p>
 
-        <h2>20. Governing Law, Jurisdiction &amp; Venue</h2>
+        <h2>20. Governing Law, Jurisdiction and Venue</h2>
         <p>This Agreement and each Order Confirmation and its interpretation, performance or any breach thereof, shall be construed in accordance with the laws of Harris County, and venue and jurisdiction in any action involving, relating to, and/or arising from this Agreement and each Order Confirmation shall lie solely and exclusively with the courts in Harris County.</p>
 
         <h2>21. Dispute Resolution</h2>
@@ -141,7 +141,7 @@ const TermsAndConditions = () => (
 
         <h2>28. Contact Us</h2>
         <p>
-          If you have any questions or suggestions about our terms &amp; policies, do not hesitate to contact us at{" "}
+          If you have any questions or suggestions about our terms and policies, do not hesitate to contact us at{" "}
           <a className="text-primary hover:underline" href="mailto:tech@anarix.ai">tech@anarix.ai</a>.
         </p>
       </div>

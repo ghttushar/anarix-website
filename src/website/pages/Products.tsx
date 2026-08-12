@@ -65,7 +65,7 @@ function SectionHead({
 /* ---------------------------------------------------------------- 01 Platform */
 
 const platformPillars = [
-  { icon: BarChart3, title: "Unified P&L", text: "Ads, fees, COGS and returns in one contribution-margin view." },
+  { icon: BarChart3, title: "Unified profit and loss", text: "Ads, fees, COGS and returns in one contribution-margin view." },
   { icon: Radar, title: "Bid intelligence", text: "Campaign, keyword and placement decisions scored daily." },
   { icon: ShieldCheck, title: "Guardrails", text: "Rules that cannot spend past the limits you set." },
 ];
@@ -128,7 +128,7 @@ function PlatformSection() {
 
 const jivaThread = [
   { icon: Search, title: "Ask anything", text: "Plain questions about spend, margin, rank or returns. Answers come with the evidence attached." },
-  { icon: Bell, title: "Proactive alerts", text: "Jiva watches the account overnight and flags what moved before it hits the P&L." },
+  { icon: Bell, title: "Proactive alerts", text: "Jiva watches the account overnight and flags what moved before it hits the profit and loss." },
   { icon: BarChart3, title: "Reporting on tap", text: "Any slice of the account written up in plain English, ready to forward." },
 ];
 
