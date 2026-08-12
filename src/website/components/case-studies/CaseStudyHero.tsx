@@ -10,7 +10,10 @@ const heroNumber = (cs: CaseStudyData): string => {
   return `${prepend}${prefix}${value.toFixed(decimals)}${suffix}`;
 };
 
-export function CaseStudyHero({ data }: { data: CaseStudyData }) {
+export function CaseStudyHero({ data, index }: { data: CaseStudyData; index: number }) {
+  const total = 6; // exported case studies count
+  const topKpis = data.finalMetrics?.items.slice(0, 2) ?? data.kpis.slice(0, 2);
+
   return (
     <section className="pad-hero">
       <div className="container-page px-6 sm:px-8">
@@ -21,7 +24,7 @@ export function CaseStudyHero({ data }: { data: CaseStudyData }) {
             </div>
 
             <p className="font-numeric mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-              Case Study
+              Case Study {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
             </p>
 
             <AnimatePresence mode="wait">
@@ -59,6 +62,25 @@ export function CaseStudyHero({ data }: { data: CaseStudyData }) {
                 </span>
               ))}
             </div>
+
+            {topKpis.length > 0 && (
+              <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-2 lg:max-w-md">
+                {topKpis.map((kpi) => (
+                  <div
+                    key={kpi.label}
+                    className="rounded-xl border border-border bg-card p-4 text-left shadow-soft"
+                  >
+                    <p className="font-numeric text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                      <span className="text-gradient-primary">
+                        {`${kpi.prepend || ""}${kpi.prefix || ""}${kpi.value.toFixed(kpi.decimals ?? 0)}${kpi.suffix || ""}`}
+                      </span>
+                    </p>
+                    <p className="mt-1 text-xs font-medium text-foreground">{kpi.label}</p>
+                    {kpi.sub && <p className="text-xs text-muted-foreground">{kpi.sub}</p>}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="order-1 lg:order-2">
