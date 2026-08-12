@@ -408,32 +408,6 @@ const Products = () => {
           label="Email me the walkthrough"
         />
 
-        <section className="relative pad-cta">
-          <Reveal className="text-center max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-pill bg-primary/10 text-primary text-xs font-medium uppercase tracking-[0.14em]">
-              One suite
-            </div>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground leading-[1.1] mb-4">
-              Four products,{" "}
-              <span className="text-gradient-primary">one operating system.</span>
-            </h2>
-            <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              Pick the piece you need first. The rest of the stack is already wired to it.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button
-                asChild
-                size="lg"
-                className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 btn-shine group"
-              >
-                <a href="https://calendly.com/sunil-anarix/30min" target="_blank" rel="noopener noreferrer">
-                  Book a demo
-                  <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
-                </a>
-              </Button>
-            </div>
-          </Reveal>
-        </section>
 
         <NextStep
           title="See what it does to a real profit and loss"
