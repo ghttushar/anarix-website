@@ -6,8 +6,9 @@ import { Link } from "@/lib/router";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { caseStudies, type CaseStudyData } from "@/website/data/case-studies";
 
-const SPACING = 345;
-const DEPTH = 130;
+const SPACING = 400;
+const DEPTH = 150;
+const CARD_WIDTH = 360;
 
 /** Shortest signed distance from `i` to `active` on a ring of `n` slots. */
 const ringDelta = (i: number, active: number, n: number): number => {
@@ -73,7 +74,7 @@ const CaseStudyTeasers = () => {
           {/* Desktop / tablet: rotating ring */}
           <div
             className="relative hidden sm:block"
-            style={{ perspective: "1400px", height: 440 }}
+            style={{ perspective: "1600px", height: 520 }}
             role="group"
             aria-label="Featured case studies carousel"
           >
@@ -82,7 +83,12 @@ const CaseStudyTeasers = () => {
                 <motion.div
                   key={slot.cs.id}
                   className="absolute"
-                  style={{ zIndex: slot.zIndex, width: 310 }}
+                  style={{
+                    zIndex: slot.zIndex,
+                    width: CARD_WIDTH,
+                    left: "50%",
+                    marginLeft: -CARD_WIDTH / 2,
+                  }}
                   animate={{ x: slot.x, z: slot.z, scale: slot.scale, opacity: slot.opacity }}
                   transition={
                     reduceMotion
@@ -196,7 +202,7 @@ function TeaserCard({ cs, interactive }: { cs: CaseStudyData; interactive: boole
       to={`/case-studies#${cs.id}`}
       tabIndex={interactive ? 0 : -1}
       aria-hidden={interactive ? undefined : true}
-      className={`group flex h-[400px] flex-col rounded-3xl border bg-card shadow-medium p-6 sm:p-7 transition-colors duration-300 ${
+      className={`group flex h-[470px] flex-col rounded-3xl border bg-card shadow-medium p-6 sm:p-7 transition-colors duration-300 ${
         interactive
           ? "border-border hover:border-primary/45 pointer-events-auto"
           : "border-border/60 pointer-events-none"
