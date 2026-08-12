@@ -162,17 +162,6 @@ export function ExpandingCapabilityGrid({
                   {card.desc}
                 </p>
 
-                {card.graphic && (
-                  <div
-                    className={`mt-4 rounded-lg border border-border/40 bg-background/40 p-3 transition-opacity duration-500 ${
-                      isActive ? "opacity-100" : "opacity-70"
-                    }`}
-                  >
-                    {card.graphic(isActive)}
-                  </div>
-                )}
-
-
                 <AnimatePresence mode="wait">
                   {isActive && (
                     <motion.div
@@ -182,17 +171,34 @@ export function ExpandingCapabilityGrid({
                       transition={{ duration: 0.4, ease: EASE }}
                       className="overflow-hidden"
                     >
-                      <ul className="mt-4 space-y-1.5 border-t border-border/40 pt-4">
+                      {card.graphic && (
+                        <motion.div
+                          className="mt-4 rounded-lg border border-border/40 bg-background/50 p-3"
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.35, delay: 0.1, ease: EASE }}
+                        >
+                          {card.graphic()}
+                        </motion.div>
+                      )}
+
+                      <motion.ul
+                        className="mt-4 space-y-1.5 border-t border-border/40 pt-4"
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.35, delay: 0.22, ease: EASE }}
+                      >
                         {card.features.map((f) => (
                           <li key={f} className="flex items-start gap-2 text-xs text-muted-foreground">
                             <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary/50" />
                             {f}
                           </li>
                         ))}
-                      </ul>
+                      </motion.ul>
                     </motion.div>
                   )}
                 </AnimatePresence>
+
               </div>
             </motion.button>
           );
