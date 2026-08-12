@@ -136,17 +136,17 @@ export function ExpandingCapabilityGrid({
               initial={false}
               transition={{ layout: { duration: 0.5, ease: EASE } }}
             >
-              <div className="p-4 sm:p-5">
-                <div className="mb-3 flex items-start gap-3">
+              <div className="p-5 sm:p-6">
+                <div className="mb-4 flex items-start gap-3">
                   <span
-                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors ${
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-colors ${
                       isActive ? "bg-primary/20" : "bg-primary/10"
                     }`}
                   >
-                    <card.icon className="h-4 w-4 text-primary" />
+                    <card.icon className="h-5 w-5 text-primary" />
                   </span>
                   <h3
-                    className={`flex-1 text-sm font-semibold leading-snug transition-colors ${
+                    className={`flex-1 text-[0.95rem] font-semibold leading-snug transition-colors ${
                       isActive ? "text-foreground" : "text-foreground/80"
                     }`}
                   >
@@ -155,12 +155,23 @@ export function ExpandingCapabilityGrid({
                 </div>
 
                 <p
-                  className={`text-xs leading-relaxed transition-colors duration-500 ${
+                  className={`text-[0.8rem] leading-relaxed transition-colors duration-500 ${
                     isActive ? "text-foreground/80" : "text-muted-foreground"
                   }`}
                 >
                   {card.desc}
                 </p>
+
+                {card.graphic && (
+                  <div
+                    className={`mt-4 rounded-lg border border-border/40 bg-background/40 p-3 transition-opacity duration-500 ${
+                      isActive ? "opacity-100" : "opacity-70"
+                    }`}
+                  >
+                    {card.graphic(isActive)}
+                  </div>
+                )}
+
 
                 <AnimatePresence mode="wait">
                   {isActive && (
