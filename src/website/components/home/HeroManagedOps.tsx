@@ -21,7 +21,7 @@ const workItems = [
 
 const operators = ["Ads", "Catalog", "Supply"];
 
-const RADIUS = 112;
+const RADIUS = 152;
 
 const polar = (angle: number, radius: number) => ({
   x: Math.cos((angle * Math.PI) / 180) * radius,
@@ -42,7 +42,7 @@ const HeroManagedOps = () => {
   const previous = workItems[(step + workItems.length - 1) % workItems.length];
 
   return (
-    <div className="relative mx-auto w-full max-w-[420px] aspect-square select-none">
+    <div className="relative mx-auto w-full max-w-[470px] aspect-square select-none">
       {/* Soft field behind the pod, no section background change */}
       <div className="absolute inset-6 rounded-full bg-primary/5 blur-2xl" />
 
@@ -129,7 +129,7 @@ const HeroManagedOps = () => {
       })}
 
       {/* The pod */}
-      <div className="absolute left-1/2 top-1/2 w-[220px]" style={{ transform: "translate(-50%, -50%)" }}>
+      <div className="absolute left-1/2 top-1/2 w-[196px]" style={{ transform: "translate(-50%, -50%)" }}>
         <motion.div
           className="rounded-3xl border border-primary/25 bg-card/95 p-4 shadow-strong backdrop-blur-sm"
           initial={{ opacity: 0, y: 14, scale: 0.94 }}
