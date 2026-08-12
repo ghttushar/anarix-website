@@ -13,53 +13,95 @@ const heroNumber = (cs: CaseStudyData): string => {
 };
 
 const shortBrand = (brand: string): string =>
-  brand.length > 18 ? `${brand.slice(0, 17).trimEnd()}...` : brand;
+  brand.length > 22 ? `${brand.slice(0, 21).trimEnd()}...` : brand;
 
-/** One circular arrow button with a hover label for the brand it leads to. */
-function ArrowButton({
+/** Single previous/next teaser zone. The whole card is clickable. */
+function StepZone({
   dir,
-  brand,
+  study,
   onClick,
 }: {
   dir: -1 | 1;
-  brand: string;
+  study: CaseStudyData;
   onClick: () => void;
 }) {
   const isNext = dir === 1;
   return (
-    <div className="group relative shrink-0">
-      <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-pill border border-border bg-card px-2.5 py-1 text-[11px] font-medium text-foreground opacity-0 shadow-soft transition-opacity duration-200 group-hover:opacity-100">
-        {shortBrand(brand)}
-      </span>
-      <button
-        type="button"
-        onClick={onClick}
-        aria-label={isNext ? "Next case study" : "Previous case study"}
-        className={
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={isNext ? `Next case study: ${study.brand}` : `Previous case study: ${study.brand}`}
+      className="group flex w-full items-center gap-4 rounded-2xl border border-border bg-card p-4 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-soft focus:outline-none focus:ring-2 focus:ring-primary/40"
+    >
+      <motion.span
+        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-pill bg-primary/10 text-primary ring-1 ring-primary/30"
+        animate={isNext ? { x: [0, 3, 0] } : { x: [0, -3, 0] }}
+        transition={
           isNext
-            ? "flex h-10 w-10 items-center justify-center rounded-pill bg-primary/10 text-primary ring-1 ring-primary/40 transition-colors hover:bg-primary/20"
-            : "flex h-10 w-10 items-center justify-center rounded-pill text-muted-foreground ring-1 ring-border transition-colors hover:text-foreground hover:ring-primary/40"
+            ? { duration: 1.6, repeat: Infinity, ease: "easeInOut", repeatDelay: 1.2 }
+            : { duration: 1.6, repeat: Infinity, ease: "easeInOut", repeatDelay: 1.2 }
         }
       >
-        <motion.span
-          className="flex"
-          animate={isNext ? { x: [0, 3, 0] } : undefined}
-          transition={
-            isNext ? { duration: 1.6, repeat: Infinity, ease: "easeInOut", repeatDelay: 1.2 } : undefined
-          }
-        >
-          {isNext ? <ArrowRight className="h-4 w-4" /> : <ArrowLeft className="h-4 w-4" />}
-        </motion.span>
-      </button>
+        {isNext ? <ArrowRight className="h-4 w-4" /> : <ArrowLeft className="h-4 w-4" />}
+      </motion.span>
+      <div className="min-w-0">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+          {isNext ? "Next" : "Previous"}
+        </p>
+        <p className="mt-0.5 truncate text-sm font-semibold text-foreground">
+          {shortBrand(study.brand)}
+        </p>
+        <p className="mt-0.5 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
+          {study.title}
+        </p>
+      </div>
+    </button>
+  );
+}
+
+/** Brand chip rail that lets a reader jump to any study. */
+function JumpRail({
+  studies,
+  active,
+  onSelect,
+}: {
+  studies: CaseStudyData[];
+  active: number;
+  onSelect: (index: number) => void;
+}) {
+  return (
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+      <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+        Jump to
+      </span>
+      <div className="flex flex-wrap gap-2">
+        {studies.map((s, i) => (
+          <button
+            key={s.id}
+            type="button"
+            onClick={() => onSelect(i)}
+            aria-label={`Go to ${s.brand}`}
+            aria-current={i === active ? "true" : undefined}
+            className={
+              i === active
+                ? "rounded-pill bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground transition-colors"
+                : "rounded-pill border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
+            }
+          >
+            {shortBrand(s.brand)}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
 
 /**
- * Slim pager: arrows on the outside, the current position and brand in the
- * middle, and a numbered rail for direct jumps.
+ * Card-style case study carousel navigator. The whole control is a surfaced card
+ * with previous/next teaser zones and a jump rail, so it is immediately readable
+ * as navigation without being as large as the old primary block.
  */
-function Pager({
+function CaseStudyPager({
   studies,
   active,
   onSelect,
@@ -75,55 +117,41 @@ function Pager({
   const current = studies[active];
 
   return (
-    <div className="flex items-center gap-3 rounded-pill border border-border bg-card/90 px-3 py-2 shadow-soft backdrop-blur">
-      <ArrowButton dir={-1} brand={prev.brand} onClick={() => onStep(-1)} />
+    <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-soft">
+      <div className="grid gap-4 p-5 sm:p-6 lg:grid-cols-[1fr_1.2fr_1fr] lg:items-center">
+        <StepZone dir={-1} study={prev} onClick={() => onStep(-1)} />
 
-      <div className="flex min-w-0 flex-1 items-center gap-3 overflow-hidden">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current.id}
-            className="flex min-w-0 items-baseline gap-2"
-            initial={{ opacity: 0, x: 8 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -8 }}
-            transition={{ duration: 0.28, ease: EASE }}
-          >
-            <span className="font-numeric text-xs font-semibold text-muted-foreground">
-              {String(active + 1).padStart(2, "0")} / {String(studies.length).padStart(2, "0")}
-            </span>
-            <span className="truncate text-sm font-semibold text-foreground">
-              {shortBrand(current.brand)}
-            </span>
-          </motion.div>
-        </AnimatePresence>
-
-        <div className="ml-auto hidden items-center gap-1.5 sm:flex">
-          {studies.map((s, i) => (
-            <button
-              key={s.id}
-              type="button"
-              title={s.brand}
-              aria-label={`Go to ${s.brand}`}
-              aria-current={i === active ? "true" : undefined}
-              onClick={() => onSelect(i)}
-              className={
-                i === active
-                  ? "font-numeric rounded-pill bg-primary px-2 py-1 text-[11px] font-semibold text-primary-foreground"
-                  : "font-numeric rounded-pill px-2 py-1 text-[11px] font-medium text-muted-foreground ring-1 ring-border transition-colors hover:text-foreground hover:ring-primary/40"
-              }
+        <div className="flex flex-col items-center justify-center text-center lg:px-4">
+          <span className="font-numeric text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+            Case Study {String(active + 1).padStart(2, "0")} / {String(studies.length).padStart(2, "0")}
+          </span>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.id}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.28, ease: EASE }}
             >
-              {String(i + 1).padStart(2, "0")}
-            </button>
-          ))}
+              <p className="mt-2 font-display text-lg font-semibold leading-tight tracking-tight text-foreground sm:text-xl">
+                {current.brand}
+              </p>
+              <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">
+                {current.title}
+              </p>
+            </motion.div>
+          </AnimatePresence>
         </div>
+
+        <StepZone dir={1} study={next} onClick={() => onStep(1)} />
       </div>
 
-      <ArrowButton dir={1} brand={next.brand} onClick={() => onStep(1)} />
+      <div className="border-t border-border p-4 sm:p-5">
+        <JumpRail studies={studies} active={active} onSelect={onSelect} />
+      </div>
     </div>
   );
 }
-
-
 
 /**
  * The case studies carousel control surface. Rendered at the top and again at
@@ -177,7 +205,7 @@ export function CaseStudyHeroBand({
               />
             </div>
             <div className="border-t border-border p-4">
-              <Pager studies={studies} active={active} onSelect={onSelect} onStep={onStep} />
+              <CaseStudyPager studies={studies} active={active} onSelect={onSelect} onStep={onStep} />
             </div>
           </div>
         </div>
@@ -188,13 +216,10 @@ export function CaseStudyHeroBand({
   return (
     <section className="pad-hero">
       <div className="container-page px-6 sm:px-8">
-        <Pager studies={studies} active={active} onSelect={onSelect} onStep={onStep} />
-
-
         <AnimatePresence mode="wait">
           <motion.div
             key={cs.id}
-            className="mt-8 grid items-center gap-10 lg:grid-cols-[7fr_5fr]"
+            className="grid items-center gap-10 lg:grid-cols-[7fr_5fr]"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
@@ -232,6 +257,10 @@ export function CaseStudyHeroBand({
             <CaseStudyVisual data={cs} compact />
           </motion.div>
         </AnimatePresence>
+
+        <div className="mt-10">
+          <CaseStudyPager studies={studies} active={active} onSelect={onSelect} onStep={onStep} />
+        </div>
       </div>
     </section>
   );
