@@ -12,6 +12,7 @@ import EmbedKpiStrip from "@/website/components/embeds/EmbedKpiStrip";
 import EmbedRuleCard from "@/website/components/embeds/EmbedRuleCard";
 import EmbedInsightCard from "@/website/components/embeds/EmbedInsightCard";
 import NextStep from "@/website/components/marketing/NextStep";
+import LeadCaptureBand from "@/website/components/lead-capture/LeadCaptureBand";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -426,6 +427,13 @@ const Products = () => {
             </div>
           </Reveal>
         </section>
+
+        <LeadCaptureBand
+          eyebrow="See it on your data"
+          title="Get a walkthrough built on your own account"
+          description="Leave your email and we will send a short teardown using your listings and ad spend."
+          label="Email me the walkthrough"
+        />
 
         <NextStep
           title="See what it does to a real P&L"
