@@ -53,7 +53,7 @@ export function CaseStudyHeroBand({
   const next = studies[(active + 1) % studies.length];
 
   return (
-    <section className={position === "top" ? "pad-hero-compact" : "pad-section-compact"}>
+    <section className={position === "top" ? "pad-hero" : "pad-section-compact"}>
       <div className="container-page px-6 sm:px-8">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
