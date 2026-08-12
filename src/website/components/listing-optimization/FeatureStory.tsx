@@ -31,7 +31,7 @@ const SLIDES: StorySlide[] = [
     accent: "Your images against",
     rest: "marketplace rules.",
     body: [
-      "We score your set the way the marketplace does — position, framing, background purity, lifestyle coverage, variant count.",
+      "We score your set the way the marketplace does, position, framing, background purity, lifestyle coverage, variant count.",
       "Critical issues are separated from nice-to-haves, so you always know what to fix first.",
     ],
     visual: <RulesVisual />,
@@ -64,7 +64,7 @@ const SLIDES: StorySlide[] = [
     accent: "Click to fix",
     rest: "instead of rebriefing a designer.",
     body: [
-      "Anarix regenerates a corrected version of your main image — reframed, cleaned up and cropped to the rules it failed.",
+      "Anarix regenerates a corrected version of your main image, reframed, cleaned up and cropped to the rules it failed.",
       "Preview it in the tool, then have the full-resolution files sent straight to your inbox.",
     ],
     visual: <FixVisual />,

@@ -176,7 +176,7 @@ export interface GenerateOptimizedImageInput {
   marketplace: Marketplace;
 }
 
-/** Mocked optimization — returns the bundled optimized image once done. */
+/** Mocked optimization, returns the bundled optimized image once done. */
 export async function generateOptimizedImage(_input: GenerateOptimizedImageInput): Promise<string> {
   const delay = 4000 + Math.floor(Math.random() * 2000);
   await new Promise<void>((resolve) => setTimeout(resolve, delay));
@@ -246,7 +246,7 @@ const ISSUE_POOL: Omit<ListingIssue, "id">[] = [
   },
 ];
 
-/** Deterministic per-ASIN analysis — mocked pending the real vision pipeline. */
+/** Deterministic per-ASIN analysis, mocked pending the real vision pipeline. */
 export function analyzeProductImage(productId: string): AnalysisResult {
   const rng = mulberry32(seedFromString(productId));
   const score = Math.round((3.0 + rng() * 3.0) * 10) / 10;

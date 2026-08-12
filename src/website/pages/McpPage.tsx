@@ -9,7 +9,7 @@ const features = [
   {
     icon: Plug,
     title: "Universal AI Connection",
-    desc: "Connect any MCP-compatible AI assistant — Claude, ChatGPT, Copilot, Cursor — directly to your marketplace data. One protocol, every AI tool.",
+    desc: "Connect any MCP-compatible AI assistant, Claude, ChatGPT, Copilot, Cursor, directly to your marketplace data. One protocol, every AI tool.",
   },
   {
     icon: Database,
@@ -19,7 +19,7 @@ const features = [
   {
     icon: Shield,
     title: "Read-Only by Default",
-    desc: "Your data stays safe. All Anarix MCP tools are read-only with built-in guardrails — AI can read and analyze, but never modify your campaigns without explicit approval.",
+    desc: "Your data stays safe. All Anarix MCP tools are read-only with built-in guardrails, AI can read and analyze, but never modify your campaigns without explicit approval.",
   },
   {
     icon: Zap,
@@ -31,13 +31,13 @@ const features = [
 const tools = [
   {
     name: "get_account_summary",
-    desc: "Headline KPIs for any marketplace — spend, sales, ACoS, TACoS, and orders — over any lookback window.",
+    desc: "Headline KPIs for any marketplace, spend, sales, ACoS, TACoS, and orders, over any lookback window.",
     input: "marketplace (amazon-us, amazon-uk, walmart-us), lookbackDays (1-90)",
     output: "Spend, Sales, ACoS, TACoS, Orders",
   },
   {
     name: "list_applied_rules",
-    desc: "Browse all advertising automation rules with optional status filtering — running, paused, draft, or ended.",
+    desc: "Browse all advertising automation rules with optional status filtering, running, paused, draft, or ended.",
     input: "status? (running | paused | draft | ended)",
     output: "Rule ID, name, status, campaign count, last run",
   },
@@ -113,7 +113,7 @@ const McpPage = () => {
                     <span className="text-white/40">›</span> echo({`"hello"`})
                   </div>
                   <div className="rounded-lg bg-white/5 border border-white/5 p-3 text-emerald-400/90">
-                    {"\"hello\" — connection confirmed"}
+                    {"\"hello\", connection confirmed"}
                   </div>
                 </div>
               </div>
@@ -138,10 +138,10 @@ const McpPage = () => {
                 The USB-C for AI and your data.
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Model Context Protocol (MCP) is an open standard — originally introduced by Anthropic — that creates a universal interface between AI models and external data sources. Think of it like USB-C: one connector that works with everything.
+                Model Context Protocol (MCP) is an open standard, originally introduced by Anthropic, that creates a universal interface between AI models and external data sources. Think of it like USB-C: one connector that works with everything.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Anarix implements MCP as a server that exposes your marketplace advertising data. Any MCP-compatible AI client — Claude Desktop, ChatGPT, Cursor, Copilot — can connect and query your data in natural language.
+                Anarix implements MCP as a server that exposes your marketplace advertising data. Any MCP-compatible AI client, Claude Desktop, ChatGPT, Cursor, Copilot, can connect and query your data in natural language.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-3">
@@ -283,7 +283,7 @@ const McpPage = () => {
       </div>
       <NextStep
         title="Ready to wire it up?"
-        description="Endpoints, schemas and auth — everything a developer needs to start."
+        description="Endpoints, schemas and auth, everything a developer needs to start."
         to="/documentation"
         label="Read the docs"
       />

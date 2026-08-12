@@ -32,14 +32,14 @@ const PlatformSection = () => (
             icon: Brain,
             title: "Jiva AI",
             tagline: "Your second analyst. No second guessing.",
-            desc: "Jiva reads your data, diagnoses issues, drafts rules, and explains every decision — so you can move fast without flying blind.",
+            desc: "Jiva reads your data, diagnoses issues, drafts rules, and explains every decision, so you can move fast without flying blind.",
             caps: ["Reads 47 data sources", "Drafts in <8s", "100% auditable"],
           },
           {
             icon: Network,
             title: "Signals",
             tagline: "From scattered tools to one source of truth.",
-            desc: "Notifications describe events. Signals describe meaning. Every Signal answers four questions — before you have to ask.",
+            desc: "Notifications describe events. Signals describe meaning. Every Signal answers four questions, before you have to ask.",
             caps: ["Morning Letter", "Evidence-backed", "Silence is a feature"],
           },
         ].map((item, i) => (

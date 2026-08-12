@@ -8,9 +8,9 @@ import nausilImg from "@/assets/testimonials/nausil.png";
 const TESTIMONIALS = [
   {
     quote:
-      "Anarix helped us rethink how we approach growth on Walmart — from a conversion-first mindset to a true full-funnel strategy. They turned an underperforming SKU into a meaningful omnichannel growth driver.",
+      "Anarix helped us rethink how we approach growth on Walmart, from a conversion-first mindset to a true full-funnel strategy. They turned an underperforming SKU into a meaningful omnichannel growth driver.",
     author: "Firat Ozkan",
-    role: "Co-Founder, CMO & CSO, Mount-It!",
+    role: "Co-Founder, CMO and CSO, Mount-It!",
     image: firatImg,
   },
   {

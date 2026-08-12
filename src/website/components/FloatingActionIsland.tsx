@@ -144,11 +144,10 @@ export function FloatingActionIsland() {
                 title="Ask Jiva"
               >
                 <AanMascot size={32} state="idle" interactive floating />
-                {isExpanded && (
-                  <span className="text-sm font-medium text-foreground whitespace-nowrap animate-in fade-in duration-200">
-                    Ask Jiva
-                  </span>
-                )}
+                <span className="text-sm font-medium text-foreground whitespace-nowrap">
+                  Ask Jiva
+                </span>
+
               </button>
             )}
             <div className="flex items-center gap-0.5">

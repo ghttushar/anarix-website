@@ -104,7 +104,7 @@ const GradingRulesSection = () => (
       <div className="mt-5 pt-4 border-t border-border/60 flex items-start gap-2.5 text-sm text-muted-foreground">
         <ShieldCheck className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
         <span>
-          The same engine scores your own ASIN — paste it above and see exactly what holds your
+          The same engine scores your own ASIN, paste it above and see exactly what holds your
           image back before you publish.
         </span>
       </div>

@@ -46,7 +46,7 @@ const Pricing = () => {
             Pricing built around <span className="text-gradient-primary">how you operate</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-            Pick a track. Switch any time. No marketplace fluff — just plans that map to real operators.
+            Pick a track. Switch any time. No marketplace fluff, just plans that map to real operators.
           </p>
           <p className="text-sm text-muted-foreground max-w-xl mx-auto mt-3">{major.blurb}</p>
         </motion.div>

@@ -14,25 +14,25 @@ const steps: Step[] = [
     icon: Search,
     title: "Diagnose",
     subtitle: "We find the leaks. You decide what to fix.",
-    body: "Every account has its own history — and its own blind spots. We don’t run a generic checklist; we dig into your numbers until we find exactly where the money’s leaking, whether that’s ad spend with no return, listings losing the buy box, or compliance risks nobody’s flagged. No obligation, no fluff — just the truth about where you stand.",
+    body: "Every account has its own history, and its own blind spots. We don’t run a generic checklist; we dig into your numbers until we find exactly where the money’s leaking, whether that’s ad spend with no return, listings losing the buy box, or compliance risks nobody’s flagged. No obligation, no fluff, just the truth about where you stand.",
   },
   {
     icon: Settings,
     title: "Take Over",
     subtitle: "The work that eats your nights becomes someone else’s full-time job.",
-    body: "Once we know what’s broken, we get to work fixing it. Your dedicated team steps into the day-to-day — reallocating ad budget, cleaning up listings, managing inventory, staying ahead of compliance. The work that’s been eating your nights and weekends becomes someone’s full-time job instead of your second one.",
+    body: "Once we know what’s broken, we get to work fixing it. Your dedicated team steps into the day-to-day, reallocating ad budget, cleaning up listings, managing inventory, staying ahead of compliance. The work that’s been eating your nights and weekends becomes someone’s full-time job instead of your second one.",
   },
   {
     icon: FileText,
     title: "Report",
     subtitle: "Real profit and loss clarity, not vanity metrics.",
-    body: "You shouldn’t have to dig through a 40-tab spreadsheet to find out if things are working. We break down exactly what changed, what it cost, and what it earned — real profit and loss clarity, not vanity metrics. Monthly or weekly, whichever you want. Ask us anything, anytime.",
+    body: "You shouldn’t have to dig through a 40-tab spreadsheet to find out if things are working. We break down exactly what changed, what it cost, and what it earned, real profit and loss clarity, not vanity metrics. Monthly or weekly, whichever you want. Ask us anything, anytime.",
   },
   {
     icon: TrendingUp,
     title: "Grow and Scale",
     subtitle: "Once fundamentals are solid, we push for the next level.",
-    body: "Once the fundamentals are solid — costs under control, compliance clean, reporting you trust — we shift into growth mode. Based on what we’ve learned about your account and where you want to go, we scale up spend, expand into new channels, and push for the next level of growth.",
+    body: "Once the fundamentals are solid, costs under control, compliance clean, reporting you trust, we shift into growth mode. Based on what we’ve learned about your account and where you want to go, we scale up spend, expand into new channels, and push for the next level of growth.",
   },
 ];
 

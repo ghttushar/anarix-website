@@ -17,7 +17,7 @@ export function Section({
   children,
 }: {
   id?: string;
-  /** Light card-surface band — never an inverted/dark section. */
+  /** Light card-surface band, never an inverted/dark section. */
   panel?: boolean;
   tint?: boolean;
   className?: string;

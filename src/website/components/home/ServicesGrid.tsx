@@ -1,88 +1,138 @@
 import { motion } from "framer-motion";
 import {
   Megaphone, TrendingUp, LayoutPanelTop, Package,
-  Shield, Crosshair, FileText, Radio,
-  Building2,
+  Shield, Crosshair, FileText, Radio, Building2, Layers,
 } from "lucide-react";
+import ExpandingCapabilityGrid, {
+  type ExpandingCard,
+} from "@/website/components/marketing/ExpandingCapabilityGrid";
 
-const services = [
-  { icon: Megaphone, title: "Advertising management", desc: "We run your campaigns daily — bids, budgets, targeting — so every dollar chases what's actually converting." },
-  { icon: TrendingUp, title: "Profit & margin tracking", desc: "We track what you really keep after fees, ad spend, and returns — not just top-line sales." },
-  { icon: LayoutPanelTop, title: "Listing & catalog management", desc: "We keep your listings optimized, compliant, and free of the quiet errors that bleed sales." },
-  { icon: Package, title: "Inventory & fulfillment oversight", desc: "We watch stock so you never lose the Buy Box to a stockout — or overpay to store what isn't moving." },
-  { icon: Shield, title: "Account health monitoring", desc: "We catch policy risks and performance issues before they become suspensions." },
-  { icon: Crosshair, title: "Competitive tracking", desc: "We watch what competitors are doing to your rankings and visibility, and move before it costs you sales." },
-  { icon: FileText, title: "Reporting, done for you", desc: "You get a clear monthly readout in plain English. No dashboard required — though you can log in anytime you want one." },
-  { icon: Radio, title: "Demand-Side Platform (DSP)", desc: "We run programmatic ads off-platform to bring new shoppers in, not just fight for the ones already searching." },
-  { icon: Building2, title: "Amazon brand support", desc: "We manage your Brand Registry, storefront, and IP protection so counterfeiters and hijackers don't get the upper hand." },
+const services: ExpandingCard[] = [
+  {
+    icon: Megaphone,
+    title: "Advertising management",
+    desc: "We run your campaigns daily so every dollar chases what is actually converting.",
+    features: [
+      "Daily bid, budget and targeting work",
+      "Sponsored Products, Brands and Display",
+      "Search term harvesting and negatives",
+      "Budget pacing with weekly checkpoints",
+    ],
+  },
+  {
+    icon: TrendingUp,
+    title: "Profit and margin tracking",
+    desc: "We track what you really keep after fees, ad spend and returns, not just top-line sales.",
+    features: [
+      "SKU-level contribution margin",
+      "Fees, COGS, storage and returns folded in",
+      "TACoS watched against margin, not vanity ROAS",
+      "Monthly profit readout in plain English",
+    ],
+  },
+  {
+    icon: LayoutPanelTop,
+    title: "Listing and catalog management",
+    desc: "We keep listings optimized, compliant and free of the quiet errors that bleed sales.",
+    features: [
+      "Title, bullet and A+ content rewrites",
+      "Variation and parentage clean-up",
+      "Image and video refreshes",
+      "Suppressed and stranded listing recovery",
+    ],
+  },
+  {
+    icon: Package,
+    title: "Inventory and fulfillment oversight",
+    desc: "We watch stock so you never lose the Buy Box to a stockout, or overpay to store what is not moving.",
+    features: [
+      "Weeks-of-cover forecasting per SKU",
+      "Restock and shipment plan reviews",
+      "Aged and excess inventory action lists",
+      "FBA and WFS placement decisions",
+    ],
+  },
+  {
+    icon: Shield,
+    title: "Account health monitoring",
+    desc: "We catch policy risks and performance issues before they become suspensions.",
+    features: [
+      "Policy and compliance sweeps",
+      "Case filing and follow-through",
+      "Performance metric watchlist",
+      "Escalation path for hard blocks",
+    ],
+  },
+  {
+    icon: Crosshair,
+    title: "Competitive tracking",
+    desc: "We watch what competitors do to your rankings and visibility, and move before it costs you sales.",
+    features: [
+      "Share of voice by category and keyword",
+      "Competitor pricing and promo monitoring",
+      "Rank movement alerts",
+      "Counter-plays briefed before they ship",
+    ],
+  },
+  {
+    icon: FileText,
+    title: "Reporting, done for you",
+    desc: "You get a clear monthly readout in plain English. No dashboard required, though you can log in whenever you want one.",
+    features: [
+      "Monthly narrative report",
+      "What changed, why, and what is next",
+      "Live platform access on request",
+      "Ad hoc pulls whenever you ask",
+    ],
+  },
+  {
+    icon: Radio,
+    title: "Demand-Side Platform",
+    desc: "We run programmatic ads off-platform to bring new shoppers in, not just fight for the ones already searching.",
+    features: [
+      "Audience build and retargeting",
+      "Creative rotation and testing",
+      "New-to-brand measurement",
+      "Full-funnel spend allocation",
+    ],
+  },
+  {
+    icon: Building2,
+    title: "Amazon brand support",
+    desc: "We manage Brand Registry, your storefront and IP protection so hijackers do not get the upper hand.",
+    features: [
+      "Brand Registry and enrollment",
+      "Storefront design and upkeep",
+      "Counterfeit and hijacker takedowns",
+      "Brand analytics reviews",
+    ],
+  },
 ];
-
-const puns: Record<string, string> = {
-  "Advertising management": "Every dollar should chase what's converting. Not what's comfortable.",
-  "Inventory & fulfillment oversight": "Stockouts cost more than storage fees. They cost you the Buy Box.",
-  "Demand-Side Platform (DSP)": "Programmatic ads. You don't need to know what “programmatic” means. We handle that part.",
-  "Reporting, done for you": "If your current report looks like a tax return, we've already failed.",
-  "Account health monitoring": "We don't just watch for violations. We watch for the ones that haven't happened yet. Yet.",
-};
 
 const ServicesGrid = () => {
   return (
     <section className="relative pad-section overflow-hidden border-t border-border/40">
-      <motion.div
-        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/10 to-transparent"
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-      />
-
       <div className="container-wide px-4">
         <motion.div
           className="text-center gap-heading"
-          initial={{ opacity: 0, y: 16, scale: 0.97 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-pill bg-primary/10 text-primary text-xs font-medium uppercase tracking-[0.14em]">
-            The Full Stack
+            <Layers className="w-3.5 h-3.5" /> The Full Stack
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight leading-[1.1] mb-4">
-            The full stack,{" "}
-            <span className="text-gradient-primary">run for you.</span>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight leading-[1.1]">
+            Every function.{" "}
+            <span className="text-gradient-primary">One team.</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            Every marketplace function, managed end-to-end. No gaps, no handoffs, no “that's not our department.”
+          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+            Click any card to explore. The stack adapts to show you what we run for you.
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {services.map((service, i) => {
-            const pun = puns[service.title];
-            return (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ delay: (i % 6) * 0.04, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <div className="h-full pad-card-sm rounded-2xl border border-border bg-card shadow-soft hover:border-primary/40 hover:shadow-medium transition-all duration-300">
-                  <div className="flex items-start gap-3">
-                    <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                      <service.icon className="w-4 h-4 text-primary" />
-                    </span>
-                    <p className="text-sm font-semibold text-foreground leading-snug">{service.title}</p>
-                  </div>
-                  <p className="mt-3 text-xs text-muted-foreground leading-relaxed">{service.desc}</p>
-                  {pun && (
-                    <p className="mt-3 pt-2 border-t border-border/40 text-[11px] text-primary/70 italic leading-relaxed">{pun}</p>
-                  )}
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+        <ExpandingCapabilityGrid cards={services} columns={5} />
       </div>
     </section>
   );

@@ -18,7 +18,7 @@ const morningSignals = [
     time: "07:12",
     category: "Inventory · US",
     title: "Stockout risk on your #1 SKU",
-    desc: "Velocity stepped up for eight days. Inbound ETA is 14 days. Consider air freight on 800 units — cost $2,120 preserves ~$18k margin.",
+    desc: "Velocity stepped up for eight days. Inbound ETA is 14 days. Consider air freight on 800 units, cost $2,120 preserves ~$18k margin.",
     severity: "high",
   },
   {
@@ -42,7 +42,7 @@ const executionSteps = [
   { step: "Agent", time: "09:04", action: "Handed to the agent", detail: "Freight partner API queued. PO drafted." },
   { step: "Agent", time: "09:11", action: "Booking confirmed", detail: "AWB 172-338… · 800u · KIX → LAX" },
   { step: "Live", time: "11:22", action: "Departed origin", detail: "In transit. ETA revised to 96h." },
-  { step: "Outcome", time: "Day 4", action: "Received & put away", detail: "Inventory replenished. Signal closed." },
+  { step: "Outcome", time: "Day 4", action: "Received and put away", detail: "Inventory replenished. Signal closed." },
 ];
 
 const SignalsPage = () => {
@@ -64,7 +64,7 @@ const SignalsPage = () => {
               <span className="text-gradient-primary">Three things deserve your attention.</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Everything else has already been handled. Signals turns noise into one object — held up to the light — so you can decide and move on.
+              Everything else has already been handled. Signals turns noise into one object, held up to the light, so you can decide and move on.
             </p>
           </motion.div>
         </div>
@@ -115,7 +115,7 @@ const SignalsPage = () => {
               <Target className="w-3.5 h-3.5" /> The Signal
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
-              A Signal is <span className="text-gradient-primary">one object</span> — held up to the light.
+              A Signal is <span className="text-gradient-primary">one object</span>, held up to the light.
             </h2>
           </div>
           <div className="grid sm:grid-cols-5 gap-3">
@@ -172,7 +172,7 @@ const SignalsPage = () => {
               </div>
               <div className="p-4 rounded-xl bg-primary/5 border border-primary/20">
                 <div className="text-xs text-primary font-semibold mb-1">05 · Action</div>
-                <p className="text-sm text-foreground font-medium">Expedite 800u via air freight — cost $2,120.</p>
+                <p className="text-sm text-foreground font-medium">Expedite 800u via air freight, cost $2,120.</p>
                 <div className="mt-3">
                   <button className="px-4 py-1.5 rounded-pill bg-primary text-primary-foreground text-xs font-medium hover:bg-primary/90 transition-colors">
                     Accept
@@ -202,7 +202,7 @@ const SignalsPage = () => {
                 <p className="text-xs text-muted-foreground">Tuesday, 14 May</p>
                 <p className="text-sm font-semibold text-foreground">Three things</p>
                 <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
-                  Good morning. Yesterday closed at $184,220 in revenue on Amazon — +4.1% on plan. Three things need you today. Nothing else has moved enough to matter.
+                  Good morning. Yesterday closed at $184,220 in revenue on Amazon, +4.1% on plan. Three things need you today. Nothing else has moved enough to matter.
                 </p>
               </div>
               <div className="space-y-3">
@@ -228,7 +228,7 @@ const SignalsPage = () => {
                 ))}
               </div>
               <div className="text-right mt-4">
-                <span className="text-xs text-muted-foreground/50 italic">— Signals</span>
+                <span className="text-xs text-muted-foreground/50 italic">- Signals</span>
               </div>
             </div>
           </motion.div>

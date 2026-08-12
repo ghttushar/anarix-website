@@ -5,9 +5,9 @@ import CaseStudies from "@/website/pages/CaseStudies";
 export const Route = createFileRoute("/case-studies")({
   head: () => ({
     meta: [
-      { title: "Case studies — Profit results from Anarix customers | Anarix.ai" },
+      { title: "Case studies, Profit results from Anarix customers | Anarix.ai" },
       { name: "description", content: "How apparel, supplement and marketplace brands used Anarix to lift contribution profit and cut wasted ad spend." },
-      { property: "og:title", content: "Case studies — Profit results from Anarix customers" },
+      { property: "og:title", content: "Case studies, Profit results from Anarix customers" },
       { property: "og:description", content: "How apparel, supplement and marketplace brands used Anarix to lift contribution profit and cut wasted ad spend." },
       { property: "og:url", content: "/case-studies" },
     ],

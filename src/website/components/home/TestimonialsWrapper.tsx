@@ -19,9 +19,9 @@ interface Person {
 
 const FIRAT: Person = {
   quote:
-    "Anarix helped us rethink how we approach growth on Walmart — from a conversion-first mindset to a true full-funnel strategy. By unlocking visibility at the top of the funnel and executing with precision throughout the shopper journey, they turned an underperforming SKU into a meaningful omnichannel growth driver.",
+    "Anarix helped us rethink how we approach growth on Walmart, from a conversion-first mindset to a true full-funnel strategy. By unlocking visibility at the top of the funnel and executing with precision throughout the shopper journey, they turned an underperforming SKU into a meaningful omnichannel growth driver.",
   author: "Firat Ozkan",
-  role: "Co-Founder, CMO & CSO · Mount-It!",
+  role: "Co-Founder, CMO and CSO · Mount-It!",
   image: firatImg,
 };
 
@@ -46,13 +46,13 @@ const JOEY: Person = {
   src: "/testimonials/joey-dweck.mp4",
   poster: "/testimonials/joey-dweck-poster.jpg",
   quote:
-    "They spoke to me about more than just advertising. They looked at my business very holistically — not just the Amazon marketplace, but the entire ecosystem. I felt that they were just a part of my team right away.",
+    "They spoke to me about more than just advertising. They looked at my business very holistically, not just the Amazon marketplace, but the entire ecosystem. I felt that they were just a part of my team right away.",
   author: "Joey Dweck",
   role: "Director of E-Commerce and Brand Strategy",
   image: joeyImg,
 };
 
-/** Full quote — no truncation, no expander. */
+/** Full quote, no truncation, no expander. */
 const QuoteText = ({
   text,
   className = "",

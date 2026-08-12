@@ -43,7 +43,7 @@ const DashboardPreview = () => (
               <div className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
               <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
             </div>
-            <span className="text-xs text-muted-foreground ml-3 font-mono">Anarix Dashboard — live</span>
+            <span className="text-xs text-muted-foreground ml-3 font-mono">Anarix Dashboard, live</span>
           </div>
           <span className="text-[10px] text-muted-foreground/50 flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />

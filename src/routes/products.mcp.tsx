@@ -6,9 +6,9 @@ export const Route = createFileRoute("/products/mcp")({
   head: () => ({
     meta: [
       { name: "robots", content: "noindex, nofollow" },
-      { title: "Anarix MCP — Connect your stack to Amazon data | Anarix.ai" },
+      { title: "Anarix MCP, Connect your stack to Amazon data | Anarix.ai" },
       { name: "description", content: "Use the Anarix MCP server to query your Amazon commerce data from any agent, notebook or internal tool." },
-      { property: "og:title", content: "Anarix MCP — Connect your stack to Amazon data" },
+      { property: "og:title", content: "Anarix MCP, Connect your stack to Amazon data" },
       { property: "og:description", content: "Use the Anarix MCP server to query your Amazon commerce data from any agent, notebook or internal tool." },
       { property: "og:url", content: "/products/mcp" },
     ],

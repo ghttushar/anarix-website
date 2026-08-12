@@ -26,7 +26,7 @@ import {
 
 const VARIANTS = [shoeSide, shoeTop, shoeBack];
 
-/* ── 1. Easier than copy & paste ─────────────────────────────── */
+/* ── 1. Easier than copy and paste ─────────────────────────────── */
 
 export const ReportVisual = () => (
   <Panel className="h-full">
@@ -160,7 +160,7 @@ const COMPARE_CHECKS: { label: string; ok: boolean }[] = [
 ];
 
 const COMMENTS = [
-  { name: "Akira", role: "Seller agency", text: "We like the drop shadow on the best seller — can we mimic it?" },
+  { name: "Akira", role: "Seller agency", text: "We like the drop shadow on the best seller, can we mimic it?" },
   { name: "Joan", role: "Seller", text: "Go for it. Be inspired, just don't copy." },
   { name: "Ramos", role: "Designer", text: "Enough here to build a set that outperforms." },
 ];

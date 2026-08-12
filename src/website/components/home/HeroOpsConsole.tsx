@@ -5,7 +5,7 @@ import { ShieldCheck, TrendingUp, Zap } from "lucide-react";
 /**
  * Hero visual: a live "account operations console".
  *
- * Reads as a real working surface rather than decoration — marketplace P&L rows
+ * Reads as a real working surface rather than decoration, marketplace P&L rows
  * settle in, a margin band lifts from the "before" baseline, and open issues
  * resolve one by one into the health score. Static, settled state under
  * prefers-reduced-motion.

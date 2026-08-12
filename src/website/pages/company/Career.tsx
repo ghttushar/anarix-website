@@ -15,7 +15,7 @@ const positions = [
 ];
 
 const perks = [
-  { icon: Heart, title: "Health & Wellness", desc: "Full medical, dental, vision + $500/mo wellness stipend." },
+  { icon: Heart, title: "Health and Wellness", desc: "Full medical, dental, vision + $500/mo wellness stipend." },
   { icon: Zap, title: "Growth Budget", desc: "$2K/year for courses, conferences, and books." },
   { icon: Globe, title: "Remote First", desc: "Work from anywhere. Async by default." },
   { icon: Users, title: "Team Retreats", desc: "Quarterly in-person gatherings around the world." },
@@ -96,7 +96,7 @@ const Careers = () => {
                 onClick={() => setExpandedJob(expandedJob === i ? null : i)}
                 aria-expanded={expandedJob === i}
                 aria-controls={`job-panel-${i}`}
-                aria-label={`${pos.title} — ${pos.dept}, ${pos.location}`}
+                aria-label={`${pos.title}, ${pos.dept}, ${pos.location}`}
               >
                 <div>
                   <h4 className="font-semibold text-foreground">{pos.title}</h4>

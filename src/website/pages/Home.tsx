@@ -25,9 +25,10 @@ const Home = () => {
 
       <CaseStudyTeasers />
 
+      <PainPointsSection />
+
       <ServicesGrid />
 
-      <PainPointsSection />
 
       <TestimonialsWrapper />
 
@@ -73,7 +74,7 @@ const Home = () => {
 
       <NextStep
         title="See the numbers behind the claims"
-        description="Two accounts, two marketplaces — what changed, month by month."
+        description="Two accounts, two marketplaces, what changed, month by month."
         to="/case-studies"
         label="Read the case studies"
       />

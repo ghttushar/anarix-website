@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ScanSearch } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const PERKS = ["Free", "No account needed", "Amazon & Walmart", "Runs in seconds"];
+const PERKS = ["Free", "No account needed", "Amazon and Walmart", "Runs in seconds"];
 
 const FinalCtaSection = () => {
   const scrollToAnalyzer = () => {
