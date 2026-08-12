@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useEffect } from "react";
 import HeroDataViz from "./HeroDataViz";
-import HeroManagedOps from "./HeroManagedOps";
+import HeroManagedStudio from "./HeroManagedStudio";
 
 
 const stats = [
@@ -83,7 +83,7 @@ const HeroSectionNew = () => {
           </div>
 
           <div className="lg:col-span-5 mt-10 lg:mt-0 max-w-md lg:max-w-none mx-auto w-full">
-            <HeroManagedOps />
+            <HeroManagedStudio />
           </div>
         </div>
 
