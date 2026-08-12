@@ -24,7 +24,7 @@ function StepZone({
       type="button"
       onClick={onClick}
       aria-label={isNext ? `Next case study: ${study.brand}` : `Previous case study: ${study.brand}`}
-      className="group flex h-full min-h-[120px] w-full items-center gap-4 rounded-2xl border border-border bg-card p-4 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-soft focus:outline-none focus:ring-2 focus:ring-primary/40 lg:w-80 lg:flex-shrink-0"
+      className="group flex h-full w-full items-center gap-4 rounded-2xl border border-border bg-card p-4 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-soft focus:outline-none focus:ring-2 focus:ring-primary/40"
     >
       <motion.span
         className="flex h-11 w-11 shrink-0 items-center justify-center rounded-pill bg-primary/10 text-primary ring-1 ring-primary/30"
