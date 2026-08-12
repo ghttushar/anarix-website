@@ -74,7 +74,10 @@ const HeroManagedOps = () => {
                 strokeWidth={1}
               />
               {!reduceMotion && (
-                                  r={3}
+                <motion.circle
+                  cx={p.x}
+                  cy={p.y}
+                  r={3}
                   fill="currentColor"
                   className="text-primary"
                   initial={{ opacity: 0 }}
@@ -91,6 +94,7 @@ const HeroManagedOps = () => {
                   }}
                 />
               )}
+
             </g>
           );
         })}
