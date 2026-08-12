@@ -36,6 +36,13 @@ const LeadCaptureModal = () => {
     [closeLeadCapture]
   );
 
+  // Confirmation closes itself, so the visitor never has to dismiss a form.
+  useEffect(() => {
+    if (!submitted) return undefined;
+    const t = window.setTimeout(() => closeLeadCapture(), 2200);
+    return () => window.clearTimeout(t);
+  }, [submitted, closeLeadCapture]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
