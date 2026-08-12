@@ -11,8 +11,9 @@ export interface ExpandingCard {
   title: string;
   desc: string;
   features: string[];
-  /** Small info graphic rendered under the description. */
-  graphic?: (active: boolean) => React.ReactNode;
+  /** Animated info graphic revealed when the card is expanded. */
+  graphic?: () => React.ReactNode;
+
 }
 
 interface ExpandingCapabilityGridProps {
