@@ -327,10 +327,10 @@ export function CtaSection() {
             size="lg"
             className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 btn-shine group"
           >
-            <Link to="/demo">
+            <a href="https://calendly.com/sunil-anarix/30min" target="_blank" rel="noopener noreferrer">
               Book a demo
               <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
-            </Link>
+            </a>
           </Button>
           <Button
             asChild

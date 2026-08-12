@@ -382,7 +382,7 @@ const Products = () => {
                 size="lg"
                 className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 btn-shine"
               >
-                <Link to="/demo">Book a demo</Link>
+                <a href="https://calendly.com/sunil-anarix/30min" target="_blank" rel="noopener noreferrer">Book a demo</a>
               </Button>
               <Button
                 asChild
@@ -419,10 +419,10 @@ const Products = () => {
                 size="lg"
                 className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 btn-shine group"
               >
-                <Link to="/demo">
+                <a href="https://calendly.com/sunil-anarix/30min" target="_blank" rel="noopener noreferrer">
                   Book a demo
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
-                </Link>
+                </a>
               </Button>
             </div>
           </Reveal>
@@ -436,7 +436,7 @@ const Products = () => {
         />
 
         <NextStep
-          title="See what it does to a real P&L"
+          title="See what it does to a real profit and loss"
           description="Six accounts, two marketplaces. What changed, month by month."
           to="/case-studies"
           label="Read the case studies"
