@@ -14,6 +14,7 @@ import {
   SoftDivider,
 } from "./primitives";
 import { CaseChartBlock } from "./charts";
+import { CaseStudyVisual } from "./CaseStudyVisual";
 
 /**
  * One chapter template, used unchanged by every case study: hero band with the
