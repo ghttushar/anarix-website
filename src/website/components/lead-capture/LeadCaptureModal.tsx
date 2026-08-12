@@ -84,7 +84,7 @@ const LeadCaptureModal = () => {
             <button
               ref={closeRef}
               onClick={closeLeadCapture}
-              className="absolute right-4 top-4 rounded-pill p-1.5 text-muted-foreground transition-colors hover:bg-background hover:text-foreground"
+              className="absolute right-4 top-4 z-20 rounded-pill p-1.5 text-muted-foreground transition-colors hover:bg-background hover:text-foreground"
               aria-label="Close"
             >
               <X className="h-4 w-4" />
