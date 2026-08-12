@@ -6,6 +6,10 @@ import {
 import ExpandingCapabilityGrid, {
   type ExpandingCard,
 } from "@/website/components/marketing/ExpandingCapabilityGrid";
+import {
+  SpendSparkline, MarginWaterfall, ListingSkeleton, CoverGauge, HealthMeter,
+  ShareRing, ReportLines, DemandFunnel, BrandShield,
+} from "./ServiceGraphics";
 
 const services: ExpandingCard[] = [
   {
@@ -18,6 +22,7 @@ const services: ExpandingCard[] = [
       "Search term harvesting and negatives",
       "Budget pacing with weekly checkpoints",
     ],
+    graphic: SpendSparkline,
   },
   {
     icon: TrendingUp,
@@ -29,6 +34,7 @@ const services: ExpandingCard[] = [
       "TACoS watched against margin, not vanity ROAS",
       "Monthly profit readout in plain English",
     ],
+    graphic: MarginWaterfall,
   },
   {
     icon: LayoutPanelTop,
@@ -40,6 +46,7 @@ const services: ExpandingCard[] = [
       "Image and video refreshes",
       "Suppressed and stranded listing recovery",
     ],
+    graphic: ListingSkeleton,
   },
   {
     icon: Package,
@@ -51,6 +58,7 @@ const services: ExpandingCard[] = [
       "Aged and excess inventory action lists",
       "FBA and WFS placement decisions",
     ],
+    graphic: CoverGauge,
   },
   {
     icon: Shield,
@@ -62,6 +70,7 @@ const services: ExpandingCard[] = [
       "Performance metric watchlist",
       "Escalation path for hard blocks",
     ],
+    graphic: HealthMeter,
   },
   {
     icon: Crosshair,
@@ -73,6 +82,7 @@ const services: ExpandingCard[] = [
       "Rank movement alerts",
       "Counter-plays briefed before they ship",
     ],
+    graphic: ShareRing,
   },
   {
     icon: FileText,
@@ -84,6 +94,7 @@ const services: ExpandingCard[] = [
       "Live platform access on request",
       "Ad hoc pulls whenever you ask",
     ],
+    graphic: ReportLines,
   },
   {
     icon: Radio,
@@ -95,6 +106,7 @@ const services: ExpandingCard[] = [
       "New-to-brand measurement",
       "Full-funnel spend allocation",
     ],
+    graphic: DemandFunnel,
   },
   {
     icon: Building2,
@@ -106,6 +118,7 @@ const services: ExpandingCard[] = [
       "Counterfeit and hijacker takedowns",
       "Brand analytics reviews",
     ],
+    graphic: BrandShield,
   },
 ];
 
