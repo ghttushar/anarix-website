@@ -1,9 +1,17 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, CheckCircle2 } from "lucide-react";
+import { X, CheckCircle2, ArrowRight, Sparkles } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
+
 import { useLeadCapture } from "./LeadCaptureContext";
 
+const PROMISES = ["Where spend is leaking", "Which listings drag margin", "What we would fix first"];
+
+/**
+ * Warm, short lead capture. Two fields only, so it reads like an invitation
+ * rather than a form.
+ */
 const LeadCaptureModal = () => {
   const { isOpen, closeLeadCapture } = useLeadCapture();
   const [submitted, setSubmitted] = useState(false);
@@ -44,7 +52,7 @@ const LeadCaptureModal = () => {
           onKeyDown={handleKeyDown}
         >
           <motion.div
-            className="absolute inset-0 bg-foreground/20 backdrop-blur-sm"
+            className="absolute inset-0 bg-foreground/25 backdrop-blur-sm"
             onClick={closeLeadCapture}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -55,101 +63,89 @@ const LeadCaptureModal = () => {
             role="dialog"
             aria-modal="true"
             aria-labelledby="lead-capture-title"
-            className="relative w-full max-w-lg bg-card rounded-2xl border border-border shadow-strong overflow-hidden"
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            className="relative w-full max-w-md overflow-hidden rounded-3xl border border-border bg-card shadow-strong"
+            initial={{ opacity: 0, scale: 0.96, y: 18 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            exit={{ opacity: 0, scale: 0.96, y: 18 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="flex items-center justify-between p-6 border-b border-border">
-              <h3 id="lead-capture-title" className="text-xl font-bold text-foreground">
-                Get your free margin audit
-              </h3>
-              <button
-                ref={closeRef}
-                onClick={closeLeadCapture}
-                className="p-1 text-muted-foreground hover:text-foreground transition-colors"
-                aria-label="Close"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
+            <div
+              className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-50"
+              style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.35), transparent 70%)" }}
+            />
+
+            <button
+              ref={closeRef}
+              onClick={closeLeadCapture}
+              className="absolute right-4 top-4 rounded-pill p-1.5 text-muted-foreground transition-colors hover:bg-background hover:text-foreground"
+              aria-label="Close"
+            >
+              <X className="h-4 w-4" />
+            </button>
 
             {!submitted ? (
-              <form onSubmit={handleSubmit} className="p-6 space-y-4">
-                <div>
-                  <label htmlFor="lead-name" className="block text-sm font-medium text-foreground mb-1">
-                    Full Name
-                  </label>
-                  <input
-                    id="lead-name"
-                    name="name"
-                    type="text"
-                    required
-                    autoComplete="name"
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
-                    placeholder="Jane Doe"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="lead-email" className="block text-sm font-medium text-foreground mb-1">
-                    Work Email
-                  </label>
+              <div className="relative p-7 sm:p-8">
+                <p className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
+                  <Sparkles className="h-3.5 w-3.5" />
+                  Free audit
+                </p>
+                <h3
+                  id="lead-capture-title"
+                  className="mt-3 font-display text-2xl font-semibold leading-snug tracking-tight text-foreground"
+                >
+                  We will read your account and tell you what we find.
+                </h3>
+
+                <ul className="mt-4 space-y-1.5">
+                  {PROMISES.map((p) => (
+                    <li key={p} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <CheckCircle2 className="h-4 w-4 shrink-0 text-primary" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+
+                <form onSubmit={handleSubmit} className="mt-6 space-y-3">
                   <input
                     id="lead-email"
                     name="email"
                     type="email"
                     required
                     autoComplete="email"
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
-                    placeholder="jane@company.com"
+                    aria-label="Work email"
+                    className="h-11 w-full rounded-pill border border-border bg-background px-4 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+                    placeholder="you@brand.com"
                   />
-                </div>
-                <div>
-                  <label htmlFor="lead-company" className="block text-sm font-medium text-foreground mb-1">
-                    Company Name
-                  </label>
                   <input
-                    id="lead-company"
-                    name="company"
+                    id="lead-brand"
+                    name="brand"
                     type="text"
                     required
                     autoComplete="organization"
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
-                    placeholder="Acme Inc."
+                    aria-label="Brand or store name"
+                    className="h-11 w-full rounded-pill border border-border bg-background px-4 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+                    placeholder="Brand or store name"
                   />
-                </div>
-                <div>
-                  <label htmlFor="lead-phone" className="block text-sm font-medium text-foreground mb-1">
-                    Contact Number <span className="text-muted-foreground font-normal">(optional)</span>
-                  </label>
-                  <input
-                    id="lead-phone"
-                    name="phone"
-                    type="tel"
-                    autoComplete="tel"
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
-                    placeholder="+1 (555) 000-0000"
-                  />
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  We&apos;ll show you what your account is losing before you pay a thing.
-                </p>
-                <Button
-                  type="submit"
-                  className="w-full rounded-pill h-11 bg-primary text-primary-foreground hover:bg-primary/90 btn-shine"
-                >
-                  Get My Free Audit
-                </Button>
-              </form>
+                  <Button
+                    type="submit"
+                    className="group h-11 w-full rounded-pill bg-primary text-primary-foreground btn-shine hover:bg-primary/90"
+                  >
+                    Send me my audit
+                    <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </Button>
+                  <p className="text-center text-xs text-muted-foreground">
+                    No pitch deck, no cost. Just what your numbers say.
+                  </p>
+                </form>
+              </div>
             ) : (
-              <div className="p-12 text-center">
-                <CheckCircle2 className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h4 className="text-lg font-bold text-foreground mb-2">You&apos;re all set!</h4>
-                <p className="text-muted-foreground text-sm mb-6">
-                  We&apos;ll reach out within 24 hours to schedule your free margin audit.
+              <div className="relative p-10 text-center">
+                <CheckCircle2 className="mx-auto mb-4 h-12 w-12 text-primary" />
+                <h4 className="font-display text-xl font-semibold text-foreground">Got it.</h4>
+                <p className="mx-auto mt-2 max-w-xs text-sm text-muted-foreground">
+                  Our team will send your audit within 24 hours.
                 </p>
-                <Button onClick={closeLeadCapture} variant="outline" className="rounded-pill">
+                <Button onClick={closeLeadCapture} variant="outline" className="mt-6 rounded-pill">
                   Close
                 </Button>
               </div>
