@@ -401,6 +401,13 @@ const Products = () => {
         <SignalsSection />
         <McpSection />
 
+        <LeadCaptureBand
+          eyebrow="See it on your data"
+          title="Get a walkthrough built on your own account"
+          description="Leave your email and we will send a short teardown using your listings and ad spend."
+          label="Email me the walkthrough"
+        />
+
         <section className="relative pad-cta">
           <Reveal className="text-center max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-pill bg-primary/10 text-primary text-xs font-medium uppercase tracking-[0.14em]">
@@ -427,13 +434,6 @@ const Products = () => {
             </div>
           </Reveal>
         </section>
-
-        <LeadCaptureBand
-          eyebrow="See it on your data"
-          title="Get a walkthrough built on your own account"
-          description="Leave your email and we will send a short teardown using your listings and ad spend."
-          label="Email me the walkthrough"
-        />
 
         <NextStep
           title="See what it does to a real profit and loss"
