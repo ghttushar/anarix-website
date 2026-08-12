@@ -1,5 +1,5 @@
 /**
- * Case Studies content — single source of truth for every study on the site.
+ * Case Studies content, single source of truth for every study on the site.
  * Numbers come from the partner one-pagers; chart series are smooth
  * interpolations anchored on the documented data points and are indexed
  * (baseline = 100) wherever the source itself is indexed.
@@ -67,7 +67,7 @@ export interface BeforeAfterTable {
 export interface CaseStudyData {
   id: string;
   index: string;
-  /** Brand name — used loud and bold in nav cards, teasers and chapter heads. */
+  /** Brand name, used loud and bold in nav cards, teasers and chapter heads. */
   brand: string;
   /** Marketplace + category, e.g. "Walmart · Medical Supply". */
   marketplace: string;
@@ -146,7 +146,7 @@ export const driveMedicalStudy: CaseStudyData = {
     label: "WALMART 1P REVENUE",
   },
   intro:
-    "Drive Medical had an established Walmart presence, but its Supplier (1P) business remained underdeveloped — advertising was limited, key products faced Buy Box challenges, and performance was fragmented across 1P and Marketplace (3P). Anarix built a unified growth strategy aligning catalog health, pricing, Buy Box performance, inventory, and advertising investment.",
+    "Drive Medical had an established Walmart presence, but its Supplier (1P) business remained underdeveloped, advertising was limited, key products faced Buy Box challenges, and performance was fragmented across 1P and Marketplace (3P). Anarix built a unified growth strategy aligning catalog health, pricing, Buy Box performance, inventory, and advertising investment.",
   metadata: [
     { label: "Marketplace", value: "Walmart" },
     { label: "Model", value: "Hybrid 1P + 3P" },
@@ -200,7 +200,7 @@ export const driveMedicalStudy: CaseStudyData = {
       },
       {
         title: "Buy Box optimization",
-        text: "Investment went only where products could actually convert — pricing, availability and Buy Box health came before spend.",
+        text: "Investment went only where products could actually convert, pricing, availability and Buy Box health came before spend.",
       },
       {
         title: "Full-funnel advertising",
@@ -323,7 +323,7 @@ export const mountItStudy: CaseStudyData = {
     cards: [
       {
         title: "Ad format",
-        text: "Sponsored Products only — a single touchpoint carrying the entire product story.",
+        text: "Sponsored Products only, a single touchpoint carrying the entire product story.",
       },
       {
         title: "Visibility",
@@ -493,7 +493,7 @@ export const karmaOrganicsStudy: CaseStudyData = {
       },
       {
         title: "No architecture",
-        text: "There was no reach layer, no discovery layer and no brand defense — just accumulated campaigns.",
+        text: "There was no reach layer, no discovery layer and no brand defense, just accumulated campaigns.",
       },
     ],
     visual: {
@@ -701,7 +701,7 @@ export const apparelSellerStudy: CaseStudyData = {
     steps: [
       {
         title: "Sponsored Products as the volume engine",
-        text: "SP was closed to non-brand searches and restructured so it never competed with organic — it closed the period at 8.57x ROAS.",
+        text: "SP was closed to non-brand searches and restructured so it never competed with organic, it closed the period at 8.57x ROAS.",
       },
       {
         title: "Sponsored Brands for new-to-brand only",
@@ -738,7 +738,7 @@ export const apparelSellerStudy: CaseStudyData = {
     {
       type: "tacos",
       title: "Blended TACoS",
-      sub: "From 16.8% to a 4.72% December trough — peak season ran at record efficiency.",
+      sub: "From 16.8% to a 4.72% December trough, peak season ran at record efficiency.",
       caption: "Blended TACoS · Aug 2025 → Jul 2026",
       source: "Amazon Ads · partner reporting",
       labels: ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
@@ -810,7 +810,7 @@ export const specialtyFoodStudy: CaseStudyData = {
     label: "TOTAL GROWTH",
   },
   intro:
-    "This specialty food brand had never sold a single unit on Walmart — no catalog, no reviews, no ad presence, no track record on the platform. Anarix built the account from a standing start: launch strategy, catalog and content, a layered ad program, and a scaling plan built for a brand with no Walmart history to lean on.",
+    "This specialty food brand had never sold a single unit on Walmart, no catalog, no reviews, no ad presence, no track record on the platform. Anarix built the account from a standing start: launch strategy, catalog and content, a layered ad program, and a scaling plan built for a brand with no Walmart history to lean on.",
   metadata: [
     { label: "Marketplace", value: "Walmart" },
     { label: "Model", value: "From-scratch launch" },
@@ -829,7 +829,7 @@ export const specialtyFoodStudy: CaseStudyData = {
     cards: [
       {
         title: "No track record",
-        text: "Walmart rewards brands that already have proof — reviews, sales velocity, a fulfillment history. A first-time seller has none of it.",
+        text: "Walmart rewards brands that already have proof, reviews, sales velocity, a fulfillment history. A first-time seller has none of it.",
       },
       {
         title: "No data to decide with",
@@ -851,7 +851,7 @@ export const specialtyFoodStudy: CaseStudyData = {
         { label: "Customer reviews", value: "Zero", pct: 5 },
         { label: "Advertising history", value: "No campaigns", pct: 5 },
       ],
-      footnote: "Every one of these had to be built, not improved — which changes what a launch plan has to do.",
+      footnote: "Every one of these had to be built, not improved, which changes what a launch plan has to do.",
     },
   },
   strategy: {
@@ -868,7 +868,7 @@ export const specialtyFoodStudy: CaseStudyData = {
       },
       {
         title: "Optimize on early signal",
-        text: "The first weeks were about listening — which items, keywords and placements actually convert — then moving budget off what did not.",
+        text: "The first weeks were about listening, which items, keywords and placements actually convert, then moving budget off what did not.",
       },
       {
         title: "Scale and defend",
@@ -965,7 +965,7 @@ export const amazonDistributorStudy: CaseStudyData = {
     label: "MONTHLY TOTAL SALES",
   },
   intro:
-    "Monthly total sales climbed from $36.3K in January to a peak of $174.3K in June — six consecutive months of growth across travel bags, sunscreen brushes and snack boxes. Sponsored Products stayed the primary engine while Sponsored Display scaled into a major secondary contributor, expanding reach without giving up efficiency.",
+    "Monthly total sales climbed from $36.3K in January to a peak of $174.3K in June, six consecutive months of growth across travel bags, sunscreen brushes and snack boxes. Sponsored Products stayed the primary engine while Sponsored Display scaled into a major secondary contributor, expanding reach without giving up efficiency.",
   metadata: [
     { label: "Marketplace", value: "Amazon" },
     { label: "Model", value: "SP · SD · SB" },
@@ -1084,7 +1084,7 @@ export const amazonDistributorStudy: CaseStudyData = {
     result: "$174.3K peak month · +380% total sales · +393% units · 6.25x ROAS",
   },
   quote: {
-    text: "A repeatable growth playbook — scaling spend, expanding ad formats, and protecting efficiency along the way.",
+    text: "A repeatable growth playbook, scaling spend, expanding ad formats, and protecting efficiency along the way.",
     name: "Account leadership",
     title: "Amazon distribution partner",
     brand: "Anarix partner · Amazon",

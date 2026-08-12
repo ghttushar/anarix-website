@@ -194,7 +194,7 @@ const Product = () => {
         {/* Interactive Charts */}
         <PlatformCharts />
 
-        {/* Where Jiva plugs into the platform — full story lives on the Jiva AI page */}
+        {/* Where Jiva plugs into the platform, full story lives on the Jiva AI page */}
         <motion.div
           className="gap-block"
           initial={{ opacity: 0, y: 12 }}
@@ -212,7 +212,7 @@ const Product = () => {
                   Where Jiva plugs into your workflow
                 </h2>
                 <p className="text-muted-foreground max-w-xl">
-                  The intelligence layer sits on the same data you just saw — so every number in the platform can be questioned, diagnosed and acted on without leaving the screen.
+                  The intelligence layer sits on the same data you just saw, so every number in the platform can be questioned, diagnosed and acted on without leaving the screen.
                 </p>
               </div>
               <Link to="/products/aan-ai" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all">

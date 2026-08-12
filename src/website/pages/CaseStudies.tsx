@@ -8,7 +8,7 @@ import { caseStudies, type CaseStudyData } from "@/website/data/case-studies";
 import { CaseStudyChapter } from "@/website/components/case-studies/CaseStudyChapter";
 import { CtaSection, ChapterDivider } from "@/website/components/case-studies/primitives";
 
-/** "+234%", "409 → 57", "~6x" — the single loud number for a nav card. */
+/** "+234%", "409 → 57", "~6x", the single loud number for a nav card. */
 const headlineNumber = (cs: CaseStudyData): string => {
   const { prepend = "", prefix = "", value, decimals = 0, suffix = "" } = cs.hero;
   return `${prepend}${prefix}${value.toFixed(decimals)}${suffix}`;
@@ -87,7 +87,7 @@ const CaseStudies = () => {
               Proof, <span className="text-gradient-primary">not promises.</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Four partners, two marketplaces, one way of working — real numbers from real accounts.
+              Four partners, two marketplaces, one way of working, real numbers from real accounts.
             </p>
           </motion.div>
 

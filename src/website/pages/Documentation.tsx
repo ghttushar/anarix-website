@@ -98,7 +98,7 @@ const sections: { icon: LucideIcon; title: string; articles: Article[] }[] = [
             "Cost of goods sold (COGS) - uploaded or pulled from your store.",
             "Marketplace fees - referral, FBA, storage, returns.",
             "Ad spend - Sponsored Products/Brands/Display, plus off-platform.",
-            "Shipping & fulfillment - actual cost from settlement reports.",
+            "Shipping and fulfillment - actual cost from settlement reports.",
             "Refunds and chargebacks.",
           ] },
           { h: "Frequency" },

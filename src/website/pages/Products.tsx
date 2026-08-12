@@ -1,9 +1,13 @@
 import { motion } from "framer-motion";
 import { Link } from "@/lib/router";
-import { ArrowRight, Bot, FileSearch, Plug, Sparkles, LayoutDashboard } from "lucide-react";
+import {
+  ArrowRight, FileSearch, Plug, Sparkles, LayoutDashboard,
+  Radar, Bell, BarChart3, Search, ShieldCheck, Cable, Braces, Lock,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import PageLayout from "@/website/components/PageLayout";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { AanMascot } from "@/components/aan/AanMascot";
 import EmbedKpiStrip from "@/website/components/embeds/EmbedKpiStrip";
 import EmbedRuleCard from "@/website/components/embeds/EmbedRuleCard";
 import EmbedInsightCard from "@/website/components/embeds/EmbedInsightCard";
@@ -19,223 +23,342 @@ function EyebrowPill({ children }: { children: React.ReactNode }) {
   );
 }
 
-function ProductVisual({ type }: { type: "platform" | "aan" | "signals" | "mcp" }) {
-  if (type === "platform") {
-    return (
-      <div className="rounded-2xl border border-border bg-card shadow-soft overflow-hidden">
-        <div className="flex items-center justify-between px-5 py-3 border-b border-border">
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground flex items-center gap-2">
-            <LayoutDashboard className="w-3.5 h-3.5 text-primary" /> Live dashboard
-          </p>
-          <div className="flex gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-border" />
-            <span className="w-2 h-2 rounded-full bg-border" />
-            <span className="w-2 h-2 rounded-full bg-border" />
-          </div>
-        </div>
-        <EmbedKpiStrip />
-        <div className="grid sm:grid-cols-2 gap-px bg-border">
-          <EmbedRuleCard />
-          <EmbedInsightCard
-            severity="high"
-            title="Stockout risk on your #1 SKU"
-            body="Projected to run out in 6 days at current velocity. 3 rule suggestions ready to review."
-          />
-        </div>
-      </div>
-    );
-  }
-
-  if (type === "aan") {
-    return (
-      <div className="rounded-2xl border border-border bg-card shadow-soft p-6 space-y-3">
-        <motion.div
-          className="max-w-[85%] rounded-2xl rounded-tl-sm bg-muted/50 border border-border px-4 py-3 text-sm text-foreground"
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: EASE }}
-        >
-          Which ad type is carrying Black Friday this year?
-        </motion.div>
-        <motion.div
-          className="max-w-[85%] ml-auto rounded-2xl rounded-tr-sm bg-primary/10 border border-primary/20 px-4 py-3 text-sm text-foreground"
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15, ease: EASE }}
-        >
-          Sponsored Display — it&apos;s running 55x ROAS on $5,891 of spend. Want the breakdown?
-        </motion.div>
-        <motion.div
-          className="flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2.5 text-sm text-muted-foreground"
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3, ease: EASE }}
-        >
-          <Sparkles className="w-4 h-4 text-primary" /> Ask anything about your account…
-        </motion.div>
-      </div>
-    );
-  }
-
-  if (type === "signals") {
-    return (
-      <div className="rounded-2xl border border-border bg-card shadow-soft p-6 space-y-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground flex items-center gap-2">
-          <FileSearch className="w-3.5 h-3.5 text-primary" /> Morning Letter · Mon
-        </p>
-        {[
-          { sev: "bg-red-500", title: "Stockout risk on your #1 SKU", conf: "92%", reason: "Velocity up 31% for 5 days straight" },
-          { sev: "bg-amber-500", title: "Meta ad-set is overspending its return threshold", conf: "78%", reason: "ACoS +6pts week-over-week" },
-          { sev: "bg-green-500", title: "Retailer contract requires a decision this week", conf: "64%", reason: "Deadline in 6 days · 2 options" },
-        ].map((s, i) => (
-          <motion.div
-            key={s.title}
-            className="rounded-xl border border-border bg-background p-4"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.12, ease: EASE }}
-          >
-            <div className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2 min-w-0">
-                <span className={`w-2 h-2 rounded-full shrink-0 ${s.sev}`} />
-                <p className="text-sm font-semibold text-foreground truncate">{s.title}</p>
-              </div>
-              <span className="shrink-0 text-xs font-bold text-primary">{s.conf}</span>
-            </div>
-            <p className="mt-1.5 text-xs text-muted-foreground pl-4">{s.reason}</p>
-          </motion.div>
-        ))}
-      </div>
-    );
-  }
-
+function Reveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const { ref, isVisible } = useScrollReveal();
   return (
-    <div className="rounded-2xl border border-border bg-card shadow-soft p-6 space-y-3">
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground flex items-center gap-2">
-        <Plug className="w-3.5 h-3.5 text-primary" /> MCP Server · Tools
-      </p>
-      {[
-        { tool: "get_account_summary", io: ["POST /mcp", "JSON"] },
-        { tool: "list_applied_rules", io: ["GET /mcp", "JSON"] },
-        { tool: "echo", io: ["Any model", "Any format"] },
-      ].map((t, i) => (
-        <motion.div
-          key={t.tool}
-          className="rounded-xl border border-border bg-background p-4"
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: i * 0.12, ease: EASE }}
-        >
-          <div className="flex items-center justify-between gap-3">
-            <p className="text-sm font-semibold text-foreground font-mono">{t.tool}</p>
-            <div className="flex gap-1.5">
-              {t.io.map((chip) => (
-                <span key={chip} className="text-[11px] px-2 py-0.5 rounded-pill bg-primary/10 text-primary font-medium">
-                  {chip}
-                </span>
-              ))}
-            </div>
-          </div>
-          <p className="mt-1.5 text-xs text-muted-foreground">
-            Live, read-only marketplace data in the model&apos;s native format.
-          </p>
-        </motion.div>
-      ))}
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+      } ${className}`}
+    >
+      {children}
     </div>
   );
 }
 
-interface ProductSection {
-  eyebrow: string;
-  name: string;
-  solves: string;
-  chips: string[];
-  visual: "platform" | "aan" | "signals" | "mcp";
+function SectionHead({
+  eyebrow,
+  title,
+  accent,
+  body,
+  align = "left",
+}: {
+  eyebrow: React.ReactNode;
+  title: string;
+  accent: string;
+  body: string;
+  align?: "left" | "center";
+}) {
+  return (
+    <div className={align === "center" ? "text-center max-w-2xl mx-auto" : "max-w-xl"}>
+      <EyebrowPill>{eyebrow}</EyebrowPill>
+      <h2 className="mt-4 font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold tracking-tight text-foreground leading-[1.1]">
+        {title} <span className="text-gradient-primary">{accent}</span>
+      </h2>
+      <p className="mt-4 text-muted-foreground leading-relaxed">{body}</p>
+    </div>
+  );
 }
 
-const products: ProductSection[] = [
-  {
-    eyebrow: "Insight Engine Platform",
-    name: "Every signal, one platform.",
-    solves:
-      "The unified commerce intelligence platform — advertising, profitability, inventory, and competition across Amazon and Walmart in a single workspace.",
-    chips: ["Campaign Management", "Bid Intelligence", "Keyword Harvesting", "Visual Rule Builder", "Guardrails & Safety", "Unified P&L"],
-    visual: "platform",
-  },
-  {
-    eyebrow: "Jiva AI",
-    name: "An AI that reads the account like an operator.",
-    solves:
-      "Ask anything, get answers with evidence. Jiva monitors every account around the clock and surfaces what needs attention before it hits the P&L.",
-    chips: ["Ask Anything", "Proactive Alerts", "Automated Reporting", "Anomaly Detection", "Keyword Intelligence"],
-    visual: "aan",
-  },
-  {
-    eyebrow: "Signals",
-    name: "A day begins with a letter, not a dashboard.",
-    solves:
-      "Every morning, the three things that deserve your attention — with the evidence, reasoning, and confidence score behind each one.",
-    chips: ["Daily morning letter", "Evidence & reasoning", "Confidence scoring", "One-click execution"],
-    visual: "signals",
-  },
-  {
-    eyebrow: "MCP",
-    name: "Your marketplace data, AI-ready.",
-    solves:
-      "Plug any LLM into live, structured marketplace data through Model Context Protocol — universal, read-only by default, and built to answer.",
-    chips: ["Universal AI Connection", "Live Marketplace Data", "Read-Only by Default", "Structured Responses"],
-    visual: "mcp",
-  },
+/* ---------------------------------------------------------------- 01 Platform */
+
+const platformPillars = [
+  { icon: BarChart3, title: "Unified P&L", text: "Ads, fees, COGS and returns in one contribution-margin view." },
+  { icon: Radar, title: "Bid intelligence", text: "Campaign, keyword and placement decisions scored daily." },
+  { icon: ShieldCheck, title: "Guardrails", text: "Rules that cannot spend past the limits you set." },
 ];
 
-function ProductRow({ product, index }: { product: ProductSection; index: number }) {
-  const { ref, isVisible } = useScrollReveal();
-  const flip = index % 2 === 1;
+function PlatformSection() {
   return (
-    <section className="relative pad-section-compact">
-      <div
-        ref={ref}
-        className={`grid lg:grid-cols-2 gap-grid items-center transition-all duration-700 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-        }`}
-      >
-        <div className={flip ? "lg:order-2" : ""}>
-          <EyebrowPill>
-            <Bot className="w-3.5 h-3.5" /> {product.eyebrow}
-          </EyebrowPill>
-          <h2 className="mt-4 font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground leading-[1.1]">
-            {product.name}
-          </h2>
-          <p className="mt-4 text-muted-foreground leading-relaxed max-w-xl">{product.solves}</p>
-          <div className="mt-6 flex flex-wrap gap-2">
-            {product.chips.map((chip) => (
-              <span
-                key={chip}
-                className="px-3.5 py-1.5 rounded-pill bg-card border border-border text-xs font-medium text-foreground"
-              >
-                {chip}
+    <section className="pad-section-compact border-t border-border/40">
+      <Reveal>
+        <SectionHead
+          align="center"
+          eyebrow={<><LayoutDashboard className="w-3.5 h-3.5" /> Insight Engine Platform</>}
+          title="Every signal,"
+          accent="one platform."
+          body="Advertising, profitability, inventory and competition across Amazon, Walmart and Shopify in a single workspace your team actually uses."
+        />
+      </Reveal>
+
+      <Reveal className="mt-12">
+        <div className="rounded-3xl border border-border bg-card shadow-soft overflow-hidden">
+          <div className="flex items-center justify-between px-5 py-3 border-b border-border">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground flex items-center gap-2">
+              <LayoutDashboard className="w-3.5 h-3.5 text-primary" /> Live dashboard
+            </p>
+            <div className="flex gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-border" />
+              <span className="w-2 h-2 rounded-full bg-border" />
+              <span className="w-2 h-2 rounded-full bg-border" />
+            </div>
+          </div>
+          <EmbedKpiStrip />
+          <div className="grid sm:grid-cols-2 gap-px bg-border">
+            <EmbedRuleCard />
+            <EmbedInsightCard
+              severity="high"
+              title="Stockout risk on your #1 SKU"
+              body="Projected to run out in 6 days at current velocity. 3 rule suggestions ready to review."
+            />
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal className="mt-6">
+        <div className="grid sm:grid-cols-3 gap-4">
+          {platformPillars.map((p) => (
+            <div key={p.title} className="rounded-2xl border border-border bg-card p-5 h-full">
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10">
+                <p.icon className="h-4 w-4 text-primary" />
               </span>
+              <h3 className="mt-3 text-sm font-semibold text-foreground">{p.title}</h3>
+              <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{p.text}</p>
+            </div>
+          ))}
+        </div>
+      </Reveal>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------- 02 Jiva */
+
+const jivaThread = [
+  { icon: Search, title: "Ask anything", text: "Plain questions about spend, margin, rank or returns. Answers come with the evidence attached." },
+  { icon: Bell, title: "Proactive alerts", text: "Jiva watches the account overnight and flags what moved before it hits the P&L." },
+  { icon: BarChart3, title: "Reporting on tap", text: "Any slice of the account written up in plain English, ready to forward." },
+];
+
+function JivaSection() {
+  return (
+    <section className="pad-section-compact border-t border-border/40">
+      <div className="grid lg:grid-cols-12 gap-grid items-start">
+        <div className="lg:col-span-5">
+          <Reveal>
+            <div className="flex items-center gap-4">
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <AanMascot size={72} state="idle" interactive />
+              </motion.div>
+              <EyebrowPill>
+                <Sparkles className="w-3.5 h-3.5" /> Jiva AI
+              </EyebrowPill>
+            </div>
+
+            <h2 className="mt-5 font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold tracking-tight text-foreground leading-[1.1]">
+              An AI that reads the account{" "}
+              <span className="text-gradient-primary">like an operator.</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              Jiva sits inside every view, knows the history of your account and answers in the
+              language your team already speaks.
+            </p>
+          </Reveal>
+
+          <div className="mt-8 space-y-3">
+            {jivaThread.map((item, i) => (
+              <motion.div
+                key={item.title}
+                className="flex gap-3 rounded-2xl border border-border bg-card p-4"
+                initial={{ opacity: 0, x: -14 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
+              >
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                  <item.icon className="h-4 w-4 text-primary" />
+                </span>
+                <div>
+                  <h3 className="text-sm font-semibold text-foreground">{item.title}</h3>
+                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{item.text}</p>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
-        <div className={flip ? "lg:order-1" : ""}>
-          <ProductVisual type={product.visual} />
+
+        <div className="lg:col-span-7 lg:pl-4">
+          <Reveal>
+            <div className="rounded-3xl border border-border bg-card shadow-soft p-6 space-y-3">
+              <div className="flex items-center gap-2 pb-2 border-b border-border">
+                <AanMascot size={24} state="speaking" staticEyes />
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                  Jiva
+                </p>
+              </div>
+              <motion.div
+                className="max-w-[85%] rounded-2xl rounded-tl-sm bg-muted/50 border border-border px-4 py-3 text-sm text-foreground"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: EASE }}
+              >
+                Which ad type is carrying Black Friday this year?
+              </motion.div>
+              <motion.div
+                className="max-w-[85%] ml-auto rounded-2xl rounded-tr-sm bg-primary/10 border border-primary/20 px-4 py-3 text-sm text-foreground"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.15, ease: EASE }}
+              >
+                Sponsored Display. It is running 55x ROAS on{" "}
+                <span className="font-numeric font-semibold">$5,891</span> of spend. Want the
+                breakdown?
+              </motion.div>
+              <motion.div
+                className="max-w-[85%] rounded-2xl rounded-tl-sm bg-muted/50 border border-border px-4 py-3 text-sm text-foreground"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3, ease: EASE }}
+              >
+                Yes, and tell me what to shift budget away from.
+              </motion.div>
+              <motion.div
+                className="flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2.5 text-sm text-muted-foreground"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.45, ease: EASE }}
+              >
+                <Sparkles className="w-4 h-4 text-primary" /> Ask anything about your account
+              </motion.div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
   );
 }
 
+/* ----------------------------------------------------------------- 03 Signals */
+
+const signalItems = [
+  { sev: "bg-red-500", title: "Stockout risk on your #1 SKU", conf: "92%", reason: "Velocity up 31% for 5 days straight" },
+  { sev: "bg-amber-500", title: "Ad set is overspending its return threshold", conf: "78%", reason: "ACoS up 6 points week over week" },
+  { sev: "bg-green-500", title: "Retailer contract needs a decision this week", conf: "64%", reason: "Deadline in 6 days, 2 options" },
+];
+
+function SignalsSection() {
+  return (
+    <section className="pad-section-compact border-t border-border/40">
+      <Reveal>
+        <SectionHead
+          align="center"
+          eyebrow={<><FileSearch className="w-3.5 h-3.5" /> Signals</>}
+          title="A day begins with a letter,"
+          accent="not a dashboard."
+          body="Every morning, the three things that deserve your attention, with the evidence, the reasoning and a confidence score behind each one."
+        />
+      </Reveal>
+
+      <div className="mt-12 relative mx-auto max-w-3xl">
+        <div className="absolute left-4 top-2 bottom-2 w-px bg-border sm:left-1/2" aria-hidden />
+        <div className="space-y-4">
+          {signalItems.map((s, i) => (
+            <motion.div
+              key={s.title}
+              className="relative pl-12 sm:pl-0 sm:grid sm:grid-cols-2 sm:gap-8"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.55, delay: i * 0.1, ease: EASE }}
+            >
+              <span
+                className={`absolute left-[11px] top-6 h-2.5 w-2.5 rounded-full ring-4 ring-background sm:left-1/2 sm:-translate-x-1/2 ${s.sev}`}
+                aria-hidden
+              />
+              <div className={i % 2 === 0 ? "sm:pr-4" : "sm:col-start-2 sm:pl-4"}>
+                <div className="rounded-2xl border border-border bg-card p-5 shadow-soft">
+                  <div className="flex items-start justify-between gap-3">
+                    <p className="text-sm font-semibold leading-snug text-foreground">{s.title}</p>
+                    <span className="shrink-0 font-numeric text-xs font-bold text-primary">
+                      {s.conf}
+                    </span>
+                  </div>
+                  <p className="mt-2 text-xs text-muted-foreground">{s.reason}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      <Reveal className="mt-8">
+        <p className="text-center text-xs uppercase tracking-[0.14em] text-muted-foreground">
+          Delivered daily · one click to act · nothing else in the inbox
+        </p>
+      </Reveal>
+    </section>
+  );
+}
+
+/* --------------------------------------------------------------------- 04 MCP */
+
+const mcpTools = [
+  { tool: "get_account_summary", icon: Cable, chips: ["POST /mcp", "JSON"], text: "Live account state in the model's native format." },
+  { tool: "list_applied_rules", icon: Braces, chips: ["GET /mcp", "JSON"], text: "Every automation that touched the account." },
+  { tool: "read_only_scope", icon: Lock, chips: ["Any model", "Safe"], text: "Read-only by default, so nothing can be spent." },
+];
+
+function McpSection() {
+  return (
+    <section className="pad-section-compact border-t border-border/40">
+      <div className="rounded-3xl border border-primary/20 bg-primary/5 p-6 sm:p-10">
+        <Reveal>
+          <SectionHead
+            align="center"
+            eyebrow={<><Plug className="w-3.5 h-3.5" /> MCP</>}
+            title="Your marketplace data,"
+            accent="AI ready."
+            body="Plug any model into live, structured marketplace data through Model Context Protocol. Universal, read-only by default and built to answer."
+          />
+        </Reveal>
+
+        <div className="mt-10 grid sm:grid-cols-3 gap-4">
+          {mcpTools.map((t, i) => (
+            <motion.div
+              key={t.tool}
+              className="flex h-full flex-col rounded-2xl border border-border bg-card p-5"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
+            >
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10">
+                <t.icon className="h-4 w-4 text-primary" />
+              </span>
+              <p className="mt-3 font-mono text-sm font-semibold text-foreground">{t.tool}</p>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{t.text}</p>
+              <div className="mt-4 flex flex-wrap gap-1.5 pt-3 border-t border-border/60">
+                {t.chips.map((chip) => (
+                  <span
+                    key={chip}
+                    className="rounded-pill bg-primary/10 px-2 py-0.5 text-[11px] font-medium text-primary"
+                  >
+                    {chip}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* --------------------------------------------------------------------- page */
+
 const Products = () => {
-  const { ref, isVisible } = useScrollReveal();
   return (
     <PageLayout>
-      <div className="container-page px-4">
+      <div className="container-page px-4 sm:px-6">
         <div className="text-center pad-hero">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -249,8 +372,8 @@ const Products = () => {
               Everything <span className="text-gradient-primary">Anarix offers.</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              One platform, four ways in — build, measure, and scale marketplace growth
-              without leaving your desk.
+              One platform, four ways in. The workspace, the AI operator, the daily letter and the
+              connection layer that ties them to your stack.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
@@ -272,17 +395,13 @@ const Products = () => {
           </motion.div>
         </div>
 
-        {products.map((p, i) => (
-          <ProductRow key={p.eyebrow} product={p} index={i} />
-        ))}
+        <PlatformSection />
+        <JivaSection />
+        <SignalsSection />
+        <McpSection />
 
         <section className="relative pad-cta">
-          <div
-            ref={ref}
-            className={`text-center max-w-2xl mx-auto transition-all duration-700 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
+          <Reveal className="text-center max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-pill bg-primary/10 text-primary text-xs font-medium uppercase tracking-[0.14em]">
               One suite
             </div>
@@ -291,7 +410,7 @@ const Products = () => {
               <span className="text-gradient-primary">one operating system.</span>
             </h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              Pick the piece you need first — the rest of the stack is already wired to it.
+              Pick the piece you need first. The rest of the stack is already wired to it.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
@@ -305,12 +424,12 @@ const Products = () => {
                 </Link>
               </Button>
             </div>
-          </div>
+          </Reveal>
         </section>
 
         <NextStep
           title="See what it does to a real P&L"
-          description="Six accounts, two marketplaces — what changed, month by month."
+          description="Six accounts, two marketplaces. What changed, month by month."
           to="/case-studies"
           label="Read the case studies"
         />

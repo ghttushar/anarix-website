@@ -19,7 +19,7 @@ const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/website-aan`
 const SUGGESTED = [
   "What does Anarix do?",
   "How is Jiva different?",
-  "Pricing & onboarding",
+  "Pricing and onboarding",
   "Which marketplaces?",
 ];
 

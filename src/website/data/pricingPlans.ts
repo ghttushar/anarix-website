@@ -1,5 +1,5 @@
 // Pricing plans for the redesigned Pricing page.
-// Numbers are placeholders — confirm with finance before shipping live.
+// Numbers are placeholders, confirm with finance before shipping live.
 
 export type PricingMode = "monthly" | "yearly";
 

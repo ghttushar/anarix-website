@@ -7,7 +7,7 @@ export const Route = createFileRoute("/privacy-policy")({
     meta: [
       { title: "Privacy Policy | Anarix.ai" },
       { name: "description", content: "How Anarix collects, uses, stores and protects data across the platform and marketing site." },
-      { property: "og:title", content: "Privacy Policy — Anarix" },
+      { property: "og:title", content: "Privacy Policy, Anarix" },
       { property: "og:description", content: "How Anarix collects, uses, stores and protects data across the platform and marketing site." },
       { property: "og:url", content: "/privacy-policy" },
     ],

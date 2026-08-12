@@ -178,45 +178,68 @@ function TeasersIntro() {
         We&apos;ve <span className="text-gradient-primary">done this before.</span>
       </h2>
       <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-        Six accounts, two marketplaces — the way we measure is the way we work.
+        Six accounts, two marketplaces, the way we measure is the way we work.
       </p>
     </div>
   );
 }
 
-/** Compact teaser: brand, marketplace, one loud number, one line. No charts. */
+const statValue = (m: { prepend?: string; prefix?: string; value: number; decimals?: number; suffix?: string }): string =>
+  `${m.prepend ?? ""}${m.prefix ?? ""}${m.value.toFixed(m.decimals ?? 0)}${m.suffix ?? ""}`;
+
+/** Uniform teaser: fixed slots so every card in the ring has identical geometry. */
 function TeaserCard({ cs, interactive }: { cs: CaseStudyData; interactive: boolean }) {
+  const secondary = cs.kpis.slice(0, 2);
+
   return (
     <Link
       to={`/case-studies#${cs.id}`}
       tabIndex={interactive ? 0 : -1}
       aria-hidden={interactive ? undefined : true}
-      className={`group block rounded-3xl border bg-card shadow-medium p-6 sm:p-7 transition-colors duration-300 ${
+      className={`group flex h-[400px] flex-col rounded-3xl border bg-card shadow-medium p-6 sm:p-7 transition-colors duration-300 ${
         interactive
           ? "border-border hover:border-primary/45 pointer-events-auto"
           : "border-border/60 pointer-events-none"
       }`}
     >
-      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-        {cs.marketplace}
-      </p>
-      <h3 className="mt-2 font-display text-xl font-bold tracking-tight text-foreground leading-tight min-h-[3.5rem]">
+      <div className="flex items-start justify-between gap-3">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+          {cs.marketplace}
+        </p>
+        <span className="shrink-0 font-numeric text-[11px] text-muted-foreground">{cs.period}</span>
+      </div>
+
+      <h3 className="mt-3 font-display text-xl font-bold leading-tight tracking-tight text-foreground line-clamp-2 min-h-[3.5rem]">
         {cs.brand}
       </h3>
 
-      <p className="mt-4 font-numeric text-4xl font-bold tracking-tight leading-none">
+      <p className="mt-3 font-numeric text-5xl font-bold leading-none tracking-tight">
         <span className="text-gradient-primary">{heroNumber(cs)}</span>
       </p>
-      <p className="mt-2 text-xs text-muted-foreground leading-snug min-h-[2.5rem]">
+      <p className="mt-2 text-xs leading-snug text-muted-foreground line-clamp-2 min-h-[2.25rem]">
         {cs.hero.statLine}
       </p>
 
-      <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+      <div className="mt-5 grid grid-cols-2 gap-2 border-t border-border/60 pt-4">
+        {secondary.map((kpi) => (
+          <div key={kpi.label} className="rounded-xl bg-primary/5 px-3 py-2.5">
+            <p className="font-numeric text-lg font-bold leading-none text-foreground">
+              {statValue(kpi)}
+            </p>
+            <p className="mt-1.5 text-[10px] uppercase leading-tight tracking-[0.1em] text-muted-foreground line-clamp-2">
+              {kpi.label}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-primary">
         Explore case study
-        <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
       </span>
     </Link>
   );
 }
+
 
 export default CaseStudyTeasers;

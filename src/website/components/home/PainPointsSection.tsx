@@ -64,7 +64,7 @@ const PainPointsSection = () => {
             transition={{ delay: 0.4, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
             <p className="text-base sm:text-lg text-foreground leading-relaxed">
-              We built Anarix because brand owners kept telling us the same thing — not &ldquo;I need better software,&rdquo; but{" "}
+              We built Anarix because brand owners kept telling us the same thing, not &ldquo;I need better software,&rdquo; but{" "}
               <span className="text-primary font-bold">&ldquo;I need someone to just handle this.&rdquo;</span>
             </p>
           </motion.div>

@@ -14,7 +14,7 @@ const defaultNodes: Node[] = [
   { label: "Diagnose", sub: "Jiva reads the data" },
   { label: "Draft", sub: "Rules, audits, reports" },
   { label: "Approve", sub: "You stay in control" },
-  { label: "Execute", sub: "Logged & reversible" },
+  { label: "Execute", sub: "Logged and reversible" },
 ];
 
 const WorkflowDiagram = ({ nodes = defaultNodes }: WorkflowDiagramProps) => (

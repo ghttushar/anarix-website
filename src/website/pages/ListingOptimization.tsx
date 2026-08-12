@@ -200,7 +200,7 @@ const ListingOptimization = () => {
   return (
     <PageLayout>
       <div className="container-wide px-4 sm:px-6 relative">
-        {/* Section 1 — Intro */}
+        {/* Section 1, Intro */}
         <div className="relative mx-auto max-w-3xl mt-14 mb-10 text-center">
           <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[480px] h-[320px] rounded-full bg-primary/25 blur-3xl" aria-hidden="true" />
           <div className="pointer-events-none absolute -top-10 -right-16 w-52 h-52 rounded-full bg-accent/40 blur-3xl" aria-hidden="true" />
@@ -216,11 +216,11 @@ const ListingOptimization = () => {
             </h1>
             <p className="mt-4 text-base sm:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
               Our analyzer predicts how well your product images will perform on
-              Amazon and Walmart — paste a link, see your score, and fix the
+              Amazon and Walmart, paste a link, see your score, and fix the
               poor performers to convert more clicks into sales.
             </p>
             <ul className="mt-6 flex flex-wrap items-center justify-center gap-2">
-              {["Amazon ASINs & links", "Walmart IDs & links", "No signup needed"].map((item) => (
+              {["Amazon ASINs and links", "Walmart IDs and links", "No signup needed"].map((item) => (
                 <li
                   key={item}
                   className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-surface-elevated/70 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur"
@@ -242,7 +242,7 @@ const ListingOptimization = () => {
           transition={{ delay: 0.15, duration: 0.5 }}
         >
           <div className="space-y-6">
-            {/* Section 2 — Unified paste input */}
+            {/* Section 2, Unified paste input */}
             <div className="relative">
               <div className="relative flex items-center gap-2 rounded-pill border border-border bg-background p-1.5 shadow-soft focus-within:ring-2 focus-within:ring-primary/40 transition-shadow">
                 <Link2 className="ml-3 w-4 h-4 text-muted-foreground flex-shrink-0" />
@@ -330,7 +330,7 @@ const ListingOptimization = () => {
                             Optimized preview
                           </span>
                           <p className="text-xs font-medium text-foreground max-w-[16rem]">
-                            Your full-resolution image is ready — we&apos;ll email it to you.
+                            Your full-resolution image is ready, we&apos;ll email it to you.
                           </p>
                         </div>
                       )}
@@ -501,7 +501,7 @@ const ListingOptimization = () => {
                   <p className="mt-4 text-sm text-muted-foreground">
                     {state === "loading-product"
                       ? PRODUCT_LOADING_MESSAGE
-                      : "Paste any Amazon or Walmart link above — we'll fetch the main image, score it against marketplace rules, and tell you exactly what to fix."}
+                      : "Paste any Amazon or Walmart link above, we'll fetch the main image, score it against marketplace rules, and tell you exactly what to fix."}
                   </p>
                 </div>
               )}
@@ -515,7 +515,7 @@ const ListingOptimization = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          Free tool — no signup required. Analysis and generation are demonstrations; production
+          Free tool, no signup required. Analysis and generation are demonstrations; production
           accuracy depends on marketplace data availability.
         </motion.p>
 

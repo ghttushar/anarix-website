@@ -104,7 +104,7 @@ const ShowcaseSection = () => {
         </h2>
         <p className="mt-3 text-base text-muted-foreground max-w-xl mx-auto">
           Buyers decide in a glance. Watch how the same product flips from
-          forgettable to conversion-ready — and then get yours graded for free.
+          forgettable to conversion-ready, and then get yours graded for free.
         </p>
       </motion.div>
 
@@ -182,7 +182,7 @@ const ShowcaseSection = () => {
           ))}
         </div>
         <p className="mt-2 text-xs text-muted-foreground text-center" aria-live="polite">
-          {slide.label} — scroll the analyzer above and see issues like these on your own listing.
+          {slide.label}, scroll the analyzer above and see issues like these on your own listing.
         </p>
       </motion.div>
     </section>

@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useEffect } from "react";
 import HeroDataViz from "./HeroDataViz";
-import HeroOpsConsole from "./HeroOpsConsole";
+import HeroManagedOps from "./HeroManagedOps";
+
 
 const stats = [
   { label: "GMV driven", numeric: 1.2, prefix: "$", suffix: "B", decimals: 1 },
@@ -61,7 +62,7 @@ const HeroSectionNew = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              You didn&apos;t build this brand to babysit ad campaigns and chase stockouts. Anarix runs your Amazon, Walmart and Shopify accounts end-to-end — ads, listings, inventory, compliance — as one team. You keep full visibility.{" "}
+              You didn&apos;t build this brand to babysit ad campaigns and chase stockouts. Anarix runs your Amazon, Walmart and Shopify accounts end-to-end, ads, listings, inventory, compliance, as one team. You keep full visibility.{" "}
               <span className="text-foreground font-semibold">We take the 11pm shift.</span>
             </motion.p>
 
@@ -82,7 +83,7 @@ const HeroSectionNew = () => {
           </div>
 
           <div className="lg:col-span-5 mt-10 lg:mt-0 max-w-md lg:max-w-none mx-auto w-full">
-            <HeroOpsConsole />
+            <HeroManagedOps />
           </div>
         </div>
 

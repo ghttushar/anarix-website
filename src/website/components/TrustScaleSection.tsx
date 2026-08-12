@@ -5,7 +5,7 @@ import { Shield, Globe, Lock, Award } from "lucide-react";
 const badges = [
   { icon: Shield, label: "SOC 2 Compliant", desc: "Enterprise-grade security" },
   { icon: Globe, label: "Global Coverage", desc: "NA, EU, APAC regions" },
-  { icon: Lock, label: "Data Encryption", desc: "AES-256 at rest & in transit" },
+  { icon: Lock, label: "Data Encryption", desc: "AES-256 at rest and in transit" },
   { icon: Award, label: "AWS Partner", desc: "Advanced technology partner" },
 ];
 

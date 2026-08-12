@@ -6,7 +6,7 @@ const steps = [
   { icon: Eye, label: "Draft", sub: "Jiva or you" },
   { icon: ShieldCheck, label: "Simulate", sub: "Historical preview" },
   { icon: CheckCircle2, label: "Approve", sub: "One-click" },
-  { icon: Play, label: "Execute", sub: "Logged & reversible" },
+  { icon: Play, label: "Execute", sub: "Logged and reversible" },
 ];
 
 /**

@@ -96,7 +96,7 @@ const MorphPanel = () => {
             Decision
           </p>
           <p className="text-sm font-semibold text-foreground leading-snug">
-            Pause B07X9 retargeting — ROAS fell 40%.
+            Pause B07X9 retargeting, ROAS fell 40%.
           </p>
           <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
             Rule drafted, pending your review.
@@ -149,15 +149,15 @@ const PhilosophySection = () => {
               {[
                 {
                   title: "Relentless execution at machine speed.",
-                  desc: "The days of manually adjusting bids and babysitting campaigns are over — our technology handles that grind continuously, at a scale and speed no human could match.",
+                  desc: "The days of manually adjusting bids and babysitting campaigns are over, our technology handles that grind continuously, at a scale and speed no human could match.",
                 },
                 {
                   title: "Testing, testing, and more testing.",
-                  desc: "New creative, new keywords, new budget structures, new DSP audiences — a constant stream of experiments to find what works for your brand, not a playbook recycled from someone else&apos;s.",
+                  desc: "New creative, new keywords, new budget structures, new DSP audiences, a constant stream of experiments to find what works for your brand, not a playbook recycled from someone else&apos;s.",
                 },
                 {
                   title: "Deep dives, not dashboards.",
-                  desc: "Real analysis of where your account is headed, what&apos;s holding it back, and what comes next — the kind of thinking that only happens when your team isn&apos;t buried in manual optimization.",
+                  desc: "Real analysis of where your account is headed, what&apos;s holding it back, and what comes next, the kind of thinking that only happens when your team isn&apos;t buried in manual optimization.",
                 },
                 {
                   title: "Decisions, not to-do lists.",
@@ -186,7 +186,7 @@ const PhilosophySection = () => {
               transition={{ delay: 0.5, duration: 0.5 }}
             >
               <p className="text-sm text-foreground leading-relaxed font-medium">
-                Technology does what it does best — relentless, precise execution at machine speed. Our people do what they do best — test, think, and push your brand further than a script ever could.{" "}
+                Technology does what it does best, relentless, precise execution at machine speed. Our people do what they do best, test, think, and push your brand further than a script ever could.{" "}
                 <span className="text-primary">You get both.</span>
               </p>
             </motion.div>

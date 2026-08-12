@@ -16,19 +16,19 @@ const surfaces = [
   {
     icon: Eye,
     title: "Ask Jiva",
-    desc: "Highlight any number in the app. A tooltip appears — click it and Jiva explains the metric, traces the source, and offers next steps.",
+    desc: "Highlight any number in the app. A tooltip appears, click it and Jiva explains the metric, traces the source, and offers next steps.",
     detail: "When a stakeholder asks 'what is this number' and you need an answer that doesn't make you look bad.",
   },
   {
     icon: BrainCircuit,
     title: "Full-Screen Jiva",
-    desc: "/aan — a dedicated workspace with chat history, multi-artifact reasoning, and long context for audits, weekly reviews, and rule design.",
+    desc: "/aan, a dedicated workspace with chat history, multi-artifact reasoning, and long context for audits, weekly reviews, and rule design.",
     detail: "When the question is bigger than a sidebar.",
   },
   {
     icon: Zap,
     title: "Floating Action Island",
-    desc: "A persistent control hub at the bottom-right. System alerts, Ask Jiva, quick-create rules, command palette — one reach, every action.",
+    desc: "A persistent control hub at the bottom-right. System alerts, Ask Jiva, quick-create rules, command palette, one reach, every action.",
     detail: "When you live in the app and need everything one motion away.",
   },
 ];
@@ -44,7 +44,7 @@ const capabilities = [
 
 const chatDemo = [
   { role: "user" as const, text: "Why did Sponsored Display ROAS drop yesterday?" },
-  { role: "aan" as const, text: "Loss is concentrated on retargeting placements for ASIN B07X9. Likely a competitor launch — I'm seeing a new listing with aggressive pricing in your category. Want me to draft a rule to pause retargeting on that ASIN?" },
+  { role: "aan" as const, text: "Loss is concentrated on retargeting placements for ASIN B07X9. Likely a competitor launch, I'm seeing a new listing with aggressive pricing in your category. Want me to draft a rule to pause retargeting on that ASIN?" },
   { role: "user" as const, text: "Yes, and also check if this is affecting other SKUs." },
   { role: "aan" as const, text: "Done. Paused B07X9 retargeting. Cross-category scan shows 3 other SKUs with similar ROAS dips in the last 48 hours. I've drafted bid adjustments for all three. Review them in Rules → Drafts." },
 ];
@@ -72,7 +72,7 @@ const AanPage = () => {
               <span className="text-gradient-primary">glows</span>.
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Jiva is not a chatbot in a corner. It's an intelligence layer that meets you where the work is happening — across advertising, profitability, inventory, and operations.
+              Jiva is not a chatbot in a corner. It's an intelligence layer that meets you where the work is happening, across advertising, profitability, inventory, and operations.
             </p>
           </motion.div>
         </div>

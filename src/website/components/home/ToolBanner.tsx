@@ -15,7 +15,7 @@ const ToolBanner = () => (
     className="relative w-full overflow-hidden border-y border-primary/25 shadow-soft"
     aria-label="Free listing image analyzer"
   >
-    {/* Tinted surface — reads as an intentional feature strip, not background. */}
+    {/* Tinted surface, reads as an intentional feature strip, not background. */}
     <div className="absolute inset-0 bg-accent/70" aria-hidden="true" />
     <div
       className="absolute inset-0 pointer-events-none"

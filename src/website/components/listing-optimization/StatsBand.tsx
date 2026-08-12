@@ -15,7 +15,7 @@ const STATS: Stat[] = [
   { value: 40, suffix: "+", label: "Marketplace rules", sub: "evaluated per image", ariaLabel: "40 plus marketplace rules evaluated per image" },
   { value: 10, prefix: "<", suffix: "s", label: "Analysis time", sub: "from ASIN to full score", ariaLabel: "under 10 seconds to a full analysis" },
   { value: 8.7, decimals: 1, suffix: "/10", label: "Avg. optimized score", sub: "after one-click regeneration", ariaLabel: "8.7 out of 10 average score after optimization" },
-  { value: 1, suffix: "-click", label: "Fix & download", sub: "marketplace-ready hero image", ariaLabel: "one click to fix and download your image" },
+  { value: 1, suffix: "-click", label: "Fix and download", sub: "marketplace-ready hero image", ariaLabel: "one click to fix and download your image" },
 ];
 
 const StatNumber = ({ stat }: { stat: Stat }) => {
