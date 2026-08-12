@@ -21,7 +21,7 @@ const workItems = [
 
 const operators = ["Ads", "Catalog", "Supply"];
 
-const RADIUS = 132;
+const RADIUS = 112;
 
 const polar = (angle: number, radius: number) => ({
   x: Math.cos((angle * Math.PI) / 180) * radius,
@@ -42,7 +42,7 @@ const HeroManagedOps = () => {
   const previous = workItems[(step + workItems.length - 1) % workItems.length];
 
   return (
-    <div className="relative mx-auto w-full max-w-[460px] aspect-square select-none">
+    <div className="relative mx-auto w-full max-w-[420px] aspect-square select-none">
       {/* Soft field behind the pod, no section background change */}
       <div className="absolute inset-6 rounded-full bg-primary/5 blur-2xl" />
 
@@ -74,8 +74,7 @@ const HeroManagedOps = () => {
                 strokeWidth={1}
               />
               {!reduceMotion && (
-                <motion.circle
-                  r={3}
+                                  r={3}
                   fill="currentColor"
                   className="text-primary"
                   initial={{ opacity: 0 }}
@@ -199,7 +198,7 @@ const HeroManagedOps = () => {
 
       {/* Standing proof chips, anchored for symmetry */}
       <motion.div
-        className="absolute left-0 top-[26%] rounded-2xl border border-border bg-card px-3 py-2 shadow-soft"
+        className="absolute left-[2%] top-[22%] rounded-2xl border border-border bg-card px-3 py-2 shadow-soft"
         initial={{ opacity: 0, x: -14 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.9, duration: 0.6, ease: EASE }}
@@ -209,7 +208,7 @@ const HeroManagedOps = () => {
       </motion.div>
 
       <motion.div
-        className="absolute right-0 bottom-[26%] rounded-2xl border border-border bg-card px-3 py-2 text-right shadow-soft"
+        className="absolute right-[2%] bottom-[22%] rounded-2xl border border-border bg-card px-3 py-2 text-right shadow-soft"
         initial={{ opacity: 0, x: 14 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 1.05, duration: 0.6, ease: EASE }}
