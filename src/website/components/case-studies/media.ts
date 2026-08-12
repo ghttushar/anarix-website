@@ -48,13 +48,13 @@ const MEDIA: Record<string, CaseMedia> = {
     chips: ["Peak plan built", "Formats expanded", "Efficiency kept"],
     category: "Apparel",
   },
-  "walmart-specialty-food": {
+  "walmart-specialty-food-launch": {
     image: specialtyFood,
     alt: "Glass jars of spices and sauce on a light background",
     chips: ["Launch phased", "Content indexed", "Demand compounded"],
     category: "Specialty food",
   },
-  "amazon-distributor": {
+  "amazon-multi-category-distributor": {
     image: distribution,
     alt: "Assorted consumer product boxes and bottles in a grid",
     chips: ["Portfolio ranked", "Spend scaled", "ROAS improved"],
