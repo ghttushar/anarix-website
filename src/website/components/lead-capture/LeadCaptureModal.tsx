@@ -148,13 +148,10 @@ const LeadCaptureModal = () => {
             ) : (
               <div className="relative p-10 text-center">
                 <CheckCircle2 className="mx-auto mb-4 h-12 w-12 text-primary" />
-                <h4 className="font-display text-xl font-semibold text-foreground">Got it.</h4>
+                <h4 className="font-display text-xl font-semibold text-foreground">Thank you.</h4>
                 <p className="mx-auto mt-2 max-w-xs text-sm text-muted-foreground">
-                  Our team will send your audit within 24 hours.
+                  We will get in touch shortly with your audit.
                 </p>
-                <Button onClick={closeLeadCapture} variant="outline" className="mt-6 rounded-pill">
-                  Close
-                </Button>
               </div>
             )}
           </motion.div>
