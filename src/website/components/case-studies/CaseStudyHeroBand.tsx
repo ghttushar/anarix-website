@@ -188,22 +188,8 @@ export function CaseStudyHeroBand({
   return (
     <section className="pad-hero">
       <div className="container-page px-6 sm:px-8">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-            Case study{" "}
-            <span className="font-numeric text-foreground">
-              {String(active + 1).padStart(2, "0")}
-            </span>
-            <span className="font-numeric"> / {String(studies.length).padStart(2, "0")}</span>
-          </p>
-          <p className="text-xs text-muted-foreground">
-            Step through all {studies.length} accounts
-          </p>
-        </div>
+        <Pager studies={studies} active={active} onSelect={onSelect} onStep={onStep} />
 
-        <div className="mt-4">
-          <Pager studies={studies} active={active} onSelect={onSelect} onStep={onStep} />
-        </div>
 
         <AnimatePresence mode="wait">
           <motion.div
