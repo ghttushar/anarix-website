@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
 import NextStep from "@/website/components/marketing/NextStep";
+import LeadCaptureBand from "@/website/components/lead-capture/LeadCaptureBand";
 import PageLayout from "@/website/components/PageLayout";
 import { caseStudies } from "@/website/data/case-studies";
 import { CaseStudyChapter } from "@/website/components/case-studies/CaseStudyChapter";
