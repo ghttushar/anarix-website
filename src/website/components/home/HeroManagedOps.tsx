@@ -129,7 +129,7 @@ const HeroManagedOps = () => {
       })}
 
       {/* The pod */}
-      <div className="absolute left-1/2 top-1/2 w-[220px] -translate-x-1/2 -translate-y-1/2">
+      <div className="absolute left-1/2 top-1/2 w-[220px]" style={{ transform: "translate(-50%, -50%)" }}>
         <motion.div
           className="rounded-3xl border border-primary/25 bg-card/95 p-4 shadow-strong backdrop-blur-sm"
           initial={{ opacity: 0, y: 14, scale: 0.94 }}
@@ -177,7 +177,7 @@ const HeroManagedOps = () => {
       </div>
 
       {/* Incoming task chip, drifts toward the pod */}
-      <div className="absolute left-1/2 top-[6%] -translate-x-1/2">
+      <div className="absolute left-1/2 top-[6%]" style={{ transform: "translateX(-50%)" }}>
         <motion.div
           key={`in-${current.task}`}
           className="whitespace-nowrap rounded-pill border border-border bg-card px-3 py-1.5 text-[11px] font-medium text-muted-foreground shadow-soft"
@@ -190,7 +190,7 @@ const HeroManagedOps = () => {
       </div>
 
       {/* Outcome pill, leaves the pod */}
-      <div className="absolute bottom-[7%] left-1/2 -translate-x-1/2">
+      <div className="absolute bottom-[7%] left-1/2" style={{ transform: "translateX(-50%)" }}>
         <motion.div
           key={`out-${previous.outcome}`}
           className="whitespace-nowrap rounded-pill border border-primary/35 bg-primary/10 px-3.5 py-1.5 text-[11px] font-semibold text-primary shadow-soft"
