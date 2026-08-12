@@ -6,6 +6,7 @@ import PageLayout from "@/website/components/PageLayout";
 import { caseStudies } from "@/website/data/case-studies";
 import { CaseStudyChapter } from "@/website/components/case-studies/CaseStudyChapter";
 import { CaseStudyHeroBand } from "@/website/components/case-studies/CaseStudyHeroBand";
+import { CaseStudyHero } from "@/website/components/case-studies/CaseStudyHero";
 import { CtaSection } from "@/website/components/case-studies/primitives";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -17,8 +18,9 @@ const indexFromHash = (): number => {
 };
 
 /**
- * The whole page is one carousel: a hero band at the top and bottom steps
- * between studies, and the chapter body swaps with it.
+ * The whole page is one carousel: a navigation band at the top, the hero
+ * content for the active study, the chapter body, and a second navigation
+ * band at the bottom.
  */
 const CaseStudies = () => {
   const total = caseStudies.length;
@@ -65,6 +67,8 @@ const CaseStudies = () => {
         onStep={(dir) => select(active + dir)}
       />
 
+      <CaseStudyHero data={study} index={active} total={caseStudies.length} />
+
       <AnimatePresence mode="wait">
         <motion.div
           key={study.id}
@@ -105,4 +109,5 @@ const CaseStudies = () => {
 };
 
 export default CaseStudies;
+
 
