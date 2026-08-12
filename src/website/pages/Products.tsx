@@ -155,7 +155,6 @@ interface ProductSection {
   name: string;
   solves: string;
   chips: string[];
-  href: string;
   visual: "platform" | "aan" | "signals" | "mcp";
 }
 
@@ -166,7 +165,6 @@ const products: ProductSection[] = [
     solves:
       "The unified commerce intelligence platform — advertising, profitability, inventory, and competition across Amazon and Walmart in a single workspace.",
     chips: ["Campaign Management", "Bid Intelligence", "Keyword Harvesting", "Visual Rule Builder", "Guardrails & Safety", "Unified P&L"],
-    href: "/products/platform",
     visual: "platform",
   },
   {
@@ -175,7 +173,6 @@ const products: ProductSection[] = [
     solves:
       "Ask anything, get answers with evidence. Jiva monitors every account around the clock and surfaces what needs attention before it hits the P&L.",
     chips: ["Ask Anything", "Proactive Alerts", "Automated Reporting", "Anomaly Detection", "Keyword Intelligence"],
-    href: "/products/aan-ai",
     visual: "aan",
   },
   {
@@ -184,7 +181,6 @@ const products: ProductSection[] = [
     solves:
       "Every morning, the three things that deserve your attention — with the evidence, reasoning, and confidence score behind each one.",
     chips: ["Daily morning letter", "Evidence & reasoning", "Confidence scoring", "One-click execution"],
-    href: "/products/signals",
     visual: "signals",
   },
   {
@@ -193,7 +189,6 @@ const products: ProductSection[] = [
     solves:
       "Plug any LLM into live, structured marketplace data through Model Context Protocol — universal, read-only by default, and built to answer.",
     chips: ["Universal AI Connection", "Live Marketplace Data", "Read-Only by Default", "Structured Responses"],
-    href: "/products/mcp",
     visual: "mcp",
   },
 ];
@@ -227,13 +222,6 @@ function ProductRow({ product, index }: { product: ProductSection; index: number
               </span>
             ))}
           </div>
-          <Link
-            to={product.href}
-            className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
-          >
-            Learn more
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
         </div>
         <div className={flip ? "lg:order-1" : ""}>
           <ProductVisual type={product.visual} />
@@ -278,14 +266,14 @@ const Products = () => {
                 variant="outline"
                 className="rounded-pill px-8 h-12 text-base border-border hover:border-primary/40 transition-all duration-200"
               >
-                <Link to="/products/platform">Explore the Platform</Link>
+                <Link to="/case-studies">See the results</Link>
               </Button>
             </div>
           </motion.div>
         </div>
 
         {products.map((p, i) => (
-          <ProductRow key={p.href} product={p} index={i} />
+          <ProductRow key={p.eyebrow} product={p} index={i} />
         ))}
 
         <section className="relative pad-cta">
@@ -321,10 +309,10 @@ const Products = () => {
         </section>
 
         <NextStep
-          title="Start with the Insight Engine Platform"
-          description="The layer everything else reads from: true profit by ASIN, channel and campaign."
-          to="/products/platform"
-          label="Explore the platform"
+          title="See what it does to a real P&L"
+          description="Six accounts, two marketplaces — what changed, month by month."
+          to="/case-studies"
+          label="Read the case studies"
         />
       </div>
     </PageLayout>

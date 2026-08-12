@@ -5,6 +5,7 @@ import Platform from "@/website/pages/Product";
 export const Route = createFileRoute("/products/platform")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, nofollow" },
       { title: "Anarix Platform — Profitability analytics for Amazon | Anarix.ai" },
       { name: "description", content: "See true profit by ASIN, channel and campaign with the Anarix profitability platform built for operators." },
       { property: "og:title", content: "Anarix Platform — Profitability analytics for Amazon" },

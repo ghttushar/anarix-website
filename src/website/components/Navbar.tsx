@@ -18,40 +18,13 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  
-  {
-    label: "Products",
-    megaMenu: [
-      {
-        heading: "Products",
-        items: [
-          { label: "Product Overview", href: "/products", desc: "Everything Anarix offers." },
-          { label: "Insight Engine Platform", href: "/products/platform", desc: "The unified commerce intelligence platform." },
-          { label: "Jiva AI", href: "/products/aan-ai", desc: "The AI-powered strategic assistant." },
-          { label: "Signals", href: "/products/signals", desc: "Real-time market intelligence." },
-          { label: "MCP", href: "/products/mcp", desc: "Model Context Protocol integrations." },
-          { label: "Documentation", href: "/documentation", desc: "Developer guides & APIs.", external: true },
-        ],
-      },
-    ],
-  },
+  { label: "Products", href: "/products" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Listing Optimization", href: "/listing-optimization" },
   { label: "Contact Us", href: "/company/contact" },
 ];
 
-const productPaths = [
-  "/products",
-  "/products/platform",
-  "/products/aan-ai",
-  "/products/signals",
-  "/products/mcp",
-  "/product",
-  "/aan-ai",
-  "/signals",
-  "/mcp",
-  "/documentation",
-];
+const productPaths = ["/products"];
+
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);

@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Link } from "@/lib/router";
 import Navbar from "@/website/components/Navbar";
 import HeroSectionNew from "@/website/components/home/HeroSectionNew";
-import ToolBanner from "@/website/components/home/ToolBanner";
 import PainPointsSection from "@/website/components/home/PainPointsSection";
 import TestimonialsWrapper from "@/website/components/home/TestimonialsWrapper";
 import ProcessSteps from "@/website/components/home/ProcessSteps";
@@ -22,8 +21,6 @@ const Home = () => {
       <ScrollProgress />
 
       <HeroSectionNew />
-
-      <ToolBanner />
 
 
       <CaseStudyTeasers />
@@ -64,9 +61,9 @@ const Home = () => {
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
                 </Button>
               </a>
-              <Link to="/products/platform">
+              <Link to="/products">
                 <Button size="lg" variant="outline" className="rounded-pill px-8 h-12 text-base border-border hover:border-primary/40 transition-all duration-200">
-                  Explore the Platform
+                  Explore the products
                 </Button>
               </Link>
             </div>

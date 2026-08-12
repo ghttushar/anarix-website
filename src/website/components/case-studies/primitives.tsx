@@ -338,7 +338,7 @@ export function CtaSection() {
             variant="outline"
             className="rounded-pill px-8 h-12 text-base border-border hover:border-primary/40 transition-all duration-200"
           >
-            <Link to="/products/platform">Explore the Platform</Link>
+            <Link to="/products">Explore the products</Link>
           </Button>
         </div>
       </div>

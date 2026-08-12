@@ -117,7 +117,7 @@ const CaseStudies = () => {
       <NextStep
         title="See the platform behind these results"
         description="The same profitability views our team used on every one of these accounts."
-        to="/products/platform"
+        to="/products"
         label="Explore the platform"
       />
     </PageLayout>

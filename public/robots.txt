@@ -17,3 +17,9 @@ Disallow: /downgrade-plan
 Disallow: /pricing
 Disallow: /company/about
 Disallow: /company/career
+Disallow: /listing-optimization
+Disallow: /products/platform
+Disallow: /products/aan-ai
+Disallow: /products/signals
+Disallow: /products/mcp
+Disallow: /documentation

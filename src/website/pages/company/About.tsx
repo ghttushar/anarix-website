@@ -47,7 +47,7 @@ const About = () => (
                 Schedule a Demo
               </Button>
             </a>
-            <Link to="/products/platform">
+            <Link to="/products">
               <Button variant="outline" className="rounded-pill px-6 border-border hover:border-primary/40">
                 Explore the Platform
               </Button>

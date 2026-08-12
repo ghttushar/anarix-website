@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { useLocation, useNavigate } from "@/lib/router";
-import { GripVertical, CalendarPlus, ScanSearch, ArrowUp, Sun, Moon } from "lucide-react";
+import { GripVertical, CalendarPlus, ArrowUp, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 
 import { AanMascot } from "@/components/aan/AanMascot";
@@ -100,7 +100,6 @@ export function FloatingActionIsland() {
   };
 
   const actions: ActionItem[] = [
-    { icon: ScanSearch, label: "Listing Optimization", onClick: () => navigate("/listing-optimization"), highlight: false, alwaysShowLabel: true },
     { icon: CalendarPlus, label: "Book a demo", onClick: () => window.open("https://calendly.com/sunil-anarix/30min", "_blank") },
     themeAction,
     ...(scrolled ? [{ icon: ArrowUp, label: "Top", onClick: () => window.scrollTo({ top: 0, behavior: "smooth" }) }] : []),
