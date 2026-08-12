@@ -109,7 +109,7 @@ export function ExpandingCapabilityGrid({
 
       <div
         ref={gridRef}
-        className="relative z-10 grid gap-3"
+        className="relative z-10 grid gap-4"
         style={{
           gridTemplateColumns: isMobile ? "minmax(0, 1fr)" : `repeat(${columns}, minmax(0, 1fr))`,
           gridTemplateRows: isMobile ? undefined : "repeat(2, auto)",
