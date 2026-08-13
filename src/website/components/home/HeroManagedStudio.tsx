@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Check, Loader2 } from "lucide-react";
 
-import apparel from "@/assets/case-studies/apparel.jpg";
-import medicalSupply from "@/assets/case-studies/medical-supply.jpg";
-import mounts from "@/assets/case-studies/mounts.jpg";
-import organicCare from "@/assets/case-studies/organic-care.jpg";
+import audio from "@/assets/marketing/audio.jpg";
+import coffee from "@/assets/marketing/coffee.jpg";
+import fragrance from "@/assets/marketing/fragrance.jpg";
+import kitchen from "@/assets/marketing/kitchen.jpg";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -22,34 +22,34 @@ interface Account {
 
 const accounts: Account[] = [
   {
-    image: organicCare,
-    alt: "Glass nail lacquer bottles with wooden caps on warm marble",
+    image: coffee,
+    alt: "Specialty coffee bag beside a ceramic pour-over set on sandstone",
     channel: "Amazon",
-    category: "Beauty and personal care",
+    category: "Coffee and beverage",
     metric: { label: "ROAS", value: "7.91x" },
     work: ["Brand defense split out", "Bids day-parted", "TACoS down to 9.4%"],
   },
   {
-    image: mounts,
-    alt: "Matte black dual monitor arm on a walnut desk",
+    image: audio,
+    alt: "Premium over-ear headphones on a studio pedestal",
     channel: "Walmart",
-    category: "Electronics",
+    category: "Audio and electronics",
     metric: { label: "Sales lift", value: "+221%" },
     work: ["Variants merged", "Search terms harvested", "Budget moved to winners"],
   },
   {
-    image: medicalSupply,
-    alt: "Aluminium rollator walker in a bright studio",
+    image: kitchen,
+    alt: "Stainless steel kitchen blender on a marble counter",
     channel: "Walmart",
-    category: "Medical supply",
+    category: "Kitchen appliances",
     metric: { label: "Search share", value: "+38%" },
     work: ["Item page rebuilt", "Suppression cleared", "Placement bids trimmed"],
   },
   {
-    image: apparel,
-    alt: "Folded premium knitwear in neutral tones",
+    image: fragrance,
+    alt: "Amber glass candle and reed diffuser in warm light",
     channel: "Amazon",
-    category: "Apparel",
+    category: "Home fragrance",
     metric: { label: "Peak revenue", value: "+131%" },
     work: ["Peak plan loaded", "Display burst live", "Stock cover protected"],
   },
