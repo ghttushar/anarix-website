@@ -202,7 +202,8 @@ const HeroManagedStudio = () => {
                 type="button"
                 onClick={() => setFeatured(accounts.indexOf(item))}
                 aria-label={`Show ${item.channel} ${item.category} account`}
-                className="group relative min-h-14 w-full flex-1 overflow-hidden rounded-xl border border-border/70 bg-muted/30 text-left transition-colors hover:border-primary/50"
+                className="group relative w-full flex-1 overflow-hidden rounded-xl border border-border/70 bg-muted/30 text-left transition-colors hover:border-primary/50"
+                style={{ minHeight: 56 }}
                 initial={{ opacity: 0, x: 14 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, ease: EASE, delay: i * 0.08 }}
