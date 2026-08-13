@@ -2,7 +2,7 @@ import { Link } from "@/lib/router";
 import { BrandLogo } from "@/website/components/BrandLogo";
 
 const footerLinks: Record<string, { label: string; href: string; external?: boolean }[]> = {
-  Product: [{ label: "Product Overview", href: "/products" }],
+  Platform: [{ label: "Product Overview", href: "/products" }],
   Resources: [
     { label: "Case Studies", href: "/case-studies" },
     { label: "Contact", href: "/company/contact" },
