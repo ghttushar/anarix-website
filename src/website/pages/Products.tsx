@@ -410,8 +410,8 @@ const Products = () => {
 
 
         <NextStep
-          title="See what it does to a real profit and loss"
-          description="Six accounts, two marketplaces. What changed, month by month."
+          title="See what we do to a real profit and loss"
+          description="What changed, month by month."
           to="/case-studies"
           label="Read the case studies"
         />
