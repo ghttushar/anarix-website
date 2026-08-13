@@ -229,12 +229,7 @@ export function ExpandingCapabilityGrid({
           );
         })}
 
-        {!isMobile && (
-          <div
-            className="rounded-xl border border-dashed border-border/20"
-            style={{ gridRow: "2 / 3", gridColumn: `${spareCol} / ${spareCol + 1}` }}
-          />
-        )}
+
 
       </div>
 
