@@ -1,32 +1,26 @@
-import { useRef } from "react";
-import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { useEffect } from "react";
 import HeroDataViz from "./HeroDataViz";
 import HeroManagedStudio from "./HeroManagedStudio";
+import amazonAdsBadge from "@/assets/badges/badge-amazon-ads-verified-partner.png.asset.json";
+import walmartConnectBadge from "@/assets/badges/badge-walmart-connect-premium-partner.png.asset.json";
+import walmartMarketplaceBadge from "@/assets/badges/badge-walmart-marketplace-partner.png.asset.json";
 
-
-const stats = [
-  { label: "GMV driven", numeric: 1.2, prefix: "$", suffix: "B", decimals: 1 },
-  { label: "Brands managed", numeric: 500, prefix: "", suffix: "+", decimals: 0 },
-  { label: "Avg TACoS", numeric: 12.8, prefix: "", suffix: "%", decimals: 1 },
+/** Official partner badges, used as issued: no recolouring, no reproportioning. */
+const badges = [
+  { src: amazonAdsBadge.url, alt: "Amazon Ads Verified Partner" },
+  { src: walmartConnectBadge.url, alt: "Walmart Connect Premium Partner" },
+  { src: walmartMarketplaceBadge.url, alt: "Walmart Marketplace Partner" },
 ];
 
-const CountUp = ({ target, prefix, suffix, decimals = 0 }: { target: number; prefix: string; suffix: string; decimals?: number }) => {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true });
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (v) => `${prefix}${v.toFixed(decimals)}${suffix}`);
+/** Channel name, called out so the marketplaces we run read at a glance. */
+const Channel = ({ children }: { children: string }) => (
+  <span className="font-bold text-foreground underline decoration-primary/50 decoration-2 underline-offset-4">
+    {children}
+  </span>
+);
 
-  useEffect(() => {
-    if (isInView) {
-      animate(count, target, { duration: 2, ease: [0.22, 1, 0.36, 1] });
-    }
-  }, [isInView, count, target]);
-
-  return <motion.span ref={ref}>{rounded}</motion.span>;
-};
 
 const HeroSectionNew = () => {
   return (
