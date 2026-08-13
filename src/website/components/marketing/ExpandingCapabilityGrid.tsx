@@ -36,12 +36,14 @@ interface Slot {
  */
 const buildSlots = (columns: number, activeCol: number): Slot[] => {
   const slots: Slot[] = [];
-  for (let c = 0; c < columns; c += 1) slots.push({ row: 0, col: c });
-  for (let c = 0; c < columns; c += 1) {
-    if (c !== activeCol) slots.push({ row: 1, col: c });
+  for (let row = 0; row < 2; row += 1) {
+    for (let c = 0; c < columns; c += 1) {
+      if (c !== activeCol) slots.push({ row, col: c });
+    }
   }
   return slots;
 };
+
 
 /**
  * Interactive capability grid: the active tile grows to full height and the
