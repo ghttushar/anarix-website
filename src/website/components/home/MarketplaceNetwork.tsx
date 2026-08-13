@@ -124,7 +124,7 @@ const MarketplaceNetwork = () => {
               <circle cx={HUB.x} cy={HUB.y} r={52} fill="hsl(var(--primary) / 0.12)" stroke="hsl(var(--primary) / 0.5)" />
               <text
                 x={HUB.x}
-                y={HUB.y + 5}
+                y={HUB.y - 2}
                 textAnchor="middle"
                 className="font-display"
                 fontSize={17}
@@ -133,6 +133,17 @@ const MarketplaceNetwork = () => {
               >
                 Anarix
               </text>
+              <text
+                x={HUB.x}
+                y={HUB.y + 16}
+                textAnchor="middle"
+                fontSize={9}
+                letterSpacing="1.4"
+                fill="hsl(var(--muted-foreground))"
+              >
+                NIGHT SHIFT
+              </text>
+
             </g>
 
             {/* Channel nodes */}
