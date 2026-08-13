@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "@/lib/router";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { caseStudies, type CaseStudyData } from "@/website/data/case-studies";
+import { caseMedia } from "@/website/components/case-studies/media";
 
 const SPACING = 400;
 const DEPTH = 150;
@@ -97,7 +98,7 @@ const CaseStudyTeasers = () => {
                       : { type: "spring", stiffness: 90, damping: 18, mass: 0.9 }
                   }
                 >
-                  <TeaserCard cs={slot.cs} interactive={slot.front} index={slot.i} />
+                  <TeaserCard cs={slot.cs} interactive={slot.front} />
                 </motion.div>
               ))}
             </div>
@@ -114,7 +115,7 @@ const CaseStudyTeasers = () => {
                 if (info.offset.x > 60) rotate(-1);
               }}
             >
-              <TeaserCard cs={studies[active]} interactive index={active} />
+              <TeaserCard cs={studies[active]} interactive />
             </motion.div>
           </div>
 
