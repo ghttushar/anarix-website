@@ -7,6 +7,8 @@ import firatImg from "@/assets/testimonials/firat.png";
 import jamesImg from "@/assets/testimonials/james.jpg";
 import nausilImg from "@/assets/testimonials/nausil.png";
 import joeyImg from "@/assets/testimonials/joey-dweck.jpg";
+import nasVideo from "../../../../public/testimonials/video.mp4.asset.json";
+import joeyVideo from "../../../../public/testimonials/joey-dweck.mp4.asset.json";
 
 interface Person {
   quote: string;
