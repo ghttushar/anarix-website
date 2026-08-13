@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Check, Star } from "lucide-react";
+import { Check, Star, ArrowRight } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { useLeadCapture } from "../lead-capture/LeadCaptureContext";
 
 const FIXES = ["Hero image on white", "Title within 200 characters", "A plus content live", "Buy Box price aligned"];
 
@@ -10,6 +13,7 @@ const FIXES = ["Hero image on white", "Title within 200 characters", "A plus con
  */
 const ListingSpotlight = () => {
   const reduceMotion = useReducedMotion();
+  const { openLeadCapture } = useLeadCapture();
   const [reveal, setReveal] = useState(35);
   const [autoplay, setAutoplay] = useState(true);
 
@@ -31,7 +35,15 @@ const ListingSpotlight = () => {
 
   return (
     <section className="relative pad-section overflow-hidden">
-      <div className="container-page px-6 sm:px-8">
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[460px] opacity-60"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 60% at 50% 0%, hsl(var(--primary) / 0.10), transparent 70%)",
+        }}
+        aria-hidden
+      />
+      <div className="container-page relative px-6 sm:px-8">
         <div className="text-center max-w-2xl mx-auto pb-8">
           <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-pill bg-primary/10 text-primary text-xs font-medium uppercase tracking-[0.14em]">
             Before and after
@@ -39,6 +51,19 @@ const ListingSpotlight = () => {
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground leading-[1.08]">
             Drag the handle. <span className="text-gradient-primary">Watch the listing lift.</span>
           </h2>
+          <p className="mt-4 text-sm sm:text-base text-muted-foreground max-w-md mx-auto">
+            Get a free listing analysis. See what Anarix would fix on your ASIN or product link.
+          </p>
+          <div className="mt-6">
+            <Button
+              size="lg"
+              onClick={() => openLeadCapture("audit")}
+              className="rounded-pill px-7 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 btn-shine group"
+            >
+              Analyze my listing
+              <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
+            </Button>
+          </div>
         </div>
 
         <div
