@@ -186,7 +186,7 @@ const PhilosophySection = () => {
               transition={{ delay: 0.5, duration: 0.5 }}
             >
               <p className="text-sm text-foreground leading-relaxed font-medium">
-                Technology does what it does best, relentless, precise execution at machine speed. Our people do what they do best, test, think, and push your brand further than a script ever could.{" "}
+                Our Technology does what it does best, relentless, precise execution at machine speed. Our people do what they do best, test, think, and push your brand further than a script ever could.{" "}
                 <span className="text-primary">You get both.</span>
               </p>
             </motion.div>
