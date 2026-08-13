@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Loader2, ShieldCheck, Sparkles, Zap } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { LISTING_INPUT_ERROR, parseListingInput } from "@/website/lib/listingInput";
 
 type Step = "input" | "analyzing" | "result" | "done";
 
