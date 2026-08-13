@@ -3,23 +3,43 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import HeroDataViz from "./HeroDataViz";
 import HeroManagedStudio from "./HeroManagedStudio";
-import amazonAdsBadge from "@/assets/badges/badge-amazon-ads-verified-partner.png.asset.json";
-import walmartConnectBadge from "@/assets/badges/badge-walmart-connect-premium-partner.png.asset.json";
-import walmartMarketplaceBadge from "@/assets/badges/badge-walmart-marketplace-partner.png.asset.json";
+import amazonAdsBadge from "@/assets/badges/badge-amazon-ads-verified-partner.png";
+import walmartConnectBadge from "@/assets/badges/badge-walmart-connect-premium-partner.png";
+import walmartMarketplaceBadge from "@/assets/badges/badge-walmart-marketplace-partner.png";
 
 /** Official partner badges, used as issued: no recolouring, no reproportioning. */
 const badges = [
-  { src: amazonAdsBadge.url, alt: "Amazon Ads Verified Partner" },
-  { src: walmartConnectBadge.url, alt: "Walmart Connect Premium Partner" },
-  { src: walmartMarketplaceBadge.url, alt: "Walmart Marketplace Partner" },
+  { src: amazonAdsBadge, alt: "Amazon Ads Verified Partner" },
+  { src: walmartConnectBadge, alt: "Walmart Connect Premium Partner" },
+  { src: walmartMarketplaceBadge, alt: "Walmart Marketplace Partner" },
 ];
 
-/** Channel name, called out so the marketplaces we run read at a glance. */
+/** Channel name: brand blue, a size up, with a hand-drawn scribble underline. */
 const Channel = ({ children }: { children: string }) => (
-  <span className="font-bold text-foreground underline decoration-primary/50 decoration-2 underline-offset-4">
+  <span className="relative inline-block whitespace-nowrap font-bold text-primary text-[1.18em] leading-none">
     {children}
+    <svg
+      className="pointer-events-none absolute -bottom-[0.28em] left-0 h-[0.42em] w-full overflow-visible"
+      viewBox="0 0 100 12"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <motion.path
+        d="M1 8.4C14 4.6 27 4 40 6.4c13 2.4 26 3 39 -1.2c7 -2.3 13 -2.6 19 -0.8"
+        fill="none"
+        stroke="currentColor"
+        className="text-primary/70"
+        strokeWidth="2.6"
+        strokeLinecap="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        whileInView={{ pathLength: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
+      />
+    </svg>
   </span>
 );
+
 
 
 const HeroSectionNew = () => {
