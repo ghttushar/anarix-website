@@ -263,8 +263,8 @@ function TeaserCard({
           aria-hidden
           viewBox="0 0 160 64"
           preserveAspectRatio="none"
-          className="absolute inset-x-0 bottom-0 w-full text-primary/45 transition-transform duration-500 group-hover:scale-105"
-          style={{ height: 76 }}
+          className="absolute inset-x-0 top-0 w-full text-primary/40 transition-transform duration-500 group-hover:scale-105"
+          style={{ height: 72 }}
           fill="none"
           stroke="currentColor"
           strokeWidth={2}
@@ -275,8 +275,8 @@ function TeaserCard({
 
         <div className="relative flex w-full items-center justify-between gap-3 px-6" style={{ paddingBottom: 14 }}>
           <span
-            className="inline-flex items-center rounded-pill border border-border/70 bg-card/85 px-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground truncate"
-            style={{ height: 26, maxWidth: 190 }}
+            className="inline-flex min-w-0 items-center rounded-pill border border-border/70 bg-card/90 px-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground truncate"
+            style={{ height: 26, maxWidth: 200 }}
           >
             {cs.marketplace}
           </span>
@@ -292,7 +292,7 @@ function TeaserCard({
           {cs.brand}
         </h3>
 
-        <p className="font-numeric text-[3.25rem] font-bold leading-none tracking-tight" style={{ height: 56 }}>
+        <p className="font-numeric font-bold leading-none tracking-tight" style={{ height: 56, fontSize: 52 }}>
           <span className="text-gradient-primary">{heroNumber(cs)}</span>
         </p>
         <p
