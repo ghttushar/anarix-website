@@ -254,7 +254,7 @@ const HeroManagedStudio = () => {
             <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
               Night shift log
             </p>
-            <span className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
+            <span className="flex items-center gap-1.5 text-[10px] font-semibold text-success">
               <Loader2
                 className={reduce ? "h-3 w-3" : "h-3 w-3 animate-spin"}
                 style={{ animationDuration: "3s" }}
@@ -298,9 +298,9 @@ const HeroManagedStudio = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: EASE, delay: 1 }}
       >
-        <p className="font-numeric text-xl font-bold leading-none text-foreground">37 min</p>
+        <p className="font-numeric text-xl font-bold leading-none text-foreground">Under 1 hour</p>
         <p className="mt-1 text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
-          Median time to act
+          From spotting an issue to fixing it
         </p>
       </motion.div>
     </div>
