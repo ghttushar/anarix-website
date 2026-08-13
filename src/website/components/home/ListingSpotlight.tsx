@@ -13,6 +13,7 @@ const FIXES = ["Hero image on white", "Title within 200 characters", "A plus con
  */
 const ListingSpotlight = () => {
   const reduceMotion = useReducedMotion();
+  const { openLeadCapture } = useLeadCapture();
   const [reveal, setReveal] = useState(35);
   const [autoplay, setAutoplay] = useState(true);
 
