@@ -144,7 +144,7 @@ const TestimonialsWrapper = () => (
 
     <div className="relative container-wide px-4">
       <motion.div
-        className="max-w-3xl mb-6"
+        className="max-w-5xl mb-6"
         initial={{ opacity: 0, y: 14 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
@@ -153,9 +153,8 @@ const TestimonialsWrapper = () => (
         <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 rounded-pill bg-primary/10 text-primary text-xs font-medium uppercase tracking-[0.14em]">
           <Sparkles className="w-3.5 h-3.5" /> Proof
         </div>
-        <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground tracking-tight leading-[1.1]">
-          These are brands who started{" "}
-          <span className="text-gradient-primary">exactly where you are.</span>
+        <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground tracking-tight leading-[1.1] text-balance">
+          These are brands who started <span className="text-gradient-primary">exactly where you are.</span>
         </h2>
       </motion.div>
 
@@ -164,7 +163,7 @@ const TestimonialsWrapper = () => (
       </div>
 
       {/* Collage: stacked quote + video on the left, tall video on the right,
-          wide quote across the bottom. */}
+          wide quote across the bottom. Video cards lead with the quote. */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
         <div className="lg:col-span-7 flex flex-col gap-4">
           <motion.article
@@ -190,12 +189,12 @@ const TestimonialsWrapper = () => (
             transition={{ delay: 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             style={VIDEO_GRADIENT}
           >
-            <div className="relative flex-1 min-h-0" style={{ aspectRatio: "16 / 9", maxHeight: "20rem" }}>
-              <VideoBody person={JOEY} />
-            </div>
             <div className="p-5 flex flex-col gap-3 text-background">
               <QuoteText text={JOEY.quote} inverted className="text-sm leading-[1.5] italic opacity-95" limit={140} />
               <Byline person={JOEY} inverted />
+            </div>
+            <div className="relative flex-1 min-h-0" style={{ aspectRatio: "16 / 9", maxHeight: "18rem" }}>
+              <VideoBody person={JOEY} />
             </div>
           </motion.article>
         </div>
@@ -208,14 +207,15 @@ const TestimonialsWrapper = () => (
           transition={{ delay: 0.15, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           style={VIDEO_GRADIENT}
         >
-          <div className="relative flex-1 min-h-[18rem]">
-            <VideoBody person={NAUSIL} />
-          </div>
           <div className="p-5 flex flex-col gap-3 text-background">
             <QuoteText text={NAUSIL.quote} inverted className="text-sm leading-[1.5] italic opacity-95" limit={140} />
             <Byline person={NAUSIL} inverted />
           </div>
+          <div className="relative flex-1 min-h-[18rem]">
+            <VideoBody person={NAUSIL} />
+          </div>
         </motion.article>
+
 
         <motion.article
           className="lg:col-span-12 relative p-6 sm:p-7 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"

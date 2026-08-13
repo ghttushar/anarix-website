@@ -15,15 +15,36 @@ const HOOKS = [
   { icon: Sparkles, text: "Free, no account" },
 ];
 
-const ISSUES = [
+interface Issue {
+  text: string;
+  severity: "high" | "medium";
+}
+
+/** Pool the mock audit draws from, so no two runs read the same. */
+const ISSUE_POOL: Issue[] = [
   { text: "Product fills only 61 percent of the frame", severity: "high" },
   { text: "Text overlay breaks image policy", severity: "high" },
+  { text: "Hero image is not on a pure white background", severity: "high" },
   { text: "Title runs past 200 characters", severity: "medium" },
+  { text: "Only two of five bullets carry a benefit", severity: "medium" },
+  { text: "No A plus content on the detail page", severity: "medium" },
+  { text: "Backend search terms are half empty", severity: "medium" },
+  { text: "Secondary images miss scale and lifestyle shots", severity: "high" },
+  { text: "Brand store is not linked from the byline", severity: "medium" },
 ];
+
+/** Random draw of `n` issues, high severity first so the list reads urgently. */
+const drawIssues = (n: number): Issue[] =>
+  [...ISSUE_POOL]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, n)
+    .sort((a, b) => (a.severity === b.severity ? 0 : a.severity === "high" ? -1 : 1));
+
+/** Mock grade: always a failing-but-plausible score under 65. */
+const drawScore = () => 38 + Math.floor(Math.random() * 27);
 
 const PASSES = ["Pulling the hero image", "Checking image policy", "Reading title and bullets", "Scoring the listing"];
 
-const SCORE = 61;
 
 const INPUT_CLASS =
   "h-11 w-full rounded-pill border border-border bg-background px-4 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40";
@@ -80,10 +101,15 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
   const [asin, setAsin] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [pass, setPass] = useState(0);
+  const [score, setScore] = useState(() => drawScore());
+  const [issues, setIssues] = useState<Issue[]>(() => drawIssues(3));
   const parsed = useMemo(() => parseListingInput(asin), [asin]);
 
   useEffect(() => {
     if (step !== "analyzing") return undefined;
+    // Fresh grade for every run.
+    setScore(drawScore());
+    setIssues(drawIssues(3));
     const passId = window.setInterval(() => setPass((p) => Math.min(p + 1, PASSES.length - 1)), 620);
     const t = window.setTimeout(() => setStep("result"), 2600);
     return () => {
@@ -91,6 +117,7 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
       window.clearTimeout(t);
     };
   }, [step]);
+
 
   useEffect(() => {
     if (step !== "done") return undefined;

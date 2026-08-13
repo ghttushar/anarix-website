@@ -8,9 +8,10 @@ import { Button } from "@/components/ui/button";
 import PageLayout from "@/website/components/PageLayout";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { AanMascot } from "@/components/aan/AanMascot";
-import EmbedKpiStrip from "@/website/components/embeds/EmbedKpiStrip";
-import EmbedRuleCard from "@/website/components/embeds/EmbedRuleCard";
-import EmbedInsightCard from "@/website/components/embeds/EmbedInsightCard";
+import ProfitabilityDashboardMock from "@/website/components/platform/ProfitabilityDashboardMock";
+import MarginWaterfallChart from "@/website/components/platform/MarginWaterfallChart";
+import CampaignTableMock from "@/website/components/platform/CampaignTableMock";
+import JivaAssistantPanel from "@/website/components/platform/JivaAssistantPanel";
 import NextStep from "@/website/components/marketing/NextStep";
 import LeadCaptureBand from "@/website/components/lead-capture/LeadCaptureBand";
 
@@ -84,27 +85,18 @@ function PlatformSection() {
       </Reveal>
 
       <Reveal className="mt-12">
-        <div className="rounded-3xl border border-border bg-card shadow-soft overflow-hidden">
-          <div className="flex items-center justify-between px-5 py-3 border-b border-border">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground flex items-center gap-2">
-              <LayoutDashboard className="w-3.5 h-3.5 text-primary" /> Live dashboard
-            </p>
-            <div className="flex gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-border" />
-              <span className="w-2 h-2 rounded-full bg-border" />
-              <span className="w-2 h-2 rounded-full bg-border" />
-            </div>
+        <div className="grid lg:grid-cols-5 gap-4 items-stretch">
+          <div className="lg:col-span-3">
+            <ProfitabilityDashboardMock />
           </div>
-          <EmbedKpiStrip />
-          <div className="grid sm:grid-cols-2 gap-px bg-border">
-            <EmbedRuleCard />
-            <EmbedInsightCard
-              severity="high"
-              title="Stockout risk on your #1 SKU"
-              body="Projected to run out in 6 days at current velocity. 3 rule suggestions ready to review."
-            />
+          <div className="lg:col-span-2">
+            <MarginWaterfallChart />
           </div>
         </div>
+      </Reveal>
+
+      <Reveal className="mt-4">
+        <CampaignTableMock />
       </Reveal>
 
       <Reveal className="mt-6">
@@ -184,52 +176,7 @@ function JivaSection() {
 
         <div className="lg:col-span-7 lg:pl-4">
           <Reveal>
-            <div className="rounded-3xl border border-border bg-card shadow-soft p-6 space-y-3">
-              <div className="flex items-center gap-2 pb-2 border-b border-border">
-                <AanMascot size={24} state="speaking" staticEyes />
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                  Jiva
-                </p>
-              </div>
-              <motion.div
-                className="max-w-[85%] rounded-2xl rounded-tl-sm bg-muted/50 border border-border px-4 py-3 text-sm text-foreground"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, ease: EASE }}
-              >
-                Which ad type is carrying Black Friday this year?
-              </motion.div>
-              <motion.div
-                className="max-w-[85%] ml-auto rounded-2xl rounded-tr-sm bg-primary/10 border border-primary/20 px-4 py-3 text-sm text-foreground"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.15, ease: EASE }}
-              >
-                Sponsored Display. It is running 55x ROAS on{" "}
-                <span className="font-numeric font-semibold">$5,891</span> of spend. Want the
-                breakdown?
-              </motion.div>
-              <motion.div
-                className="max-w-[85%] rounded-2xl rounded-tl-sm bg-muted/50 border border-border px-4 py-3 text-sm text-foreground"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3, ease: EASE }}
-              >
-                Yes, and tell me what to shift budget away from.
-              </motion.div>
-              <motion.div
-                className="flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2.5 text-sm text-muted-foreground"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.45, ease: EASE }}
-              >
-                <Sparkles className="w-4 h-4 text-primary" /> Ask anything about your account
-              </motion.div>
-            </div>
+            <JivaAssistantPanel />
           </Reveal>
         </div>
       </div>

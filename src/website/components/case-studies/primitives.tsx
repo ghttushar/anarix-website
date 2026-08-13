@@ -129,6 +129,13 @@ export function KpiGrid({ items, columns = 4 }: { items: MetricStatData[]; colum
   );
 }
 
+export function metricGridCols(count: number): string {
+  if (count % 4 === 0) return "sm:grid-cols-2 lg:grid-cols-4";
+  if (count % 3 === 0) return "sm:grid-cols-3 lg:grid-cols-3";
+  if (count % 2 === 0) return "sm:grid-cols-2 lg:grid-cols-2";
+  return `sm:grid-cols-2 lg:grid-cols-${Math.min(count, 5)}`;
+}
+
 export function MetricStat({ item }: { item: MetricStatData }) {
   const { ref, isVisible } = useScrollReveal();
   return (

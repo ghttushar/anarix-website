@@ -616,8 +616,8 @@ export const karmaOrganicsStudy: CaseStudyData = {
   },
   quote: {
     text: "We had never spent a dollar on ads before this. We didn't expect to hit the best month in the account's history within six months, and still hold ROAS steady the whole time. Anarix built the whole program from nothing.",
-    name: "Nausil Zaheer",
-    title: "Owner",
+    name: "Karma Organics",
+    title: "Brand partner",
     brand: "Karma Organics",
   },
   finalMetrics: {
@@ -660,7 +660,7 @@ export const apparelSellerStudy: CaseStudyData = {
   ],
   kpis: [
     { value: 131, prefix: "+", suffix: "%", label: "Revenue growth", sub: "over 12 months" },
-    { value: 8.41, suffix: "%", decimals: 2, label: "Blended TACoS", sub: "down from 16.8%" },
+    { value: 8.41, suffix: "%", decimals: 2, label: "Blended TACoS", sub: "down from 15.58%" },
     { value: 55.06, suffix: "x", decimals: 2, label: "Peak ad-type ROAS", sub: "Sponsored Display" },
     { value: 1.86, prefix: "$", suffix: "M", decimals: 2, label: "Total sales, 12 mo", sub: "Aug 2025 → Jul 2026" },
   ],
@@ -682,13 +682,13 @@ export const apparelSellerStudy: CaseStudyData = {
       },
       {
         title: "Efficiency was the ceiling",
-        text: "Blended TACoS at 16.8% left no room to fund a peak-season push without cutting waste first.",
+        text: "Blended TACoS at 15.58% left no room to fund a peak-season push without cutting waste first.",
       },
     ],
     visual: {
       title: "The efficiency problem",
       rows: [
-        { label: "Blended TACoS at start", value: "16.8%", pct: 84 },
+        { label: "Blended TACoS at start", value: "15.58%", pct: 84 },
         { label: "Growth budget available", value: "Roughly flat", pct: 20 },
         { label: "Peak season pressure", value: "BFCM · Q4 window", pct: 60 },
       ],
@@ -738,17 +738,17 @@ export const apparelSellerStudy: CaseStudyData = {
     {
       type: "tacos",
       title: "Blended TACoS",
-      sub: "From 16.8% to a 4.72% December trough, peak season ran at record efficiency.",
+      sub: "From 15.58% to a 4.72% December trough, peak season ran at record efficiency.",
       caption: "Blended TACoS · Aug 2025 → Jul 2026",
       source: "Amazon Ads · partner reporting",
       labels: ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
       series: {
         name: "TACoS",
         color: primary,
-        values: [16.8, 15.4, 13.2, 9.8, 6.4, 4.72, 5.6, 6.8, 7.4, 7.9, 8.2, 8.41],
+        values: [15.58, 14.4, 12.6, 9.6, 6.4, 4.72, 5.6, 6.8, 7.4, 7.9, 8.2, 8.41],
       },
       anchors: [
-        { i: 0, label: "16.8% Aug 2025" },
+        { i: 0, label: "15.58% Aug 2025" },
         { i: 4, label: "4.72% Dec 2025" },
         { i: 11, label: "8.41% Jul 2026" },
       ],
@@ -942,7 +942,6 @@ export const specialtyFoodStudy: CaseStudyData = {
       { value: 394, prefix: "+", suffix: "%", label: "Total growth", sub: "month 1 → month 9" },
       { value: 22.5, prefix: "+", suffix: "%", decimals: 1, label: "Average MoM growth", sub: "across the period" },
       { value: 8, prepend: "8 of ", label: "Months grew", sub: "no month declined" },
-      { value: 45, prefix: "+", suffix: "%", label: "Fastest month", sub: "month 2, off the smallest base" },
       { value: 500, label: "Sales index at month 9", sub: "launch month = 100" },
       { value: 4, label: "Launch phases", sub: "foundation, launch, optimize, scale" },
     ],

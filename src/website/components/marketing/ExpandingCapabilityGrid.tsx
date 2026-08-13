@@ -23,20 +23,32 @@ interface ExpandingCapabilityGridProps {
   hint?: string;
 }
 
-const buildPositions = (count: number, columns: number) => {
-  const rows: number[] = [];
-  const cols: number[] = [];
-  for (let i = 0; i < count; i += 1) {
-    rows.push(Math.floor(i / columns));
-    cols.push(i % columns);
-  }
-  return { rows, cols };
-};
+interface Slot {
+  row: number;
+  col: number;
+}
 
 /**
- * Interactive capability grid: the active tile grows to full height while the
- * tile it displaced moves into the trailing slot. Shared by the platform
- * capabilities section and the home "full stack" section.
+ * Reading-order slots for a two-row grid where the active column is occupied
+ * by one full-height tile: row 1 left to right, then row 2 left to right
+ * skipping the active column. Cards keep their order, so an expanded card only
+ * nudges its neighbours into the next slot instead of sending one to the end.
+ */
+const buildSlots = (columns: number, activeCol: number): Slot[] => {
+  const slots: Slot[] = [];
+  for (let row = 0; row < 2; row += 1) {
+    for (let c = 0; c < columns; c += 1) {
+      if (c !== activeCol) slots.push({ row, col: c });
+    }
+  }
+  return slots;
+};
+
+
+/**
+ * Interactive capability grid: the active tile grows to full height and the
+ * remaining tiles reflow in reading order. Shared by the platform capabilities
+ * section and the home "full stack" section.
  */
 export function ExpandingCapabilityGrid({
   cards,
@@ -48,25 +60,35 @@ export function ExpandingCapabilityGrid({
   const isInView = useInView(gridRef, { once: true, margin: "-100px" });
   const isMobile = useIsMobile();
 
-  const { rows, cols } = buildPositions(cards.length, columns);
-  const spareCol = columns;
+  // The active card keeps the column it naturally sits in.
+  const activeCol = activeCard % columns;
+  const slots = buildSlots(columns, activeCol);
+
+  /** Cards keep their order and fill the slots left by the expanded column. */
+  const placement = new Map<number, Slot>();
+  let cursor = 0;
+  cards.forEach((_, i) => {
+    if (i === activeCard) return;
+    if (cursor < slots.length) {
+      placement.set(i, slots[cursor]);
+      cursor += 1;
+    }
+  });
+
 
   const getCardPosition = (i: number): React.CSSProperties => {
     if (isMobile) return {};
-    const row = rows[i];
-    const col = cols[i];
-
     if (i === activeCard) {
-      return { gridRow: "1 / 3", gridColumn: `${col + 1} / ${col + 2}` };
+      return { gridRow: "1 / 3", gridColumn: `${activeCol + 1} / ${activeCol + 2}` };
     }
-    if (col === cols[activeCard] && row !== rows[activeCard]) {
-      return { gridRow: "2 / 3", gridColumn: `${spareCol} / ${spareCol + 1}` };
-    }
+    const slot = placement.get(i);
+    if (!slot) return {};
     return {
-      gridRow: `${row + 1} / ${row + 2}`,
-      gridColumn: `${col + 1} / ${col + 2}`,
+      gridRow: `${slot.row + 1} / ${slot.row + 2}`,
+      gridColumn: `${slot.col + 1} / ${slot.col + 2}`,
     };
   };
+
 
 
   return (
@@ -205,12 +227,7 @@ export function ExpandingCapabilityGrid({
           );
         })}
 
-        {!isMobile && (
-          <div
-            className="rounded-xl border border-dashed border-border/20"
-            style={{ gridRow: "2 / 3", gridColumn: `${spareCol} / ${spareCol + 1}` }}
-          />
-        )}
+
 
       </div>
 

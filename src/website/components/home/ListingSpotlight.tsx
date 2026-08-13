@@ -3,7 +3,10 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Check, Star, ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import listingBefore from "@/assets/listing/listing-before.jpg";
+import listingAfter from "@/assets/listing/listing-after.jpg";
 import { useLeadCapture } from "../lead-capture/LeadCaptureContext";
+
 
 const FIXES = ["Hero image on white", "Title within 75 characters", "A plus content live", "Buy Box price aligned"];
 
@@ -74,32 +77,29 @@ const ListingSpotlight = () => {
         >
           <div className="grid gap-0 sm:grid-cols-2">
             {/* Product frame */}
-            <div className="relative overflow-hidden" style={{ minHeight: 320 }}>
-              <div
-                className="absolute inset-0"
+            <div className="relative overflow-hidden bg-muted" style={{ minHeight: 320 }}>
+              {/* Managed hero shot underneath, self-run shot clipped over it. */}
+              <img
+                src={listingAfter}
+                alt="Managed listing hero image: product on a clean white background"
+                loading="lazy"
+                width={1024}
+                height={1024}
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <img
+                src={listingBefore}
+                alt="Self-run listing hero image: product shot on a cluttered counter"
+                loading="lazy"
+                width={1024}
+                height={1024}
+                className="absolute inset-0 h-full w-full object-cover"
                 style={{
-                  background: "linear-gradient(160deg, hsl(var(--muted)), hsl(var(--muted) / 0.4))",
-                  filter: `blur(${(1 - reveal / 100) * 6}px) saturate(${0.4 + reveal / 130})`,
+                  clipPath: `inset(0 ${100 - reveal}% 0 0)`,
+                  filter: `saturate(0.8) contrast(0.95) blur(${(1 - reveal / 100) * 1.5}px)`,
                 }}
               />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <motion.div
-                  className="rounded-2xl border border-border bg-card shadow-soft"
-                  style={{ width: 168, height: 168 }}
-                  animate={{ scale: 0.94 + (reveal / 100) * 0.1 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div
-                    className="m-4 rounded-xl"
-                    style={{
-                      height: 136,
-                      background:
-                        "linear-gradient(150deg, hsl(var(--primary) / 0.30), hsl(var(--primary) / 0.08))",
-                      filter: `blur(${(1 - reveal / 100) * 4}px)`,
-                    }}
-                  />
-                </motion.div>
-              </div>
+
 
               {/* Reveal seam */}
               <div
