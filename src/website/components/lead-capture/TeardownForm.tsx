@@ -7,15 +7,12 @@ import { Button } from "@/components/ui/button";
 const INPUT_CLASS =
   "h-11 w-full rounded-pill border border-border bg-background px-4 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40";
 
-const MARKETPLACES = ["Amazon", "Walmart", "Both"] as const;
-
 /**
- * Short teardown capture: name, work email, marketplace. Confirms and closes
- * itself. The submit handler is the seam a real backend plugs into later.
+ * Short teardown capture: name and work email. Confirms and closes itself.
+ * The submit handler is the seam a real backend plugs into later.
  */
 const TeardownForm = ({ onComplete }: { onComplete: () => void }) => {
   const [sent, setSent] = useState(false);
-  const [marketplace, setMarketplace] = useState<string>("Both");
 
   useEffect(() => {
     if (!sent) return undefined;
