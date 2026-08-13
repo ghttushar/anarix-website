@@ -87,6 +87,9 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
                     setAsin(e.target.value);
                     if (error) setError(null);
                   }}
+                  onBlur={() => {
+                    if (asin.trim() && !parsed) setError(LISTING_INPUT_ERROR);
+                  }}
                   aria-label="ASIN, Walmart item ID or product URL"
                   aria-invalid={error ? true : undefined}
                   placeholder="B08XYZ1234, Walmart item ID or product URL"
