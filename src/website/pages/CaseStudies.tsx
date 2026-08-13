@@ -51,11 +51,11 @@ const CaseStudies = () => {
           transition={{ duration: 0.5 }}
         >
           <h1 className="font-display text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-5xl">
-            Proof, <span className="text-gradient-primary">not promises.</span>
+            Real results, <span className="text-gradient-primary">documented in detail.</span>
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Six partner accounts, two marketplaces, one way of working. Step through them one at a
-            time.
+            Six growth stories, each broken down from starting point to strategy to outcome, with
+            every number sourced from the partner&apos;s own results.
           </p>
         </motion.div>
       </div>

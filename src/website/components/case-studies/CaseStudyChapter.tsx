@@ -6,6 +6,7 @@ import {
   Eyebrow,
   KpiGrid,
   MetricStat,
+  metricGridCols,
   InsightCard,
   TimelineStep,
   BeforeStrategyResult,
@@ -55,7 +56,7 @@ function ChapterOpening({ data }: { data: CaseStudyData }) {
 
         <KpiGrid items={data.kpis} />
 
-        <div className="mt-14 sm:mt-16">
+        <div className="mt-10 sm:mt-12">
           <SoftDivider />
         </div>
       </div>
@@ -136,7 +137,7 @@ function ChapterHeading({ eyebrow, heading, sub }: { eyebrow: string; heading: s
 export function CaseStudyChapter({ data }: { data: CaseStudyData }) {
   return (
     <article>
-      <div className="pt-4 pb-12 sm:pb-16">
+      <div className="pt-4 pb-8 sm:pb-10">
         <div className="container-page px-6 sm:px-8">
           <ChapterOpening data={data} />
         </div>
@@ -144,7 +145,7 @@ export function CaseStudyChapter({ data }: { data: CaseStudyData }) {
 
       <Section tint>
         <ChapterHeading eyebrow="Challenge" heading={data.challenge.heading} sub={data.challenge.sub} />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-10">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-8">
           {data.challenge.cards.map((c, i) => (
             <ChallengeCard key={c.title} index={i + 1} title={c.title} text={c.text} />
           ))}
@@ -232,7 +233,7 @@ export function CaseStudyChapter({ data }: { data: CaseStudyData }) {
           heading={data.finalMetrics.heading}
           sub={data.finalMetrics.sub}
         />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        <div className={`grid grid-cols-1 gap-4 sm:gap-5 ${metricGridCols(data.finalMetrics.items.length)}`}>
           {data.finalMetrics.items.map((item) => (
             <MetricStat key={item.label} item={item} />
           ))}

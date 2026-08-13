@@ -24,10 +24,10 @@ function StepZone({
       type="button"
       onClick={onClick}
       aria-label={isNext ? `Next case study: ${study.brand}` : `Previous case study: ${study.brand}`}
-      className="group flex h-full w-full items-center gap-4 rounded-2xl border border-border bg-card p-4 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-soft focus:outline-none focus:ring-2 focus:ring-primary/40"
+      className="group flex h-full w-full items-center gap-3 rounded-pill border border-transparent bg-transparent px-3 py-2 text-left transition-all duration-200 hover:border-border hover:bg-card focus:outline-none focus:ring-2 focus:ring-primary/40"
     >
       <motion.span
-        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-pill bg-primary/10 text-primary ring-1 ring-primary/30"
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground ring-1 ring-border transition-colors group-hover:bg-primary/10 group-hover:text-primary group-hover:ring-primary/30"
         animate={isNext ? { x: [0, 4, 0] } : { x: [0, -4, 0] }}
         transition={{
           duration: 1.6,
@@ -110,8 +110,8 @@ function CaseStudyPager({
   const current = studies[active];
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-border bg-muted/30">
-      <div className="grid gap-4 p-5 sm:p-6 lg:grid-cols-[320px_1fr_320px] lg:items-stretch">
+    <div className="rounded-3xl border border-border/70 bg-card/60 backdrop-blur-sm">
+      <div className="grid gap-3 p-3 sm:p-4 lg:grid-cols-[280px_1fr_280px] lg:items-stretch">
         <StepZone dir={-1} study={prev} onClick={() => onStep(-1)} />
 
         <div className="flex flex-col items-center justify-center py-2 text-center lg:px-4">
@@ -139,7 +139,7 @@ function CaseStudyPager({
         <StepZone dir={1} study={next} onClick={() => onStep(1)} />
       </div>
 
-      <div className="border-t border-border p-4 sm:p-5">
+      <div className="border-t border-border/60 px-4 py-3 sm:px-5">
         <JumpRail studies={studies} active={active} onSelect={onSelect} />
       </div>
     </div>
