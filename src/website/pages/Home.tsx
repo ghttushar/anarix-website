@@ -82,7 +82,7 @@ const Home = () => {
 
       <NextStep
         title="See the numbers behind the claims"
-        description="Two accounts, two marketplaces, what changed, month by month."
+        description="What changed, month by month."
         to="/case-studies"
         label="Read the case studies"
       />

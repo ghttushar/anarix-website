@@ -187,7 +187,7 @@ function TeasersIntro() {
         We&apos;ve <span className="text-gradient-primary">done this before.</span>
       </h2>
       <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-        Six accounts, two marketplaces, the way we measure is the way we work.
+        The way we measure is the way we work. Real brands, real numbers.
       </p>
     </div>
   );
