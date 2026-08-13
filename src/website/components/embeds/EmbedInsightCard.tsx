@@ -13,11 +13,18 @@ const sevColor = {
   low: "bg-emerald-500",
 };
 
-const EmbedInsightCard = ({ severity = "medium", title, body, source = "Jiva · 2m ago" }: InsightProps) => (
+const EmbedInsightCard = ({
+  severity = "medium",
+  title,
+  body,
+  source = "Jiva · 2m ago",
+}: InsightProps) => (
   <div className="p-5 bg-card border border-border rounded-xl">
     <div className="flex items-center gap-2 mb-3">
       <span className={`w-2 h-2 rounded-full ${sevColor[severity]}`} />
-      <span className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">{source}</span>
+      <span className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+        {source}
+      </span>
     </div>
     <div className="text-sm font-semibold text-foreground mb-1.5 leading-snug">{title}</div>
     <p className="text-xs text-muted-foreground leading-relaxed">{body}</p>

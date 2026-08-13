@@ -24,14 +24,14 @@ const MarginWaterfallChart = () => {
     <div className="rounded-2xl border border-border bg-card p-4 sm:p-5 h-full">
       <div className="flex items-center justify-between mb-4">
         <p className="text-xs sm:text-sm font-semibold text-foreground">Margin waterfall</p>
-        <span className="text-[10px] sm:text-[11px] text-muted-foreground">July 2026</span>
+        <span className="text-[10px] sm:text-[11px] text-muted-foreground">Aug 2026 · MTD</span>
       </div>
 
       <div className="flex items-end justify-between gap-1.5 sm:gap-3 h-36 sm:h-44">
         {steps.map((s, i) => (
           <div key={s.label} className="flex flex-col items-center justify-end flex-1 h-full">
             <span
-              className={`mb-1.5 text-[9px] sm:text-[11px] font-numeric font-semibold whitespace-nowrap ${
+              className={`mb-1.5 text-[10px] sm:text-[11px] font-numeric font-semibold whitespace-nowrap ${
                 s.kind === "deduct" ? "text-rose-600 dark:text-rose-400" : "text-foreground"
               }`}
             >
@@ -42,8 +42,8 @@ const MarginWaterfallChart = () => {
                 s.kind === "start"
                   ? "bg-primary"
                   : s.kind === "end"
-                  ? "bg-emerald-500"
-                  : "bg-primary/25"
+                    ? "bg-emerald-500"
+                    : "bg-primary/25"
               }`}
               initial={{ height: 0 }}
               whileInView={{ height: `${s.height}%` }}
@@ -63,6 +63,13 @@ const MarginWaterfallChart = () => {
           </span>
         ))}
       </div>
+      <p className="mt-2.5 text-[11px] text-muted-foreground">
+        Contribution margin{" "}
+        <span className="font-numeric font-semibold text-emerald-500 dark:text-emerald-400">
+          28.3%
+        </span>{" "}
+        · within target
+      </p>
     </div>
   );
 };

@@ -5,7 +5,10 @@ import { Link } from "@/lib/router";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import type { ReactNode } from "react";
-import type { BeforeAfterTable as BeforeAfterTableData, MetricStatData } from "../../data/case-studies";
+import type {
+  BeforeAfterTable as BeforeAfterTableData,
+  MetricStatData,
+} from "../../data/case-studies";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -40,7 +43,6 @@ export function Section({
     </section>
   );
 }
-
 
 export function Eyebrow({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
@@ -163,7 +165,9 @@ export function InsightCard({ value, text }: { value: string; text: string }) {
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
     >
-      <span className="shrink-0 font-numeric text-xl sm:text-2xl font-bold text-primary">{value}</span>
+      <span className="shrink-0 font-numeric text-xl sm:text-2xl font-bold text-primary">
+        {value}
+      </span>
       <p className="text-sm text-muted-foreground leading-relaxed">{text}</p>
     </div>
   );
@@ -183,7 +187,10 @@ export function TimelineStep({
   return (
     <div className="relative pl-14">
       {!last ? (
-        <div className="absolute left-[17px] top-11 bottom-[-2.25rem] w-px bg-border/60" aria-hidden />
+        <div
+          className="absolute left-[17px] top-11 bottom-[-2.25rem] w-px bg-border/60"
+          aria-hidden
+        />
       ) : null}
       <div className="absolute left-0 top-0 w-9 h-9 rounded-full bg-primary/10 border border-primary/20 text-primary font-display font-bold text-sm flex items-center justify-center">
         {String(index).padStart(2, "0")}
@@ -222,7 +229,9 @@ export function BeforeStrategyResult({
               i === 2 ? "border-primary/40" : "border-border"
             }`}
           >
-            <p className={`text-xs font-semibold uppercase tracking-[0.18em] ${col.accent}`}>{col.label}</p>
+            <p className={`text-xs font-semibold uppercase tracking-[0.18em] ${col.accent}`}>
+              {col.label}
+            </p>
             <p className="mt-3 text-sm text-foreground leading-relaxed font-medium">{col.text}</p>
           </div>
         </div>
@@ -264,9 +273,15 @@ export function BeforeAfterTable({ table }: { table: BeforeAfterTableData }) {
             {table.rows.map((row) => (
               <tr key={row[0]} className="border-t border-border/60">
                 <td className="px-6 py-3 text-foreground">{row[0]}</td>
-                <td className="px-6 py-3 text-right font-numeric text-muted-foreground">{row[1]}</td>
-                <td className="px-6 py-3 text-right font-numeric font-semibold text-foreground">{row[2]}</td>
-                <td className="px-6 py-3 text-right font-numeric font-semibold text-primary">{row[3]}</td>
+                <td className="px-6 py-3 text-right font-numeric text-muted-foreground">
+                  {row[1]}
+                </td>
+                <td className="px-6 py-3 text-right font-numeric font-semibold text-foreground">
+                  {row[2]}
+                </td>
+                <td className="px-6 py-3 text-right font-numeric font-semibold text-primary">
+                  {row[3]}
+                </td>
               </tr>
             ))}
           </tbody>
@@ -303,7 +318,10 @@ export function QuoteBlock({
       </blockquote>
       <figcaption className="mt-6 text-sm">
         <span className="font-semibold text-foreground">{name}</span>
-        <span className="text-muted-foreground"> · {title} · {brand}</span>
+        <span className="text-muted-foreground">
+          {" "}
+          · {title} · {brand}
+        </span>
       </figcaption>
     </figure>
   );
@@ -313,7 +331,6 @@ export function CtaSection() {
   const { ref, isVisible } = useScrollReveal();
   return (
     <section ref={ref} className="relative pad-cta section-panel">
-
       <div
         className={`container-page px-6 sm:px-8 text-center transition-all duration-700 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
@@ -334,7 +351,11 @@ export function CtaSection() {
             size="lg"
             className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 btn-shine group"
           >
-            <a href="https://calendly.com/sunil-anarix/30min" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://calendly.com/sunil-anarix/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Book a demo
               <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
             </a>
@@ -397,7 +418,9 @@ export function ChapterDivider({
             {index}
           </span>
           <div className="text-left">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">{eyebrow}</p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+              {eyebrow}
+            </p>
             <p className="mt-1 font-display text-2xl sm:text-3xl font-semibold text-foreground tracking-tight">
               {title}
             </p>

@@ -17,9 +17,46 @@ interface Row {
 }
 
 const rows: Row[] = [
-  { status: "Live", name: "Brand Awareness · Q1", strategy: "Dynamic bids", budget: "$150.00", spend: "$2,847.32", sales: "$12,453.87", roas: "4.37x", acos: "22.9%" },
-  { status: "Paused", name: "Summer Sale Campaign", strategy: "Dynamic up/down", budget: "$200.00", spend: "$1,523.45", sales: "$5,678.90", roas: "3.73x", acos: "26.8%" },
-  { status: "Live", name: "Holiday Specials", strategy: "Fixed", budget: "$300.00", spend: "$8,756.23", sales: "$34,521.67", roas: "3.94x", acos: "25.4%" },
+  {
+    status: "Live",
+    name: "SP · Exact · Catch All Brand",
+    strategy: "Dynamic bids",
+    budget: "$150.00",
+    spend: "$2,847.32",
+    sales: "$12,453.87",
+    roas: "4.37x",
+    acos: "22.9%",
+  },
+  {
+    status: "Live",
+    name: "SP · Auto · New Discovery",
+    strategy: "Dynamic up/down",
+    budget: "$80.00",
+    spend: "$1,206.11",
+    sales: "$3,902.44",
+    roas: "3.24x",
+    acos: "30.9%",
+  },
+  {
+    status: "Paused",
+    name: "SB · Video · Summer Launch",
+    strategy: "Fixed",
+    budget: "$200.00",
+    spend: "$1,523.45",
+    sales: "$5,678.90",
+    roas: "3.73x",
+    acos: "26.8%",
+  },
+  {
+    status: "Live",
+    name: "SD · Remarketing · Converters",
+    strategy: "Dynamic bids",
+    budget: "$120.00",
+    spend: "$2,934.18",
+    sales: "$9,102.55",
+    roas: "3.10x",
+    acos: "32.2%",
+  },
 ];
 
 const statusStyle: Record<Row["status"], string> = {
@@ -37,6 +74,9 @@ const CampaignTableMock = () => {
         <div className="flex items-center gap-2">
           <span className="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-border bg-background px-2.5 py-1 text-[11px] text-muted-foreground">
             <Search className="w-3 h-3" /> Search campaigns
+          </span>
+          <span className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-background px-2 py-1 text-[11px] text-muted-foreground">
+            Last 7 days
           </span>
           <span className="inline-flex items-center gap-1.5 rounded-lg border border-border px-2 py-1 text-[11px] text-muted-foreground">
             <SlidersHorizontal className="w-3 h-3" /> Filter
@@ -74,19 +114,33 @@ const CampaignTableMock = () => {
                 transition={{ delay: i * 0.08, duration: 0.4, ease: EASE }}
               >
                 <td className="px-4 sm:px-5 py-3">
-                  <span className={`inline-flex rounded-md px-1.5 py-0.5 text-[10px] font-medium ${statusStyle[r.status]}`}>
+                  <span
+                    className={`inline-flex rounded-md px-1.5 py-0.5 text-[10px] font-medium ${statusStyle[r.status]}`}
+                  >
                     {r.status}
                   </span>
                 </td>
                 <td className="px-3 py-3">
-                  <p className="text-xs sm:text-sm font-medium text-foreground whitespace-nowrap">{r.name}</p>
+                  <p className="text-xs sm:text-sm font-medium text-foreground whitespace-nowrap">
+                    {r.name}
+                  </p>
                   <p className="text-[10px] text-muted-foreground">{r.strategy}</p>
                 </td>
-                <td className="px-3 py-3 font-numeric text-xs sm:text-sm text-foreground whitespace-nowrap">{r.budget}</td>
-                <td className="px-3 py-3 font-numeric text-xs sm:text-sm text-foreground whitespace-nowrap">{r.spend}</td>
-                <td className="px-3 py-3 font-numeric text-xs sm:text-sm text-foreground whitespace-nowrap">{r.sales}</td>
-                <td className="px-3 py-3 font-numeric text-xs sm:text-sm font-semibold text-primary whitespace-nowrap">{r.roas}</td>
-                <td className="px-3 py-3 font-numeric text-xs sm:text-sm text-muted-foreground whitespace-nowrap">{r.acos}</td>
+                <td className="px-3 py-3 font-numeric text-xs sm:text-sm text-foreground whitespace-nowrap">
+                  {r.budget}
+                </td>
+                <td className="px-3 py-3 font-numeric text-xs sm:text-sm text-foreground whitespace-nowrap">
+                  {r.spend}
+                </td>
+                <td className="px-3 py-3 font-numeric text-xs sm:text-sm text-foreground whitespace-nowrap">
+                  {r.sales}
+                </td>
+                <td className="px-3 py-3 font-numeric text-xs sm:text-sm font-semibold text-primary whitespace-nowrap">
+                  {r.roas}
+                </td>
+                <td className="px-3 py-3 font-numeric text-xs sm:text-sm text-muted-foreground whitespace-nowrap">
+                  {r.acos}
+                </td>
               </motion.tr>
             ))}
           </tbody>

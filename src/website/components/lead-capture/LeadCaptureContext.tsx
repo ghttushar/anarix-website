@@ -24,7 +24,7 @@ export const LeadCaptureProvider = ({ children }: { children: ReactNode }) => {
 
   const value = useMemo(
     () => ({ isOpen, kind, openLeadCapture, closeLeadCapture }),
-    [isOpen, kind, openLeadCapture, closeLeadCapture]
+    [isOpen, kind, openLeadCapture, closeLeadCapture],
   );
 
   return <LeadCaptureContext.Provider value={value}>{children}</LeadCaptureContext.Provider>;

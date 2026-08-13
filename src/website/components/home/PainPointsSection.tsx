@@ -4,12 +4,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 const pains = [
   "Your ad spend is climbing, but your profit isn't.",
   "You don't know if you're one policy violation away from a suspension.",
-  "Your \"agency\" sends a monthly report nobody has time to read.",
+  'Your "agency" sends a monthly report nobody has time to read.',
   "You're the one still checking Seller Central at 11pm.",
   "Half your week goes to reconciling reports, fees and returns by hand.",
   "You built a brand. Not a second job managing Amazon ads.",
 ];
-
 
 const PainPointsSection = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -20,7 +19,8 @@ const PainPointsSection = () => {
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse 60% 50% at 30% 50%, hsl(var(--primary) / 0.04), transparent)",
+          background:
+            "radial-gradient(ellipse 60% 50% at 30% 50%, hsl(var(--primary) / 0.04), transparent)",
           opacity: useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 1, 0.3]),
         }}
       />
@@ -74,10 +74,7 @@ const PainPointsSection = () => {
             Every brand owner we met asked for the same thing. Not another tool to learn, but{" "}
             <span className="text-primary font-bold">a team that owns the outcome.</span>
           </blockquote>
-
         </motion.figure>
-
-
       </div>
     </section>
   );

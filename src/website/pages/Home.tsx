@@ -25,18 +25,15 @@ const Home = () => {
 
       <HeroSectionNew />
 
-
       <PainPointsSection />
 
       <CaseStudyTeasers />
 
       <ServicesGrid />
 
-
       <LeadCaptureBand />
 
       <TestimonialsWrapper />
-
 
       <ProcessSteps />
 
@@ -61,17 +58,29 @@ const Home = () => {
               <span className="text-gradient-primary">Sleep through the 11pm check.</span>
             </h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              Thirty minutes with our team is enough to see how your accounts would run under Anarix.
+              Thirty minutes with our team is enough to see how your accounts would run under
+              Anarix.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="https://calendly.com/sunil-anarix/30min" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 btn-shine group">
+              <a
+                href="https://calendly.com/sunil-anarix/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  size="lg"
+                  className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 btn-shine group"
+                >
                   Book a demo
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
                 </Button>
               </a>
               <Link to="/products">
-                <Button size="lg" variant="outline" className="rounded-pill px-8 h-12 text-base border-border hover:border-primary/40 transition-all duration-200">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="rounded-pill px-8 h-12 text-base border-border hover:border-primary/40 transition-all duration-200"
+                >
                   Explore the products
                 </Button>
               </Link>

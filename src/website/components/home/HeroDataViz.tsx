@@ -13,11 +13,17 @@ const ACCENT_SAT = 74;
 const ACCENT_LIGHT = 80;
 
 interface Particle {
-  x: number; y: number;
-  vx: number; vy: number;
-  baseX: number; baseY: number;
-  hue: number; sat: number; light: number;
-  radius: number; alpha: number;
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  baseX: number;
+  baseY: number;
+  hue: number;
+  sat: number;
+  light: number;
+  radius: number;
+  alpha: number;
   pulseOffset: number;
 }
 
@@ -41,9 +47,12 @@ const HeroDataViz = () => {
         const baseY = gapY * (r + 1) + (Math.random() - 0.5) * 18;
         const isAccent = Math.random() < 0.3;
         p.push({
-          x: baseX, y: baseY,
-          vx: 0, vy: 0,
-          baseX, baseY,
+          x: baseX,
+          y: baseY,
+          vx: 0,
+          vy: 0,
+          baseX,
+          baseY,
           hue: isAccent ? ACCENT_HUE : BRAND_HUE,
           sat: isAccent ? ACCENT_SAT : BRAND_SAT,
           light: isAccent ? ACCENT_LIGHT + Math.random() * 8 : BRAND_LIGHT + Math.random() * 15,
@@ -129,7 +138,7 @@ const HeroDataViz = () => {
         const mdy = p.y - my;
         const mDist = Math.hypot(mdx, mdy);
         if (mDist < 200 && mDist > 0) {
-          const force = (200 - mDist) / 200 * 0.8;
+          const force = ((200 - mDist) / 200) * 0.8;
           p.vx += (mdx / mDist) * force;
           p.vy += (mdy / mDist) * force;
         }
@@ -142,7 +151,9 @@ const HeroDataViz = () => {
       // test pairs that can possibly be within CONNECTION_DIST.
       const cols = Math.ceil(w / GRID_CELL) + 1;
       const rows = Math.ceil(h / GRID_CELL) + 1;
-      const grid: number[][][] = Array.from({ length: cols }, () => Array.from({ length: rows }, () => [] as number[]));
+      const grid: number[][][] = Array.from({ length: cols }, () =>
+        Array.from({ length: rows }, () => [] as number[]),
+      );
       for (let i = 0; i < pts.length; i++) {
         const cx2 = Math.floor(pts[i].x / GRID_CELL);
         const cy2 = Math.floor(pts[i].y / GRID_CELL);
@@ -179,7 +190,8 @@ const HeroDataViz = () => {
 
       // Draw particles with glow
       for (const p of pts) {
-        const pulseAlpha = p.alpha * (0.7 + Math.sin(performance.now() * 0.00096 + p.pulseOffset) * 0.3);
+        const pulseAlpha =
+          p.alpha * (0.7 + Math.sin(performance.now() * 0.00096 + p.pulseOffset) * 0.3);
 
         // Core
         ctx.fillStyle = `hsla(${p.hue}, ${p.sat}%, ${p.light}%, ${pulseAlpha})`;
@@ -242,7 +254,7 @@ const HeroDataViz = () => {
           if (visible && !reducedMotion) start();
           else stop();
         },
-        { rootMargin: "200px" }
+        { rootMargin: "200px" },
       );
       io.observe(section);
     }
@@ -277,7 +289,9 @@ const HeroDataViz = () => {
       ref={canvasRef}
       aria-hidden="true"
       className="absolute inset-0 pointer-events-none"
-      style={{ maskImage: "radial-gradient(ellipse 90% 85% at 50% 45%, black 20%, transparent 85%)" }}
+      style={{
+        maskImage: "radial-gradient(ellipse 90% 85% at 50% 45%, black 20%, transparent 85%)",
+      }}
     />
   );
 };

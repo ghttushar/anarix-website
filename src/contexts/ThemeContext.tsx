@@ -20,7 +20,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("dark");
 
-
   useEffect(() => {
     const root = window.document.documentElement;
 

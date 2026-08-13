@@ -4,9 +4,21 @@ import { Check } from "lucide-react";
 import { smoothPath } from "@/website/components/case-studies/charts";
 
 const chartSeries = [
-  { name: "Sponsored Products", color: "hsl(230 65% 57%)", values: [53, 58, 68, 103, 86, 75, 78, 82, 87, 93, 102, 116] },
-  { name: "Sponsored Brands", color: "hsl(230 60% 72%)", values: [22, 24, 28, 45, 38, 33, 34, 36, 39, 41, 45, 51] },
-  { name: "Sponsored Display", color: "hsl(231 74% 81%)", values: [13, 14, 16, 38, 28, 24, 26, 28, 29, 31, 34, 36] },
+  {
+    name: "Sponsored Products",
+    color: "hsl(230 65% 57%)",
+    values: [53, 58, 68, 103, 86, 75, 78, 82, 87, 93, 102, 116],
+  },
+  {
+    name: "Sponsored Brands",
+    color: "hsl(230 60% 72%)",
+    values: [22, 24, 28, 45, 38, 33, 34, 36, 39, 41, 45, 51],
+  },
+  {
+    name: "Sponsored Display",
+    color: "hsl(231 74% 81%)",
+    values: [13, 14, 16, 38, 28, 24, 26, 28, 29, 31, 34, 36],
+  },
 ];
 
 const CHART_W = 560;
@@ -34,7 +46,7 @@ const MorphPanel = () => {
     s.values.map((v, i) => ({
       x: PAD.l + (i * (CHART_W - PAD.l - PAD.r)) / (n - 1),
       y: PAD.t + (1 - v / CHART_MAX) * (CHART_H - PAD.t - PAD.b),
-    }))
+    })),
   );
 
   return (
@@ -116,14 +128,72 @@ const MorphPanel = () => {
   );
 };
 
+const FLOW_PATHS = [
+  "M 72 38 C 60 52, 54 68, 43 82",
+  "M 78 46 C 68 58, 62 72, 51 84",
+  "M 74 58 C 66 68, 60 76, 50 86",
+];
+
 const PhilosophySection = () => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const textX = useTransform(scrollYProgress, [0, 0.5, 1], [-20, 0, 10]);
   const animScale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.85, 1, 1, 0.9]);
+  const flowProgress = useTransform(scrollYProgress, [0.08, 0.5], [0, 1]);
 
   return (
     <section ref={ref} className="relative pad-section overflow-hidden border-t border-border/40">
+      {/* Flowing connector lines: from behind the visual into the
+          "Decisions, not to-do lists." card (desktop only). */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 hidden lg:block">
+        <svg
+          className="absolute inset-0 h-full w-full"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <linearGradient id="ws-flow-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" style={{ stopColor: "hsl(var(--periwinkle))", stopOpacity: 1 }} />
+              <stop offset="1" style={{ stopColor: "hsl(var(--primary))", stopOpacity: 1 }} />
+            </linearGradient>
+          </defs>
+          <g opacity={0.2}>
+            {FLOW_PATHS.map((d, i) => (
+              <motion.path
+                key={d}
+                d={d}
+                fill="none"
+                stroke="url(#ws-flow-grad)"
+                strokeWidth={i === 0 ? 1.6 : 1}
+                strokeLinecap="round"
+                vectorEffect="non-scaling-stroke"
+                style={{ pathLength: flowProgress }}
+              />
+            ))}
+            <motion.path
+              d={FLOW_PATHS[0]}
+              fill="none"
+              stroke="url(#ws-flow-grad)"
+              strokeWidth={0.9}
+              strokeLinecap="round"
+              strokeDasharray="3 7"
+              vectorEffect="non-scaling-stroke"
+              animate={{ strokeDashoffset: [0, -50] }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "linear" }}
+            />
+          </g>
+        </svg>
+        <motion.span
+          className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary"
+          style={{
+            left: "43%",
+            top: "82%",
+            scale: flowProgress,
+            boxShadow: "0 0 12px hsl(var(--primary) / 0.8)",
+          }}
+        />
+      </div>
+
       <div className="container-wide px-4">
         <div className="grid lg:grid-cols-2 gap-grid-lg items-center">
           <motion.div style={{ x: textX }}>
@@ -186,16 +256,14 @@ const PhilosophySection = () => {
               transition={{ delay: 0.5, duration: 0.5 }}
             >
               <p className="text-sm text-foreground leading-relaxed font-medium">
-                Our Technology does what it does best, relentless, precise execution at machine speed. Our people do what they do best, test, think, and push your brand further than a script ever could.{" "}
-                <span className="text-primary">You get both.</span>
+                Our Technology does what it does best, relentless, precise execution at machine
+                speed. Our people do what they do best, test, think, and push your brand further
+                than a script ever could. <span className="text-primary">You get both.</span>
               </p>
             </motion.div>
           </motion.div>
 
-          <motion.div
-            className="flex justify-center"
-            style={{ scale: animScale }}
-          >
+          <motion.div className="flex justify-center" style={{ scale: animScale }}>
             <div className="relative w-full max-w-lg">
               <div className="absolute inset-0 rounded-full bg-primary/5 blur-3xl scale-150" />
               <MorphPanel />

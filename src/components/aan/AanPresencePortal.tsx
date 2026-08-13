@@ -38,7 +38,7 @@ export function AanPresencePortal() {
         floating={size >= 40}
       />
     </LayoutGroup>,
-    target
+    target,
   );
 }
 

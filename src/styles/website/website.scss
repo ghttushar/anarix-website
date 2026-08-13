@@ -205,4 +205,19 @@
 @keyframes ws-sparkle    { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.85); } }
 @keyframes ws-enter-pulse { 50% { opacity: 0.5; } }
 @keyframes ws-enter-spin { to { transform: rotate(360deg); } }
-@keyframes ws-enter { from { opacity: 0; } to { opacity: 1; } }
+
+// tw-animate-css style enter/exit: the *-in/*-out utilities set the vars,
+// keyframes apply them, so they compose with `translate`-property classes
+// and inline `transform` from framer-motion.
+@keyframes ws-enter {
+  from {
+    opacity: var(--tw-enter-opacity, 0);
+    transform: translate3d(var(--tw-enter-translate-x, 0), var(--tw-enter-translate-y, 0), 0) scale(var(--tw-enter-scale, 1)) rotate(var(--tw-enter-rotate, 0));
+  }
+}
+@keyframes ws-exit {
+  to {
+    opacity: var(--tw-exit-opacity, 0);
+    transform: translate3d(var(--tw-exit-translate-x, 0), var(--tw-exit-translate-y, 0), 0) scale(var(--tw-exit-scale, 1)) rotate(var(--tw-exit-rotate, 0));
+  }
+}

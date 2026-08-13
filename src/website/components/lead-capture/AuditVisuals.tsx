@@ -70,7 +70,10 @@ const ImageGrade = () => (
     <Plate src={fragrance} alt="Home fragrance hero image being graded">
       <motion.div
         className="absolute inset-x-0"
-        style={{ height: 46, background: "linear-gradient(hsl(var(--primary) / 0.55), transparent)" }}
+        style={{
+          height: 46,
+          background: "linear-gradient(hsl(var(--primary) / 0.55), transparent)",
+        }}
         animate={{ y: [-46, PANEL_HEIGHT] }}
         transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -86,7 +89,9 @@ const ImageGrade = () => (
         <span className="font-numeric text-2xl font-bold leading-none text-foreground">61</span>
       </div>
     </Plate>
-    <p className="mt-3 text-xs text-muted-foreground">We grade the hero image first. It moves the click.</p>
+    <p className="mt-3 text-xs text-muted-foreground">
+      We grade the hero image first. It moves the click.
+    </p>
   </div>
 );
 
@@ -119,7 +124,9 @@ const ScoreBars = () => {
           ))}
         </div>
       </Plate>
-      <p className="mt-3 text-xs text-muted-foreground">Scored against the rules the marketplace actually enforces.</p>
+      <p className="mt-3 text-xs text-muted-foreground">
+        Scored against the rules the marketplace actually enforces.
+      </p>
     </div>
   );
 };
@@ -158,7 +165,9 @@ const IssueChecklist = () => {
           ))}
         </div>
       </Plate>
-      <p className="mt-3 text-xs text-muted-foreground">Every flag is specific, so it is fixable today.</p>
+      <p className="mt-3 text-xs text-muted-foreground">
+        Every flag is specific, so it is fixable today.
+      </p>
     </div>
   );
 };
@@ -204,7 +213,9 @@ const CompetitorCompare = () => (
         ))}
       </div>
     </Plate>
-    <p className="mt-3 text-xs text-muted-foreground">You see where you sit against the page you compete on.</p>
+    <p className="mt-3 text-xs text-muted-foreground">
+      You see where you sit against the page you compete on.
+    </p>
   </div>
 );
 

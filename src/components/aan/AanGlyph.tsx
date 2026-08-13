@@ -16,7 +16,13 @@ interface AanGlyphProps {
  * mark Jiva AI surfaces. Renders the original Sparkles when New Branding is
  * OFF; renders the AanMascot diamond when ON.
  */
-export function AanGlyph({ className, state = "idle", size, interactive = false, staticEyes = false }: AanGlyphProps) {
+export function AanGlyph({
+  className,
+  state = "idle",
+  size,
+  interactive = false,
+  staticEyes = false,
+}: AanGlyphProps) {
   const { newBranding } = useBranding();
 
   if (!newBranding) {
@@ -33,7 +39,12 @@ export function AanGlyph({ className, state = "idle", size, interactive = false,
 
   return (
     <span className={cn("inline-flex items-center justify-center shrink-0", className)}>
-      <AanMascot state={state} size={size ?? inferred} interactive={interactive} staticEyes={staticEyes} />
+      <AanMascot
+        state={state}
+        size={size ?? inferred}
+        interactive={interactive}
+        staticEyes={staticEyes}
+      />
     </span>
   );
 }

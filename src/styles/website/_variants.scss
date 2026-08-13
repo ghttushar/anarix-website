@@ -38,32 +38,39 @@
   .h-\[320px\] { height: 320px; }
   .w-\[480px\] { width: 480px; }
   .p-\[1px\] { padding: 1px; }
+  .pt-\[24vh\] { padding-top: 24vh; }
   .inset-x-3 { left: 0.75rem; right: 0.75rem; }
   .bottom-\[-2\.25rem\] { bottom: -2.25rem; }
+  .-bottom-\[0\.28em\] { bottom: -0.28em; }
   .left-\[12\%\] { left: 12%; }
   .right-\[12\%\] { right: 12%; }
   .left-\[17px\] { left: 17px; }
   .left-\[50\%\] { left: 50%; }
   .top-\[50\%\] { top: 50%; }
+  .top-\[24vh\] { top: 24vh; }
   .z-\[56\] { z-index: 56; }
   .delay-200 { transition-delay: 200ms; }
   .duration-150 { transition-duration: 150ms; }
   .ease-out { transition-timing-function: cubic-bezier(0, 0, 0.2, 1); }
-  .rotate-180 { transform: rotate(180deg); }
-  .scale-100 { transform: scale(1); }
-  .scale-x-0 { transform: scaleX(0); }
-  .scale-x-100 { transform: scaleX(1); }
-  .translate-y-0 { transform: translateY(0); }
-  .translate-y-4 { transform: translateY(1rem); }
-  .translate-y-6 { transform: translateY(1.5rem); }
-  .translate-x-\[-50\%\] { transform: translateX(-50%); }
-  .translate-y-\[-50\%\] { transform: translateY(-50%); }
+  .rotate-180 { --tw-rotate: 180deg; rotate: var(--tw-rotate); }
+  .-rotate-90 { --tw-rotate: -90deg; rotate: var(--tw-rotate); }
+  .scale-100 { --tw-scale-x: 1; --tw-scale-y: 1; scale: var(--tw-scale-x) var(--tw-scale-y); }
+  .scale-x-0 { --tw-scale-x: 0; --tw-scale-y: 1; scale: var(--tw-scale-x) var(--tw-scale-y); }
+  .scale-x-100 { --tw-scale-x: 1; --tw-scale-y: 1; scale: var(--tw-scale-x) var(--tw-scale-y); }
+  .translate-y-0 { --tw-translate-y: 0; translate: var(--tw-translate-x, 0) var(--tw-translate-y); }
+  .translate-y-4 { --tw-translate-y: 1rem; translate: var(--tw-translate-x, 0) var(--tw-translate-y); }
+  .translate-y-6 { --tw-translate-y: 1.5rem; translate: var(--tw-translate-x, 0) var(--tw-translate-y); }
+  .translate-x-\[-50\%\] { --tw-translate-x: -50%; translate: var(--tw-translate-x) var(--tw-translate-y, 0); }
+  .translate-y-\[-50\%\] { --tw-translate-y: -50%; translate: var(--tw-translate-x, 0) var(--tw-translate-y); }
   .shadow-xl { box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
   .shadow-2xl { box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); }
   .shadow-primary\/10 { box-shadow: 0 10px 30px -10px hsl(var(--primary) / 0.1); }
-  .ring-1 { box-shadow: 0 0 0 1px var(--ws-ring-color, hsl(var(--ring))); }
-  .ring-2 { box-shadow: 0 0 0 2px var(--ws-ring-color, hsl(var(--ring))); }
+  .ring-1 { --tw-ring-offset-shadow: 0 0 0 var(--ws-ring-offset-width, 0px) var(--ws-ring-offset-color, #fff); --tw-ring-shadow: 0 0 0 1px var(--tw-ring-color, hsl(var(--ring))); box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000); }
+  .ring-2 { --tw-ring-offset-shadow: 0 0 0 var(--ws-ring-offset-width, 0px) var(--ws-ring-offset-color, #fff); --tw-ring-shadow: 0 0 0 2px var(--tw-ring-color, hsl(var(--ring))); box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000); }
+  .ring-4 { --tw-ring-offset-shadow: 0 0 0 var(--ws-ring-offset-width, 0px) var(--ws-ring-offset-color, #fff); --tw-ring-shadow: 0 0 0 4px var(--tw-ring-color, hsl(var(--ring))); box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000); }
   .ring-primary { --ws-ring-color: hsl(var(--primary)); }
+  .ring-border { --ws-ring-color: hsl(var(--border)); }
+  .ring-background { --ws-ring-color: hsl(var(--background)); }
   .ring-primary\/30 { --ws-ring-color: hsl(var(--primary) / 0.3); }
   .ring-black\/5 { --ws-ring-color: rgb(0 0 0 / 0.05); }
   .ring-white\/15 { --ws-ring-color: rgb(255 255 255 / 0.15); }
@@ -106,11 +113,11 @@
   .text-\[\#B8BEFF\] { color: #b8beff; }
 
   // ------------------------------------------------------------ hover / focus
-  .hover\:scale-105:hover { transform: scale(1.05); }
-  .hover\:scale-\[1\.14\]:hover { transform: scale(1.14); }
-  .hover\:-translate-y-1:hover { transform: translateY(-0.25rem); }
-  .hover\:-translate-y-3:hover { transform: translateY(-0.75rem); }
-  .hover\:\!rotate-0:hover { transform: rotate(0deg) !important; }
+  .hover\:scale-105:hover { --tw-scale-x: 1.05; --tw-scale-y: 1.05; scale: var(--tw-scale-x) var(--tw-scale-y); }
+  .hover\:scale-\[1\.14\]:hover { --tw-scale-x: 1.14; --tw-scale-y: 1.14; scale: var(--tw-scale-x) var(--tw-scale-y); }
+  .hover\:-translate-y-1:hover { --tw-translate-y: -0.25rem; translate: var(--tw-translate-x, 0) var(--tw-translate-y); }
+  .hover\:-translate-y-3:hover { --tw-translate-y: -0.75rem; translate: var(--tw-translate-x, 0) var(--tw-translate-y); }
+  .hover\:\!rotate-0:hover { rotate: 0deg !important; }
   .hover\:z-30:hover { z-index: 30; }
   .hover\:bg-accent\/50:hover { background-color: hsl(var(--accent) / 0.5); }
   .hover\:bg-accent\/60:hover { background-color: hsl(var(--accent) / 0.6); }
@@ -119,21 +126,22 @@
   .hover\:border-border\/70:hover { border-color: hsl(var(--border) / 0.7); }
 
   .focus\:z-30:focus { z-index: 30; }
-  .focus\:scale-\[1\.14\]:focus { transform: scale(1.14); }
-  .focus\:-translate-y-3:focus { transform: translateY(-0.75rem); }
+  .focus\:scale-\[1\.14\]:focus { --tw-scale-x: 1.14; --tw-scale-y: 1.14; scale: var(--tw-scale-x) var(--tw-scale-y); }
+  .focus\:-translate-y-3:focus { --tw-translate-y: -0.75rem; translate: var(--tw-translate-x, 0) var(--tw-translate-y); }
   .focus\:ring-ring:focus { --ws-ring-color: hsl(var(--ring)); }
   .focus\:ring-offset-2:focus { --ws-ring-offset-width: 2px; }
   .focus-visible\:outline-none:focus-visible { outline: 2px solid transparent; outline-offset: 2px; }
-  .focus-visible\:ring-2:focus-visible { box-shadow: 0 0 0 2px var(--ws-ring-color, hsl(var(--ring))); }
+  .focus-visible\:ring-2:focus-visible { --tw-ring-offset-shadow: 0 0 0 var(--ws-ring-offset-width, 0px) var(--ws-ring-offset-color, #fff); --tw-ring-shadow: 0 0 0 2px var(--tw-ring-color, hsl(var(--ring))); box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000); }
   .focus-visible\:ring-ring:focus-visible { --ws-ring-color: hsl(var(--ring)); }
   .focus-visible\:ring-offset-2:focus-visible { --ws-ring-offset-width: 2px; }
-  .focus-within\:ring-2:focus-within { box-shadow: 0 0 0 2px var(--ws-ring-color, hsl(var(--ring))); }
+  .focus-within\:ring-2:focus-within { --tw-ring-offset-shadow: 0 0 0 var(--ws-ring-offset-width, 0px) var(--ws-ring-offset-color, #fff); --tw-ring-shadow: 0 0 0 2px var(--tw-ring-color, hsl(var(--ring))); box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000); }
   .focus-within\:ring-primary\/40:focus-within { --ws-ring-color: hsl(var(--primary) / 0.4); }
 
   .disabled\:cursor-not-allowed:disabled { cursor: not-allowed; }
   .disabled\:pointer-events-none:disabled { pointer-events: none; }
 
-  .group:hover .group-hover\:scale-x-100 { transform: scaleX(1); }
+  .group:hover .group-hover\:scale-x-100 { --tw-scale-x: 1; --tw-scale-y: 1; scale: var(--tw-scale-x) var(--tw-scale-y); }
+  .group:hover .group-hover\:ring-primary\/30 { --ws-ring-color: hsl(var(--primary) / 0.3); }
   .group:hover .group-hover\:shadow-2xl { box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); }
 
   .placeholder\:text-muted-foreground::placeholder { color: hsl(var(--muted-foreground)); }
@@ -148,12 +156,21 @@
   // --------------------------------------------------- radix data-state hooks
   .data-\[state\=open\]\:bg-accent[data-state='open'] { background-color: hsl(var(--accent)); }
   .data-\[state\=open\]\:text-muted-foreground[data-state='open'] { color: hsl(var(--muted-foreground)); }
-  .data-\[state\=open\]\:animate-in[data-state='open'],
-  .data-\[state\=open\]\:fade-in-0[data-state='open'],
-  .data-\[state\=open\]\:zoom-in-95[data-state='open'] { animation: ws-dialog-in 160ms ease-out; }
-  .data-\[state\=closed\]\:animate-out[data-state='closed'],
-  .data-\[state\=closed\]\:fade-out-0[data-state='closed'],
-  .data-\[state\=closed\]\:zoom-out-95[data-state='closed'] { animation: ws-dialog-out 140ms ease-in; }
+
+  // Enter/exit animation vars + trigger, mirroring tw-animate-css. The
+  // keyframes read the vars, so the slide/zoom/fade utilities compose with
+  // `translate`-property classes (e.g. the dialog's -50% centering) and with
+  // inline `transform` from framer-motion.
+  .data-\[state\=open\]\:animate-in[data-state='open'] { animation-name: ws-enter; animation-duration: var(--tw-enter-duration, 150ms); animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); animation-fill-mode: forwards; }
+  .data-\[state\=open\]\:fade-in-0[data-state='open'] { --tw-enter-opacity: 0; }
+  .data-\[state\=open\]\:zoom-in-95[data-state='open'] { --tw-enter-scale: 0.95; }
+  .data-\[state\=open\]\:slide-in-from-left-1\/2[data-state='open'] { --tw-enter-translate-x: -50%; }
+  .data-\[state\=open\]\:slide-in-from-top-\[48\%\][data-state='open'] { --tw-enter-translate-y: 48%; }
+  .data-\[state\=closed\]\:animate-out[data-state='closed'] { animation-name: ws-exit; animation-duration: var(--tw-exit-duration, 150ms); animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); animation-fill-mode: forwards; }
+  .data-\[state\=closed\]\:fade-out-0[data-state='closed'] { --tw-exit-opacity: 0; }
+  .data-\[state\=closed\]\:zoom-out-95[data-state='closed'] { --tw-exit-scale: 0.95; }
+  .data-\[state\=closed\]\:slide-out-to-left-1\/2[data-state='closed'] { --tw-exit-translate-x: -50%; }
+  .data-\[state\=closed\]\:slide-out-to-top-\[48\%\][data-state='closed'] { --tw-exit-translate-y: 48%; }
 
   // ------------------------------------------------------------ child targets
   .\[\&_h2\]\:text-2xl h2 { font-size: 1.5rem; }
@@ -213,6 +230,18 @@
     .md\:text-sm { font-size: 0.875rem; }
   }
 
+  // ------------------------------------------------------------ sonner toasts
+  // shadcn sonner theme: the Toaster renders inside .website-scope and marks
+  // itself `.group.toaster`; toasts/buttons match the arbitrary-group variant.
+  .group-\[\.toaster\]\:bg-background:is(:where(.group.toaster) *) { background-color: hsl(var(--background)); }
+  .group-\[\.toaster\]\:text-foreground:is(:where(.group.toaster) *) { color: hsl(var(--foreground)); }
+  .group-\[\.toaster\]\:border-border:is(:where(.group.toaster) *) { border-color: hsl(var(--border)); }
+  .group-\[\.toaster\]\:shadow-lg:is(:where(.group.toaster) *) { box-shadow: $tw-shadow-lg; }
+  .group-\[\.toast\]\:text-muted-foreground:is(:where(.group.toast) *) { color: hsl(var(--muted-foreground)); }
+  .group-\[\.toast\]\:bg-primary:is(:where(.group.toast) *) { background-color: hsl(var(--primary)); }
+  .group-\[\.toast\]\:text-primary-foreground:is(:where(.group.toast) *) { color: hsl(var(--primary-foreground)); }
+  .group-\[\.toast\]\:bg-muted:is(:where(.group.toast) *) { background-color: hsl(var(--muted)); }
+
   @include bp(lg) {
     @for $i from 1 through 12 {
       .lg\:col-span-#{$i} { grid-column: span $i / span $i; }
@@ -225,12 +254,8 @@
   }
 }
 
-@keyframes ws-dialog-in {
-  from { opacity: 0; transform: scale(0.96); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes ws-dialog-out {
-  from { opacity: 1; transform: scale(1); }
-  to { opacity: 0; transform: scale(0.96); }
-}
+// Dark-mode single-class variant (mirrors Tailwind's .dark scope). The
+// `.dark` class lives on <html> — outside .website-scope — so this rule must
+// be emitted at top level, like the .nav-glass dark override.
+.dark .website-scope .dark\:text-amber-400 { color: rgb(251 191 36); }
+.dark .website-scope .dark\:text-emerald-400 { color: rgb(52 211 153); }

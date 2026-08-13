@@ -12,16 +12,36 @@
     .bg-#{$c} { background-color: color-hsl($c); }
     .text-#{$c} { color: color-hsl($c); }
     .border-#{$c} { border-color: color-hsl($c); }
-    .from-#{$c} { --tw-gradient-stops: color-hsl($c), rgb(255 255 255 / 0); }
-    .to-#{$c} { --tw-gradient-to: color-hsl($c); --tw-gradient-stops: var(--tw-gradient-from, color-hsl($c)), var(--tw-gradient-to); }
-    .via-#{$c} { --tw-gradient-stops: var(--tw-gradient-from), color-hsl($c), var(--tw-gradient-to); }
+    .from-#{$c} {
+      $stop: color-hsl($c);
+      --tw-gradient-from: #{$stop};
+      --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(255 255 255 / 0));
+    }
+    .to-#{$c} {
+      $stop: color-hsl($c);
+      --tw-gradient-to: #{$stop};
+    }
+    .via-#{$c} {
+      $stop: color-hsl($c);
+      --tw-gradient-stops: var(--tw-gradient-from), #{$stop}, var(--tw-gradient-to);
+    }
     @each $n, $d in $opacity {
       .bg-#{$c}\/#{$n} { background-color: color-hsl($c, $d); }
       .text-#{$c}\/#{$n} { color: color-hsl($c, $d); }
       .border-#{$c}\/#{$n} { border-color: color-hsl($c, $d); }
-      .from-#{$c}\/#{$n} { --tw-gradient-stops: color-hsl($c, $d), rgb(255 255 255 / 0); }
-      .to-#{$c}\/#{$n} { --tw-gradient-to: color-hsl($c, $d); --tw-gradient-stops: var(--tw-gradient-from, color-hsl($c, $d)), var(--tw-gradient-to); }
-      .via-#{$c}\/#{$n} { --tw-gradient-stops: var(--tw-gradient-from), color-hsl($c, $d), var(--tw-gradient-to); }
+      .from-#{$c}\/#{$n} {
+        $stop: color-hsl($c, $d);
+        --tw-gradient-from: #{$stop};
+        --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(255 255 255 / 0));
+      }
+      .to-#{$c}\/#{$n} {
+        $stop: color-hsl($c, $d);
+        --tw-gradient-to: #{$stop};
+      }
+      .via-#{$c}\/#{$n} {
+        $stop: color-hsl($c, $d);
+        --tw-gradient-stops: var(--tw-gradient-from), #{$stop}, var(--tw-gradient-to);
+      }
     }
   }
 
@@ -55,6 +75,13 @@
   .bg-gradient-to-b { background-image: linear-gradient(to bottom, var(--tw-gradient-stops)); }
   .bg-gradient-to-l { background-image: linear-gradient(to left, var(--tw-gradient-stops)); }
   .bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)); }
+
+  // ---------------------------------------------- opacity not in the $opacity map
+  .from-primary\/12 {
+    $stop: hsl(var(--primary) / 0.12);
+    --tw-gradient-from: #{$stop};
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(255 255 255 / 0));
+  }
 
   // --------------------------------------------- one-off semantic fills
   .bg-muted-foreground { background-color: hsl(var(--muted-foreground)); }

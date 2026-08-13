@@ -6,13 +6,28 @@ interface Props {
   className?: string;
 }
 
-const DEPT_PALETTE: Record<string, { bg1: string; bg2: string; skin: string; hair: string; shirt: string }> = {
-  Leadership:           { bg1: "#1a1d35", bg2: "#0e1020", skin: "#d8a47f", hair: "#1a0f08", shirt: "#2a2d4f" },
-  "Account Management": { bg1: "#1f2540", bg2: "#0f1428", skin: "#d49b7a", hair: "#2a1a10", shirt: "#3e4a8a" },
-  Service:              { bg1: "#15302a", bg2: "#0a1c18", skin: "#dba78a", hair: "#170d08", shirt: "#1f5a4a" },
-  Tech:                 { bg1: "#1f2148", bg2: "#0d0f28", skin: "#d4a487", hair: "#181020", shirt: "#3a3f7a" },
-  Design:               { bg1: "#3a2418", bg2: "#1a0e08", skin: "#e0a888", hair: "#1a0c06", shirt: "#7a4a2a" },
-  Marketing:            { bg1: "#3a1a2a", bg2: "#1a0a18", skin: "#dca088", hair: "#1f0c12", shirt: "#8a3a5a" },
+const DEPT_PALETTE: Record<
+  string,
+  { bg1: string; bg2: string; skin: string; hair: string; shirt: string }
+> = {
+  Leadership: {
+    bg1: "#1a1d35",
+    bg2: "#0e1020",
+    skin: "#d8a47f",
+    hair: "#1a0f08",
+    shirt: "#2a2d4f",
+  },
+  "Account Management": {
+    bg1: "#1f2540",
+    bg2: "#0f1428",
+    skin: "#d49b7a",
+    hair: "#2a1a10",
+    shirt: "#3e4a8a",
+  },
+  Service: { bg1: "#15302a", bg2: "#0a1c18", skin: "#dba78a", hair: "#170d08", shirt: "#1f5a4a" },
+  Tech: { bg1: "#1f2148", bg2: "#0d0f28", skin: "#d4a487", hair: "#181020", shirt: "#3a3f7a" },
+  Design: { bg1: "#3a2418", bg2: "#1a0e08", skin: "#e0a888", hair: "#1a0c06", shirt: "#7a4a2a" },
+  Marketing: { bg1: "#3a1a2a", bg2: "#1a0a18", skin: "#dca088", hair: "#1f0c12", shirt: "#8a3a5a" },
 };
 
 /**
@@ -67,8 +82,20 @@ export function PhotoMockup({ name, dept, className }: Props) {
       <ellipse cx="38" cy="54" rx="4" ry="3" fill="#000" opacity="0.06" />
       <ellipse cx="62" cy="54" rx="4" ry="3" fill="#000" opacity="0.06" />
       {/* eyebrows */}
-      <path d="M 38 46 Q 42 44 46 46" stroke={p.hair} strokeWidth="1.4" fill="none" strokeLinecap="round" />
-      <path d="M 54 46 Q 58 44 62 46" stroke={p.hair} strokeWidth="1.4" fill="none" strokeLinecap="round" />
+      <path
+        d="M 38 46 Q 42 44 46 46"
+        stroke={p.hair}
+        strokeWidth="1.4"
+        fill="none"
+        strokeLinecap="round"
+      />
+      <path
+        d="M 54 46 Q 58 44 62 46"
+        stroke={p.hair}
+        strokeWidth="1.4"
+        fill="none"
+        strokeLinecap="round"
+      />
       {/* eyes */}
       <ellipse cx="42" cy="50" rx="1.8" ry="2.2" fill={p.hair} />
       <ellipse cx="58" cy="50" rx="1.8" ry="2.2" fill={p.hair} />
@@ -77,9 +104,19 @@ export function PhotoMockup({ name, dept, className }: Props) {
       {/* nose hint */}
       <path d="M 50 52 Q 48 56 50 58 Q 52 56 50 52" fill="#000" opacity="0.08" />
       {/* mouth */}
-      <path d="M 44 60 Q 50 63 56 60" stroke="#5a2a20" strokeWidth="1.2" fill="none" strokeLinecap="round" />
+      <path
+        d="M 44 60 Q 50 63 56 60"
+        stroke="#5a2a20"
+        strokeWidth="1.2"
+        fill="none"
+        strokeLinecap="round"
+      />
       {beard && (
-        <path d="M 38 58 Q 50 70 62 58 Q 60 66 50 68 Q 40 66 38 58 Z" fill={p.hair} opacity="0.85" />
+        <path
+          d="M 38 58 Q 50 70 62 58 Q 60 66 50 68 Q 40 66 38 58 Z"
+          fill={p.hair}
+          opacity="0.85"
+        />
       )}
       {glasses && (
         <g stroke={p.hair} strokeWidth="1.2" fill="none" opacity="0.9">

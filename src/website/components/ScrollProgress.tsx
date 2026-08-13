@@ -42,11 +42,7 @@ const ScrollProgress = ({ sections = defaultSections }: { sections?: ScrollProgr
               className="absolute -left-1.5 flex items-center gap-2"
               style={{ top, transform: "translateY(-50%)" }}
             >
-              <span
-                className="text-[8px] text-primary/40"
-              >
-                {s.shape}
-              </span>
+              <span className="text-[8px] text-primary/40">{s.shape}</span>
             </div>
           );
         })}

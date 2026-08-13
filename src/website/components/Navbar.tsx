@@ -26,7 +26,6 @@ const navItems: NavItem[] = [
 
 const productPaths = ["/products"];
 
-
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -39,7 +38,8 @@ const Navbar = () => {
   const activePath = location.pathname;
 
   const isActiveSection = (item: NavItem): boolean => {
-    if (item.label === "Platform") return productPaths.some((p) => activePath === p || activePath.startsWith(`${p}/`));
+    if (item.label === "Platform")
+      return productPaths.some((p) => activePath === p || activePath.startsWith(`${p}/`));
     if (item.label === "Company") return activePath.startsWith("/company");
     if (!item.href) return false;
     if (item.href === "/") return activePath === "/";
@@ -127,7 +127,8 @@ const Navbar = () => {
                       <ChevronDown
                         className="w-3.5 h-3.5 transition-transform duration-200"
                         style={{
-                          transform: openDropdown === item.label ? "rotate(180deg)" : "rotate(0deg)",
+                          transform:
+                            openDropdown === item.label ? "rotate(180deg)" : "rotate(0deg)",
                         }}
                       />
                     )}
@@ -185,7 +186,10 @@ const Navbar = () => {
                     >
                       <div className="grid grid-cols-1">
                         {item.megaMenu.map((col, ci) => (
-                          <div key={col.heading} className={ci > 0 ? "border-l border-border/40 pl-8" : ""}>
+                          <div
+                            key={col.heading}
+                            className={ci > 0 ? "border-l border-border/40 pl-8" : ""}
+                          >
                             <div className="flex items-baseline justify-between mb-3">
                               <h4 className="text-[10px] font-bold text-primary/70 uppercase tracking-[0.16em]">
                                 {col.heading}
@@ -201,7 +205,9 @@ const Navbar = () => {
                                     rel={sub.external ? "noopener noreferrer" : undefined}
                                     aria-current={activePath === sub.href ? "page" : undefined}
                                     className={`group flex items-start justify-between gap-4 px-3 py-2.5 rounded-xl transition-all duration-150 ${
-                                      activePath === sub.href ? "bg-accent/60" : "hover:bg-accent/60"
+                                      activePath === sub.href
+                                        ? "bg-accent/60"
+                                        : "hover:bg-accent/60"
                                     }`}
                                   >
                                     <span>
@@ -235,10 +241,13 @@ const Navbar = () => {
 
         {/* Right side */}
         <div className="hidden lg:flex items-center gap-3 justify-end">
-          <a href="https://calendly.com/sunil-anarix/30min" target="_blank" rel="noopener noreferrer" className="inline-flex">
-            <Button
-              className="rounded-pill h-10 px-6 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-strong active:translate-y-0 active:scale-[0.97] will-change-transform btn-shine"
-            >
+          <a
+            href="https://calendly.com/sunil-anarix/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex"
+          >
+            <Button className="rounded-pill h-10 px-6 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-strong active:translate-y-0 active:scale-[0.97] will-change-transform btn-shine">
               Schedule Demo
             </Button>
           </a>
@@ -270,7 +279,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:hidden mt-2 overflow-hidden bg-surface-elevated rounded-2xl border border-border shadow-medium"
+            className="lg:hidden mt-2 max-h-[calc(100dvh-120px)] overflow-y-auto bg-surface-elevated rounded-2xl border border-border shadow-medium"
           >
             <div className="p-4 space-y-1">
               {navItems.map((item) => {
@@ -295,7 +304,7 @@ const Navbar = () => {
                           }`}
                           onClick={() =>
                             setMobileExpandedSection(
-                              mobileExpandedSection === item.label ? null : item.label
+                              mobileExpandedSection === item.label ? null : item.label,
                             )
                           }
                           aria-expanded={mobileExpandedSection === item.label}
@@ -304,7 +313,10 @@ const Navbar = () => {
                           <ChevronDown
                             className="w-4 h-4 transition-transform duration-200"
                             style={{
-                              transform: mobileExpandedSection === item.label ? "rotate(180deg)" : "rotate(0deg)",
+                              transform:
+                                mobileExpandedSection === item.label
+                                  ? "rotate(180deg)"
+                                  : "rotate(0deg)",
                             }}
                           />
                         </button>
@@ -330,7 +342,9 @@ const Navbar = () => {
                                             to={sub.href}
                                             target={sub.external ? "_blank" : undefined}
                                             rel={sub.external ? "noopener noreferrer" : undefined}
-                                            aria-current={activePath === sub.href ? "page" : undefined}
+                                            aria-current={
+                                              activePath === sub.href ? "page" : undefined
+                                            }
                                             className={`block px-3 py-2 text-sm rounded-lg transition-colors ${
                                               activePath === sub.href
                                                 ? "text-foreground bg-accent/60"
@@ -376,7 +390,8 @@ const Navbar = () => {
                             <ChevronDown
                               className="w-4 h-4 transition-transform duration-200"
                               style={{
-                                transform: openDropdown === item.label ? "rotate(180deg)" : "rotate(0deg)",
+                                transform:
+                                  openDropdown === item.label ? "rotate(180deg)" : "rotate(0deg)",
                               }}
                             />
                           )}
@@ -413,12 +428,19 @@ const Navbar = () => {
                 );
               })}
               <div className="pt-3 border-t border-border space-y-2">
-                <a href="https://calendly.com/sunil-anarix/30min" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://calendly.com/sunil-anarix/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Button className="w-full rounded-pill bg-primary text-primary-foreground">
                     Schedule Demo
                   </Button>
                 </a>
-                <Link to="/login" className="flex items-center gap-1 px-3 py-2 text-sm text-muted-foreground">
+                <Link
+                  to="/login"
+                  className="flex items-center gap-1 px-3 py-2 text-sm text-muted-foreground"
+                >
                   Sign In <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>

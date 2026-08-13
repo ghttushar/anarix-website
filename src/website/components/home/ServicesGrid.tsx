@@ -1,14 +1,29 @@
 import { motion } from "framer-motion";
 import {
-  Megaphone, TrendingUp, LayoutPanelTop, Package,
-  Shield, Crosshair, FileText, Radio, Building2, Layers,
+  Megaphone,
+  TrendingUp,
+  LayoutPanelTop,
+  Package,
+  Shield,
+  Crosshair,
+  FileText,
+  Radio,
+  Building2,
+  Layers,
 } from "lucide-react";
 import ExpandingCapabilityGrid, {
   type ExpandingCard,
 } from "@/website/components/marketing/ExpandingCapabilityGrid";
 import {
-  SpendSparkline, MarginWaterfall, ListingSkeleton, CoverGauge, HealthMeter,
-  ShareRing, ReportLines, DemandFunnel, BrandShield,
+  SpendSparkline,
+  MarginWaterfall,
+  ListingSkeleton,
+  CoverGauge,
+  HealthMeter,
+  ShareRing,
+  ReportLines,
+  DemandFunnel,
+  BrandShield,
 } from "./ServiceGraphics";
 
 const services: ExpandingCard[] = [
@@ -137,8 +152,7 @@ const ServicesGrid = () => {
             <Layers className="w-3.5 h-3.5" /> The Full Stack
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight leading-[1.1]">
-            Every function.{" "}
-            <span className="text-gradient-primary">One team.</span>
+            Every function. <span className="text-gradient-primary">One team.</span>
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
             Every function below is run by our team on your accounts, day and night.

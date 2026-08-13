@@ -8,7 +8,6 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import { Link } from "@/lib/router";
-import { reportLovableError } from "@/lib/lovable-error-reporting";
 import WebsiteLayout from "@/website/WebsiteLayout";
 import appCss from "@/styles/main.scss?url";
 
@@ -86,7 +85,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   const router = useRouter();
 
   useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+    console.error(error);
   }, [error]);
 
   return (

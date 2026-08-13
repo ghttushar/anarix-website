@@ -66,7 +66,9 @@ const QuoteText = ({
 }) => <p className={className}>&ldquo;{text}&rdquo;</p>;
 
 const Byline = ({ person, inverted }: { person: Person; inverted?: boolean }) => (
-  <div className={`flex items-center gap-3 pt-4 border-t ${inverted ? "border-background/15" : "border-border"}`}>
+  <div
+    className={`flex items-center gap-3 pt-4 border-t ${inverted ? "border-background/15" : "border-border"}`}
+  >
     <Avatar className="h-9 w-9 shrink-0">
       <AvatarImage src={person.image} alt={person.author} className="object-cover" />
       <AvatarFallback className="bg-gradient-to-br from-primary to-periwinkle text-primary-foreground font-bold">
@@ -75,7 +77,9 @@ const Byline = ({ person, inverted }: { person: Person; inverted?: boolean }) =>
     </Avatar>
     <div>
       <div className="text-sm font-semibold">{person.author}</div>
-      <div className={`text-xs ${inverted ? "opacity-70" : "text-muted-foreground"}`}>{person.role}</div>
+      <div className={`text-xs ${inverted ? "opacity-70" : "text-muted-foreground"}`}>
+        {person.role}
+      </div>
     </div>
   </div>
 );
@@ -115,7 +119,9 @@ const VideoBody = ({ person }: { person: Person }) => {
           <span className="relative w-14 h-14 rounded-full bg-background/95 flex items-center justify-center shadow-strong group-hover:scale-105 transition-transform">
             <span
               className="absolute inset-0 rounded-full opacity-60 blur-md"
-              style={{ background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--periwinkle)))" }}
+              style={{
+                background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--periwinkle)))",
+              }}
             />
             <Play className="relative w-5 h-5 text-primary translate-x-0.5" fill="currentColor" />
           </span>
@@ -154,7 +160,8 @@ const TestimonialsWrapper = () => (
           <Sparkles className="w-3.5 h-3.5" /> Proof
         </div>
         <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground tracking-tight leading-[1.1] text-balance">
-          These are brands who started <span className="text-gradient-primary">exactly where you are.</span>
+          These are brands who started{" "}
+          <span className="text-gradient-primary">exactly where you are.</span>
         </h2>
       </motion.div>
 
@@ -173,7 +180,9 @@ const TestimonialsWrapper = () => (
           >
             <div
               className="absolute -top-10 -right-10 w-40 h-40 rounded-full opacity-30 pointer-events-none"
-              style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.25), transparent 70%)" }}
+              style={{
+                background: "radial-gradient(circle, hsl(var(--primary) / 0.25), transparent 70%)",
+              }}
             />
             <Quote className="w-8 h-8 text-primary/30 mb-3" strokeWidth={1.5} />
             <QuoteText
@@ -190,10 +199,18 @@ const TestimonialsWrapper = () => (
             style={VIDEO_GRADIENT}
           >
             <div className="p-5 flex flex-col gap-3 text-background">
-              <QuoteText text={JOEY.quote} inverted className="text-sm leading-[1.5] italic opacity-95" limit={140} />
+              <QuoteText
+                text={JOEY.quote}
+                inverted
+                className="text-sm leading-[1.5] italic opacity-95"
+                limit={140}
+              />
               <Byline person={JOEY} inverted />
             </div>
-            <div className="relative flex-1 min-h-0" style={{ aspectRatio: "16 / 9", maxHeight: "18rem" }}>
+            <div
+              className="relative flex-1 min-h-0"
+              style={{ aspectRatio: "16 / 9", maxHeight: "18rem" }}
+            >
               <VideoBody person={JOEY} />
             </div>
           </motion.article>
@@ -208,14 +225,18 @@ const TestimonialsWrapper = () => (
           style={VIDEO_GRADIENT}
         >
           <div className="p-5 flex flex-col gap-3 text-background">
-            <QuoteText text={NAUSIL.quote} inverted className="text-sm leading-[1.5] italic opacity-95" limit={140} />
+            <QuoteText
+              text={NAUSIL.quote}
+              inverted
+              className="text-sm leading-[1.5] italic opacity-95"
+              limit={140}
+            />
             <Byline person={NAUSIL} inverted />
           </div>
           <div className="relative flex-1 min-h-[18rem]">
             <VideoBody person={NAUSIL} />
           </div>
         </motion.article>
-
 
         <motion.article
           className="lg:col-span-12 relative p-6 sm:p-7 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"
@@ -224,7 +245,9 @@ const TestimonialsWrapper = () => (
         >
           <div
             className="absolute -bottom-16 -left-16 w-56 h-56 rounded-full opacity-20 pointer-events-none"
-            style={{ background: "radial-gradient(circle, hsl(var(--periwinkle) / 0.4), transparent 70%)" }}
+            style={{
+              background: "radial-gradient(circle, hsl(var(--periwinkle) / 0.4), transparent 70%)",
+            }}
           />
           <Quote className="w-8 h-8 text-primary/30 mb-3" strokeWidth={1.5} />
           <QuoteText

@@ -7,8 +7,12 @@ import listingBefore from "@/assets/listing/listing-before.jpg";
 import listingAfter from "@/assets/listing/listing-after.jpg";
 import { useLeadCapture } from "../lead-capture/LeadCaptureContext";
 
-
-const FIXES = ["Hero image on white", "Title within 75 characters", "A plus content live", "Buy Box price aligned"];
+const FIXES = [
+  "Hero image on white",
+  "Title within 75 characters",
+  "A plus content live",
+  "Buy Box price aligned",
+];
 
 /**
  * Visual hook: one listing upgrading itself. The visitor can scrub the handle
@@ -23,7 +27,7 @@ const ListingSpotlight = () => {
   useEffect(() => {
     if (!autoplay || reduceMotion) return;
     let raf = 0;
-    let start = performance.now();
+    const start = performance.now();
     const tick = (t: number) => {
       const phase = ((t - start) / 4200) % 1;
       setReveal(20 + 70 * (0.5 - Math.cos(phase * Math.PI * 2) / 2));
@@ -100,7 +104,6 @@ const ListingSpotlight = () => {
                 }}
               />
 
-
               {/* Reveal seam */}
               <div
                 className="absolute inset-y-0 w-px bg-primary"
@@ -140,7 +143,9 @@ const ListingSpotlight = () => {
                   <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                     Listing score
                   </p>
-                  <p className="font-numeric text-5xl font-bold leading-none text-foreground">{score}</p>
+                  <p className="font-numeric text-5xl font-bold leading-none text-foreground">
+                    {score}
+                  </p>
                 </div>
                 <div className="flex items-center gap-1 text-primary">
                   {[0, 1, 2, 3, 4].map((i) => (
@@ -168,12 +173,16 @@ const ListingSpotlight = () => {
                     <li key={fix} className="flex items-center gap-2.5 text-sm">
                       <span
                         className={`flex w-5 h-5 shrink-0 items-center justify-center rounded-pill border transition-colors ${
-                          done ? "border-primary bg-primary/15 text-primary" : "border-border text-muted-foreground"
+                          done
+                            ? "border-primary bg-primary/15 text-primary"
+                            : "border-border text-muted-foreground"
                         }`}
                       >
                         {done ? <Check className="w-3 h-3" /> : null}
                       </span>
-                      <span className={done ? "text-foreground" : "text-muted-foreground"}>{fix}</span>
+                      <span className={done ? "text-foreground" : "text-muted-foreground"}>
+                        {fix}
+                      </span>
                     </li>
                   );
                 })}

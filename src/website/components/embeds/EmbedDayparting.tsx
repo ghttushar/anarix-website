@@ -4,8 +4,8 @@ const data = days.map((_, d) =>
   Array.from({ length: 24 }, (_, h) => {
     const peak = Math.exp(-Math.pow(h - (12 + (d % 3)), 2) / 24);
     const w = d >= 5 ? 0.75 : 1;
-    return Math.min(1, peak * w + (((d * 31 + h * 7) % 13) / 80));
-  })
+    return Math.min(1, peak * w + ((d * 31 + h * 7) % 13) / 80);
+  }),
 );
 
 const EmbedDayparting = () => (
@@ -19,7 +19,9 @@ const EmbedDayparting = () => (
     </div>
     <div className="flex gap-2">
       <div className="flex flex-col justify-around text-[10px] text-muted-foreground py-0.5">
-        {days.map((d) => <span key={d}>{d}</span>)}
+        {days.map((d) => (
+          <span key={d}>{d}</span>
+        ))}
       </div>
       <div className="flex-1 grid gap-0.5" style={{ gridTemplateRows: "repeat(7, 1fr)" }}>
         {data.map((row, di) => (
@@ -41,7 +43,11 @@ const EmbedDayparting = () => (
       <div className="flex items-center gap-1">
         <span>Low</span>
         {[0.15, 0.35, 0.55, 0.75, 0.95].map((v) => (
-          <div key={v} className="w-3 h-2 rounded-sm" style={{ backgroundColor: `hsl(var(--primary) / ${v})` }} />
+          <div
+            key={v}
+            className="w-3 h-2 rounded-sm"
+            style={{ backgroundColor: `hsl(var(--primary) / ${v})` }}
+          />
         ))}
         <span>High</span>
       </div>

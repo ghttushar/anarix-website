@@ -29,7 +29,12 @@ const Contact = () => (
                   className="absolute w-10 h-10 rounded-xl bg-card/90 border border-border/60 shadow-soft flex items-center justify-center"
                   style={{ left: item.x, top: item.y }}
                   animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 3 + i * 0.5, delay: item.delay, repeat: Infinity, ease: "easeInOut" }}
+                  transition={{
+                    duration: 3 + i * 0.5,
+                    delay: item.delay,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
                 >
                   <item.icon className="w-5 h-5 text-primary" />
                 </motion.div>
@@ -64,8 +69,12 @@ const Contact = () => (
                       <CalendarClock className="w-5 h-5 text-primary" />
                     </span>
                     <div>
-                      <p className="text-sm font-semibold text-foreground">Prefer to talk it through?</p>
-                      <p className="text-xs text-muted-foreground">Thirty minutes with our team, no deck.</p>
+                      <p className="text-sm font-semibold text-foreground">
+                        Prefer to talk it through?
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        Thirty minutes with our team, no deck.
+                      </p>
                     </div>
                   </div>
                   <a
@@ -79,12 +88,10 @@ const Contact = () => (
                     </Button>
                   </a>
                 </div>
-
               </div>
             </div>
           </div>
         </motion.div>
-
 
         {/* Right - form */}
         <motion.form
@@ -94,32 +101,56 @@ const Contact = () => (
           transition={{ delay: 0.2, duration: 0.6 }}
           onSubmit={(e) => e.preventDefault()}
         >
-          <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight text-foreground mb-2">Send us a message</h2>
-          <p className="text-sm text-muted-foreground mb-6">We typically respond within 24 hours.</p>
+          <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight text-foreground mb-2">
+            Send us a message
+          </h2>
+          <p className="text-sm text-muted-foreground mb-6">
+            We typically respond within 24 hours.
+          </p>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-foreground mb-1.5">First Name</label>
-              <input className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow" placeholder="Jane" />
+              <input
+                className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow"
+                placeholder="Jane"
+              />
             </div>
             <div>
               <label className="block text-sm font-medium text-foreground mb-1.5">Last Name</label>
-              <input className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow" placeholder="Doe" />
+              <input
+                className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow"
+                placeholder="Doe"
+              />
             </div>
           </div>
           <div>
             <label className="block text-sm font-medium text-foreground mb-1.5">Email</label>
-            <input type="email" className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow" placeholder="you@company.com" />
+            <input
+              type="email"
+              className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow"
+              placeholder="you@company.com"
+            />
           </div>
           <div>
             <label className="block text-sm font-medium text-foreground mb-1.5">Subject</label>
-            <input className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow" placeholder="How can we help?" />
+            <input
+              className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow"
+              placeholder="How can we help?"
+            />
           </div>
           <div>
             <label className="block text-sm font-medium text-foreground mb-1.5">Message</label>
-            <textarea rows={5} className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow resize-none" placeholder="Tell us more..." />
+            <textarea
+              rows={5}
+              className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow resize-none"
+              placeholder="Tell us more..."
+            />
           </div>
-          <Button type="submit" className="w-full rounded-xl h-11 bg-primary text-primary-foreground btn-shine">
+          <Button
+            type="submit"
+            className="w-full rounded-xl h-11 bg-primary text-primary-foreground btn-shine"
+          >
             Send Message <Send className="w-4 h-4 ml-1" />
           </Button>
         </motion.form>

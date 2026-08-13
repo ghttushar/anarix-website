@@ -53,7 +53,8 @@ const TrustMarquee = ({ label = "Trusted by operators at" }: { label?: string })
           className="relative flex-1 overflow-hidden group"
           style={{
             maskImage: "linear-gradient(90deg, transparent, black 6%, black 94%, transparent)",
-            WebkitMaskImage: "linear-gradient(90deg, transparent, black 6%, black 94%, transparent)",
+            WebkitMaskImage:
+              "linear-gradient(90deg, transparent, black 6%, black 94%, transparent)",
           }}
         >
           <motion.div

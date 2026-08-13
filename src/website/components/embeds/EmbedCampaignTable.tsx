@@ -8,10 +8,19 @@ const rows = [
 ];
 
 const Spark = ({ trend = "up" }: { trend?: "up" | "down" }) => {
-  const path = trend === "up" ? "M0 18 L10 14 L20 16 L30 8 L40 10 L50 4" : "M0 4 L10 8 L20 6 L30 14 L40 12 L50 18";
+  const path =
+    trend === "up"
+      ? "M0 18 L10 14 L20 16 L30 8 L40 10 L50 4"
+      : "M0 4 L10 8 L20 6 L30 14 L40 12 L50 18";
   return (
     <svg viewBox="0 0 50 22" className="w-12 h-5">
-      <path d={path} fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5" strokeLinecap="round" />
+      <path
+        d={path}
+        fill="none"
+        stroke="hsl(var(--primary))"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
     </svg>
   );
 };
@@ -34,15 +43,23 @@ const EmbedCampaignTable = () => (
           <tr key={r.name} className="border-b border-border/60 last:border-0 hover:bg-muted/20">
             <td className="px-4 py-2.5 font-medium text-foreground whitespace-nowrap">{r.name}</td>
             <td className="px-3 py-2.5">
-              <span className={`inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded ${r.status === "Active" ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400" : "bg-muted text-muted-foreground"}`}>
-                <span className={`w-1.5 h-1.5 rounded-full ${r.status === "Active" ? "bg-emerald-500" : "bg-muted-foreground"}`} />
+              <span
+                className={`inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded ${r.status === "Active" ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400" : "bg-muted text-muted-foreground"}`}
+              >
+                <span
+                  className={`w-1.5 h-1.5 rounded-full ${r.status === "Active" ? "bg-emerald-500" : "bg-muted-foreground"}`}
+                />
                 {r.status}
               </span>
             </td>
             <td className="px-3 py-2.5 text-right tabular-nums text-foreground">{r.spend}</td>
-            <td className="px-3 py-2.5 text-right tabular-nums text-foreground font-medium">{r.roas}</td>
+            <td className="px-3 py-2.5 text-right tabular-nums text-foreground font-medium">
+              {r.roas}
+            </td>
             <td className="px-3 py-2.5 text-right tabular-nums text-foreground">{r.acos}</td>
-            <td className="px-3 py-2.5"><Spark trend={i % 3 === 2 ? "down" : "up"} /></td>
+            <td className="px-3 py-2.5">
+              <Spark trend={i % 3 === 2 ? "down" : "up"} />
+            </td>
           </tr>
         ))}
       </tbody>

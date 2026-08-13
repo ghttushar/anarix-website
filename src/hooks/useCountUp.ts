@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
  */
 export function useCountUp(
   target: number,
-  { duration = 1600, start = true }: { duration?: number; start?: boolean } = {}
+  { duration = 1600, start = true }: { duration?: number; start?: boolean } = {},
 ) {
   const [value, setValue] = useState(0);
   const startedRef = useRef(false);
@@ -15,7 +15,10 @@ export function useCountUp(
     if (!start || startedRef.current) return;
     startedRef.current = true;
 
-    if (typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+    ) {
       setValue(target);
       return;
     }

@@ -11,9 +11,7 @@ export function AanLogo({ className, showByAnarix = true }: AanLogoProps) {
     <div className={cn("flex items-center gap-2", className)}>
       <AanGlyph className="h-5 w-5 aan-gradient-text" staticEyes />
       <span className="font-aan text-aan aan-gradient-text font-bold">Jiva</span>
-      {showByAnarix && (
-        <span className="text-sm text-muted-foreground">by Anarix</span>
-      )}
+      {showByAnarix && <span className="text-sm text-muted-foreground">by Anarix</span>}
     </div>
   );
 }

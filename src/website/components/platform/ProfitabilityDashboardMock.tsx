@@ -13,10 +13,35 @@ interface Kpi {
 }
 
 const kpis: Kpi[] = [
-  { label: "Aug 14", value: "$1,246", sub: "Margin 27.5%", delta: "−20.6%", positive: false, active: true },
-  { label: "Aug 15", value: "$1,568", sub: "Margin 30.0%", delta: "+25.9%", positive: true },
-  { label: "August", value: "$23,457", sub: "Margin 26.3%", delta: "−18.0%", positive: false },
-  { label: "Forecast", value: "$39,173", sub: "Est. net profit", delta: "78% conf.", positive: true },
+  {
+    label: "Today",
+    value: "$1,246",
+    sub: "Net profit · Aug 14",
+    delta: "−20.6%",
+    positive: false,
+    active: true,
+  },
+  {
+    label: "Yesterday",
+    value: "$1,568",
+    sub: "Net profit · Aug 13",
+    delta: "+25.9%",
+    positive: true,
+  },
+  {
+    label: "Month to date",
+    value: "$23,457",
+    sub: "Contribution margin 26.3%",
+    delta: "−18.0%",
+    positive: false,
+  },
+  {
+    label: "Forecast",
+    value: "$39,173",
+    sub: "Est. net profit · Aug 31",
+    delta: "78% conf.",
+    positive: true,
+  },
 ];
 
 const chipFilters = ["Overview", "Sales Mix", "Efficiency"];
@@ -34,7 +59,7 @@ const ProfitabilityDashboardMock = () => {
         </div>
         <div className="flex items-center gap-2">
           <span className="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-border bg-background px-2.5 py-1 text-[11px] text-muted-foreground">
-            <Calendar className="w-3 h-3" /> May 19 – May 23
+            <Calendar className="w-3 h-3" /> Aug 1 – Aug 14, 2026
           </span>
           <span className="inline-flex items-center gap-1 rounded-lg bg-primary px-2.5 py-1 text-[11px] font-medium text-primary-foreground">
             <Play className="w-2.5 h-2.5 fill-current" /> Run
@@ -79,10 +104,16 @@ const ProfitabilityDashboardMock = () => {
               <span className="text-[10px] sm:text-[11px] text-muted-foreground">{k.sub}</span>
               <span
                 className={`inline-flex items-center gap-0.5 text-[10px] sm:text-[11px] font-medium ${
-                  k.positive ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"
+                  k.positive
+                    ? "text-emerald-600 dark:text-emerald-400"
+                    : "text-rose-600 dark:text-rose-400"
                 }`}
               >
-                {k.positive ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
+                {k.positive ? (
+                  <TrendingUp className="w-3 h-3" />
+                ) : (
+                  <TrendingDown className="w-3 h-3" />
+                )}
                 {k.delta}
               </span>
             </div>
@@ -103,6 +134,18 @@ const ProfitabilityDashboardMock = () => {
               <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
             </linearGradient>
           </defs>
+          {[24, 58, 92].map((y) => (
+            <line
+              key={y}
+              x1="0"
+              x2="400"
+              y1={y}
+              y2={y}
+              stroke="hsl(var(--border))"
+              strokeWidth="1"
+              strokeDasharray="3 4"
+            />
+          ))}
           <motion.path
             d="M0,90 L40,78 L80,60 L120,38 L160,26 L200,22 L240,30 L280,48 L320,66 L360,80 L400,86 L400,110 L0,110 Z"
             fill="url(#pdmFill)"
@@ -137,13 +180,22 @@ const ProfitabilityDashboardMock = () => {
             transition={{ duration: 1.1, delay: 0.15, ease: EASE }}
           />
         </svg>
-        <div className="flex items-center gap-4 mt-1">
-          <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] text-muted-foreground">
-            <span className="w-2 h-2 rounded-full bg-primary" /> GMV
-          </span>
-          <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] text-muted-foreground">
-            <span className="w-2 h-2 rounded-full bg-muted-foreground/50" /> Net profit
-          </span>
+        <div className="mt-1 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-3">
+            <span className="font-numeric text-[10px] text-muted-foreground">Aug 1</span>
+            <span className="h-px w-6 bg-border" />
+            <span className="font-numeric text-[10px] text-muted-foreground">Aug 7</span>
+            <span className="h-px w-6 bg-border" />
+            <span className="font-numeric text-[10px] text-muted-foreground">Aug 14</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] text-muted-foreground">
+              <span className="w-2 h-2 rounded-full bg-primary" /> GMV
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] text-muted-foreground">
+              <span className="w-2 h-2 rounded-full bg-muted-foreground/50" /> Net profit
+            </span>
+          </div>
         </div>
       </div>
     </div>

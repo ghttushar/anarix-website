@@ -13,7 +13,6 @@ const footerLinks: Record<string, { label: string; href: string; external?: bool
   ],
 };
 
-
 const Footer = () => {
   return (
     <footer className="px-6 pb-6">
@@ -30,7 +29,9 @@ const Footer = () => {
 
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-xs font-semibold text-foreground mb-3 uppercase tracking-wider">{category}</h4>
+              <h4 className="text-xs font-semibold text-foreground mb-3 uppercase tracking-wider">
+                {category}
+              </h4>
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link.label}>
@@ -63,10 +64,16 @@ const Footer = () => {
             &copy; {new Date().getFullYear()}&nbsp;Anarix E-commerce LLC. All rights reserved.
           </p>
           <div className="flex gap-4">
-            <Link to="/privacy-policy" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-300">
+            <Link
+              to="/privacy-policy"
+              className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-300"
+            >
               Privacy
             </Link>
-            <Link to="/terms-and-conditions" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-300">
+            <Link
+              to="/terms-and-conditions"
+              className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-300"
+            >
               Terms
             </Link>
           </div>

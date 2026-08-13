@@ -10,7 +10,15 @@ const heroNumber = (cs: CaseStudyData): string => {
   return `${prepend}${prefix}${value.toFixed(decimals)}${suffix}`;
 };
 
-export function CaseStudyHero({ data, index, total }: { data: CaseStudyData; index: number; total: number }) {
+export function CaseStudyHero({
+  data,
+  index,
+  total,
+}: {
+  data: CaseStudyData;
+  index: number;
+  total: number;
+}) {
   const topKpis = data.finalMetrics?.items.slice(0, 2) ?? data.kpis.slice(0, 2);
 
   return (

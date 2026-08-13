@@ -14,7 +14,7 @@ const CARD_HEIGHT = 470;
 
 /** Shortest signed distance from `i` to `active` on a ring of `n` slots. */
 const ringDelta = (i: number, active: number, n: number): number => {
-  const raw = ((i - active) % n + n) % n;
+  const raw = (((i - active) % n) + n) % n;
   return raw > n / 2 ? raw - n : raw;
 };
 
@@ -31,8 +31,8 @@ const CaseStudyTeasers = () => {
   const reduceMotion = useReducedMotion();
 
   const rotate = useCallback(
-    (dir: number) => setActive((prev) => ((prev + dir) % n + n) % n),
-    [n]
+    (dir: number) => setActive((prev) => (((prev + dir) % n) + n) % n),
+    [n],
   );
 
   useEffect(() => {
@@ -58,7 +58,7 @@ const CaseStudyTeasers = () => {
           front: depth < 1,
         };
       }),
-    [studies, active, n]
+    [studies, active, n],
   );
 
   return (
@@ -80,7 +80,10 @@ const CaseStudyTeasers = () => {
             role="group"
             aria-label="Featured case studies carousel"
           >
-            <div className="absolute inset-0 flex items-center justify-center" style={{ transformStyle: "preserve-3d" }}>
+            <div
+              className="absolute inset-0 flex items-center justify-center"
+              style={{ transformStyle: "preserve-3d" }}
+            >
               {slots.map((slot) => (
                 <motion.div
                   key={slot.cs.id}
@@ -193,17 +196,17 @@ function TeasersIntro() {
   );
 }
 
-const statValue = (m: { prepend?: string; prefix?: string; value: number; decimals?: number; suffix?: string }): string =>
+const statValue = (m: {
+  prepend?: string;
+  prefix?: string;
+  value: number;
+  decimals?: number;
+  suffix?: string;
+}): string =>
   `${m.prepend ?? ""}${m.prefix ?? ""}${m.value.toFixed(m.decimals ?? 0)}${m.suffix ?? ""}`;
 
 /** Uniform teaser: strict slots so every card in the ring has identical geometry. */
-function TeaserCard({
-  cs,
-  interactive,
-}: {
-  cs: CaseStudyData;
-  interactive: boolean;
-}) {
+function TeaserCard({ cs, interactive }: { cs: CaseStudyData; interactive: boolean }) {
   const secondary = cs.kpis.slice(0, 2);
   const media = caseMedia(cs.id);
   const reduceMotion = useReducedMotion();
@@ -242,13 +245,19 @@ function TeaserCard({
           <motion.div
             aria-hidden
             className="absolute inset-x-0"
-            style={{ height: 46, background: "linear-gradient(hsl(var(--primary) / 0.4), transparent)" }}
+            style={{
+              height: 46,
+              background: "linear-gradient(hsl(var(--primary) / 0.4), transparent)",
+            }}
             animate={{ y: [-46, 150] }}
             transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}
           />
         )}
 
-        <div className="absolute inset-x-0 bottom-0 flex w-full items-center justify-between gap-3 px-6" style={{ paddingBottom: 12 }}>
+        <div
+          className="absolute inset-x-0 bottom-0 flex w-full items-center justify-between gap-3 px-6"
+          style={{ paddingBottom: 12 }}
+        >
           <span
             className="inline-flex min-w-0 items-center rounded-pill border border-border/70 bg-card/90 px-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground backdrop-blur truncate"
             style={{ height: 26, maxWidth: 168 }}
@@ -269,7 +278,10 @@ function TeaserCard({
           {cs.brand}
         </h3>
 
-        <p className="font-numeric font-bold leading-none tracking-tight" style={{ height: 56, fontSize: 52 }}>
+        <p
+          className="font-numeric font-bold leading-none tracking-tight"
+          style={{ height: 56, fontSize: 52 }}
+        >
           <span className="text-gradient-primary">{heroNumber(cs)}</span>
         </p>
         <p
@@ -279,7 +291,10 @@ function TeaserCard({
           {cs.hero.statLine}
         </p>
 
-        <div className="mt-4 grid grid-cols-2 gap-2 border-t border-border/60" style={{ paddingTop: 16 }}>
+        <div
+          className="mt-4 grid grid-cols-2 gap-2 border-t border-border/60"
+          style={{ paddingTop: 16 }}
+        >
           {secondary.map((kpi) => (
             <div
               key={kpi.label}
@@ -296,7 +311,10 @@ function TeaserCard({
           ))}
         </div>
 
-        <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary" style={{ paddingTop: 18 }}>
+        <span
+          className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
+          style={{ paddingTop: 18 }}
+        >
           Explore case study
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
         </span>

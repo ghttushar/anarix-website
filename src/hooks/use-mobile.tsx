@@ -13,9 +13,8 @@ export function useIsMobile() {
 
   React.useEffect(() => {
     const compute = () => {
-      const view = typeof document !== "undefined"
-        ? document.documentElement.getAttribute("data-view")
-        : null;
+      const view =
+        typeof document !== "undefined" ? document.documentElement.getAttribute("data-view") : null;
       if (view === "tablet" || view === "desktop") {
         setIsMobile(false);
         return;
@@ -26,7 +25,10 @@ export function useIsMobile() {
     mql.addEventListener("change", compute);
     // Re-evaluate when data-view changes.
     const observer = new MutationObserver(compute);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-view"] });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-view"],
+    });
     compute();
     return () => {
       mql.removeEventListener("change", compute);

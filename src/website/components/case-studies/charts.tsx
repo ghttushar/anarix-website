@@ -68,9 +68,14 @@ function ChartShell({
         </div>
       </div>
       <div className="mt-8">{children}</div>
-      <div className="mt-6 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-border/60 pt-4">
-        <p className="text-xs text-muted-foreground">{caption}</p>
-        <p className="text-xs text-muted-foreground/80">Source: {source}</p>
+      <div className="mt-6 border-t border-border/60 pt-4">
+        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
+          <p className="text-xs text-muted-foreground">{caption}</p>
+          <p className="text-xs text-muted-foreground/80">Source: {source}</p>
+        </div>
+        <p className="mt-2.5 text-[11px] text-muted-foreground/60">
+          Trend lines are smoothed between the reported monthly figures.
+        </p>
       </div>
       {legend ? <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">{legend}</div> : null}
     </div>
@@ -244,7 +249,11 @@ function AnnotatedDots({
         const p = pts[s][a.i];
         const anchor = a.i === 0 ? "start" : a.i === pts[s].length - 1 ? "end" : "middle";
         return (
-          <g key={k} opacity={dimmed !== null && dimmed !== s ? 0.25 : 1} style={{ transition: "opacity 0.2s" }}>
+          <g
+            key={k}
+            opacity={dimmed !== null && dimmed !== s ? 0.25 : 1}
+            style={{ transition: "opacity 0.2s" }}
+          >
             <motion.circle
               cx={p.x}
               cy={p.y}
@@ -356,7 +365,12 @@ function LineChartCore({
           </motion.path>
         </g>
       ))}
-      <AnnotatedDots anchors={anchors} pts={pts} colors={series.map((s) => s.color)} dimmed={hoverIndex} />
+      <AnnotatedDots
+        anchors={anchors}
+        pts={pts}
+        colors={series.map((s) => s.color)}
+        dimmed={hoverIndex}
+      />
       {hoverIndex !== null ? (
         <>
           {pts.map((seriesPts, si) => (
@@ -417,7 +431,9 @@ export function StackedBarChart({ chart }: { chart: Extract<CaseChart, { type: "
   const barW = gw * 0.55;
   const baseY = PAD.t + plotH;
   const { hoverIndex, setHoverIndex, onMove } = useHoverIndex(n);
-  const totals = chart.series[0].values.map((_, i) => chart.series.reduce((acc, s) => acc + s.values[i], 0));
+  const totals = chart.series[0].values.map((_, i) =>
+    chart.series.reduce((acc, s) => acc + s.values[i], 0),
+  );
   return (
     <ChartShell
       title={chart.title}
@@ -475,7 +491,11 @@ export function StackedBarChart({ chart }: { chart: Extract<CaseChart, { type: "
         {chart.series[0].values.map((_, i) => {
           let y0 = baseY;
           return (
-            <g key={i} opacity={hoverIndex === null || hoverIndex === i ? 1 : 0.45} style={{ transition: "opacity 0.2s" }}>
+            <g
+              key={i}
+              opacity={hoverIndex === null || hoverIndex === i ? 1 : 0.45}
+              style={{ transition: "opacity 0.2s" }}
+            >
               {chart.series.map((s, si) => {
                 const h = (s.values[i] / chart.max) * plotH;
                 const rectY = y0 - h;
@@ -585,7 +605,13 @@ export function TACoSChart({ chart }: { chart: Extract<CaseChart, { type: "tacos
             <TooltipCard
               cx={x(hoverIndex, n)}
               title={chart.labels[hoverIndex]}
-              rows={[{ color: chart.series.color, name: chart.series.name, value: chart.format(chart.series.values[hoverIndex]) }]}
+              rows={[
+                {
+                  color: chart.series.color,
+                  name: chart.series.name,
+                  value: chart.format(chart.series.values[hoverIndex]),
+                },
+              ]}
             />
           </>
         ) : null}

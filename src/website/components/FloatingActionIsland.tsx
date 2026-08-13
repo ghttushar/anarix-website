@@ -24,7 +24,14 @@ export function FloatingActionIsland() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [position, setPosition] = useState<{ x: number; y: number } | null>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const dragRef = useRef<{ startX: number; startY: number; startPosX: number; startPosY: number; pointerId: number; el: HTMLElement } | null>(null);
+  const dragRef = useRef<{
+    startX: number;
+    startY: number;
+    startPosX: number;
+    startPosY: number;
+    pointerId: number;
+    el: HTMLElement;
+  } | null>(null);
   const collapseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -45,7 +52,11 @@ export function FloatingActionIsland() {
     const rect = (e.currentTarget.closest("[data-island]") as HTMLElement)?.getBoundingClientRect();
     if (!rect) return;
     const target = e.currentTarget;
-    try { target.setPointerCapture(e.pointerId); } catch { void 0; }
+    try {
+      target.setPointerCapture(e.pointerId);
+    } catch {
+      void 0;
+    }
     setIsDragging(true);
     dragRef.current = {
       startX: e.clientX,
@@ -64,7 +75,11 @@ export function FloatingActionIsland() {
     };
     const handleUp = (ev: PointerEvent) => {
       if (!dragRef.current || ev.pointerId !== dragRef.current.pointerId) return;
-      try { dragRef.current.el.releasePointerCapture(dragRef.current.pointerId); } catch { void 0; }
+      try {
+        dragRef.current.el.releasePointerCapture(dragRef.current.pointerId);
+      } catch {
+        void 0;
+      }
       setIsDragging(false);
       dragRef.current = null;
       target.removeEventListener("pointermove", handleMove);
@@ -100,9 +115,21 @@ export function FloatingActionIsland() {
   };
 
   const actions: ActionItem[] = [
-    { icon: CalendarPlus, label: "Book a demo", onClick: () => window.open("https://calendly.com/sunil-anarix/30min", "_blank") },
+    {
+      icon: CalendarPlus,
+      label: "Book a demo",
+      onClick: () => window.open("https://calendly.com/sunil-anarix/30min", "_blank"),
+    },
     themeAction,
-    ...(scrolled ? [{ icon: ArrowUp, label: "Top", onClick: () => window.scrollTo({ top: 0, behavior: "smooth" }) }] : []),
+    ...(scrolled
+      ? [
+          {
+            icon: ArrowUp,
+            label: "Top",
+            onClick: () => window.scrollTo({ top: 0, behavior: "smooth" }),
+          },
+        ]
+      : []),
   ];
 
   const style: React.CSSProperties = position
@@ -123,7 +150,7 @@ export function FloatingActionIsland() {
           className={cn(
             "bg-card/95 backdrop-blur-md border border-primary/60 rounded-full shadow-lg transition-all duration-300 ease-out",
             isExpanded ? "px-2 py-2" : "px-3 py-2",
-            isDragging && "cursor-grabbing"
+            isDragging && "cursor-grabbing",
           )}
         >
           <div className="flex items-center gap-1.5">
@@ -147,7 +174,6 @@ export function FloatingActionIsland() {
                 <span className="text-sm font-medium text-foreground whitespace-nowrap">
                   Ask Jiva
                 </span>
-
               </button>
             )}
             <div className="flex items-center gap-0.5">
@@ -159,13 +185,15 @@ export function FloatingActionIsland() {
                   onClick={action.onClick}
                   className={cn(
                     "rounded-full transition-all duration-200 relative h-8",
-                    (isExpanded || action.alwaysShowLabel) ? "px-3 gap-1.5" : "px-2",
-                    action.highlight && "text-destructive"
+                    isExpanded || action.alwaysShowLabel ? "px-3 gap-1.5" : "px-2",
+                    action.highlight && "text-destructive",
                   )}
                 >
                   <action.icon className="h-3.5 w-3.5 shrink-0" />
                   {(isExpanded || action.alwaysShowLabel) && (
-                    <span className="text-xs whitespace-nowrap animate-in fade-in duration-200">{action.label}</span>
+                    <span className="text-xs whitespace-nowrap animate-in fade-in duration-200">
+                      {action.label}
+                    </span>
                   )}
                   {action.badge && action.badge > 0 && (
                     <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-destructive text-[9px] font-bold text-destructive-foreground">

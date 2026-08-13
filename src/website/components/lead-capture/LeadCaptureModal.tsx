@@ -29,14 +29,15 @@ const LeadCaptureModal = () => {
         closeLeadCapture();
       }
     },
-    [closeLeadCapture]
+    [closeLeadCapture],
   );
 
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          className="fixed inset-0 z-[100] flex items-end justify-center p-3 sm:items-center sm:p-4"
+          style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -54,9 +55,9 @@ const LeadCaptureModal = () => {
             role="dialog"
             aria-modal="true"
             aria-label={isAudit ? "Free listing audit" : "Free teardown"}
-            className={`relative w-full overflow-hidden rounded-3xl border border-border bg-card shadow-strong ${
+            className={`relative w-full overflow-hidden border border-border bg-card shadow-strong ${
               isAudit ? "max-w-5xl" : "max-w-lg"
-            }`}
+            } max-h-[calc(100dvh-2rem)] rounded-t-2xl sm:rounded-3xl`}
             initial={{ opacity: 0, scale: 0.96, y: 18 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 18 }}
@@ -64,7 +65,9 @@ const LeadCaptureModal = () => {
           >
             <div
               className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-50"
-              style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.35), transparent 70%)" }}
+              style={{
+                background: "radial-gradient(circle, hsl(var(--primary) / 0.35), transparent 70%)",
+              }}
             />
 
             <button
@@ -78,8 +81,8 @@ const LeadCaptureModal = () => {
 
             {isAudit ? (
               <div
-                className="relative grid gap-0 overflow-y-auto lg:grid-cols-4"
-                style={{ maxHeight: "88vh", minHeight: 620 }}
+                className="relative grid gap-0 overflow-y-auto lg:grid-cols-4 lg:min-h-[620px]"
+                style={{ maxHeight: "calc(100dvh - 2rem)" }}
               >
                 <div className="p-7 sm:p-10 lg:col-span-3">
                   <ListingAuditFlow onComplete={closeLeadCapture} />

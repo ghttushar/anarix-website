@@ -16,6 +16,7 @@
     .sm\:flex-col { flex-direction: column; }
     .sm\:items-center { align-items: center; }
     .sm\:justify-between { justify-content: space-between; }
+    .sm\:justify-center { justify-content: center; }
     .sm\:text-left { text-align: left; }
     .sm\:text-right { text-align: right; }
     .sm\:text-center { text-align: center; }
@@ -54,13 +55,32 @@
     .sm\:py-32 { padding-block: 8rem; }
     .sm\:gap-5 { gap: 1.25rem; }
     .sm\:gap-6 { gap: 1.5rem; }
+    .sm\:gap-3 { gap: 0.75rem; }
+    .sm\:gap-8 { gap: 2rem; }
     .sm\:gap-grid-lg { gap: $gap-grid-lg; }
     .sm\:max-w-md { max-width: 28rem; }
     .sm\:w-\[180px\] { width: 180px; }
     .sm\:w-\[320px\] { width: 320px; }
     .sm\:h-\[440px\] { height: 440px; }
+    .sm\:h-7 { height: 1.75rem; }
+    .sm\:h-28 { height: 7rem; }
+    .sm\:h-44 { height: 11rem; }
+    .sm\:h-56 { height: 14rem; }
     .sm\:-left-36 { left: -9rem; }
     .sm\:w-2\/3 { width: 66.666667%; }
+    .sm\:col-start-2 { grid-column-start: 2; }
+    .sm\:inline-flex { display: inline-flex; }
+    .sm\:left-1\/2 { left: 50%; }
+    .sm\:mt-12 { margin-top: 3rem; }
+    .sm\:p-4 { padding: 1rem; }
+    .sm\:pb-10 { padding-bottom: 2.5rem; }
+    .sm\:pl-0 { padding-left: 0; }
+    .sm\:pl-4 { padding-left: 1rem; }
+    .sm\:pr-4 { padding-right: 1rem; }
+    .sm\:px-5 { padding-inline: 1.25rem; }
+    .sm\:text-\[10\.5px\] { font-size: 10.5px; }
+    .sm\:text-\[11px\] { font-size: 11px; }
+    .sm\:text-xs { font-size: 0.75rem; line-height: 1rem; }
   }
 
   @include bp(md) {
@@ -116,6 +136,7 @@
     .lg\:grid-cols-\[320px_1fr_320px\] { grid-template-columns: 320px 1fr 320px; }
     .lg\:grid-cols-\[auto_1fr\] { grid-template-columns: auto 1fr; }
     .lg\:max-w-none { max-width: none; }
+    .lg\:min-h-\[620px\] { min-height: 620px; }
     .lg\:max-h-\[calc\(100vh-8rem\)\] { max-height: calc(100vh - 8rem); }
     .lg\:overflow-y-auto { overflow-y: auto; }
     .lg\:mt-0 { margin-top: 0; }
@@ -127,10 +148,19 @@
     .lg\:gap-20 { gap: 5rem; }
     .lg\:gap-grid { gap: $gap-grid; }
     .lg\:p-10 { padding: 2.5rem; }
+    .lg\:p-8 { padding: 2rem; }
     .lg\:px-8 { padding-inline: 2rem; }
     .lg\:px-10 { padding-inline: 2.5rem; }
+    .lg\:px-4 { padding-inline: 1rem; }
+    .lg\:pl-4 { padding-left: 1rem; }
     .lg\:py-32 { padding-block: 8rem; }
     .lg\:py-36 { padding-block: 9rem; }
+    .lg\:h-screen { height: 100vh; }
+    .lg\:items-stretch { align-items: stretch; }
+    .lg\:justify-start { justify-content: flex-start; }
+    .lg\:max-w-md { max-width: 28rem; }
+    .lg\:grid-cols-\[280px_1fr_280px\] { grid-template-columns: 280px 1fr 280px; }
+    .lg\:text-\[2\.75rem\] { font-size: 2.75rem; }
   }
 
   @include bp(xl) {

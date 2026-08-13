@@ -155,8 +155,20 @@ export const driveMedicalStudy: CaseStudyData = {
   ],
   kpis: [
     { value: 234, prefix: "+", suffix: "%", label: "Walmart 1P revenue", sub: "year over year" },
-    { value: 101, prefix: "+", suffix: "%", label: "Combined Walmart revenue", sub: "1P and 3P together" },
-    { value: 70, suffix: "%", prepend: "25% → ", label: "1P share of Walmart revenue", sub: "up from 25%" },
+    {
+      value: 101,
+      prefix: "+",
+      suffix: "%",
+      label: "Combined Walmart revenue",
+      sub: "1P and 3P together",
+    },
+    {
+      value: 70,
+      suffix: "%",
+      prepend: "25% → ",
+      label: "1P share of Walmart revenue",
+      sub: "up from 25%",
+    },
     { value: 6, prepend: "~", suffix: "x", label: "Average ROAS", sub: "while scaling spend" },
   ],
   challenge: {
@@ -221,8 +233,16 @@ export const driveMedicalStudy: CaseStudyData = {
       source: "Walmart marketplace · partner reporting",
       labels: ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9"],
       series: [
-        { name: "Walmart 1P", color: primary, values: [100, 121, 145, 172, 201, 233, 265, 300, 334] },
-        { name: "Total Walmart", color: slate, values: [100, 108, 118, 130, 143, 156, 170, 186, 201] },
+        {
+          name: "Walmart 1P",
+          color: primary,
+          values: [100, 121, 145, 172, 201, 233, 265, 300, 334],
+        },
+        {
+          name: "Total Walmart",
+          color: slate,
+          values: [100, 108, 118, 130, 143, 156, 170, 186, 201],
+        },
       ],
       anchors: [
         { i: 0, label: "Baseline 100", series: 0 },
@@ -241,9 +261,7 @@ export const driveMedicalStudy: CaseStudyData = {
       caption: "1P share of total Walmart revenue · campaign period",
       source: "Walmart marketplace · partner reporting",
       labels: ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9"],
-      series: [
-        { name: "1P share", color: lilac, values: [25, 29, 34, 40, 46, 52, 59, 65, 70] },
-      ],
+      series: [{ name: "1P share", color: lilac, values: [25, 29, 34, 40, 46, 52, 59, 65, 70] }],
       anchors: [
         { i: 0, label: "25%", series: 0 },
         { i: 8, label: "70%", series: 0 },
@@ -267,7 +285,8 @@ export const driveMedicalStudy: CaseStudyData = {
     heading: "What changed",
     sub: "Before, strategy, result.",
     before: "Underdeveloped 1P · automated campaigns only · Buy Box gaps · fragmented reporting",
-    strategy: "Unified 1P and 3P strategy · Buy Box first · full-funnel media · weekly optimization",
+    strategy:
+      "Unified 1P and 3P strategy · Buy Box first · full-funnel media · weekly optimization",
     result: "+234% 1P revenue · +101% combined revenue · 1P at 70% of the business · ~6x ROAS",
   },
   quote: {
@@ -314,7 +333,13 @@ export const mountItStudy: CaseStudyData = {
   kpis: [
     { value: 221, prefix: "+", suffix: "%", label: "Online sales", sub: "vs. pre-campaign" },
     { value: 107, prefix: "+", suffix: "%", label: "In-store sales", sub: "omnichannel lift" },
-    { value: 250, prefix: "+", suffix: "%", label: "New-to-brand customers", sub: "first-time buyers" },
+    {
+      value: 250,
+      prefix: "+",
+      suffix: "%",
+      label: "New-to-brand customers",
+      sub: "first-time buyers",
+    },
     { value: 4, label: "Ad formats in play", sub: "SP, SB, Video, Onsite Display" },
   ],
   challenge: {
@@ -379,8 +404,16 @@ export const mountItStudy: CaseStudyData = {
       source: "Walmart Connect · partner reporting",
       labels: ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9"],
       series: [
-        { name: "Online sales", color: primary, values: [100, 118, 141, 168, 197, 227, 258, 291, 321] },
-        { name: "In-store sales", color: primarySoft, values: [100, 108, 119, 131, 144, 158, 174, 191, 207] },
+        {
+          name: "Online sales",
+          color: primary,
+          values: [100, 118, 141, 168, 197, 227, 258, 291, 321],
+        },
+        {
+          name: "In-store sales",
+          color: primarySoft,
+          values: [100, 108, 119, 131, 144, 158, 174, 191, 207],
+        },
       ],
       anchors: [
         { i: 8, label: "321 · +221%", series: 0 },
@@ -399,7 +432,11 @@ export const mountItStudy: CaseStudyData = {
       source: "Walmart Connect · partner reporting",
       labels: ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9"],
       series: [
-        { name: "New-to-brand", color: lilac, values: [100, 122, 149, 181, 215, 250, 285, 320, 350] },
+        {
+          name: "New-to-brand",
+          color: lilac,
+          values: [100, 122, 149, 181, 215, 250, 285, 320, 350],
+        },
       ],
       anchors: [
         { i: 0, label: "Baseline 100", series: 0 },
@@ -416,7 +453,10 @@ export const mountItStudy: CaseStudyData = {
     sub: "Five things that made the difference.",
     items: [
       { value: "Funnel", text: "Full-funnel advertising instead of a single ad format" },
-      { value: "Audience", text: "Audience-first targeting for in-market and high-intent shoppers" },
+      {
+        value: "Audience",
+        text: "Audience-first targeting for in-market and high-intent shoppers",
+      },
       { value: "Item", text: "Item-level campaign structure around the top SKUs" },
       { value: "Omni", text: "Cross-channel visibility that lifted in-store sales too" },
     ],
@@ -440,7 +480,13 @@ export const mountItStudy: CaseStudyData = {
     items: [
       { value: 221, prefix: "+", suffix: "%", label: "Online sales", sub: "vs. pre-campaign" },
       { value: 107, prefix: "+", suffix: "%", label: "In-store sales", sub: "omnichannel lift" },
-      { value: 250, prefix: "+", suffix: "%", label: "New-to-brand customers", sub: "first-time buyers" },
+      {
+        value: 250,
+        prefix: "+",
+        suffix: "%",
+        label: "New-to-brand customers",
+        sub: "first-time buyers",
+      },
       { value: 4, label: "Ad formats", sub: "SP, SB, Video, Onsite Display" },
     ],
   },
@@ -470,10 +516,28 @@ export const karmaOrganicsStudy: CaseStudyData = {
     { label: "Sector", value: "Beauty and personal care" },
   ],
   kpis: [
-    { value: 85, prefix: "+", suffix: "%", label: "Best month vs. prior average", sub: "indexed total sales" },
-    { value: 43, prefix: "+", suffix: "%", label: "Avg monthly total sales", sub: "since the takeover" },
+    {
+      value: 85,
+      prefix: "+",
+      suffix: "%",
+      label: "Best month vs. prior average",
+      sub: "indexed total sales",
+    },
+    {
+      value: 43,
+      prefix: "+",
+      suffix: "%",
+      label: "Avg monthly total sales",
+      sub: "since the takeover",
+    },
     { value: 57, prepend: "409 → ", label: "Campaigns active per month", sub: "down 86%" },
-    { value: 3.3, suffix: "x", decimals: 2, label: "Blended ROAS", sub: "held steady while spend grew" },
+    {
+      value: 3.3,
+      suffix: "x",
+      decimals: 2,
+      label: "Blended ROAS",
+      sub: "held steady while spend grew",
+    },
   ],
   challenge: {
     heading: "The challenge",
@@ -533,11 +597,27 @@ export const karmaOrganicsStudy: CaseStudyData = {
       type: "line",
       title: "Seventeen months, one clean before-and-after line",
       sub: "A flat year, an audit month, then the best run in the account's history.",
-      caption: "Indexed total sales · average monthly total sales before Anarix = 100 · takeover March 2026",
+      caption:
+        "Indexed total sales · average monthly total sales before Anarix = 100 · takeover March 2026",
       source: "Amazon Ads · partner reporting",
       labels: [
-        "Mar'25", "Apr'25", "May'25", "Jun'25", "Jul'25", "Aug'25", "Sep'25", "Oct'25",
-        "Nov'25", "Dec'25", "Jan'26", "Feb'26", "Mar'26", "Apr'26", "May'26", "Jun'26", "Jul'26",
+        "Mar'25",
+        "Apr'25",
+        "May'25",
+        "Jun'25",
+        "Jul'25",
+        "Aug'25",
+        "Sep'25",
+        "Oct'25",
+        "Nov'25",
+        "Dec'25",
+        "Jan'26",
+        "Feb'26",
+        "Mar'26",
+        "Apr'26",
+        "May'26",
+        "Jun'26",
+        "Jul'26",
       ],
       series: [
         {
@@ -563,13 +643,31 @@ export const karmaOrganicsStudy: CaseStudyData = {
       caption: "Blended ROAS · Mar 2025 to Jul 2026",
       source: "Amazon Ads · partner reporting",
       labels: [
-        "Mar'25", "Apr'25", "May'25", "Jun'25", "Jul'25", "Aug'25", "Sep'25", "Oct'25",
-        "Nov'25", "Dec'25", "Jan'26", "Feb'26", "Mar'26", "Apr'26", "May'26", "Jun'26", "Jul'26",
+        "Mar'25",
+        "Apr'25",
+        "May'25",
+        "Jun'25",
+        "Jul'25",
+        "Aug'25",
+        "Sep'25",
+        "Oct'25",
+        "Nov'25",
+        "Dec'25",
+        "Jan'26",
+        "Feb'26",
+        "Mar'26",
+        "Apr'26",
+        "May'26",
+        "Jun'26",
+        "Jul'26",
       ],
       series: {
         name: "Blended ROAS",
         color: primary,
-        values: [3.81, 3.62, 3.48, 3.3, 3.12, 2.98, 2.86, 2.74, 2.66, 2.55, 2.46, 2.39, 3.4, 5.07, 3.62, 3.34, 3.3],
+        values: [
+          3.81, 3.62, 3.48, 3.3, 3.12, 2.98, 2.86, 2.74, 2.66, 2.55, 2.46, 2.39, 3.4, 5.07, 3.62,
+          3.34, 3.3,
+        ],
       },
       anchors: [
         { i: 0, label: "3.81x" },
@@ -611,7 +709,8 @@ export const karmaOrganicsStudy: CaseStudyData = {
     heading: "What changed",
     sub: "Before, strategy, result.",
     before: "409 campaigns a month · ROAS drifting to 2.39x · ACoS at 42% · plateaued sales",
-    strategy: "Rebuild into a lean architecture · dedicated brand defense · prove efficiency before scaling",
+    strategy:
+      "Rebuild into a lean architecture · dedicated brand defense · prove efficiency before scaling",
     result: "+85% best month · +43% avg monthly sales · 3.30x ROAS held · cost per order down 6%",
   },
   quote: {
@@ -624,12 +723,24 @@ export const karmaOrganicsStudy: CaseStudyData = {
     heading: "The numbers",
     sub: "Since the takeover, versus the year before it.",
     items: [
-      { value: 43, prefix: "+", suffix: "%", label: "Avg monthly total sales", sub: "since takeover" },
+      {
+        value: 43,
+        prefix: "+",
+        suffix: "%",
+        label: "Avg monthly total sales",
+        sub: "since takeover",
+      },
       { value: 50, prefix: "+", suffix: "%", label: "Avg monthly orders", sub: "since takeover" },
       { value: 3.3, suffix: "x", decimals: 2, label: "Blended ROAS", sub: "held steady" },
       { value: 6, prefix: "-", suffix: "%", label: "Cost per order", sub: "profitability gain" },
       { value: 57, prepend: "409 → ", label: "Campaigns per month", sub: "down 86%" },
-      { value: 85, prefix: "+", suffix: "%", label: "Best month on record", sub: "vs. prior average" },
+      {
+        value: 85,
+        prefix: "+",
+        suffix: "%",
+        label: "Best month on record",
+        sub: "vs. prior average",
+      },
     ],
   },
 };
@@ -661,8 +772,21 @@ export const apparelSellerStudy: CaseStudyData = {
   kpis: [
     { value: 131, prefix: "+", suffix: "%", label: "Revenue growth", sub: "over 12 months" },
     { value: 8.41, suffix: "%", decimals: 2, label: "Blended TACoS", sub: "down from 15.58%" },
-    { value: 55.06, suffix: "x", decimals: 2, label: "Peak ad-type ROAS", sub: "Sponsored Display" },
-    { value: 1.86, prefix: "$", suffix: "M", decimals: 2, label: "Total sales, 12 mo", sub: "Aug 2025 → Jul 2026" },
+    {
+      value: 55.06,
+      suffix: "x",
+      decimals: 2,
+      label: "Peak ad-type ROAS",
+      sub: "Sponsored Display",
+    },
+    {
+      value: 1.86,
+      prefix: "$",
+      suffix: "M",
+      decimals: 2,
+      label: "Total sales, 12 mo",
+      sub: "Aug 2025 → Jul 2026",
+    },
   ],
   challenge: {
     heading: "The challenge",
@@ -726,9 +850,21 @@ export const apparelSellerStudy: CaseStudyData = {
       source: "Amazon Ads · partner reporting",
       labels: ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
       series: [
-        { name: "Sponsored Products", color: primary, values: [53, 58, 68, 103, 86, 75, 78, 82, 87, 93, 102, 116] },
-        { name: "Sponsored Brands", color: primarySoft, values: [22, 24, 28, 45, 38, 33, 34, 36, 39, 41, 45, 51] },
-        { name: "Sponsored Display", color: lilac, values: [13, 14, 16, 38, 28, 24, 26, 28, 29, 31, 34, 36] },
+        {
+          name: "Sponsored Products",
+          color: primary,
+          values: [53, 58, 68, 103, 86, 75, 78, 82, 87, 93, 102, 116],
+        },
+        {
+          name: "Sponsored Brands",
+          color: primarySoft,
+          values: [22, 24, 28, 45, 38, 33, 34, 36, 39, 41, 45, 51],
+        },
+        {
+          name: "Sponsored Display",
+          color: lilac,
+          values: [13, 14, 16, 38, 28, 24, 26, 28, 29, 31, 34, 36],
+        },
       ],
       markers: [{ i: 3, label: "Black Friday / Cyber Monday" }],
       format: (v) => `$${v}K`,
@@ -787,8 +923,21 @@ export const apparelSellerStudy: CaseStudyData = {
       { value: 203, prefix: "$", suffix: "K", label: "Final month revenue", sub: "July 2026" },
       { value: 131, prefix: "+", suffix: "%", label: "Growth, 12 mo", sub: "vs. prior year" },
       { value: 8.41, suffix: "%", decimals: 2, label: "Blended TACoS", sub: "cut nearly in half" },
-      { value: 55.06, suffix: "x", decimals: 2, label: "Peak ad-type ROAS", sub: "Sponsored Display" },
-      { value: 1.86, prefix: "$", suffix: "M", decimals: 2, label: "Total sales, 12 mo", sub: "all channels" },
+      {
+        value: 55.06,
+        suffix: "x",
+        decimals: 2,
+        label: "Peak ad-type ROAS",
+        sub: "Sponsored Display",
+      },
+      {
+        value: 1.86,
+        prefix: "$",
+        suffix: "M",
+        decimals: 2,
+        label: "Total sales, 12 mo",
+        sub: "all channels",
+      },
       { value: 8.57, suffix: "x", decimals: 2, label: "SP ROAS", sub: "volume engine" },
     ],
   },
@@ -820,7 +969,14 @@ export const specialtyFoodStudy: CaseStudyData = {
   kpis: [
     { value: 394, prefix: "+", suffix: "%", label: "Total growth", sub: "launch month → month 9" },
     { value: 8, prepend: "8 of ", label: "Months grew", sub: "no month declined" },
-    { value: 22.5, prefix: "+", suffix: "%", decimals: 1, label: "Average MoM growth", sub: "across the period" },
+    {
+      value: 22.5,
+      prefix: "+",
+      suffix: "%",
+      decimals: 1,
+      label: "Average MoM growth",
+      sub: "across the period",
+    },
     { value: 5, prepend: "100 → ", suffix: "00", label: "Sales index", sub: "launch month = 100" },
   ],
   challenge: {
@@ -851,7 +1007,8 @@ export const specialtyFoodStudy: CaseStudyData = {
         { label: "Customer reviews", value: "Zero", pct: 5 },
         { label: "Advertising history", value: "No campaigns", pct: 5 },
       ],
-      footnote: "Every one of these had to be built, not improved, which changes what a launch plan has to do.",
+      footnote:
+        "Every one of these had to be built, not improved, which changes what a launch plan has to do.",
     },
   },
   strategy: {
@@ -885,7 +1042,11 @@ export const specialtyFoodStudy: CaseStudyData = {
       source: "Walmart marketplace · partner reporting",
       labels: ["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9"],
       series: [
-        { name: "Sales index", color: primary, values: [100, 150, 190, 220, 270, 325, 385, 430, 500] },
+        {
+          name: "Sales index",
+          color: primary,
+          values: [100, 150, 190, 220, 270, 325, 385, 430, 500],
+        },
       ],
       anchors: [
         { i: 0, label: "Launch · 100", series: 0 },
@@ -926,7 +1087,8 @@ export const specialtyFoodStudy: CaseStudyData = {
     heading: "What changed",
     sub: "Before, strategy, result.",
     before: "No catalog · no reviews · no ad presence · no fulfillment decision",
-    strategy: "Foundation before launch · full ad program day one · optimize on signal · scale on proof",
+    strategy:
+      "Foundation before launch · full ad program day one · optimize on signal · scale on proof",
     result: "+394% total growth · 8 of 8 months up · +22.5% average month-over-month growth",
   },
   quote: {
@@ -940,7 +1102,14 @@ export const specialtyFoodStudy: CaseStudyData = {
     sub: "Launch month through month nine.",
     items: [
       { value: 394, prefix: "+", suffix: "%", label: "Total growth", sub: "month 1 → month 9" },
-      { value: 22.5, prefix: "+", suffix: "%", decimals: 1, label: "Average MoM growth", sub: "across the period" },
+      {
+        value: 22.5,
+        prefix: "+",
+        suffix: "%",
+        decimals: 1,
+        label: "Average MoM growth",
+        sub: "across the period",
+      },
       { value: 8, prepend: "8 of ", label: "Months grew", sub: "no month declined" },
       { value: 500, label: "Sales index at month 9", sub: "launch month = 100" },
       { value: 4, label: "Launch phases", sub: "foundation, launch, optimize, scale" },
@@ -1039,7 +1208,11 @@ export const amazonDistributorStudy: CaseStudyData = {
       source: "Amazon Seller Central · partner reporting",
       labels: ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun"],
       series: [
-        { name: "Total sales", color: primary, values: [14, 12, 12, 40, 37, 36.3, 71, 101, 122, 160, 174.3] },
+        {
+          name: "Total sales",
+          color: primary,
+          values: [14, 12, 12, 40, 37, 36.3, 71, 101, 122, 160, 174.3],
+        },
       ],
       anchors: [
         { i: 5, label: "$36.3K baseline", series: 0 },
@@ -1069,10 +1242,19 @@ export const amazonDistributorStudy: CaseStudyData = {
     heading: "Key takeaways",
     sub: "What's driving the growth.",
     items: [
-      { value: "Full funnel", text: "layering SD and SB onto SP multiplied reach beyond what SP alone could deliver" },
+      {
+        value: "Full funnel",
+        text: "layering SD and SB onto SP multiplied reach beyond what SP alone could deliver",
+      },
       { value: "6.25x", text: "ROAS improved even as monthly ad spend nearly tripled" },
-      { value: "6 months", text: "of consistent increased investment produced a compounding climb" },
-      { value: "3 categories", text: "ran on one strategy: travel bags, sunscreen brushes, snack boxes" },
+      {
+        value: "6 months",
+        text: "of consistent increased investment produced a compounding climb",
+      },
+      {
+        value: "3 categories",
+        text: "ran on one strategy: travel bags, sunscreen brushes, snack boxes",
+      },
     ],
   },
   transition: {
@@ -1096,8 +1278,22 @@ export const amazonDistributorStudy: CaseStudyData = {
       { value: 393, prefix: "+", suffix: "%", label: "Units sold growth", sub: "Jan → Jun 2026" },
       { value: 261, prefix: "+", suffix: "%", label: "Ad sales growth", sub: "Jan → Jun 2026" },
       { value: 6.25, suffix: "x", decimals: 2, label: "Peak ROAS", sub: "June, up from 4.28x" },
-      { value: 174.3, prefix: "$", suffix: "K", decimals: 1, label: "Peak month sales", sub: "June 2026" },
-      { value: 12.2, prefix: "$", suffix: "K", decimals: 1, label: "Monthly SP investment", sub: "up from $5.1K" },
+      {
+        value: 174.3,
+        prefix: "$",
+        suffix: "K",
+        decimals: 1,
+        label: "Peak month sales",
+        sub: "June 2026",
+      },
+      {
+        value: 12.2,
+        prefix: "$",
+        suffix: "K",
+        decimals: 1,
+        label: "Monthly SP investment",
+        sub: "up from $5.1K",
+      },
     ],
   },
 };
@@ -1110,4 +1306,3 @@ export const caseStudies: CaseStudyData[] = [
   specialtyFoodStudy,
   amazonDistributorStudy,
 ];
-

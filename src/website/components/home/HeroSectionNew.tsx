@@ -40,8 +40,6 @@ const Channel = ({ children }: { children: string }) => (
   </span>
 );
 
-
-
 const HeroSectionNew = () => {
   return (
     <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden pt-24 pb-10">
@@ -67,7 +65,9 @@ const HeroSectionNew = () => {
             >
               Two plus marketplaces. A dozen dashboards.
               <br />
-              <span className="text-gradient-primary">And you, checking Seller Central at 11pm.</span>
+              <span className="text-gradient-primary">
+                And you, checking Seller Central at 11pm.
+              </span>
             </motion.h1>
 
             <motion.p
@@ -76,12 +76,11 @@ const HeroSectionNew = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              You didn&apos;t build this brand to babysit ad campaigns and chase stockouts. Anarix runs your{" "}
-              <Channel>Amazon</Channel>, <Channel>Walmart</Channel>, <Channel>Shopify</Channel> and{" "}
-              <Channel>TikTok</Channel> accounts end-to-end, ads, listings, inventory, compliance, as one team.
-              You keep full visibility.{" "}
+              You didn&apos;t build this brand to babysit ad campaigns and chase stockouts. Anarix
+              runs your <Channel>Amazon</Channel>, <Channel>Walmart</Channel>,{" "}
+              <Channel>Shopify</Channel> and <Channel>TikTok</Channel> accounts end-to-end, ads,
+              listings, inventory, compliance, as one team. You keep full visibility.{" "}
               <span className="text-foreground font-semibold">We take the 11pm shift.</span>
-
             </motion.p>
 
             <motion.div
@@ -90,14 +89,20 @@ const HeroSectionNew = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              <a href="https://calendly.com/sunil-anarix/30min" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-strong active:translate-y-0 active:scale-[0.97] will-change-transform btn-shine group">
+              <a
+                href="https://calendly.com/sunil-anarix/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  size="lg"
+                  className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-strong active:translate-y-0 active:scale-[0.97] will-change-transform btn-shine group"
+                >
                   Let us run it for you
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
                 </Button>
               </a>
             </motion.div>
-
           </div>
 
           <div className="lg:col-span-5 mt-10 lg:mt-0 max-w-md lg:max-w-none mx-auto w-full">
@@ -123,9 +128,6 @@ const HeroSectionNew = () => {
             />
           ))}
         </motion.div>
-
-
-
       </div>
     </section>
   );

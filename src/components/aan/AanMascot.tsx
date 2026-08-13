@@ -56,8 +56,10 @@ export function AanMascot({
 
   const shape = deriveShape(state, shapeOverride);
   // staticEyes promotes micro sizes (≥16) into compact tier so eyes can render
-  const rawTier: "micro" | "compact" | "full" = size < 24 ? "micro" : size <= 40 ? "compact" : "full";
-  const tier: "micro" | "compact" | "full" = staticEyes && size >= 16 && rawTier === "micro" ? "compact" : rawTier;
+  const rawTier: "micro" | "compact" | "full" =
+    size < 24 ? "micro" : size <= 40 ? "compact" : "full";
+  const tier: "micro" | "compact" | "full" =
+    staticEyes && size >= 16 && rawTier === "micro" ? "compact" : rawTier;
   const isStatic = staticEyes || state === "anchor" || reduceMotion;
   const trackCursor = interactive && !isStatic && tier !== "micro" && shape !== "bar";
   const showEyes = staticEyes
@@ -123,7 +125,8 @@ export function AanMascot({
     if (!showEyes || staticEyes) return;
     let cancelled = false;
     const schedule = () => {
-      const delay = state === "listening" ? 2200 + Math.random() * 2200 : 3500 + Math.random() * 3500;
+      const delay =
+        state === "listening" ? 2200 + Math.random() * 2200 : 3500 + Math.random() * 3500;
       const t = setTimeout(() => {
         if (cancelled) return;
         setBlinkKey((k) => k + 1);
@@ -140,8 +143,7 @@ export function AanMascot({
 
   // ---------- MICRO TIER (<24px) ----------
   if (tier === "micro") {
-    const microRadius =
-      shape === "circle" ? "50%" : shape === "bar" ? "999px" : "30%";
+    const microRadius = shape === "circle" ? "50%" : shape === "bar" ? "999px" : "30%";
     const microW = shape === "bar" ? size * 1.6 : size;
     const microH = shape === "bar" ? size * 0.5 : size;
     return (
@@ -173,16 +175,15 @@ export function AanMascot({
             : "18%";
 
   // Body dimensions per shape
-  const bodyW =
-    shape === "bar" ? size * 1.8 : shape === "cube" ? size * 0.92 : size;
-  const bodyH =
-    shape === "bar" ? size * 0.34 : shape === "cube" ? size * 0.92 : size;
+  const bodyW = shape === "bar" ? size * 1.8 : shape === "cube" ? size * 0.92 : size;
+  const bodyH = shape === "bar" ? size * 0.34 : shape === "cube" ? size * 0.92 : size;
 
   // Stretch on hover (diamond only)
   const stretchX = hoverBoost ? 1.06 : 1;
   const stretchY = hoverBoost ? 0.95 : 1;
 
-  const floatDur = state === "listening" ? 3.2 : state === "thinking" || state === "working" ? 2.6 : 4.4;
+  const floatDur =
+    state === "listening" ? 3.2 : state === "thinking" || state === "working" ? 2.6 : 4.4;
   const floatRange = tier === "full" && shape !== "bar" ? (state === "thinking" ? 3 : 2.5) : 0;
   const auraScale =
     shape === "bar"
@@ -193,7 +194,13 @@ export function AanMascot({
           ? [1, 1.04, 1]
           : [1, 1.02, 1];
   const auraOpacity =
-    shape === "bar" ? 0.55 : state === "thinking" || state === "working" ? 1.05 : state === "listening" ? 1.0 : 0.85;
+    shape === "bar"
+      ? 0.55
+      : state === "thinking" || state === "working"
+        ? 1.05
+        : state === "listening"
+          ? 1.0
+          : 0.85;
   const internalSpin = state === "thinking" && !isStatic && tier === "full";
 
   // Container must accommodate the widest body shape (bar) to avoid clipping
@@ -205,8 +212,7 @@ export function AanMascot({
   // Eyes - fully proportional to body, no min-size floor (prevents oversized eyes at small sizes)
   // Bar shape uses tighter geometry so eyes sit centered on the pill.
   const eyeSize = shape === "bar" ? size * 0.11 : size * 0.16;
-  const eyeOffsetX =
-    shape === "bar" ? size * 0.10 : shape === "circle" ? size * 0.20 : size * 0.18;
+  const eyeOffsetX = shape === "bar" ? size * 0.1 : shape === "circle" ? size * 0.2 : size * 0.18;
   const eyeY = shape === "diamond" ? size * 0.04 : 0;
   const eyeTravel = Math.max(1, size * 0.05);
 

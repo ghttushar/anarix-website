@@ -1,4 +1,12 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, ReactNode } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  ReactNode,
+} from "react";
 
 export type AanAnchor = "input" | "pending" | "generation" | "lastMessage";
 
@@ -31,17 +39,14 @@ const PRIORITY: AanAnchor[] = ["generation", "pending", "lastMessage", "input"];
 export function AanPresenceProvider({ children }: { children: ReactNode }) {
   const [registry, setRegistry] = useState<Record<string, AnchorRegistration>>({});
 
-  const registerAnchor = useCallback(
-    (anchor: AanAnchor, el: HTMLElement | null, size = 28) => {
-      setRegistry((prev) => {
-        const next = { ...prev };
-        if (el) next[anchor] = { el, size };
-        else delete next[anchor];
-        return next;
-      });
-    },
-    []
-  );
+  const registerAnchor = useCallback((anchor: AanAnchor, el: HTMLElement | null, size = 28) => {
+    setRegistry((prev) => {
+      const next = { ...prev };
+      if (el) next[anchor] = { el, size };
+      else delete next[anchor];
+      return next;
+    });
+  }, []);
 
   const activeAnchor = useMemo<AanAnchor | null>(() => {
     for (const a of PRIORITY) if (registry[a]) return a;
@@ -49,7 +54,10 @@ export function AanPresenceProvider({ children }: { children: ReactNode }) {
   }, [registry]);
 
   const getAnchorEl = useCallback((anchor: AanAnchor) => registry[anchor]?.el ?? null, [registry]);
-  const getAnchorSize = useCallback((anchor: AanAnchor) => registry[anchor]?.size ?? 28, [registry]);
+  const getAnchorSize = useCallback(
+    (anchor: AanAnchor) => registry[anchor]?.size ?? 28,
+    [registry],
+  );
 
   return (
     <Ctx.Provider value={{ activeAnchor, registerAnchor, getAnchorEl, getAnchorSize }}>

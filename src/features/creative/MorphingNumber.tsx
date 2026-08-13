@@ -91,20 +91,16 @@ export function MorphingNumber({
       <span className="font-numeric tabular-nums font-medium transition-colors duration-300">
         {formatValue(displayValue, format, decimals)}
       </span>
-      
+
       {showTrend && trendValue !== 0 && (
         <span
           className={cn(
             "flex items-center gap-0.5 text-xs font-medium transition-all duration-300",
             isPositive && "text-success",
-            isNegative && "text-destructive"
+            isNegative && "text-destructive",
           )}
         >
-          {isPositive ? (
-            <TrendingUp className="h-3 w-3" />
-          ) : (
-            <TrendingDown className="h-3 w-3" />
-          )}
+          {isPositive ? <TrendingUp className="h-3 w-3" /> : <TrendingDown className="h-3 w-3" />}
           {Math.abs(trendValue).toFixed(1)}%
         </span>
       )}

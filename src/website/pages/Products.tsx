@@ -1,8 +1,19 @@
 import { motion } from "framer-motion";
 import { Link } from "@/lib/router";
 import {
-  ArrowRight, FileSearch, Plug, Sparkles, LayoutDashboard,
-  Radar, Bell, BarChart3, Search, ShieldCheck, Cable, Braces, Lock,
+  ArrowRight,
+  FileSearch,
+  Plug,
+  Sparkles,
+  LayoutDashboard,
+  Radar,
+  Bell,
+  BarChart3,
+  Search,
+  ShieldCheck,
+  Cable,
+  Braces,
+  Lock,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import PageLayout from "@/website/components/PageLayout";
@@ -66,9 +77,21 @@ function SectionHead({
 /* ---------------------------------------------------------------- 01 Platform */
 
 const platformPillars = [
-  { icon: BarChart3, title: "Unified profit and loss", text: "Ads, fees, COGS and returns in one contribution-margin view." },
-  { icon: Radar, title: "Bid intelligence", text: "Campaign, keyword and placement decisions scored daily." },
-  { icon: ShieldCheck, title: "Guardrails", text: "Rules that cannot spend past the limits you set." },
+  {
+    icon: BarChart3,
+    title: "Unified profit and loss",
+    text: "Ads, fees, COGS and returns in one contribution-margin view.",
+  },
+  {
+    icon: Radar,
+    title: "Bid intelligence",
+    text: "Campaign, keyword and placement decisions scored daily.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Guardrails",
+    text: "Rules that cannot spend past the limits you set.",
+  },
 ];
 
 function PlatformSection() {
@@ -77,7 +100,11 @@ function PlatformSection() {
       <Reveal>
         <SectionHead
           align="center"
-          eyebrow={<><LayoutDashboard className="w-3.5 h-3.5" /> Insight Engine Platform</>}
+          eyebrow={
+            <>
+              <LayoutDashboard className="w-3.5 h-3.5" /> Insight Engine Platform
+            </>
+          }
           title="Every signal,"
           accent="one platform."
           body="Advertising, profitability, inventory and competition across Amazon, Walmart and Shopify in a single workspace your team actually uses."
@@ -119,9 +146,21 @@ function PlatformSection() {
 /* -------------------------------------------------------------------- 02 Jiva */
 
 const jivaThread = [
-  { icon: Search, title: "Ask anything", text: "Plain questions about spend, margin, rank or returns. Answers come with the evidence attached." },
-  { icon: Bell, title: "Proactive alerts", text: "Jiva watches the account overnight and flags what moved before it hits the profit and loss." },
-  { icon: BarChart3, title: "Reporting on tap", text: "Any slice of the account written up in plain English, ready to forward." },
+  {
+    icon: Search,
+    title: "Ask anything",
+    text: "Plain questions about spend, margin, rank or returns. Answers come with the evidence attached.",
+  },
+  {
+    icon: Bell,
+    title: "Proactive alerts",
+    text: "Jiva watches the account overnight and flags what moved before it hits the profit and loss.",
+  },
+  {
+    icon: BarChart3,
+    title: "Reporting on tap",
+    text: "Any slice of the account written up in plain English, ready to forward.",
+  },
 ];
 
 function JivaSection() {
@@ -187,9 +226,24 @@ function JivaSection() {
 /* ----------------------------------------------------------------- 03 Signals */
 
 const signalItems = [
-  { sev: "bg-red-500", title: "Stockout risk on your #1 SKU", conf: "92%", reason: "Velocity up 31% for 5 days straight" },
-  { sev: "bg-amber-500", title: "Ad set is overspending its return threshold", conf: "78%", reason: "ACoS up 6 points week over week" },
-  { sev: "bg-green-500", title: "Retailer contract needs a decision this week", conf: "64%", reason: "Deadline in 6 days, 2 options" },
+  {
+    sev: "bg-red-500",
+    title: "Stockout risk on your #1 SKU",
+    conf: "92%",
+    reason: "Velocity up 31% for 5 days straight",
+  },
+  {
+    sev: "bg-amber-500",
+    title: "Ad set is overspending its return threshold",
+    conf: "78%",
+    reason: "ACoS up 6 points week over week",
+  },
+  {
+    sev: "bg-green-500",
+    title: "Retailer contract needs a decision this week",
+    conf: "64%",
+    reason: "Deadline in 6 days, 2 options",
+  },
 ];
 
 function SignalsSection() {
@@ -198,7 +252,11 @@ function SignalsSection() {
       <Reveal>
         <SectionHead
           align="center"
-          eyebrow={<><FileSearch className="w-3.5 h-3.5" /> Signals</>}
+          eyebrow={
+            <>
+              <FileSearch className="w-3.5 h-3.5" /> Signals
+            </>
+          }
           title="A day begins with a letter,"
           accent="not a dashboard."
           body="Every morning, the three things that deserve your attention, with the evidence, the reasoning and a confidence score behind each one."
@@ -249,9 +307,24 @@ function SignalsSection() {
 /* --------------------------------------------------------------------- 04 MCP */
 
 const mcpTools = [
-  { tool: "get_account_summary", icon: Cable, chips: ["POST /mcp", "JSON"], text: "Live account state in the model's native format." },
-  { tool: "list_applied_rules", icon: Braces, chips: ["GET /mcp", "JSON"], text: "Every automation that touched the account." },
-  { tool: "read_only_scope", icon: Lock, chips: ["Any model", "Safe"], text: "Read-only by default, so nothing can be spent." },
+  {
+    tool: "get_account_summary",
+    icon: Cable,
+    chips: ["POST /mcp", "JSON"],
+    text: "Live account state in the model's native format.",
+  },
+  {
+    tool: "list_applied_rules",
+    icon: Braces,
+    chips: ["GET /mcp", "JSON"],
+    text: "Every automation that touched the account.",
+  },
+  {
+    tool: "read_only_scope",
+    icon: Lock,
+    chips: ["Any model", "Safe"],
+    text: "Read-only by default, so nothing can be spent.",
+  },
 ];
 
 function McpSection() {
@@ -261,7 +334,11 @@ function McpSection() {
         <Reveal>
           <SectionHead
             align="center"
-            eyebrow={<><Plug className="w-3.5 h-3.5" /> MCP</>}
+            eyebrow={
+              <>
+                <Plug className="w-3.5 h-3.5" /> MCP
+              </>
+            }
             title="Your marketplace data,"
             accent="AI ready."
             body="Plug any model into live, structured marketplace data through Model Context Protocol. Universal, read-only by default and built to answer."
@@ -329,7 +406,13 @@ const Products = () => {
                 size="lg"
                 className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 btn-shine"
               >
-                <a href="https://calendly.com/sunil-anarix/30min" target="_blank" rel="noopener noreferrer">Book a demo</a>
+                <a
+                  href="https://calendly.com/sunil-anarix/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Book a demo
+                </a>
               </Button>
               <Button
                 asChild
@@ -354,7 +437,6 @@ const Products = () => {
           description="Leave your email and we will send a short teardown using your listings and ad spend."
           label="Email me the walkthrough"
         />
-
 
         <NextStep
           title="See what we do to a real profit and loss"

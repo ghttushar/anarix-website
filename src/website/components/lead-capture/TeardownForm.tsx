@@ -24,7 +24,12 @@ const TeardownForm = ({ onComplete }: { onComplete: () => void }) => {
     <div className="relative">
       <AnimatePresence mode="wait">
         {!sent ? (
-          <motion.div key="form" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
+          <motion.div
+            key="form"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+          >
             <p className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
               <Mail className="h-3.5 w-3.5" />
               Free teardown
@@ -34,7 +39,8 @@ const TeardownForm = ({ onComplete }: { onComplete: () => void }) => {
               We will show you where the profit is leaking.
             </h3>
             <p className="mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
-              A short read on your listings and ad spend, written by the team that would run the account.
+              A short read on your listings and ad spend, written by the team that would run the
+              account.
             </p>
 
             <form
@@ -44,9 +50,19 @@ const TeardownForm = ({ onComplete }: { onComplete: () => void }) => {
                 setSent(true);
               }}
             >
-              <input required aria-label="Your name" placeholder="Your name" className={INPUT_CLASS} />
-              <input required type="email" aria-label="Work email" placeholder="you@brand.com" className={INPUT_CLASS} />
-
+              <input
+                required
+                aria-label="Your name"
+                placeholder="Your name"
+                className={INPUT_CLASS}
+              />
+              <input
+                required
+                type="email"
+                aria-label="Work email"
+                placeholder="you@brand.com"
+                className={INPUT_CLASS}
+              />
 
               <Button
                 type="submit"
@@ -58,9 +74,16 @@ const TeardownForm = ({ onComplete }: { onComplete: () => void }) => {
             </form>
           </motion.div>
         ) : (
-          <motion.div key="done" className="py-10 text-center" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }}>
+          <motion.div
+            key="done"
+            className="py-10 text-center"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+          >
             <CheckCircle2 className="mx-auto mb-4 h-12 w-12 text-primary" />
-            <h4 className="font-display text-xl font-semibold text-foreground">Got it. We will be in touch.</h4>
+            <h4 className="font-display text-xl font-semibold text-foreground">
+              Got it. We will be in touch.
+            </h4>
             <p className="mx-auto mt-2 max-w-xs text-sm text-muted-foreground">
               Your teardown lands in your inbox shortly.
             </p>

@@ -8,8 +8,8 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 const shortBrand = (brand: string): string =>
   brand.length > 24 ? `${brand.slice(0, 23).trimEnd()}...` : brand;
 
-/** A single previous/next step target. The whole card is clickable. */
-function StepZone({
+/** Compact circular prev/next control with a short brand hint on wider screens. */
+function NavArrow({
   dir,
   study,
   onClick,
@@ -23,37 +23,22 @@ function StepZone({
     <button
       type="button"
       onClick={onClick}
-      aria-label={isNext ? `Next case study: ${study.brand}` : `Previous case study: ${study.brand}`}
-      className="group flex h-full w-full items-center gap-3 rounded-pill border border-transparent bg-transparent px-3 py-2 text-left transition-all duration-200 hover:border-border hover:bg-card focus:outline-none focus:ring-2 focus:ring-primary/40"
+      aria-label={
+        isNext ? `Next case study: ${study.brand}` : `Previous case study: ${study.brand}`
+      }
+      className="group flex shrink-0 items-center gap-2 rounded-pill px-2 py-2 text-muted-foreground transition-colors hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
     >
-      <motion.span
-        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground ring-1 ring-border transition-colors group-hover:bg-primary/10 group-hover:text-primary group-hover:ring-primary/30"
-        animate={isNext ? { x: [0, 4, 0] } : { x: [0, -4, 0] }}
-        transition={{
-          duration: 1.6,
-          repeat: Infinity,
-          ease: "easeInOut",
-          repeatDelay: 1.2,
-        }}
-      >
-        {isNext ? <ArrowRight className="h-5 w-5" /> : <ArrowLeft className="h-5 w-5" />}
-      </motion.span>
-      <div className="min-w-0">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
-          {isNext ? "Next case study" : "Previous case study"}
-        </p>
-        <p className="mt-0.5 truncate text-sm font-semibold text-foreground">
-          {shortBrand(study.brand)}
-        </p>
-        <p className="mt-0.5 line-clamp-2 text-xs leading-relaxed text-muted-foreground">
-          {study.title}
-        </p>
-      </div>
+      <span className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-soft transition-all duration-200 group-hover:border-primary/40 group-hover:text-primary">
+        {isNext ? <ArrowRight className="h-4 w-4" /> : <ArrowLeft className="h-4 w-4" />}
+      </span>
+      <span className="hidden max-w-[130px] truncate text-xs font-medium lg:block">
+        {shortBrand(study.brand)}
+      </span>
     </button>
   );
 }
 
-/** Brand chips that jump to any case study. */
+/** Brand tabs with an underline marker; nothing boxy around them. */
 function JumpRail({
   studies,
   active,
@@ -64,35 +49,33 @@ function JumpRail({
   onSelect: (index: number) => void;
 }) {
   return (
-    <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-      <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-        Jump to
-      </span>
-      <div className="flex flex-wrap gap-2">
-        {studies.map((s, i) => (
-          <button
-            key={s.id}
-            type="button"
-            onClick={() => onSelect(i)}
-            aria-label={`Go to ${s.brand}`}
-            aria-current={i === active ? "true" : undefined}
-            className={
-              i === active
-                ? "rounded-pill bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground transition-colors"
-                : "rounded-pill border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
-            }
-          >
-            {shortBrand(s.brand)}
-          </button>
-        ))}
-      </div>
-    </div>
+    <nav
+      aria-label="Jump to case study"
+      className="-mb-px mt-4 flex items-center gap-1 overflow-x-auto border-b border-border/40 sm:justify-center"
+    >
+      {studies.map((s, i) => (
+        <button
+          key={s.id}
+          type="button"
+          onClick={() => onSelect(i)}
+          aria-label={`Go to ${s.brand}`}
+          aria-current={i === active ? "true" : undefined}
+          className={`whitespace-nowrap border-b-2 px-2.5 pb-2 pt-1 text-xs font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary/40 ${
+            i === active
+              ? "border-primary text-foreground"
+              : "border-transparent text-muted-foreground hover:border-primary/40 hover:text-foreground"
+          }`}
+        >
+          {shortBrand(s.brand)}
+        </button>
+      ))}
+    </nav>
   );
 }
 
 /**
- * The surfaced carousel control. It shows the current study, a clear pair of
- * previous/next step zones, and a jump rail so the carousel is never ambiguous.
+ * Slim toolbar: circular prev/next arrows, the current study centered between
+ * them, and an underline tab rail below for direct jumps.
  */
 function CaseStudyPager({
   studies,
@@ -110,13 +93,14 @@ function CaseStudyPager({
   const current = studies[active];
 
   return (
-    <div className="rounded-3xl border border-border/70 bg-card/60 backdrop-blur-sm">
-      <div className="grid gap-3 p-3 sm:p-4 lg:grid-cols-[280px_1fr_280px] lg:items-stretch">
-        <StepZone dir={-1} study={prev} onClick={() => onStep(-1)} />
+    <div className="border-b border-border/40">
+      <div className="flex items-center justify-between gap-3 pb-3">
+        <NavArrow dir={-1} study={prev} onClick={() => onStep(-1)} />
 
-        <div className="flex flex-col items-center justify-center py-2 text-center lg:px-4">
-          <span className="font-numeric text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-            Case Study {String(active + 1).padStart(2, "0")} / {String(studies.length).padStart(2, "0")}
+        <div className="min-w-0 text-center">
+          <span className="font-numeric text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
+            Case Study {String(active + 1).padStart(2, "0")} /{" "}
+            {String(studies.length).padStart(2, "0")}
           </span>
           <AnimatePresence mode="wait">
             <motion.div
@@ -126,22 +110,20 @@ function CaseStudyPager({
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.28, ease: EASE }}
             >
-              <p className="mt-2 font-display text-lg font-semibold leading-tight tracking-tight text-foreground sm:text-xl">
+              <p className="mt-1 truncate font-display text-lg font-semibold leading-tight tracking-tight text-foreground sm:text-xl">
                 {current.brand}
               </p>
-              <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">
+              <p className="mt-0.5 hidden truncate text-sm text-muted-foreground sm:block">
                 {current.title}
               </p>
             </motion.div>
           </AnimatePresence>
         </div>
 
-        <StepZone dir={1} study={next} onClick={() => onStep(1)} />
+        <NavArrow dir={1} study={next} onClick={() => onStep(1)} />
       </div>
 
-      <div className="border-t border-border/60 px-4 py-3 sm:px-5">
-        <JumpRail studies={studies} active={active} onSelect={onSelect} />
-      </div>
+      <JumpRail studies={studies} active={active} onSelect={onSelect} />
     </div>
   );
 }
@@ -164,7 +146,7 @@ export function CaseStudyHeroBand({
   position?: "top" | "bottom";
 }) {
   return (
-    <section className={position === "bottom" ? "pad-section-compact" : "pad-hero"}>
+    <section className={position === "bottom" ? "pad-section-compact" : "pt-10 pb-4"}>
       <div className="container-page px-6 sm:px-8">
         <CaseStudyPager studies={studies} active={active} onSelect={onSelect} onStep={onStep} />
       </div>

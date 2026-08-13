@@ -17,20 +17,57 @@ const HOOKS = [
 
 interface Issue {
   text: string;
+  fix: string;
   severity: "high" | "medium";
 }
 
 /** Pool the mock audit draws from, so no two runs read the same. */
 const ISSUE_POOL: Issue[] = [
-  { text: "Product fills only 61 percent of the frame", severity: "high" },
-  { text: "Text overlay breaks image policy", severity: "high" },
-  { text: "Hero image is not on a pure white background", severity: "high" },
-  { text: "Title runs past 200 characters", severity: "medium" },
-  { text: "Only two of five bullets carry a benefit", severity: "medium" },
-  { text: "No A plus content on the detail page", severity: "medium" },
-  { text: "Backend search terms are half empty", severity: "medium" },
-  { text: "Secondary images miss scale and lifestyle shots", severity: "high" },
-  { text: "Brand store is not linked from the byline", severity: "medium" },
+  {
+    text: "Product fills only 61 percent of the frame",
+    fix: "Re-crop the hero image so the product fills the frame.",
+    severity: "high",
+  },
+  {
+    text: "Text overlay breaks image policy",
+    fix: "Remove all text and overlays from the main image.",
+    severity: "high",
+  },
+  {
+    text: "Hero image is not on a pure white background",
+    fix: "Replace the backdrop with a pure white studio shot.",
+    severity: "high",
+  },
+  {
+    text: "Title runs past 200 characters",
+    fix: "Trim the title to 200 characters, keywords first.",
+    severity: "medium",
+  },
+  {
+    text: "Only two of five bullets carry a benefit",
+    fix: "Rewrite bullets with one benefit and one spec each.",
+    severity: "medium",
+  },
+  {
+    text: "No A plus content on the detail page",
+    fix: "Build a four-module A+ page from your top sellers.",
+    severity: "medium",
+  },
+  {
+    text: "Backend search terms are half empty",
+    fix: "Fill every backend slot with long-tail search terms.",
+    severity: "medium",
+  },
+  {
+    text: "Secondary images miss scale and lifestyle shots",
+    fix: "Add two lifestyle images and one scale reference.",
+    severity: "high",
+  },
+  {
+    text: "Brand store is not linked from the byline",
+    fix: "Link the brand store in the byline and pin the hero image.",
+    severity: "medium",
+  },
 ];
 
 /** Random draw of `n` issues, high severity first so the list reads urgently. */
@@ -43,8 +80,12 @@ const drawIssues = (n: number): Issue[] =>
 /** Mock grade: always a failing-but-plausible score under 65. */
 const drawScore = () => 38 + Math.floor(Math.random() * 27);
 
-const PASSES = ["Pulling the hero image", "Checking image policy", "Reading title and bullets", "Scoring the listing"];
-
+const PASSES = [
+  "Pulling the hero image",
+  "Checking image policy",
+  "Reading title and bullets",
+  "Scoring the listing",
+];
 
 const INPUT_CLASS =
   "h-11 w-full rounded-pill border border-border bg-background px-4 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40";
@@ -110,14 +151,16 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
     // Fresh grade for every run.
     setScore(drawScore());
     setIssues(drawIssues(3));
-    const passId = window.setInterval(() => setPass((p) => Math.min(p + 1, PASSES.length - 1)), 620);
+    const passId = window.setInterval(
+      () => setPass((p) => Math.min(p + 1, PASSES.length - 1)),
+      620,
+    );
     const t = window.setTimeout(() => setStep("result"), 2600);
     return () => {
       window.clearInterval(passId);
       window.clearTimeout(t);
     };
   }, [step]);
-
 
   useEffect(() => {
     if (step !== "done") return undefined;
@@ -134,14 +177,20 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
 
       <AnimatePresence mode="wait">
         {step === "input" && (
-          <motion.div key="input" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.4, ease: EASE }}>
+          <motion.div
+            key="input"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.4, ease: EASE }}
+          >
             <h3 className="mt-3 font-display text-3xl font-semibold leading-[1.1] tracking-tight text-foreground sm:text-4xl">
               Paste one ASIN.
               <span className="block text-primary">See what your hero image is costing you.</span>
             </h3>
             <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
-              We grade the image, title and bullets against the rules the marketplace enforces, then rebuild the hero
-              shot for you.
+              We grade the image, title and bullets against the rules the marketplace enforces, then
+              rebuild the hero shot for you.
             </p>
 
             <div className="mt-5 flex flex-wrap gap-2">
@@ -206,7 +255,8 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0 }}
                     >
-                      {parsed.marketplace === "amazon" ? "Amazon" : "Walmart"} listing {parsed.id} recognised.
+                      {parsed.marketplace === "amazon" ? "Amazon" : "Walmart"} listing {parsed.id}{" "}
+                      recognised.
                     </motion.p>
                   )}
                 </AnimatePresence>
@@ -224,7 +274,13 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
         )}
 
         {step === "analyzing" && (
-          <motion.div key="analyzing" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.4, ease: EASE }}>
+          <motion.div
+            key="analyzing"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.4, ease: EASE }}
+          >
             <h3 className="mt-3 font-display text-3xl font-semibold tracking-tight text-foreground">
               Reading your listing.
             </h3>
@@ -235,7 +291,10 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
             >
               <motion.div
                 className="absolute inset-x-0"
-                style={{ height: 52, background: "linear-gradient(hsl(var(--primary) / 0.45), transparent)" }}
+                style={{
+                  height: 52,
+                  background: "linear-gradient(hsl(var(--primary) / 0.45), transparent)",
+                }}
                 animate={{ y: [-52, 210] }}
                 transition={{ duration: 1.3, repeat: Infinity, ease: "easeInOut" }}
               />
@@ -259,7 +318,9 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
                   >
                     <span
                       className={`flex h-4 w-4 items-center justify-center rounded-pill border ${
-                        i < pass ? "border-primary bg-primary/15 text-primary" : "border-border bg-card"
+                        i < pass
+                          ? "border-primary bg-primary/15 text-primary"
+                          : "border-border bg-card"
                       }`}
                     >
                       {i < pass && <CheckCircle2 className="h-3 w-3" />}
@@ -273,12 +334,18 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
         )}
 
         {step === "result" && (
-          <motion.div key="result" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.4, ease: EASE }}>
-            <div className="mt-3 flex items-center gap-4">
-              <ScoreDial value={SCORE} />
+          <motion.div
+            key="result"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.4, ease: EASE }}
+          >
+            <div className="mt-3 flex flex-wrap items-center gap-4">
+              <ScoreDial value={score} />
               <div>
                 <h3 className="font-display text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                  Your listing scores {SCORE} out of 100.
+                  Your listing scores {score} out of 100.
                 </h3>
                 <p className="mt-1 text-sm text-muted-foreground">
                   Three fixes stand between this page and the click.
@@ -287,7 +354,10 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
             </div>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <div className="relative overflow-hidden rounded-2xl border border-border bg-card" style={{ height: 196 }}>
+              <div
+                className="relative overflow-hidden rounded-2xl border border-border bg-card"
+                style={{ height: 196 }}
+              >
                 <div
                   className="absolute inset-0 blur-md"
                   style={{
@@ -299,7 +369,8 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
                   aria-hidden
                   className="absolute inset-y-0 w-1/3"
                   style={{
-                    background: "linear-gradient(100deg, transparent, hsl(var(--primary) / 0.35), transparent)",
+                    background:
+                      "linear-gradient(100deg, transparent, hsl(var(--primary) / 0.35), transparent)",
                   }}
                   animate={{ x: ["-40%", "340%"] }}
                   transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}
@@ -314,10 +385,10 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
               </div>
 
               <ul className="space-y-2.5">
-                {ISSUES.map((issue, i) => (
+                {issues.map((issue, i) => (
                   <motion.li
                     key={issue.text}
-                    className="flex items-start gap-2.5 rounded-xl border border-border/60 bg-muted/25 px-3 py-2.5 text-sm text-muted-foreground"
+                    className="flex items-start gap-2.5 rounded-xl border border-border/60 bg-muted/25 px-3 py-2.5"
                     initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.35, delay: i * 0.1, ease: EASE }}
@@ -327,7 +398,12 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
                         issue.severity === "high" ? "bg-destructive" : "bg-primary"
                       }`}
                     />
-                    {issue.text}
+                    <span className="min-w-0 text-sm leading-snug">
+                      <span className="block text-muted-foreground">{issue.text}</span>
+                      <span className="mt-1 block text-xs font-medium text-primary">
+                        Fix: {issue.fix}
+                      </span>
+                    </span>
                   </motion.li>
                 ))}
               </ul>
@@ -340,7 +416,13 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
                 setStep("done");
               }}
             >
-              <input required type="email" aria-label="Work email" placeholder="you@brand.com" className={INPUT_CLASS} />
+              <input
+                required
+                type="email"
+                aria-label="Work email"
+                placeholder="you@brand.com"
+                className={INPUT_CLASS}
+              />
               <Button
                 type="submit"
                 className="h-11 shrink-0 rounded-pill bg-primary px-6 text-primary-foreground btn-shine hover:bg-primary/90"
@@ -352,7 +434,12 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
         )}
 
         {step === "done" && (
-          <motion.div key="done" className="py-10 text-center" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }}>
+          <motion.div
+            key="done"
+            className="py-10 text-center"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+          >
             <CheckCircle2 className="mx-auto mb-4 h-12 w-12 text-primary" />
             <h4 className="font-display text-2xl font-semibold text-foreground">On its way.</h4>
             <p className="mx-auto mt-2 max-w-xs text-sm text-muted-foreground">

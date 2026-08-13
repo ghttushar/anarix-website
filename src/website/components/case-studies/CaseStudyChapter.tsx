@@ -64,7 +64,6 @@ function ChapterOpening({ data }: { data: CaseStudyData }) {
   );
 }
 
-
 function ChallengeCard({ index, title, text }: { index: number; title: string; text: string }) {
   const { ref, isVisible } = useScrollReveal();
   return (
@@ -122,7 +121,15 @@ function ChallengeVisual({ visual }: { visual: CaseStudyData["challenge"]["visua
   );
 }
 
-function ChapterHeading({ eyebrow, heading, sub }: { eyebrow: string; heading: string; sub: string }) {
+function ChapterHeading({
+  eyebrow,
+  heading,
+  sub,
+}: {
+  eyebrow: string;
+  heading: string;
+  sub: string;
+}) {
   return (
     <div className="max-w-3xl gap-heading-sm">
       <Eyebrow>{eyebrow}</Eyebrow>
@@ -144,7 +151,11 @@ export function CaseStudyChapter({ data }: { data: CaseStudyData }) {
       </div>
 
       <Section tint>
-        <ChapterHeading eyebrow="Challenge" heading={data.challenge.heading} sub={data.challenge.sub} />
+        <ChapterHeading
+          eyebrow="Challenge"
+          heading={data.challenge.heading}
+          sub={data.challenge.sub}
+        />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-8">
           {data.challenge.cards.map((c, i) => (
             <ChallengeCard key={c.title} index={i + 1} title={c.title} text={c.text} />
@@ -171,9 +182,12 @@ export function CaseStudyChapter({ data }: { data: CaseStudyData }) {
       </Section>
 
       <Section panel>
-        <ChapterHeading eyebrow="Approach" heading={data.strategy.heading} sub={data.strategy.sub} />
+        <ChapterHeading
+          eyebrow="Approach"
+          heading={data.strategy.heading}
+          sub={data.strategy.sub}
+        />
         <div className="space-y-8">
-
           {data.strategy.steps.map((s, i) => (
             <TimelineStep
               key={s.title}
@@ -201,7 +215,11 @@ export function CaseStudyChapter({ data }: { data: CaseStudyData }) {
       </Section>
 
       <Section tint>
-        <ChapterHeading eyebrow="Insights" heading={data.insights.heading} sub={data.insights.sub} />
+        <ChapterHeading
+          eyebrow="Insights"
+          heading={data.insights.heading}
+          sub={data.insights.sub}
+        />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {data.insights.items.map((item) => (
             <InsightCard key={item.value} value={item.value} text={item.text} />
@@ -210,7 +228,11 @@ export function CaseStudyChapter({ data }: { data: CaseStudyData }) {
       </Section>
 
       <Section panel>
-        <ChapterHeading eyebrow="Outcome" heading={data.transition.heading} sub={data.transition.sub} />
+        <ChapterHeading
+          eyebrow="Outcome"
+          heading={data.transition.heading}
+          sub={data.transition.sub}
+        />
         <BeforeStrategyResult
           before={data.transition.before}
           strategy={data.transition.strategy}
@@ -233,7 +255,9 @@ export function CaseStudyChapter({ data }: { data: CaseStudyData }) {
           heading={data.finalMetrics.heading}
           sub={data.finalMetrics.sub}
         />
-        <div className={`grid grid-cols-1 gap-4 sm:gap-5 ${metricGridCols(data.finalMetrics.items.length)}`}>
+        <div
+          className={`grid grid-cols-1 gap-4 sm:gap-5 ${metricGridCols(data.finalMetrics.items.length)}`}
+        >
           {data.finalMetrics.items.map((item) => (
             <MetricStat key={item.label} item={item} />
           ))}

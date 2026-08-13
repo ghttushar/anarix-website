@@ -15,7 +15,10 @@ export function useScrollReveal(threshold = 0.1) {
     if (!el) return;
 
     // Honor reduced motion: reveal immediately, no scroll dependency.
-    if (typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+    ) {
       setIsVisible(true);
       return;
     }
@@ -27,7 +30,7 @@ export function useScrollReveal(threshold = 0.1) {
           observer.unobserve(el);
         }
       },
-      { threshold, rootMargin: "0px 0px -10% 0px" }
+      { threshold, rootMargin: "0px 0px -10% 0px" },
     );
 
     observer.observe(el);

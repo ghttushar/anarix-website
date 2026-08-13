@@ -197,8 +197,20 @@ export const CoverGauge = () => (
     <text x="2" y="7" style={label}>
       Weeks of cover
     </text>
-    <path d="M34 54 A36 36 0 0 1 106 54" fill="none" stroke={P20} strokeWidth="7" strokeLinecap="round" />
-    <path d="M34 54 A36 36 0 0 1 47 26" fill="none" stroke="hsl(var(--destructive) / 0.45)" strokeWidth="7" strokeLinecap="round" />
+    <path
+      d="M34 54 A36 36 0 0 1 106 54"
+      fill="none"
+      stroke={P20}
+      strokeWidth="7"
+      strokeLinecap="round"
+    />
+    <path
+      d="M34 54 A36 36 0 0 1 47 26"
+      fill="none"
+      stroke="hsl(var(--destructive) / 0.45)"
+      strokeWidth="7"
+      strokeLinecap="round"
+    />
     <motion.path
       d="M34 54 A36 36 0 0 1 106 54"
       fill="none"
@@ -355,7 +367,16 @@ export const ReportLines = () => (
     <text x="2" y="7" style={label}>
       Monthly readout
     </text>
-    <rect x="2" y="10" width="90" height="50" rx="4" fill="hsl(var(--muted) / 0.5)" stroke={LINE} strokeWidth="0.75" />
+    <rect
+      x="2"
+      y="10"
+      width="90"
+      height="50"
+      rx="4"
+      fill="hsl(var(--muted) / 0.5)"
+      stroke={LINE}
+      strokeWidth="0.75"
+    />
     {[0, 1, 2, 3, 4].map((i) => (
       <motion.rect
         key={i}
@@ -369,7 +390,11 @@ export const ReportLines = () => (
         transition={{ duration: 0.45, delay: 0.1 + i * 0.14, ease: EASE }}
       />
     ))}
-    <motion.g initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}>
+    <motion.g
+      initial={{ opacity: 0, y: 6 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.7 }}
+    >
       <rect x="98" y="20" width="40" height="26" rx="4" fill={P20} />
       <motion.path
         d="M103 40 l8 -8 l6 5 l10 -12"
@@ -428,7 +453,12 @@ export const DemandFunnel = () => (
     ))}
     <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }}>
       <rect x="46" y="54" width="48" height="9" rx="4.5" fill={P} />
-      <text x="70" y="60.5" style={{ ...label, fill: "hsl(var(--primary-foreground))" }} textAnchor="middle">
+      <text
+        x="70"
+        y="60.5"
+        style={{ ...label, fill: "hsl(var(--primary-foreground))" }}
+        textAnchor="middle"
+      >
         new buyers
       </text>
     </motion.g>

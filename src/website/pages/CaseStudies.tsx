@@ -37,7 +37,7 @@ const CaseStudies = () => {
         if (scrollTop) window.scrollTo({ top: 0, behavior: "smooth" });
       }
     },
-    [total]
+    [total],
   );
 
   const study = caseStudies[active];
@@ -51,11 +51,11 @@ const CaseStudies = () => {
           transition={{ duration: 0.5 }}
         >
           <h1 className="font-display text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-5xl">
-            Real results, <span className="text-gradient-primary">documented in detail.</span>
+            Outcomes <span className="text-gradient-primary">on record.</span>
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Six growth stories, each broken down from starting point to strategy to outcome, with
-            every number sourced from the partner&apos;s own results.
+            Six partnerships, from starting point to strategy to result, with every figure drawn
+            from the partner&apos;s own reporting.
           </p>
         </motion.div>
       </div>
@@ -109,5 +109,3 @@ const CaseStudies = () => {
 };
 
 export default CaseStudies;
-
-

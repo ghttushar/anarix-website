@@ -3,7 +3,6 @@ import { AnimatePresence, motion, useInView } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export interface ExpandingCard {
@@ -13,7 +12,6 @@ export interface ExpandingCard {
   features: string[];
   /** Animated info graphic revealed when the card is expanded. */
   graphic?: () => React.ReactNode;
-
 }
 
 interface ExpandingCapabilityGridProps {
@@ -43,7 +41,6 @@ const buildSlots = (columns: number, activeCol: number): Slot[] => {
   }
   return slots;
 };
-
 
 /**
  * Interactive capability grid: the active tile grows to full height and the
@@ -75,7 +72,6 @@ export function ExpandingCapabilityGrid({
     }
   });
 
-
   const getCardPosition = (i: number): React.CSSProperties => {
     if (isMobile) return {};
     if (i === activeCard) {
@@ -88,8 +84,6 @@ export function ExpandingCapabilityGrid({
       gridColumn: `${slot.col + 1} / ${slot.col + 2}`,
     };
   };
-
-
 
   return (
     <div className="relative overflow-hidden rounded-3xl border border-border/50 bg-card/40 p-4 sm:p-6 lg:p-8">
@@ -117,9 +111,27 @@ export function ExpandingCapabilityGrid({
               "radial-gradient(ellipse 55% 60% at 50% 40%, hsl(var(--primary) / 0.10), transparent 70%)",
           }}
         />
-        <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-          <line x1="2" y1="26" x2="98" y2="26" stroke="hsl(var(--primary) / 0.10)" strokeWidth="0.15" />
-          <line x1="2" y1="74" x2="98" y2="74" stroke="hsl(var(--primary) / 0.10)" strokeWidth="0.15" />
+        <svg
+          className="absolute inset-0 h-full w-full"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+        >
+          <line
+            x1="2"
+            y1="26"
+            x2="98"
+            y2="26"
+            stroke="hsl(var(--primary) / 0.10)"
+            strokeWidth="0.15"
+          />
+          <line
+            x1="2"
+            y1="74"
+            x2="98"
+            y2="74"
+            stroke="hsl(var(--primary) / 0.10)"
+            strokeWidth="0.15"
+          />
         </svg>
         <div
           className="absolute inset-0"
@@ -137,9 +149,7 @@ export function ExpandingCapabilityGrid({
           gridTemplateColumns: isMobile ? "minmax(0, 1fr)" : `repeat(${columns}, minmax(0, 1fr))`,
           gridTemplateRows: isMobile ? undefined : "repeat(2, auto)",
         }}
-
       >
-
         {cards.map((card, i) => {
           const pos = getCardPosition(i);
           const isActive = i === activeCard;
@@ -212,7 +222,10 @@ export function ExpandingCapabilityGrid({
                         transition={{ duration: 0.35, delay: 0.22, ease: EASE }}
                       >
                         {card.features.map((f) => (
-                          <li key={f} className="flex items-start gap-2 text-xs text-muted-foreground">
+                          <li
+                            key={f}
+                            className="flex items-start gap-2 text-xs text-muted-foreground"
+                          >
                             <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary/50" />
                             {f}
                           </li>
@@ -221,14 +234,10 @@ export function ExpandingCapabilityGrid({
                     </motion.div>
                   )}
                 </AnimatePresence>
-
               </div>
             </motion.button>
           );
         })}
-
-
-
       </div>
 
       {hint ? <p className="mt-6 text-center text-xs text-muted-foreground/50">{hint}</p> : null}

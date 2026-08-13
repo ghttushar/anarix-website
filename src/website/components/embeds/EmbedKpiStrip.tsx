@@ -18,9 +18,15 @@ const EmbedKpiStrip = () => (
         viewport={{ once: true }}
         transition={{ delay: i * 0.06, duration: 0.4 }}
       >
-        <div className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">{k.label}</div>
+        <div className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+          {k.label}
+        </div>
         <div className="text-2xl font-bold text-foreground mt-2 tabular-nums">{k.value}</div>
-        <div className={`text-xs mt-1 font-medium ${k.positive ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}`}>{k.delta}</div>
+        <div
+          className={`text-xs mt-1 font-medium ${k.positive ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}`}
+        >
+          {k.delta}
+        </div>
       </motion.div>
     ))}
   </div>

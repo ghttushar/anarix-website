@@ -11,10 +11,9 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
+import { streamJivaReply, type ChatMsg } from "@/website/lib/jivaChat";
 
-type Msg = { role: "user" | "assistant"; content: string };
-
-const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/website-aan`;
+type Msg = ChatMsg;
 
 const SUGGESTED = [
   "What does Anarix do?",
@@ -58,7 +57,11 @@ function PanelInner() {
   const isOpen = mode === "copilot";
 
   const [messages, setMessages] = useState<Msg[]>([
-    { role: "assistant", content: "Hi, I'm **Jiva**. Ask me anything about Anarix - products, pricing, integrations, or how I work." },
+    {
+      role: "assistant",
+      content:
+        "Hi, I'm **Jiva**. Ask me anything about Anarix - products, pricing, integrations, or how I work.",
+    },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -90,7 +93,9 @@ function PanelInner() {
     if (!isMobile) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = prev; };
+    return () => {
+      document.body.style.overflow = prev;
+    };
   }, [isOpen]);
 
   // Focus the panel on open and restore focus on close.
@@ -98,7 +103,9 @@ function PanelInner() {
     if (!isOpen) return;
     const prev = document.activeElement as HTMLElement | null;
     closeBtnRef.current?.focus();
-    return () => { prev?.focus?.(); };
+    return () => {
+      prev?.focus?.();
+    };
   }, [isOpen]);
 
   const handlePanelKeyDown = (e: React.KeyboardEvent) => {
@@ -110,8 +117,8 @@ function PanelInner() {
     if (e.key !== "Tab" || !panelRef.current) return;
     const focusables = Array.from(
       panelRef.current.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
-      )
+        'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ),
     );
     if (focusables.length === 0) return;
     const first = focusables[0];
@@ -155,45 +162,7 @@ function PanelInner() {
     const controller = new AbortController();
     abortRef.current = controller;
     try {
-      const resp = await fetch(CHAT_URL, {
-        method: "POST",
-        signal: controller.signal,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-        },
-        body: JSON.stringify({ messages: next, scope: "general" }),
-      });
-      if (!resp.ok || !resp.body) {
-        const j = await resp.json().catch(() => ({}));
-        throw new Error(j.error || `Request failed (${resp.status})`);
-      }
-      const reader = resp.body.getReader();
-      const dec = new TextDecoder();
-      let raw = "";
-      let done = false;
-      while (!done) {
-        const { value, done: d } = await reader.read();
-        if (d) break;
-        raw += dec.decode(value, { stream: true });
-        let idx: number;
-        while ((idx = raw.indexOf("\n")) !== -1) {
-          let line = raw.slice(0, idx);
-          raw = raw.slice(idx + 1);
-          if (line.endsWith("\r")) line = line.slice(0, -1);
-          if (!line.startsWith("data: ")) continue;
-          const j = line.slice(6).trim();
-          if (j === "[DONE]") { done = true; break; }
-          try {
-            const p = JSON.parse(j);
-            const c = p.choices?.[0]?.delta?.content;
-            if (c) upsert(c);
-          } catch {
-            raw = line + "\n" + raw;
-            break;
-          }
-        }
-      }
+      await streamJivaReply({ messages: next, signal: controller.signal, onChunk: upsert });
     } catch (e) {
       if ((e as Error).name !== "AbortError") {
         setError(e instanceof Error ? e.message : "Something went wrong");
@@ -217,8 +186,11 @@ function PanelInner() {
         <>
           <motion.div
             className="sm:hidden fixed inset-0 z-[55] bg-foreground/30"
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            transition={{ duration: 0.18 }} onClick={closeAan}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.18 }}
+            onClick={closeAan}
           />
           <motion.aside
             ref={panelRef}
@@ -229,7 +201,7 @@ function PanelInner() {
             className={cn(
               "fixed z-[56] bg-background border border-border shadow-strong flex flex-col overflow-hidden",
               "inset-x-3 bottom-3 top-20 rounded-2xl",
-              "sm:inset-auto sm:right-4 sm:top-4 sm:bottom-4 sm:w-[400px] sm:rounded-2xl"
+              "sm:inset-auto sm:right-4 sm:top-4 sm:bottom-4 sm:w-[400px] sm:rounded-2xl",
             )}
             role="dialog"
             aria-modal="true"
@@ -240,7 +212,9 @@ function PanelInner() {
             {/* Header - AanLogo + context bar (mirrors AanCopilotPanel) */}
             <div className="border-b border-border shrink-0">
               <div className="flex items-center justify-between px-4 py-4">
-                <h2 id="aan-panel-title" className="sr-only">Chat with Jiva</h2>
+                <h2 id="aan-panel-title" className="sr-only">
+                  Chat with Jiva
+                </h2>
                 <AanLogo />
                 <button
                   ref={closeBtnRef}
@@ -266,23 +240,47 @@ function PanelInner() {
 
             {/* Conversation - no per-message mascot, mirrors app pattern */}
             <ScrollArea className="flex-1 min-h-0">
-              <div className="p-4 space-y-4" role="log" aria-live="polite" aria-relevant="additions">
+              <div
+                className="p-4 space-y-4"
+                role="log"
+                aria-live="polite"
+                aria-relevant="additions"
+              >
                 {messages.map((m, i) => (
-                  <div key={i} className={cn("flex gap-3", m.role === "user" ? "flex-row-reverse" : "flex-row")}>
-                    <div className={cn(
-                      "flex h-8 w-8 shrink-0 items-center justify-center",
-                      m.role === "assistant" ? "" : "rounded-full bg-muted text-muted-foreground"
-                    )}>
+                  <div
+                    key={i}
+                    className={cn(
+                      "flex gap-3",
+                      m.role === "user" ? "flex-row-reverse" : "flex-row",
+                    )}
+                  >
+                    <div
+                      className={cn(
+                        "flex h-8 w-8 shrink-0 items-center justify-center",
+                        m.role === "assistant" ? "" : "rounded-full bg-muted text-muted-foreground",
+                      )}
+                    >
                       {m.role === "user" && <User className="h-4 w-4" />}
                     </div>
-                    <div className={cn("flex max-w-[80%] flex-col gap-2", m.role === "user" ? "items-end" : "items-start")}>
-                      <div className={cn(
-                        "rounded-2xl px-4 py-2.5 text-sm",
-                        m.role === "assistant"
-                          ? "bg-card text-foreground border border-border prose prose-sm max-w-none prose-p:my-1 prose-ul:my-1 prose-ol:my-1 prose-li:my-0 prose-headings:my-1 prose-strong:text-foreground"
-                          : "bg-primary text-primary-foreground whitespace-pre-wrap"
-                      )}>
-                        {m.role === "assistant" ? <ReactMarkdown>{m.content}</ReactMarkdown> : m.content}
+                    <div
+                      className={cn(
+                        "flex max-w-[80%] flex-col gap-2",
+                        m.role === "user" ? "items-end" : "items-start",
+                      )}
+                    >
+                      <div
+                        className={cn(
+                          "rounded-2xl px-4 py-2.5 text-sm",
+                          m.role === "assistant"
+                            ? "bg-card text-foreground border border-border prose prose-sm max-w-none prose-p:my-1 prose-ul:my-1 prose-ol:my-1 prose-li:my-0 prose-headings:my-1 prose-strong:text-foreground"
+                            : "bg-primary text-primary-foreground whitespace-pre-wrap",
+                        )}
+                      >
+                        {m.role === "assistant" ? (
+                          <ReactMarkdown>{m.content}</ReactMarkdown>
+                        ) : (
+                          m.content
+                        )}
                       </div>
                     </div>
                   </div>
@@ -307,7 +305,10 @@ function PanelInner() {
                 )}
 
                 {error && (
-                  <div role="alert" className="text-xs text-destructive bg-destructive/10 border border-destructive/30 rounded-lg px-3 py-2">
+                  <div
+                    role="alert"
+                    className="text-xs text-destructive bg-destructive/10 border border-destructive/30 rounded-lg px-3 py-2"
+                  >
                     {error}
                   </div>
                 )}
@@ -368,11 +369,22 @@ function PanelInner() {
                   />
                   <div className="absolute right-2 bottom-2">
                     {loading ? (
-                      <Button size="icon" variant="destructive" onClick={stop} className="h-8 w-8 rounded-lg" title="Stop">
+                      <Button
+                        size="icon"
+                        variant="destructive"
+                        onClick={stop}
+                        className="h-8 w-8 rounded-lg"
+                        title="Stop"
+                      >
                         <Square className="h-3.5 w-3.5" />
                       </Button>
                     ) : (
-                      <Button size="icon" onClick={() => send(input)} disabled={!input.trim()} className="h-8 w-8 rounded-lg bg-gradient-to-r from-primary to-accent hover:opacity-90 disabled:opacity-30">
+                      <Button
+                        size="icon"
+                        onClick={() => send(input)}
+                        disabled={!input.trim()}
+                        className="h-8 w-8 rounded-lg bg-gradient-to-r from-primary to-accent hover:opacity-90 disabled:opacity-30"
+                      >
                         <Send className="h-3.5 w-3.5" />
                       </Button>
                     )}

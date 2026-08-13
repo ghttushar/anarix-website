@@ -193,7 +193,6 @@ const HeroManagedStudio = () => {
             </div>
           </div>
 
-
           {/* The rest of the book, waiting in the rail */}
           <div className="flex h-full w-full flex-col gap-3">
             {rail.map((item, i) => (
