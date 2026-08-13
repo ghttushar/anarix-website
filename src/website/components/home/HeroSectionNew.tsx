@@ -56,7 +56,9 @@ const HeroSectionNew = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              You didn&apos;t build this brand to babysit ad campaigns and chase stockouts. Anarix runs your Amazon, Walmart and Shopify accounts end-to-end, ads, listings, inventory, compliance, as one team. You keep full visibility.{" "}
+              You didn&apos;t build this brand to babysit ad campaigns and chase stockouts. Anarix runs your{" "}
+              <Channel>Amazon</Channel>, <Channel>Walmart</Channel> and <Channel>Shopify</Channel> accounts
+              end-to-end, ads, listings, inventory, compliance, as one team. You keep full visibility.{" "}
               <span className="text-foreground font-semibold">We take the 11pm shift.</span>
             </motion.p>
 
@@ -68,7 +70,7 @@ const HeroSectionNew = () => {
             >
               <a href="https://calendly.com/sunil-anarix/30min" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-strong active:translate-y-0 active:scale-[0.97] will-change-transform btn-shine group">
-                  Hand it over
+                  Let us run it for you
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
                 </Button>
               </a>
@@ -81,27 +83,24 @@ const HeroSectionNew = () => {
           </div>
         </div>
 
-        {/* Stats bar */}
+        {/* Official partner badges */}
         <motion.div
-          className="mt-10 grid grid-cols-3 gap-4 sm:gap-6 max-w-2xl"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.9, duration: 0.6 }}
+          className="mt-10 flex flex-wrap items-center gap-4 sm:gap-6"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="rounded-2xl border border-primary/20 bg-primary/5 px-4 py-3.5"
-            >
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight font-numeric text-primary">
-                <CountUp target={stat.numeric} prefix={stat.prefix} suffix={stat.suffix} decimals={stat.decimals} />
-              </div>
-              <div className="text-xs text-muted-foreground mt-1.5 uppercase tracking-[0.12em] font-medium">
-                {stat.label}
-              </div>
-            </div>
+          {badges.map((badge) => (
+            <img
+              key={badge.alt}
+              src={badge.src}
+              alt={badge.alt}
+              loading="lazy"
+              className="h-14 w-auto rounded-xl object-contain sm:h-16"
+            />
           ))}
         </motion.div>
+
 
       </div>
     </section>
