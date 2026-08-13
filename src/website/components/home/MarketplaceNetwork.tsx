@@ -13,7 +13,7 @@ type Channel = {
 
 const channels: Channel[] = [
   { id: "amazon", name: "Amazon", stat: "3.4x", statLabel: "Blended ROAS", x: 150, y: 96 },
-  { id: "walmart", name: "Walmart", stat: "11.2%", statLabel: "TACoS", x: 150, y: 324 },
+  { id: "walmart", name: "Walmart", stat: "11.2%", statLabel: "TACoS", x: 150, y: 300 },
   { id: "shopify", name: "Shopify", stat: "+38%", statLabel: "Repeat rate", x: 650, y: 210 },
 ];
 
@@ -204,7 +204,7 @@ const MarketplaceNetwork = () => {
           </svg>
 
           {/* One live-looking stat chip, driven by the hovered node */}
-          <div className="absolute inset-x-0 bottom-0 flex justify-center" style={{ paddingBottom: 18 }}>
+          <div className="absolute inset-x-0 top-0 flex justify-center" style={{ paddingTop: 16 }}>
             <motion.div
               key={activeChannel?.id ?? "idle"}
               initial={{ opacity: 0, y: 8 }}
