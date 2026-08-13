@@ -129,7 +129,7 @@ const HeroManagedStudio = () => {
           </span>
         </div>
 
-        <div className="grid gap-3 p-4 sm:grid-cols-[1.55fr_1fr]">
+        <div className="grid grid-cols-[1.5fr_1fr] items-stretch gap-3 p-4">
           {/* Featured account */}
           <div className="relative overflow-hidden rounded-2xl border border-border/70 bg-muted/30">
             <AnimatePresence mode="wait">
