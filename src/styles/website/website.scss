@@ -80,6 +80,7 @@
   --input: 209 25% 18%;
   --ring: 230 70% 65%;
   --coral: 355 84% 72%;
+  --success: 150 62% 52%;
   --ink: 228 20% 94%;
   --brand-blue: 230 70% 65%;
   --periwinkle: 230 70% 65%;
@@ -95,6 +96,9 @@
 }
 
 /* Utility classes - scoped */
+.website-scope .text-success { color: hsl(var(--success)); }
+.website-scope .bg-success { background-color: hsl(var(--success)); }
+
 .website-scope .font-display { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; }
 .website-scope .font-serif { font-family: 'Fraunces', Georgia, serif; }
 
