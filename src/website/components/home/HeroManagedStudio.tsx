@@ -129,7 +129,7 @@ const HeroManagedStudio = () => {
           </span>
         </div>
 
-        <div className="grid grid-cols-[1.5fr_1fr] items-stretch gap-3 p-4">
+        <div className="grid grid-cols-[7fr_5fr] items-stretch gap-3 p-4">
           {/* Featured account */}
           <div className="relative overflow-hidden rounded-2xl border border-border/70 bg-muted/30">
             <AnimatePresence mode="wait">
@@ -195,14 +195,14 @@ const HeroManagedStudio = () => {
 
 
           {/* The rest of the book, waiting in the rail */}
-          <div className="grid h-full w-full grid-rows-3 gap-3">
+          <div className="flex h-full w-full flex-col gap-3">
             {rail.map((item, i) => (
               <motion.button
                 key={item.alt}
                 type="button"
                 onClick={() => setFeatured(accounts.indexOf(item))}
                 aria-label={`Show ${item.channel} ${item.category} account`}
-                className="group relative h-full w-full overflow-hidden rounded-xl border border-border/70 bg-muted/30 text-left transition-colors hover:border-primary/50"
+                className="group relative min-h-14 w-full flex-1 overflow-hidden rounded-xl border border-border/70 bg-muted/30 text-left transition-colors hover:border-primary/50"
                 initial={{ opacity: 0, x: 14 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, ease: EASE, delay: i * 0.08 }}

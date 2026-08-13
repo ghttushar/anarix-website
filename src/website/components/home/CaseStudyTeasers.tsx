@@ -216,7 +216,7 @@ function TeaserCard({
       className={`group relative flex flex-col overflow-hidden rounded-3xl border bg-card shadow-medium transition-all duration-300 ${
         interactive
           ? "pointer-events-auto border-border hover:-translate-y-1 hover:border-primary/45 hover:shadow-strong"
-          : "pointer-events-none border-border/60 grayscale-[35%]"
+          : "pointer-events-none border-border/60"
       }`}
       style={{ height: CARD_HEIGHT }}
     >
