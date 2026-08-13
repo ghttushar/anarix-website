@@ -19,7 +19,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "Products", href: "/products" },
+  { label: "Platform", href: "/products" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Contact Us", href: "/company/contact" },
 ];
@@ -39,7 +39,7 @@ const Navbar = () => {
   const activePath = location.pathname;
 
   const isActiveSection = (item: NavItem): boolean => {
-    if (item.label === "Products") return productPaths.some((p) => activePath === p || activePath.startsWith(`${p}/`));
+    if (item.label === "Platform") return productPaths.some((p) => activePath === p || activePath.startsWith(`${p}/`));
     if (item.label === "Company") return activePath.startsWith("/company");
     if (!item.href) return false;
     if (item.href === "/") return activePath === "/";

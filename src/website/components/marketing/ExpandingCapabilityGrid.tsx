@@ -41,7 +41,7 @@ const buildPositions = (count: number, columns: number) => {
 export function ExpandingCapabilityGrid({
   cards,
   columns = 5,
-  hint = "Click any card to expand its details",
+  hint,
 }: ExpandingCapabilityGridProps) {
   const [activeCard, setActiveCard] = useState(0);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -214,7 +214,7 @@ export function ExpandingCapabilityGrid({
 
       </div>
 
-      <p className="mt-6 text-center text-xs text-muted-foreground/50">{hint}</p>
+      {hint ? <p className="mt-6 text-center text-xs text-muted-foreground/50">{hint}</p> : null}
     </div>
   );
 }

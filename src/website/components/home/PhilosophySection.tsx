@@ -153,15 +153,15 @@ const PhilosophySection = () => {
                 },
                 {
                   title: "Testing, testing, and more testing.",
-                  desc: "New creative, new keywords, new budget structures, new DSP audiences, a constant stream of experiments to find what works for your brand, not a playbook recycled from someone else&apos;s.",
+                  desc: "New creative, new keywords, new budget structures, new DSP audiences, a constant stream of experiments to find what works for your brand, not a playbook recycled from someone else’s.",
                 },
                 {
                   title: "Deep dives, not dashboards.",
-                  desc: "Real analysis of where your account is headed, what&apos;s holding it back, and what comes next, the kind of thinking that only happens when your team isn&apos;t buried in manual optimization.",
+                  desc: "Real analysis of where your account is headed, what’s holding it back, and what comes next, the kind of thinking that only happens when your team isn’t buried in manual optimization.",
                 },
                 {
                   title: "Decisions, not to-do lists.",
-                  desc: "Not &ldquo;consider optimizing your campaigns,&rdquo; but a specific call: change this, here&apos;s why, here&apos;s what it&apos;s worth.",
+                  desc: "Not “consider optimizing your campaigns,” but a specific call: change this, here’s why, here’s what it’s worth.",
                 },
               ].map((item, i) => (
                 <motion.div

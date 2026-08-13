@@ -71,10 +71,10 @@ const CaseStudyTeasers = () => {
           onFocus={() => setPaused(true)}
           onBlur={() => setPaused(false)}
         >
-          {/* Desktop / tablet: rotating ring */}
+          {/* Desktop / tablet: rotating ring with arrows hugging the cards */}
           <div
             className="relative hidden sm:block"
-            style={{ perspective: "1600px", height: 520 }}
+            style={{ perspective: "1600px", height: 440 }}
             role="group"
             aria-label="Featured case studies carousel"
           >
@@ -96,9 +96,25 @@ const CaseStudyTeasers = () => {
                       : { type: "spring", stiffness: 90, damping: 18, mass: 0.9 }
                   }
                 >
-                  <TeaserCard cs={slot.cs} interactive={slot.front} />
+                  <TeaserCard cs={slot.cs} interactive={slot.front} index={slot.i} />
                 </motion.div>
               ))}
+            </div>
+
+            <div
+              className="pointer-events-none absolute inset-y-0 left-1/2 z-[200] flex items-center justify-between"
+              style={{ width: CARD_WIDTH * 2 + 96, marginLeft: -(CARD_WIDTH * 2 + 96) / 2 }}
+            >
+              <span className="pointer-events-auto">
+                <CarouselButton label="Previous case study" onClick={() => rotate(-1)}>
+                  <ArrowLeft className="w-4 h-4" />
+                </CarouselButton>
+              </span>
+              <span className="pointer-events-auto">
+                <CarouselButton label="Next case study" onClick={() => rotate(1)}>
+                  <ArrowRight className="w-4 h-4" />
+                </CarouselButton>
+              </span>
             </div>
           </div>
 
@@ -113,14 +129,16 @@ const CaseStudyTeasers = () => {
                 if (info.offset.x > 60) rotate(-1);
               }}
             >
-              <TeaserCard cs={studies[active]} interactive />
+              <TeaserCard cs={studies[active]} interactive index={active} />
             </motion.div>
           </div>
 
-          <div className="mt-8 flex items-center justify-center gap-4">
-            <CarouselButton label="Previous case study" onClick={() => rotate(-1)}>
-              <ArrowLeft className="w-4 h-4" />
-            </CarouselButton>
+          <div className="mt-5 flex items-center justify-center gap-4">
+            <span className="sm:hidden">
+              <CarouselButton label="Previous case study" onClick={() => rotate(-1)}>
+                <ArrowLeft className="w-4 h-4" />
+              </CarouselButton>
+            </span>
 
             <div className="flex items-center gap-2">
               {studies.map((cs, i) => (
@@ -137,9 +155,11 @@ const CaseStudyTeasers = () => {
               ))}
             </div>
 
-            <CarouselButton label="Next case study" onClick={() => rotate(1)}>
-              <ArrowRight className="w-4 h-4" />
-            </CarouselButton>
+            <span className="sm:hidden">
+              <CarouselButton label="Next case study" onClick={() => rotate(1)}>
+                <ArrowRight className="w-4 h-4" />
+              </CarouselButton>
+            </span>
           </div>
         </div>
       </div>
@@ -173,7 +193,7 @@ function TeasersIntro() {
   return (
     <div
       ref={ref}
-      className={`text-center max-w-2xl mx-auto pb-16 transition-all duration-700 ${
+      className={`text-center max-w-2xl mx-auto pb-10 transition-all duration-700 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       }`}
     >
@@ -193,8 +213,46 @@ function TeasersIntro() {
 const statValue = (m: { prepend?: string; prefix?: string; value: number; decimals?: number; suffix?: string }): string =>
   `${m.prepend ?? ""}${m.prefix ?? ""}${m.value.toFixed(m.decimals ?? 0)}${m.suffix ?? ""}`;
 
+/** Outline motifs, one per card, drawn behind the hero number. */
+const motifs = [
+  // Rising bars
+  <g key="bars">
+    <path d="M8 92h104" />
+    <path d="M20 92V64M44 92V50M68 92V36M92 92V16" />
+    <path d="M14 30l26-8 24 10 30-16" strokeDasharray="4 4" />
+  </g>,
+  // Share ring
+  <g key="ring">
+    <circle cx="60" cy="54" r="34" />
+    <path d="M60 20a34 34 0 0 1 30 50" strokeWidth={4} />
+    <circle cx="60" cy="54" r="12" />
+  </g>,
+  // Cart lift
+  <g key="cart">
+    <path d="M14 26h16l12 44h48" />
+    <path d="M40 44h56l-8 26" />
+    <circle cx="52" cy="86" r="6" />
+    <circle cx="84" cy="86" r="6" />
+    <path d="M96 24l12-10M104 34h14" strokeDasharray="3 5" />
+  </g>,
+  // Stock line
+  <g key="stock">
+    <path d="M10 76c14 0 18-30 30-30s16 22 28 22 18-34 32-34" />
+    <path d="M10 92h100" strokeDasharray="4 6" />
+    <circle cx="70" cy="68" r="4" />
+  </g>,
+] as const;
+
 /** Uniform teaser: fixed slots so every card in the ring has identical geometry. */
-function TeaserCard({ cs, interactive }: { cs: CaseStudyData; interactive: boolean }) {
+function TeaserCard({
+  cs,
+  interactive,
+  index,
+}: {
+  cs: CaseStudyData;
+  interactive: boolean;
+  index: number;
+}) {
   const secondary = cs.kpis.slice(0, 2);
 
   return (
@@ -202,33 +260,58 @@ function TeaserCard({ cs, interactive }: { cs: CaseStudyData; interactive: boole
       to={`/case-studies#${cs.id}`}
       tabIndex={interactive ? 0 : -1}
       aria-hidden={interactive ? undefined : true}
-      className={`group flex h-[400px] flex-col rounded-3xl border bg-card shadow-medium p-6 sm:p-7 transition-colors duration-300 ${
+      className={`group relative flex h-[390px] flex-col overflow-hidden rounded-3xl border bg-card p-6 shadow-medium transition-all duration-300 sm:p-7 ${
         interactive
-          ? "border-border hover:border-primary/45 pointer-events-auto"
-          : "border-border/60 pointer-events-none"
+          ? "pointer-events-auto border-border hover:-translate-y-1 hover:border-primary/45 hover:shadow-strong"
+          : "pointer-events-none border-border/60"
       }`}
     >
-      <div className="flex items-start justify-between gap-3">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-28"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 100% at 20% 0%, hsl(var(--primary) / 0.12), transparent 70%)",
+        }}
+      />
+
+      <svg
+        aria-hidden
+        viewBox="0 0 120 100"
+        className="pointer-events-none absolute -right-3 bottom-16 h-28 w-32 text-primary/20 transition-transform duration-500 group-hover:scale-105"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        {motifs[index % motifs.length]}
+      </svg>
+
+      <div className="relative flex items-start justify-between gap-3">
+        <p className="rounded-pill border border-border/70 bg-muted/40 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
           {cs.marketplace}
         </p>
         <span className="shrink-0 font-numeric text-[11px] text-muted-foreground">{cs.period}</span>
       </div>
 
-      <h3 className="mt-3 font-display text-xl font-bold leading-tight tracking-tight text-foreground line-clamp-2 min-h-[3.5rem]">
+      <h3 className="relative mt-3 font-display text-xl font-bold leading-tight tracking-tight text-foreground line-clamp-2 min-h-[3.5rem]">
         {cs.brand}
       </h3>
 
-      <p className="mt-3 font-numeric text-5xl font-bold leading-none tracking-tight">
+      <p className="relative mt-2 font-numeric text-[3.25rem] font-bold leading-none tracking-tight">
         <span className="text-gradient-primary">{heroNumber(cs)}</span>
       </p>
-      <p className="mt-2 text-xs leading-snug text-muted-foreground line-clamp-2 min-h-[2.25rem]">
+      <p className="relative mt-2 text-xs leading-snug text-muted-foreground line-clamp-2 min-h-[2.25rem]">
         {cs.hero.statLine}
       </p>
 
-      <div className="mt-5 grid grid-cols-2 gap-2 border-t border-border/60 pt-4">
+      <div className="relative mt-5 grid grid-cols-2 gap-2 border-t border-border/60 pt-4">
         {secondary.map((kpi) => (
-          <div key={kpi.label} className="rounded-xl bg-primary/5 px-3 py-2.5">
+          <div
+            key={kpi.label}
+            className="rounded-xl border border-primary/10 bg-primary/5 px-3 py-2.5 transition-colors group-hover:border-primary/25"
+          >
             <p className="font-numeric text-lg font-bold leading-none text-foreground">
               {statValue(kpi)}
             </p>
@@ -239,9 +322,9 @@ function TeaserCard({ cs, interactive }: { cs: CaseStudyData; interactive: boole
         ))}
       </div>
 
-      <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-primary">
+      <span className="relative mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-primary">
         Explore case study
-        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
       </span>
     </Link>
   );

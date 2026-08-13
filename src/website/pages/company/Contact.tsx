@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Send, MessageSquare, Globe } from "lucide-react";
+import { CalendarClock, Mail, MapPin, Phone, Send, MessageSquare, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import PageLayout from "@/website/components/PageLayout";
 
@@ -56,6 +56,18 @@ const Contact = () => (
                     </div>
                   ))}
                 </div>
+
+                <a
+                  href="https://calendly.com/sunil-anarix/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-flex"
+                >
+                  <Button size="lg" className="rounded-pill h-12 px-7 bg-primary text-primary-foreground btn-shine">
+                    <CalendarClock className="w-4 h-4 mr-1.5" />
+                    Schedule a demo
+                  </Button>
+                </a>
               </div>
             </div>
           </div>

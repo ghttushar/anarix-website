@@ -61,7 +61,7 @@ const PainPointsSection = () => {
         </div>
 
         <motion.figure
-          className="relative mt-6 overflow-hidden rounded-3xl border border-primary/25 bg-gradient-to-br from-primary/10 via-card/50 to-periwinkle/10 p-6 sm:p-8 backdrop-blur-sm"
+          className="relative mt-6 w-full overflow-hidden rounded-3xl border border-primary/25 bg-gradient-to-br from-primary/10 via-card/50 to-periwinkle/10 p-6 sm:p-8 backdrop-blur-sm"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
@@ -70,12 +70,12 @@ const PainPointsSection = () => {
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
             A note from the founders
           </p>
-          <blockquote className="mt-3 max-w-3xl font-display text-xl sm:text-2xl leading-snug text-foreground">
-            Brand owners kept telling us the same thing, not &ldquo;I need better software,&rdquo;
-            but{" "}
-            <span className="text-primary font-bold">&ldquo;I need someone to just handle this.&rdquo;</span>
+          <blockquote className="mt-3 w-full font-display text-xl sm:text-2xl leading-snug text-foreground">
+            Brand owners kept telling us the same thing, not “I need better software,” but{" "}
+            <span className="text-primary font-bold">“I need someone to just handle this.”</span>
           </blockquote>
         </motion.figure>
+
 
       </div>
     </section>

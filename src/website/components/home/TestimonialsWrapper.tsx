@@ -7,6 +7,8 @@ import firatImg from "@/assets/testimonials/firat.png";
 import jamesImg from "@/assets/testimonials/james.jpg";
 import nausilImg from "@/assets/testimonials/nausil.png";
 import joeyImg from "@/assets/testimonials/joey-dweck.jpg";
+import nasVideo from "../../../../public/testimonials/video.mp4.asset.json";
+import joeyVideo from "../../../../public/testimonials/joey-dweck.mp4.asset.json";
 
 interface Person {
   quote: string;
@@ -34,7 +36,7 @@ const JAMES: Person = {
 };
 
 const NAUSIL: Person = {
-  src: "/testimonials/video.mp4",
+  src: nasVideo.url,
   quote:
     "Working with Anarix has been a game changer. In just my second month, I've already seen a 20–22% increase in sales. They're rebuilding my website, helping grow my Amazon presence, and now expanding into Walmart and TikTok Shop.",
   author: "Nausil Zaheer (Nas)",
@@ -43,7 +45,7 @@ const NAUSIL: Person = {
 };
 
 const JOEY: Person = {
-  src: "/testimonials/joey-dweck.mp4",
+  src: joeyVideo.url,
   poster: "/testimonials/joey-dweck-poster.jpg",
   quote:
     "They spoke to me about more than just advertising. They looked at my business very holistically, not just the Amazon marketplace, but the entire ecosystem. I felt that they were just a part of my team right away.",
@@ -198,13 +200,15 @@ const TestimonialsWrapper = () => (
           </motion.article>
         </div>
 
+        {/* Portrait video, so this card stretches across both left-column rows
+            and its quote block lands on the same baseline as Joey's. */}
         <motion.article
-          className="lg:col-span-5 relative flex flex-col rounded-3xl border border-border shadow-medium overflow-hidden"
+          className="lg:col-span-5 relative flex flex-col self-stretch rounded-3xl border border-border shadow-medium overflow-hidden"
           {...CARD_IN}
           transition={{ delay: 0.15, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           style={VIDEO_GRADIENT}
         >
-          <div className="relative flex-1 min-h-0" style={{ aspectRatio: "4 / 5", maxHeight: "24rem" }}>
+          <div className="relative flex-1 min-h-[18rem]">
             <VideoBody person={NAUSIL} />
           </div>
           <div className="p-5 flex flex-col gap-3 text-background">
