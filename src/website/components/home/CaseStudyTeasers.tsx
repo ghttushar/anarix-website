@@ -251,7 +251,7 @@ function TeaserCard({
         <div className="absolute inset-x-0 bottom-0 flex w-full items-center justify-between gap-3 px-6" style={{ paddingBottom: 12 }}>
           <span
             className="inline-flex min-w-0 items-center rounded-pill border border-border/70 bg-card/90 px-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground backdrop-blur truncate"
-            style={{ height: 26, maxWidth: 215 }}
+            style={{ height: 26, maxWidth: 168 }}
           >
             {cs.marketplace}
           </span>
