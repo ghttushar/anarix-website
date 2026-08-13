@@ -2,19 +2,15 @@ import { motion, useReducedMotion } from "framer-motion";
 
 /** Names shown in the rotating trust strip. */
 export const TRUSTED_BRANDS = [
-  "Biogrowth",
-  "Crazy Cups",
-  "Top Gold Designer Jewellery",
-  "Mothercould",
-  "American Cannel",
-  "Karma Organics",
-  "Bird Dog Depot",
-  "Onyx",
   "Drive Medical",
-  "Setton Farms",
-  "Heatlogic",
-  "Napqueen",
-  "AP Coffee",
+  "Karma Organics",
+  "Crazy Cups",
+  "Mount-It!",
+  "Aquasonic",
+  "Pure Daily Care",
+  "NapQueen",
+  "Pete's Pasta",
+  "Mothercould",
 ];
 
 const Track = ({ brands }: { brands: string[] }) => (

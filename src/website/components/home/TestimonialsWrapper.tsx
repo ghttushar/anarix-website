@@ -198,13 +198,15 @@ const TestimonialsWrapper = () => (
           </motion.article>
         </div>
 
+        {/* Portrait video, so this card stretches across both left-column rows
+            and its quote block lands on the same baseline as Joey's. */}
         <motion.article
-          className="lg:col-span-5 relative flex flex-col rounded-3xl border border-border shadow-medium overflow-hidden"
+          className="lg:col-span-5 relative flex flex-col self-stretch rounded-3xl border border-border shadow-medium overflow-hidden"
           {...CARD_IN}
           transition={{ delay: 0.15, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           style={VIDEO_GRADIENT}
         >
-          <div className="relative flex-1 min-h-0" style={{ aspectRatio: "4 / 5", maxHeight: "24rem" }}>
+          <div className="relative flex-1 min-h-[18rem]">
             <VideoBody person={NAUSIL} />
           </div>
           <div className="p-5 flex flex-col gap-3 text-background">
