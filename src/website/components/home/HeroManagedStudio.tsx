@@ -129,9 +129,9 @@ const HeroManagedStudio = () => {
           </span>
         </div>
 
-        <div className="grid gap-3 p-4 sm:grid-cols-3">
+        <div className="grid gap-3 p-4 sm:grid-cols-[1.55fr_1fr]">
           {/* Featured account */}
-          <div className="relative overflow-hidden rounded-2xl border border-border/70 bg-muted/30 sm:col-span-2">
+          <div className="relative overflow-hidden rounded-2xl border border-border/70 bg-muted/30">
             <AnimatePresence mode="wait">
               <motion.div
                 key={account.alt}
