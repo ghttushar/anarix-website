@@ -77,8 +77,11 @@ const LeadCaptureModal = () => {
             </button>
 
             {isAudit ? (
-              <div className="relative grid max-h-[88vh] gap-0 overflow-y-auto lg:grid-cols-4">
-                <div className="p-7 sm:p-10 lg:col-span-3 lg:min-h-[640px]">
+              <div
+                className="relative grid gap-0 overflow-y-auto lg:grid-cols-4"
+                style={{ maxHeight: "88vh", minHeight: 620 }}
+              >
+                <div className="p-7 sm:p-10 lg:col-span-3">
                   <ListingAuditFlow onComplete={closeLeadCapture} />
                 </div>
 
