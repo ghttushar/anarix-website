@@ -57,17 +57,29 @@ const Contact = () => (
                   ))}
                 </div>
 
-                <a
-                  href="https://calendly.com/sunil-anarix/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-5 inline-flex"
-                >
-                  <Button size="lg" className="rounded-pill h-12 px-7 bg-primary text-primary-foreground btn-shine">
-                    <CalendarClock className="w-4 h-4 mr-1.5" />
-                    Schedule a demo
-                  </Button>
-                </a>
+                {/* Scheduling action, set apart as a deliberate footer row */}
+                <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-border/70 bg-card/80 p-4 backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-center gap-3">
+                    <span className="flex w-10 h-10 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                      <CalendarClock className="w-5 h-5 text-primary" />
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">Prefer to talk it through?</p>
+                      <p className="text-xs text-muted-foreground">Thirty minutes with our team, no deck.</p>
+                    </div>
+                  </div>
+                  <a
+                    href="https://calendly.com/sunil-anarix/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0"
+                  >
+                    <Button className="w-full rounded-pill h-11 px-6 bg-primary text-primary-foreground btn-shine sm:w-auto">
+                      Schedule a demo
+                    </Button>
+                  </a>
+                </div>
+
               </div>
             </div>
           </div>

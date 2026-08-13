@@ -9,6 +9,9 @@ import ProcessSteps from "@/website/components/home/ProcessSteps";
 import PhilosophySection from "@/website/components/home/PhilosophySection";
 import ServicesGrid from "@/website/components/home/ServicesGrid";
 import CaseStudyTeasers from "@/website/components/home/CaseStudyTeasers";
+import MarketplaceNetwork from "@/website/components/home/MarketplaceNetwork";
+import ListingSpotlight from "@/website/components/home/ListingSpotlight";
+
 import ScrollProgress from "@/website/components/ScrollProgress";
 import Footer from "@/website/components/Footer";
 import NextStep from "@/website/components/marketing/NextStep";
@@ -30,9 +33,14 @@ const Home = () => {
 
       <ServicesGrid />
 
+      <MarketplaceNetwork />
+
+      <ListingSpotlight />
+
       <LeadCaptureBand />
 
       <TestimonialsWrapper />
+
 
       <ProcessSteps />
 
