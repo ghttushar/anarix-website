@@ -101,10 +101,15 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
   const [asin, setAsin] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [pass, setPass] = useState(0);
+  const [score, setScore] = useState(() => drawScore());
+  const [issues, setIssues] = useState<Issue[]>(() => drawIssues(3));
   const parsed = useMemo(() => parseListingInput(asin), [asin]);
 
   useEffect(() => {
     if (step !== "analyzing") return undefined;
+    // Fresh grade for every run.
+    setScore(drawScore());
+    setIssues(drawIssues(3));
     const passId = window.setInterval(() => setPass((p) => Math.min(p + 1, PASSES.length - 1)), 620);
     const t = window.setTimeout(() => setStep("result"), 2600);
     return () => {
@@ -112,6 +117,7 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
       window.clearTimeout(t);
     };
   }, [step]);
+
 
   useEffect(() => {
     if (step !== "done") return undefined;
