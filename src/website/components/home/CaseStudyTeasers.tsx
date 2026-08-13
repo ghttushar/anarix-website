@@ -193,7 +193,7 @@ function TeasersIntro() {
   return (
     <div
       ref={ref}
-      className={`text-center max-w-2xl mx-auto pb-16 transition-all duration-700 ${
+      className={`text-center max-w-2xl mx-auto pb-10 transition-all duration-700 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       }`}
     >
@@ -278,7 +278,7 @@ function TeaserCard({
       <svg
         aria-hidden
         viewBox="0 0 120 100"
-        className="pointer-events-none absolute -right-2 top-14 h-32 w-36 text-primary/25 transition-transform duration-500 group-hover:scale-105"
+        className="pointer-events-none absolute -right-3 bottom-16 h-28 w-32 text-primary/20 transition-transform duration-500 group-hover:scale-105"
         fill="none"
         stroke="currentColor"
         strokeWidth={2}
