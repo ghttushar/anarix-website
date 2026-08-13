@@ -68,7 +68,7 @@ const PainPointsSection = () => {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-            A note from the founders
+            A NOTE FROM THE BRAND OWNERS
           </p>
           <blockquote className="mt-3 w-full font-display text-xl sm:text-2xl leading-snug text-foreground">
             Brand owners kept telling us the same thing, not “I need better software,” but{" "}
