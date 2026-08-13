@@ -64,19 +64,17 @@ export function ExpandingCapabilityGrid({
   const activeCol = activeCard % columns;
   const slots = buildSlots(columns, activeCol);
 
-  /** Map each card index to a slot, skipping the active card's own column. */
+  /** Cards keep their order and fill the slots left by the expanded column. */
   const placement = new Map<number, Slot>();
   let cursor = 0;
   cards.forEach((_, i) => {
     if (i === activeCard) return;
-    while (cursor < slots.length && slots[cursor].col === activeCol && slots[cursor].row === 0) {
-      cursor += 1;
-    }
     if (cursor < slots.length) {
       placement.set(i, slots[cursor]);
       cursor += 1;
     }
   });
+
 
   const getCardPosition = (i: number): React.CSSProperties => {
     if (isMobile) return {};
