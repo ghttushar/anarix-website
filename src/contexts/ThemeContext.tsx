@@ -13,12 +13,13 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(() => {
     if (typeof window !== "undefined") {
-      return (localStorage.getItem("anarix-theme") as Theme) || "light";
+      return (localStorage.getItem("anarix-theme") as Theme) || "dark";
     }
-    return "light";
+    return "dark";
   });
 
-  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("light");
+  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("dark");
+
 
   useEffect(() => {
     const root = window.document.documentElement;
