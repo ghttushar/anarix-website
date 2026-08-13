@@ -264,7 +264,7 @@ function TeaserCard({
           viewBox="0 0 160 64"
           preserveAspectRatio="none"
           className="absolute inset-x-0 top-0 w-full text-primary/40 transition-transform duration-500 group-hover:scale-105"
-          style={{ height: 72 }}
+          style={{ height: 54 }}
           fill="none"
           stroke="currentColor"
           strokeWidth={2}
@@ -276,7 +276,7 @@ function TeaserCard({
         <div className="relative flex w-full items-center justify-between gap-3 px-6" style={{ paddingBottom: 14 }}>
           <span
             className="inline-flex min-w-0 items-center rounded-pill border border-border/70 bg-card/90 px-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground truncate"
-            style={{ height: 26, maxWidth: 200 }}
+            style={{ height: 26, maxWidth: 215 }}
           >
             {cs.marketplace}
           </span>
