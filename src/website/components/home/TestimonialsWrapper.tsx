@@ -36,7 +36,7 @@ const JAMES: Person = {
 };
 
 const NAUSIL: Person = {
-  src: "/testimonials/video.mp4",
+  src: nasVideo.url,
   quote:
     "Working with Anarix has been a game changer. In just my second month, I've already seen a 20–22% increase in sales. They're rebuilding my website, helping grow my Amazon presence, and now expanding into Walmart and TikTok Shop.",
   author: "Nausil Zaheer (Nas)",
@@ -45,7 +45,7 @@ const NAUSIL: Person = {
 };
 
 const JOEY: Person = {
-  src: "/testimonials/joey-dweck.mp4",
+  src: joeyVideo.url,
   poster: "/testimonials/joey-dweck-poster.jpg",
   quote:
     "They spoke to me about more than just advertising. They looked at my business very holistically, not just the Amazon marketplace, but the entire ecosystem. I felt that they were just a part of my team right away.",
