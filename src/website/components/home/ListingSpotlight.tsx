@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Check, Star } from "lucide-react";
+import { Check, Star, ArrowRight } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { useLeadCapture } from "../lead-capture/LeadCaptureContext";
 
 const FIXES = ["Hero image on white", "Title within 200 characters", "A plus content live", "Buy Box price aligned"];
 
