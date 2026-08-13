@@ -25,6 +25,9 @@ const INPUT_CLASS =
 const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
   const [step, setStep] = useState<Step>("input");
   const [asin, setAsin] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const parsed = useMemo(() => parseListingInput(asin), [asin]);
+
 
   useEffect(() => {
     if (step !== "analyzing") return undefined;
