@@ -71,9 +71,10 @@ const PainPointsSection = () => {
             A NOTE FROM THE BRAND OWNERS
           </p>
           <blockquote className="mt-3 w-full font-display text-xl sm:text-2xl leading-snug text-foreground">
-            Brand owners kept telling us the same thing, not “I need better software,” but{" "}
-            <span className="text-primary font-bold">“I need someone to just handle this.”</span>
+            Every brand owner we met asked for the same thing. Not another tool to learn, but{" "}
+            <span className="text-primary font-bold">a team that owns the outcome.</span>
           </blockquote>
+
         </motion.figure>
 
 
