@@ -195,7 +195,7 @@ const HeroManagedStudio = () => {
 
 
           {/* The rest of the book, waiting in the rail */}
-          <div className="grid w-full grid-rows-3 gap-3">
+          <div className="grid h-full w-full grid-rows-3 gap-3">
             {rail.map((item, i) => (
               <motion.button
                 key={item.alt}
