@@ -195,14 +195,14 @@ const HeroManagedStudio = () => {
 
 
           {/* The rest of the book, waiting in the rail */}
-          <div className="grid w-full grid-cols-3 gap-3 sm:grid-cols-1">
+          <div className="grid w-full grid-rows-3 gap-3">
             {rail.map((item, i) => (
               <motion.button
                 key={item.alt}
                 type="button"
                 onClick={() => setFeatured(accounts.indexOf(item))}
                 aria-label={`Show ${item.channel} ${item.category} account`}
-                className="group relative overflow-hidden rounded-xl border border-border/70 bg-muted/30 text-left transition-colors hover:border-primary/50"
+                className="group relative h-full w-full overflow-hidden rounded-xl border border-border/70 bg-muted/30 text-left transition-colors hover:border-primary/50"
                 initial={{ opacity: 0, x: 14 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, ease: EASE, delay: i * 0.08 }}
@@ -213,7 +213,7 @@ const HeroManagedStudio = () => {
                   width={1280}
                   height={960}
                   loading="lazy"
-                  className="h-14 w-full object-cover opacity-85 transition-opacity group-hover:opacity-100 sm:h-16"
+                  className="absolute inset-0 h-full w-full object-cover opacity-85 transition-opacity group-hover:opacity-100"
                 />
                 <span className="absolute inset-x-0 bottom-0 truncate bg-card/85 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-muted-foreground backdrop-blur">
                   {item.channel}
