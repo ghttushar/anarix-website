@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import PageLayout from "@/website/components/PageLayout";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { AanMascot } from "@/components/aan/AanMascot";
-import EmbedInsightCard from "@/website/components/embeds/EmbedInsightCard";
 import ProfitabilityDashboardMock from "@/website/components/platform/ProfitabilityDashboardMock";
 import MarginWaterfallChart from "@/website/components/platform/MarginWaterfallChart";
 import CampaignTableMock from "@/website/components/platform/CampaignTableMock";
