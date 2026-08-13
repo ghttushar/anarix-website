@@ -37,14 +37,6 @@ const MarketplaceNetwork = () => {
   return (
     <section className="relative pad-section overflow-hidden">
       <div className="container-page px-6 sm:px-8">
-        <div className="text-center max-w-2xl mx-auto pb-8">
-          <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-pill bg-primary/10 text-primary text-xs font-medium uppercase tracking-[0.14em]">
-            One operating layer
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground leading-[1.08]">
-            Every channel, <span className="text-gradient-primary">one nervous system.</span>
-          </h2>
-        </div>
 
         <div
           className="relative mx-auto overflow-hidden rounded-3xl border border-border bg-card shadow-medium"

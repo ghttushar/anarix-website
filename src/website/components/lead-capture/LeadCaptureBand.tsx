@@ -50,7 +50,7 @@ export default function LeadCaptureBand({
               </p>
             </div>
             <Button
-              onClick={openLeadCapture}
+              onClick={() => openLeadCapture("teardown")}
               className="group h-11 shrink-0 rounded-pill bg-primary px-6 text-primary-foreground btn-shine hover:bg-primary/90"
             >
               {label}

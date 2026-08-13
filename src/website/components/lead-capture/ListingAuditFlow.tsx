@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Loader2, ShieldCheck, Sparkles, Zap } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { LISTING_INPUT_ERROR, parseListingInput } from "@/website/lib/listingInput";
 
 type Step = "input" | "analyzing" | "result" | "done";
 
@@ -24,6 +25,9 @@ const INPUT_CLASS =
 const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
   const [step, setStep] = useState<Step>("input");
   const [asin, setAsin] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const parsed = useMemo(() => parseListingInput(asin), [asin]);
+
 
   useEffect(() => {
     if (step !== "analyzing") return undefined;
@@ -67,18 +71,58 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
               className="mt-6 flex flex-col gap-3 sm:flex-row"
               onSubmit={(e) => {
                 e.preventDefault();
+                if (!parsed) {
+                  setError(LISTING_INPUT_ERROR);
+                  return;
+                }
+                setError(null);
                 setStep("analyzing");
               }}
             >
-              <input
-                required
-                value={asin}
-                onChange={(e) => setAsin(e.target.value)}
-                aria-label="ASIN or product URL"
-                placeholder="B08XYZ1234 or product URL"
-                className={INPUT_CLASS}
-              />
-              <Button type="submit" className="group h-11 shrink-0 rounded-pill bg-primary px-6 text-primary-foreground btn-shine hover:bg-primary/90">
+              <div className="min-w-0 flex-1">
+                <input
+                  required
+                  value={asin}
+                  onChange={(e) => {
+                    setAsin(e.target.value);
+                    if (error) setError(null);
+                  }}
+                  onBlur={() => {
+                    if (asin.trim() && !parsed) setError(LISTING_INPUT_ERROR);
+                  }}
+                  aria-label="ASIN, Walmart item ID or product URL"
+                  aria-invalid={error ? true : undefined}
+                  placeholder="B08XYZ1234, Walmart item ID or product URL"
+                  className={`${INPUT_CLASS} ${error ? "border-destructive" : ""}`}
+                />
+                <AnimatePresence>
+                  {error && (
+                    <motion.p
+                      className="mt-2 px-4 text-xs text-destructive"
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      {error}
+                    </motion.p>
+                  )}
+                  {!error && parsed && (
+                    <motion.p
+                      className="mt-2 px-4 text-xs text-muted-foreground"
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      {parsed.marketplace === "amazon" ? "Amazon" : "Walmart"} listing {parsed.id} recognised.
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+              </div>
+              <Button
+                type="submit"
+                disabled={!parsed}
+                className="group h-11 shrink-0 rounded-pill bg-primary px-6 text-primary-foreground btn-shine hover:bg-primary/90 disabled:opacity-50"
+              >
                 Analyze my listing
                 <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Button>
