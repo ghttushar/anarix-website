@@ -71,10 +71,10 @@ const CaseStudyTeasers = () => {
           onFocus={() => setPaused(true)}
           onBlur={() => setPaused(false)}
         >
-          {/* Desktop / tablet: rotating ring */}
+          {/* Desktop / tablet: rotating ring with arrows hugging the cards */}
           <div
             className="relative hidden sm:block"
-            style={{ perspective: "1600px", height: 520 }}
+            style={{ perspective: "1600px", height: 440 }}
             role="group"
             aria-label="Featured case studies carousel"
           >
@@ -96,9 +96,25 @@ const CaseStudyTeasers = () => {
                       : { type: "spring", stiffness: 90, damping: 18, mass: 0.9 }
                   }
                 >
-                  <TeaserCard cs={slot.cs} interactive={slot.front} />
+                  <TeaserCard cs={slot.cs} interactive={slot.front} index={slot.i} />
                 </motion.div>
               ))}
+            </div>
+
+            <div
+              className="pointer-events-none absolute inset-y-0 left-1/2 z-[200] flex items-center justify-between"
+              style={{ width: CARD_WIDTH * 2 + 96, marginLeft: -(CARD_WIDTH * 2 + 96) / 2 }}
+            >
+              <span className="pointer-events-auto">
+                <CarouselButton label="Previous case study" onClick={() => rotate(-1)}>
+                  <ArrowLeft className="w-4 h-4" />
+                </CarouselButton>
+              </span>
+              <span className="pointer-events-auto">
+                <CarouselButton label="Next case study" onClick={() => rotate(1)}>
+                  <ArrowRight className="w-4 h-4" />
+                </CarouselButton>
+              </span>
             </div>
           </div>
 
@@ -113,14 +129,16 @@ const CaseStudyTeasers = () => {
                 if (info.offset.x > 60) rotate(-1);
               }}
             >
-              <TeaserCard cs={studies[active]} interactive />
+              <TeaserCard cs={studies[active]} interactive index={active} />
             </motion.div>
           </div>
 
-          <div className="mt-8 flex items-center justify-center gap-4">
-            <CarouselButton label="Previous case study" onClick={() => rotate(-1)}>
-              <ArrowLeft className="w-4 h-4" />
-            </CarouselButton>
+          <div className="mt-5 flex items-center justify-center gap-4">
+            <span className="sm:hidden">
+              <CarouselButton label="Previous case study" onClick={() => rotate(-1)}>
+                <ArrowLeft className="w-4 h-4" />
+              </CarouselButton>
+            </span>
 
             <div className="flex items-center gap-2">
               {studies.map((cs, i) => (
@@ -137,9 +155,11 @@ const CaseStudyTeasers = () => {
               ))}
             </div>
 
-            <CarouselButton label="Next case study" onClick={() => rotate(1)}>
-              <ArrowRight className="w-4 h-4" />
-            </CarouselButton>
+            <span className="sm:hidden">
+              <CarouselButton label="Next case study" onClick={() => rotate(1)}>
+                <ArrowRight className="w-4 h-4" />
+              </CarouselButton>
+            </span>
           </div>
         </div>
       </div>
