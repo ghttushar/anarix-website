@@ -35,14 +35,14 @@ const Home = () => {
 
       <MarketplaceNetwork />
 
-      <ListingSpotlight />
-
       <LeadCaptureBand />
 
       <TestimonialsWrapper />
 
 
       <ProcessSteps />
+
+      <ListingSpotlight />
 
       <PhilosophySection />
 
