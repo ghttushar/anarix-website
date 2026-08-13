@@ -157,7 +157,7 @@ const MarketplaceNetwork = () => {
                   />
                   <text
                     x={c.x}
-                    y={c.y + 4}
+                    y={c.y - 2}
                     textAnchor="middle"
                     fontSize={14}
                     fontWeight={600}
@@ -165,6 +165,28 @@ const MarketplaceNetwork = () => {
                   >
                     {c.name}
                   </text>
+                  <text
+                    x={c.x}
+                    y={c.y + 16}
+                    textAnchor="middle"
+                    fontSize={13}
+                    fontWeight={700}
+                    className="font-numeric"
+                    fill="hsl(var(--primary))"
+                  >
+                    {c.stat}
+                  </text>
+                  <text
+                    x={c.x}
+                    y={c.y + 62}
+                    textAnchor="middle"
+                    fontSize={9}
+                    letterSpacing="1.4"
+                    fill="hsl(var(--muted-foreground))"
+                  >
+                    {c.statLabel.toUpperCase()}
+                  </text>
+
                 </g>
               );
             })}
