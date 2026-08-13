@@ -24,9 +24,9 @@ const Home = () => {
       <HeroSectionNew />
 
 
-      <CaseStudyTeasers />
-
       <PainPointsSection />
+
+      <CaseStudyTeasers />
 
       <ServicesGrid />
 
@@ -51,7 +51,7 @@ const Home = () => {
               The night shift
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight leading-[1.1] mb-4">
-              Hand it over.{" "}
+              Let us run it for you.{" "}
               <span className="text-gradient-primary">Sleep through the 11pm check.</span>
             </h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
