@@ -225,7 +225,7 @@ const HeroManagedStudio = () => {
 
         {/* What was actually done on the featured account */}
         <div className="border-t border-border/70 px-5 py-4">
-          <div className="grid gap-2 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
             {account.work.map((step, i) => (
               <motion.div
                 key={`${account.alt}-${step}`}
