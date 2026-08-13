@@ -5,7 +5,7 @@ import { Check, Star, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLeadCapture } from "../lead-capture/LeadCaptureContext";
 
-const FIXES = ["Hero image on white", "Title within 200 characters", "A plus content live", "Buy Box price aligned"];
+const FIXES = ["Hero image on white", "Title within 75 characters", "A plus content live", "Buy Box price aligned"];
 
 /**
  * Visual hook: one listing upgrading itself. The visitor can scrub the handle
