@@ -47,23 +47,6 @@ const TeardownForm = ({ onComplete }: { onComplete: () => void }) => {
               <input required aria-label="Your name" placeholder="Your name" className={INPUT_CLASS} />
               <input required type="email" aria-label="Work email" placeholder="you@brand.com" className={INPUT_CLASS} />
 
-              <div className="flex flex-wrap gap-2 pt-1">
-                {MARKETPLACES.map((m) => (
-                  <button
-                    key={m}
-                    type="button"
-                    onClick={() => setMarketplace(m)}
-                    aria-pressed={marketplace === m}
-                    className={`rounded-pill border px-4 py-1.5 text-xs font-medium transition-colors ${
-                      marketplace === m
-                        ? "border-primary bg-primary/10 text-primary"
-                        : "border-border bg-muted/30 text-muted-foreground hover:border-primary/40"
-                    }`}
-                  >
-                    {m}
-                  </button>
-                ))}
-              </div>
 
               <Button
                 type="submit"
