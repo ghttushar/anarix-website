@@ -24,7 +24,7 @@ const accounts: Account[] = [
   {
     image: coffee,
     alt: "Specialty coffee bag beside a ceramic pour-over set on sandstone",
-    channel: "SHOPI",
+    channel: "Amazon",
     category: "Coffee and beverage",
     metric: { label: "ROAS", value: "7.91x" },
     work: ["Brand defense split out", "Bids day-parted", "TACoS down to 9.4%"],
@@ -32,7 +32,7 @@ const accounts: Account[] = [
   {
     image: audio,
     alt: "Premium over-ear headphones on a studio pedestal",
-    channel: "AMAON",
+    channel: "Walmart",
     category: "Audio and electronics",
     metric: { label: "Sales lift", value: "+221%" },
     work: ["Variants merged", "Search terms harvested", "Budget moved to winners"],
@@ -48,7 +48,7 @@ const accounts: Account[] = [
   {
     image: fragrance,
     alt: "Amber glass candle and reed diffuser in warm light",
-    channel: "SHOPIFY",
+    channel: "Amazon",
     category: "Home fragrance",
     metric: { label: "Peak revenue", value: "+131%" },
     work: ["Peak plan loaded", "Display burst live", "Stock cover protected"],
