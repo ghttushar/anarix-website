@@ -5,14 +5,16 @@ import { X } from "lucide-react";
 import { useLeadCapture } from "./LeadCaptureContext";
 import AuditVisuals from "./AuditVisuals";
 import ListingAuditFlow from "./ListingAuditFlow";
+import TeardownForm from "./TeardownForm";
 
 /**
- * Wide two-column capture: the listing audit flow on the left, an
- * auto-advancing showcase of the audit visuals on the right.
+ * Shared capture shell. The audit flow gets a wide two column layout with the
+ * rotating listing visuals; the teardown form gets a compact single column.
  */
 const LeadCaptureModal = () => {
-  const { isOpen, closeLeadCapture } = useLeadCapture();
+  const { isOpen, kind, closeLeadCapture } = useLeadCapture();
   const closeRef = useRef<HTMLButtonElement>(null);
+  const isAudit = kind === "audit";
 
   useEffect(() => {
     if (!isOpen) return undefined;
@@ -51,8 +53,10 @@ const LeadCaptureModal = () => {
           <motion.div
             role="dialog"
             aria-modal="true"
-            aria-label="Free listing audit"
-            className="relative w-full max-w-4xl overflow-hidden rounded-3xl border border-border bg-card shadow-strong"
+            aria-label={isAudit ? "Free listing audit" : "Free teardown"}
+            className={`relative w-full overflow-hidden rounded-3xl border border-border bg-card shadow-strong ${
+              isAudit ? "max-w-5xl" : "max-w-lg"
+            }`}
             initial={{ opacity: 0, scale: 0.96, y: 18 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 18 }}
@@ -72,15 +76,21 @@ const LeadCaptureModal = () => {
               <X className="h-4 w-4" />
             </button>
 
-            <div className="relative grid gap-0 lg:grid-cols-4">
-              <div className="p-7 sm:p-9 lg:col-span-3">
-                <ListingAuditFlow onComplete={closeLeadCapture} />
-              </div>
+            {isAudit ? (
+              <div className="relative grid max-h-[88vh] gap-0 overflow-y-auto lg:grid-cols-4">
+                <div className="p-7 sm:p-10 lg:col-span-3 lg:min-h-[640px]">
+                  <ListingAuditFlow onComplete={closeLeadCapture} />
+                </div>
 
-              <div className="border-t border-border bg-muted/25 p-6 lg:border-l lg:border-t-0">
-                <AuditVisuals />
+                <div className="border-t border-border bg-muted/25 p-6 lg:border-l lg:border-t-0">
+                  <AuditVisuals />
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="relative max-h-[88vh] overflow-y-auto p-7 sm:p-9">
+                <TeardownForm onComplete={closeLeadCapture} />
+              </div>
+            )}
           </motion.div>
         </motion.div>
       )}
