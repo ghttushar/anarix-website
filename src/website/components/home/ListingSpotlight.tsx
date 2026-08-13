@@ -3,7 +3,10 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Check, Star, ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import listingBefore from "@/assets/listing/listing-before.jpg";
+import listingAfter from "@/assets/listing/listing-after.jpg";
 import { useLeadCapture } from "../lead-capture/LeadCaptureContext";
+
 
 const FIXES = ["Hero image on white", "Title within 75 characters", "A plus content live", "Buy Box price aligned"];
 
