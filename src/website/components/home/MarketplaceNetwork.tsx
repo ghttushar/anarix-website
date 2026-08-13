@@ -116,7 +116,8 @@ const MarketplaceNetwork = () => {
                   r={54}
                   fill="none"
                   stroke="hsl(var(--primary) / 0.35)"
-                  animate={{ r: [54, 76], opacity: [0.5, 0] }}
+                  style={{ originX: `${HUB.x}px`, originY: `${HUB.y}px` }}
+                  animate={{ scale: [1, 1.45], opacity: [0.5, 0] }}
                   transition={{ duration: 2.6, repeat: Infinity, ease: "easeOut" }}
                 />
               )}
