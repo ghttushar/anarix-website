@@ -141,7 +141,7 @@ const ServicesGrid = () => {
             <span className="text-gradient-primary">One team.</span>
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Click any card to explore. The stack adapts to show you what we run for you.
+            Every function below is run by our team on your accounts, day and night.
           </p>
         </motion.div>
 

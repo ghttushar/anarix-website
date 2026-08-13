@@ -214,7 +214,7 @@ export function ExpandingCapabilityGrid({
 
       </div>
 
-      <p className="mt-6 text-center text-xs text-muted-foreground/50">{hint}</p>
+      {hint ? <p className="mt-6 text-center text-xs text-muted-foreground/50">{hint}</p> : null}
     </div>
   );
 }
