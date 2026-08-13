@@ -77,9 +77,11 @@ const HeroSectionNew = () => {
               transition={{ delay: 0.45, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               You didn&apos;t build this brand to babysit ad campaigns and chase stockouts. Anarix runs your{" "}
-              <Channel>Amazon</Channel>, <Channel>Walmart</Channel> and <Channel>Shopify</Channel> accounts
-              end-to-end, ads, listings, inventory, compliance, as one team. You keep full visibility.{" "}
+              <Channel>Amazon</Channel>, <Channel>Walmart</Channel>, <Channel>Shopify</Channel> and{" "}
+              <Channel>TikTok</Channel> accounts end-to-end, ads, listings, inventory, compliance, as one team.
+              You keep full visibility.{" "}
               <span className="text-foreground font-semibold">We take the 11pm shift.</span>
+
             </motion.p>
 
             <motion.div
