@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Check, Loader2 } from "lucide-react";
 
-import apparel from "@/assets/case-studies/apparel.jpg";
-import medicalSupply from "@/assets/case-studies/medical-supply.jpg";
-import mounts from "@/assets/case-studies/mounts.jpg";
-import organicCare from "@/assets/case-studies/organic-care.jpg";
+import audio from "@/assets/marketing/audio.jpg";
+import coffee from "@/assets/marketing/coffee.jpg";
+import fragrance from "@/assets/marketing/fragrance.jpg";
+import kitchen from "@/assets/marketing/kitchen.jpg";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
