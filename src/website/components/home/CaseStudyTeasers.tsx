@@ -9,6 +9,7 @@ import { caseStudies, type CaseStudyData } from "@/website/data/case-studies";
 const SPACING = 400;
 const DEPTH = 150;
 const CARD_WIDTH = 360;
+const CARD_HEIGHT = 470;
 
 /** Shortest signed distance from `i` to `active` on a ring of `n` slots. */
 const ringDelta = (i: number, active: number, n: number): number => {
@@ -71,10 +72,10 @@ const CaseStudyTeasers = () => {
           onFocus={() => setPaused(true)}
           onBlur={() => setPaused(false)}
         >
-          {/* Desktop / tablet: rotating ring with arrows hugging the cards */}
+          {/* Desktop / tablet: rotating ring, nothing layered over the cards */}
           <div
             className="relative hidden sm:block"
-            style={{ perspective: "1600px", height: 440 }}
+            style={{ perspective: "1600px", height: CARD_HEIGHT + 24 }}
             role="group"
             aria-label="Featured case studies carousel"
           >
@@ -100,22 +101,6 @@ const CaseStudyTeasers = () => {
                 </motion.div>
               ))}
             </div>
-
-            <div
-              className="pointer-events-none absolute inset-y-0 left-1/2 z-[200] flex items-center justify-between"
-              style={{ width: CARD_WIDTH * 2 + 96, marginLeft: -(CARD_WIDTH * 2 + 96) / 2 }}
-            >
-              <span className="pointer-events-auto">
-                <CarouselButton label="Previous case study" onClick={() => rotate(-1)}>
-                  <ArrowLeft className="w-4 h-4" />
-                </CarouselButton>
-              </span>
-              <span className="pointer-events-auto">
-                <CarouselButton label="Next case study" onClick={() => rotate(1)}>
-                  <ArrowRight className="w-4 h-4" />
-                </CarouselButton>
-              </span>
-            </div>
           </div>
 
           {/* Mobile: single-card swipe track */}
@@ -133,12 +118,11 @@ const CaseStudyTeasers = () => {
             </motion.div>
           </div>
 
-          <div className="mt-5 flex items-center justify-center gap-4">
-            <span className="sm:hidden">
-              <CarouselButton label="Previous case study" onClick={() => rotate(-1)}>
-                <ArrowLeft className="w-4 h-4" />
-              </CarouselButton>
-            </span>
+          {/* Controls sit right under the cards, arrows flanking the dots */}
+          <div className="flex items-center justify-center gap-5" style={{ marginTop: 12 }}>
+            <CarouselButton label="Previous case study" onClick={() => rotate(-1)}>
+              <ArrowLeft className="w-4 h-4" />
+            </CarouselButton>
 
             <div className="flex items-center gap-2">
               {studies.map((cs, i) => (
@@ -155,11 +139,9 @@ const CaseStudyTeasers = () => {
               ))}
             </div>
 
-            <span className="sm:hidden">
-              <CarouselButton label="Next case study" onClick={() => rotate(1)}>
-                <ArrowRight className="w-4 h-4" />
-              </CarouselButton>
-            </span>
+            <CarouselButton label="Next case study" onClick={() => rotate(1)}>
+              <ArrowRight className="w-4 h-4" />
+            </CarouselButton>
           </div>
         </div>
       </div>
@@ -213,37 +195,38 @@ function TeasersIntro() {
 const statValue = (m: { prepend?: string; prefix?: string; value: number; decimals?: number; suffix?: string }): string =>
   `${m.prepend ?? ""}${m.prefix ?? ""}${m.value.toFixed(m.decimals ?? 0)}${m.suffix ?? ""}`;
 
-/** Outline motifs, one per card, drawn behind the hero number. */
-const motifs = [
-  // Rising bars
+/**
+ * Precise chart glyphs on a shared 160x64 baseline grid, one per card, so the
+ * visual band reads identically across the ring.
+ */
+const glyphs = [
+  // Bar climb
   <g key="bars">
-    <path d="M8 92h104" />
-    <path d="M20 92V64M44 92V50M68 92V36M92 92V16" />
-    <path d="M14 30l26-8 24 10 30-16" strokeDasharray="4 4" />
+    <path d="M4 60h152" opacity={0.35} />
+    <path d="M22 60V44M52 60V34M82 60V26M112 60V16M142 60V8" strokeWidth={5} strokeLinecap="round" />
   </g>,
   // Share ring
   <g key="ring">
-    <circle cx="60" cy="54" r="34" />
-    <path d="M60 20a34 34 0 0 1 30 50" strokeWidth={4} />
-    <circle cx="60" cy="54" r="12" />
+    <circle cx="80" cy="34" r="24" opacity={0.35} />
+    <path d="M80 10a24 24 0 0 1 20 37" strokeWidth={5} strokeLinecap="round" />
+    <path d="M4 60h152" opacity={0.2} />
   </g>,
-  // Cart lift
+  // Order lift
   <g key="cart">
-    <path d="M14 26h16l12 44h48" />
-    <path d="M40 44h56l-8 26" />
-    <circle cx="52" cy="86" r="6" />
-    <circle cx="84" cy="86" r="6" />
-    <path d="M96 24l12-10M104 34h14" strokeDasharray="3 5" />
+    <path d="M4 60h152" opacity={0.35} />
+    <path d="M18 52l28-16 26 10 30-22 34-14" strokeWidth={4} strokeLinecap="round" />
+    <circle cx="72" cy="46" r="4" />
+    <circle cx="136" cy="10" r="5" strokeWidth={4} />
   </g>,
-  // Stock line
+  // Stock curve
   <g key="stock">
-    <path d="M10 76c14 0 18-30 30-30s16 22 28 22 18-34 32-34" />
-    <path d="M10 92h100" strokeDasharray="4 6" />
-    <circle cx="70" cy="68" r="4" />
+    <path d="M4 60h152" opacity={0.35} />
+    <path d="M8 48c20 0 22-32 44-32s22 26 44 26 24-30 56-30" strokeWidth={4} strokeLinecap="round" />
+    <path d="M8 34h144" strokeDasharray="5 7" opacity={0.35} />
   </g>,
 ] as const;
 
-/** Uniform teaser: fixed slots so every card in the ring has identical geometry. */
+/** Uniform teaser: strict slots so every card in the ring has identical geometry. */
 function TeaserCard({
   cs,
   interactive,
@@ -260,75 +243,89 @@ function TeaserCard({
       to={`/case-studies#${cs.id}`}
       tabIndex={interactive ? 0 : -1}
       aria-hidden={interactive ? undefined : true}
-      className={`group relative flex h-[390px] flex-col overflow-hidden rounded-3xl border bg-card p-6 shadow-medium transition-all duration-300 sm:p-7 ${
+      className={`group relative flex flex-col overflow-hidden rounded-3xl border bg-card shadow-medium transition-all duration-300 ${
         interactive
           ? "pointer-events-auto border-border hover:-translate-y-1 hover:border-primary/45 hover:shadow-strong"
           : "pointer-events-none border-border/60"
       }`}
+      style={{ height: CARD_HEIGHT }}
     >
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-28"
+      {/* Visual band: fixed slot, tinted surface, one precise glyph */}
+      <div
+        className="relative flex items-end overflow-hidden border-b border-border/60"
         style={{
+          height: 116,
           background:
-            "radial-gradient(ellipse 70% 100% at 20% 0%, hsl(var(--primary) / 0.12), transparent 70%)",
+            "linear-gradient(160deg, hsl(var(--primary) / 0.14), hsl(var(--primary) / 0.04) 60%, transparent)",
         }}
-      />
-
-      <svg
-        aria-hidden
-        viewBox="0 0 120 100"
-        className="pointer-events-none absolute -right-3 bottom-16 h-28 w-32 text-primary/20 transition-transform duration-500 group-hover:scale-105"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
       >
-        {motifs[index % motifs.length]}
-      </svg>
+        <svg
+          aria-hidden
+          viewBox="0 0 160 64"
+          preserveAspectRatio="none"
+          className="absolute inset-x-0 top-0 w-full text-primary/40 transition-transform duration-500 group-hover:scale-105"
+          style={{ height: 54 }}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+          strokeLinejoin="round"
+        >
+          {glyphs[index % glyphs.length]}
+        </svg>
 
-      <div className="relative flex items-start justify-between gap-3">
-        <p className="rounded-pill border border-border/70 bg-muted/40 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-          {cs.marketplace}
-        </p>
-        <span className="shrink-0 font-numeric text-[11px] text-muted-foreground">{cs.period}</span>
-      </div>
-
-      <h3 className="relative mt-3 font-display text-xl font-bold leading-tight tracking-tight text-foreground line-clamp-2 min-h-[3.5rem]">
-        {cs.brand}
-      </h3>
-
-      <p className="relative mt-2 font-numeric text-[3.25rem] font-bold leading-none tracking-tight">
-        <span className="text-gradient-primary">{heroNumber(cs)}</span>
-      </p>
-      <p className="relative mt-2 text-xs leading-snug text-muted-foreground line-clamp-2 min-h-[2.25rem]">
-        {cs.hero.statLine}
-      </p>
-
-      <div className="relative mt-5 grid grid-cols-2 gap-2 border-t border-border/60 pt-4">
-        {secondary.map((kpi) => (
-          <div
-            key={kpi.label}
-            className="rounded-xl border border-primary/10 bg-primary/5 px-3 py-2.5 transition-colors group-hover:border-primary/25"
+        <div className="relative flex w-full items-center justify-between gap-3 px-6" style={{ paddingBottom: 14 }}>
+          <span
+            className="inline-flex min-w-0 items-center rounded-pill border border-border/70 bg-card/90 px-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground truncate"
+            style={{ height: 26, maxWidth: 215 }}
           >
-            <p className="font-numeric text-lg font-bold leading-none text-foreground">
-              {statValue(kpi)}
-            </p>
-            <p className="mt-1.5 text-[10px] uppercase leading-tight tracking-[0.1em] text-muted-foreground line-clamp-2">
-              {kpi.label}
-            </p>
-          </div>
-        ))}
+            {cs.marketplace}
+          </span>
+          <span className="shrink-0 font-numeric text-[11px] text-muted-foreground">{cs.period}</span>
+        </div>
       </div>
 
-      <span className="relative mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-primary">
-        Explore case study
-        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-      </span>
+      <div className="relative flex flex-1 flex-col px-6 pb-6" style={{ paddingTop: 20 }}>
+        <h3
+          className="font-display text-xl font-bold leading-tight tracking-tight text-foreground line-clamp-2"
+          style={{ height: 56 }}
+        >
+          {cs.brand}
+        </h3>
+
+        <p className="font-numeric font-bold leading-none tracking-tight" style={{ height: 56, fontSize: 52 }}>
+          <span className="text-gradient-primary">{heroNumber(cs)}</span>
+        </p>
+        <p
+          className="mt-3 text-xs leading-snug text-muted-foreground line-clamp-2"
+          style={{ height: 34 }}
+        >
+          {cs.hero.statLine}
+        </p>
+
+        <div className="mt-4 grid grid-cols-2 gap-2 border-t border-border/60" style={{ paddingTop: 16 }}>
+          {secondary.map((kpi) => (
+            <div
+              key={kpi.label}
+              className="rounded-xl border border-primary/10 bg-primary/5 px-3 transition-colors group-hover:border-primary/25"
+              style={{ height: 74, paddingTop: 12 }}
+            >
+              <p className="font-numeric text-lg font-bold leading-none text-foreground">
+                {statValue(kpi)}
+              </p>
+              <p className="mt-1.5 text-[10px] uppercase leading-tight tracking-[0.1em] text-muted-foreground line-clamp-2">
+                {kpi.label}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary" style={{ paddingTop: 18 }}>
+          Explore case study
+          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+        </span>
+      </div>
     </Link>
   );
 }
-
 
 export default CaseStudyTeasers;

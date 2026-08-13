@@ -85,7 +85,7 @@ const HeroSectionNew = () => {
 
         {/* Official partner badges */}
         <motion.div
-          className="mt-10 flex flex-wrap items-center gap-4 sm:gap-6"
+          className="mt-6 flex flex-wrap items-center gap-5 sm:gap-8"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -96,10 +96,12 @@ const HeroSectionNew = () => {
               src={badge.src}
               alt={badge.alt}
               loading="lazy"
-              className="h-14 w-auto rounded-xl object-contain sm:h-16"
+              className="w-auto rounded-xl object-contain"
+              style={{ height: "clamp(72px, 7vw, 104px)" }}
             />
           ))}
         </motion.div>
+
 
 
       </div>
