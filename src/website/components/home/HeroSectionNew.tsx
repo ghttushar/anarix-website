@@ -116,7 +116,7 @@ const HeroSectionNew = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-8">
+          <div className="flex flex-wrap items-center gap-5 sm:gap-8">
             {topBadges.map((badge) => (
               <img
                 key={badge.alt}
@@ -132,7 +132,7 @@ const HeroSectionNew = () => {
             src={walmartFinalistBadge}
             alt="Walmart Connect Partner Finalist"
             loading="lazy"
-            className="mx-auto mt-5 w-auto rounded-xl object-contain"
+            className="mt-5 w-auto rounded-xl object-contain"
             style={{ height: "clamp(44px, 4vw, 64px)" }}
           />
         </motion.div>
