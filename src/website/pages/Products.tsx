@@ -24,7 +24,6 @@ import ProfitabilityDashboardMock from "@/website/components/platform/Profitabil
 import MarginWaterfallChart from "@/website/components/platform/MarginWaterfallChart";
 import CampaignTableMock from "@/website/components/platform/CampaignTableMock";
 import JivaAssistantPanel from "@/website/components/platform/JivaAssistantPanel";
-import McpFlowViz from "@/website/components/platform/McpFlowViz";
 import NextStep from "@/website/components/marketing/NextStep";
 import LeadCaptureBand from "@/website/components/lead-capture/LeadCaptureBand";
 
@@ -308,27 +307,6 @@ function SignalsSection() {
 
 /* --------------------------------------------------------------------- 04 MCP */
 
-const mcpTools = [
-  {
-    tool: "get_account_summary",
-    icon: Cable,
-    chips: ["POST /mcp", "JSON"],
-    text: "Live account state in the model's native format.",
-  },
-  {
-    tool: "list_applied_rules",
-    icon: Braces,
-    chips: ["GET /mcp", "JSON"],
-    text: "Every automation that touched the account.",
-  },
-  {
-    tool: "read_only_scope",
-    icon: Lock,
-    chips: ["Any model", "Safe"],
-    text: "Read-only by default, so nothing can be spent.",
-  },
-];
-
 function McpSection() {
   const mcpPillars = [
     {
@@ -355,96 +333,65 @@ function McpSection() {
 
   return (
     <section className="pad-section-compact">
-      <div className="rounded-3xl border border-primary/20 bg-primary/5 p-6 sm:p-12">
-        <Reveal>
-          <SectionHead
-            align="center"
-            eyebrow={
-              <>
-                <Plug className="w-3.5 h-3.5" /> MCP
-              </>
-            }
-            title="Your marketplace data,"
-            accent="AI ready."
-            body="Plug into any AI and get structured marketplace data through MCP."
-          />
-        </Reveal>
+      <div className="container-wide px-4 sm:px-6">
+        <div className="rounded-3xl border border-primary/20 bg-primary/5 p-6 sm:p-12">
+          <Reveal>
+            <SectionHead
+              align="center"
+              eyebrow={
+                <>
+                  <Plug className="w-3.5 h-3.5" /> MCP
+                </>
+              }
+              title="Your marketplace data,"
+              accent="AI ready."
+              body="Plug into any AI and get structured marketplace data through MCP."
+            />
+          </Reveal>
 
-        <div className="mt-10">
-          <McpFlowViz />
-        </div>
-
-        <div className="mt-10 grid sm:grid-cols-3 gap-4">
-          {mcpTools.map((t, i) => (
-            <motion.div
-              key={t.tool}
-              className="flex h-full flex-col rounded-2xl border border-border bg-card p-5"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
-            >
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10">
-                <t.icon className="h-4 w-4 text-primary" />
-              </span>
-              <p className="mt-3 font-mono text-sm font-semibold text-foreground">{t.tool}</p>
-              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{t.text}</p>
-              <div className="mt-4 flex flex-wrap gap-1.5 pt-3 border-t border-border/60">
-                {t.chips.map((chip) => (
-                  <span
-                    key={chip}
-                    className="rounded-pill bg-primary/10 px-2 py-0.5 text-[11px] font-medium text-primary"
-                  >
-                    {chip}
+          <div className="mt-10 grid lg:grid-cols-2 gap-4 items-stretch">
+            <div className="grid sm:grid-cols-2 gap-4">
+              {mcpPillars.map((p, i) => (
+                <motion.div
+                  key={p.title}
+                  className="flex flex-col rounded-2xl border border-border/50 bg-card/80 p-5 backdrop-blur-sm"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, delay: 0.15 + i * 0.08, ease: EASE }}
+                >
+                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
+                    <p.icon className="h-4 w-4 text-primary" />
                   </span>
-                ))}
+                  <p className="mt-3 text-sm font-semibold text-foreground">{p.title}</p>
+                  <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{p.text}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="overflow-hidden rounded-2xl border border-border/60 bg-card/80">
+              <div className="flex items-center justify-between border-b border-border/60 px-4 py-2.5">
+                <p className="font-mono text-xs text-muted-foreground">example · get_account_summary</p>
+                <div className="flex items-center gap-1.5" aria-hidden>
+                  <span className="h-2 w-2 rounded-full bg-red-500/60" />
+                  <span className="h-2 w-2 rounded-full bg-amber-500/60" />
+                  <span className="h-2 w-2 rounded-full bg-green-500/60" />
+                </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {mcpPillars.map((p, i) => (
-            <motion.div
-              key={p.title}
-              className="flex flex-col rounded-2xl border border-border/50 bg-card/80 p-5 backdrop-blur-sm"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: 0.15 + i * 0.08, ease: EASE }}
-            >
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
-                <p.icon className="h-4 w-4 text-primary" />
-              </span>
-              <p className="mt-3 text-sm font-semibold text-foreground">{p.title}</p>
-              <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{p.text}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="mt-10 mx-auto max-w-2xl overflow-hidden rounded-2xl border border-border/60 bg-card/80">
-          <div className="flex items-center justify-between border-b border-border/60 px-4 py-2.5">
-            <p className="font-mono text-xs text-muted-foreground">example · get_account_summary</p>
-            <div className="flex items-center gap-1.5" aria-hidden>
-              <span className="h-2 w-2 rounded-full bg-red-500/60" />
-              <span className="h-2 w-2 rounded-full bg-amber-500/60" />
-              <span className="h-2 w-2 rounded-full bg-green-500/60" />
-            </div>
-          </div>
-          <div className="space-y-3 p-4 sm:p-5">
-            <div className="rounded-xl bg-muted/60 px-3 py-2.5">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                Request
-              </p>
-              <p className="mt-1 font-mono text-xs text-foreground">
-                call_mcp: get_account_summary (marketplace: walmart, account: all)
-              </p>
-            </div>
-            <div className="rounded-xl bg-primary/5 px-3 py-2.5">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
-                Response
-              </p>
-              <pre className="mt-1 overflow-x-auto font-mono text-xs leading-relaxed text-foreground">
+              <div className="space-y-3 p-4 sm:p-5">
+                <div className="rounded-xl bg-muted/60 px-3 py-2.5">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                    Request
+                  </p>
+                  <p className="mt-1 font-mono text-xs text-foreground">
+                    call_mcp: get_account_summary (marketplace: walmart, account: all)
+                  </p>
+                </div>
+                <div className="rounded-xl bg-primary/5 px-3 py-2.5">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
+                    Response
+                  </p>
+                  <pre className="mt-1 overflow-x-auto font-mono text-xs leading-relaxed text-foreground">
 {`{
   "account": "us-rw-001",
   "roas": 4.2,
@@ -452,21 +399,23 @@ function McpSection() {
   "active_rules": 17,
   "read_only": true
 }`}
-              </pre>
+                  </pre>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <Reveal className="mt-10">
-          <div className="flex justify-center">
-            <Button
-              size="lg"
-              className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 btn-shine"
-            >
-              Get Jiva MCP
-            </Button>
-          </div>
-        </Reveal>
+          <Reveal className="mt-10">
+            <div className="flex justify-center">
+              <Button
+                size="lg"
+                className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 btn-shine"
+              >
+                Get Jiva MCP
+              </Button>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

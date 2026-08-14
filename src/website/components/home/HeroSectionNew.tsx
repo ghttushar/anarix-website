@@ -1,17 +1,16 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Trophy } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import HeroDataViz from "./HeroDataViz";
 import HeroManagedStudio from "./HeroManagedStudio";
-import amazonAdsBadge from "@/assets/badges/badge-amazon-ads-verified-partner.png";
-import walmartConnectBadge from "@/assets/badges/badge-walmart-connect-premium-partner.png";
-import walmartMarketplaceBadge from "@/assets/badges/badge-walmart-marketplace-partner.png";
+import walmartPremiumBadge from "@/assets/badges/badge-walmart-premium-partner.png";
+import amazonVerifiedBadge from "@/assets/badges/badge-amazon-ads-verified.png";
+import walmartFinalistBadge from "@/assets/badges/badge-walmart-finalist.jpg";
 
 /** Official partner badges, used as issued: no recolouring, no reproportioning. */
-const badges = [
-  { src: amazonAdsBadge, alt: "Amazon Ads Verified Partner" },
-  { src: walmartConnectBadge, alt: "Walmart Connect Premium Partner" },
-  { src: walmartMarketplaceBadge, alt: "Walmart Marketplace Partner" },
+const topBadges = [
+  { src: walmartPremiumBadge, alt: "Walmart Connect Premium Partner" },
+  { src: amazonVerifiedBadge, alt: "Amazon Ads Verified Partner" },
 ];
 
 /** Channel name: brand blue, a size up, with a hand-drawn scribble underline. */
@@ -112,34 +111,30 @@ const HeroSectionNew = () => {
 
         {/* Official partner badges */}
         <motion.div
-          className="mt-6 flex flex-wrap items-center gap-5 sm:gap-8"
+          className="mt-6"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          {badges.map((badge) => (
-            <img
-              key={badge.alt}
-              src={badge.src}
-              alt={badge.alt}
-              loading="lazy"
-              className="w-auto rounded-xl object-contain"
-              style={{ height: "clamp(72px, 7vw, 104px)" }}
-            />
-          ))}
-        </motion.div>
-
-        {/* Achievement */}
-        <motion.div
-          className="mt-6 flex items-center gap-3"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.0, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <Trophy className="h-7 w-7 shrink-0 text-primary" />
-          <p className="text-base sm:text-lg font-bold text-foreground">
-            Finalist for Walmart Connect Partner twice 2026-2025
-          </p>
+          <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-8">
+            {topBadges.map((badge) => (
+              <img
+                key={badge.alt}
+                src={badge.src}
+                alt={badge.alt}
+                loading="lazy"
+                className="w-auto rounded-xl object-contain"
+                style={{ height: "clamp(72px, 7vw, 104px)" }}
+              />
+            ))}
+          </div>
+          <img
+            src={walmartFinalistBadge}
+            alt="Walmart Connect Partner Finalist"
+            loading="lazy"
+            className="mx-auto mt-5 w-auto rounded-xl object-contain"
+            style={{ height: "clamp(44px, 4vw, 64px)" }}
+          />
         </motion.div>
       </div>
     </section>
