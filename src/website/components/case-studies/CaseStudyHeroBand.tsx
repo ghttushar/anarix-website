@@ -28,12 +28,25 @@ function NavArrow({
       }
       className="group flex shrink-0 items-center gap-2 rounded-pill px-2 py-2 text-muted-foreground transition-colors hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
     >
-      <span className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-soft transition-all duration-200 group-hover:border-primary/40 group-hover:text-primary">
-        {isNext ? <ArrowRight className="h-4 w-4" /> : <ArrowLeft className="h-4 w-4" />}
-      </span>
-      <span className="hidden max-w-[130px] truncate text-xs font-medium lg:block">
-        {shortBrand(study.brand)}
-      </span>
+      {isNext ? (
+        <>
+          <span className="hidden max-w-[130px] truncate text-xs font-medium lg:block">
+            {shortBrand(study.brand)}
+          </span>
+          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-soft transition-all duration-200 group-hover:border-primary/40 group-hover:text-primary">
+            <ArrowRight className="h-4 w-4" />
+          </span>
+        </>
+      ) : (
+        <>
+          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-soft transition-all duration-200 group-hover:border-primary/40 group-hover:text-primary">
+            <ArrowLeft className="h-4 w-4" />
+          </span>
+          <span className="hidden max-w-[130px] truncate text-xs font-medium lg:block">
+            {shortBrand(study.brand)}
+          </span>
+        </>
+      )}
     </button>
   );
 }
@@ -94,10 +107,12 @@ function CaseStudyPager({
 
   return (
     <div className="border-b border-border/40">
-      <div className="flex items-center justify-between gap-3 pb-3">
-        <NavArrow dir={-1} study={prev} onClick={() => onStep(-1)} />
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 pb-3">
+        <div className="min-w-0 justify-self-start">
+          <NavArrow dir={-1} study={prev} onClick={() => onStep(-1)} />
+        </div>
 
-        <div className="min-w-0 text-center">
+        <div className="min-w-0 max-w-[min(70%,420px)] justify-self-center text-center">
           <span className="font-numeric text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
             Case Study {String(active + 1).padStart(2, "0")} /{" "}
             {String(studies.length).padStart(2, "0")}
@@ -120,7 +135,9 @@ function CaseStudyPager({
           </AnimatePresence>
         </div>
 
-        <NavArrow dir={1} study={next} onClick={() => onStep(1)} />
+        <div className="min-w-0 justify-self-end">
+          <NavArrow dir={1} study={next} onClick={() => onStep(1)} />
+        </div>
       </div>
 
       <JumpRail studies={studies} active={active} onSelect={onSelect} />

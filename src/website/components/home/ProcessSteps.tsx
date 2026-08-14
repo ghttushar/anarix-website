@@ -37,8 +37,8 @@ const steps: Step[] = [
 ];
 
 /**
- * One step at a time: each card owns a tall scroll track and pins centred in the
- * viewport while it is the active step, then hands over to the next one.
+ * One step at a time: cards are stacked in a compact list; the card crossing
+ * the viewport middle stays sharp while the others fall slightly out of focus.
  */
 const StepPanel = ({
   step,
@@ -49,24 +49,23 @@ const StepPanel = ({
   index: number;
   onActive: (i: number) => void;
 }) => {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const active = useInView(trackRef, { margin: "-45% 0px -45% 0px" });
+  const ref = useRef<HTMLDivElement>(null);
+  const active = useInView(ref, { margin: "-40% 0px -40% 0px" });
 
   useEffect(() => {
     if (active) onActive(index);
   }, [active, index, onActive]);
 
   return (
-    <div ref={trackRef} className="h-[85vh] lg:h-screen flex items-center">
+    <div ref={ref} className="relative">
       <motion.div
-        className="sticky w-full"
-        style={{ top: "22vh" }}
+        className="relative w-full"
         animate={{
-          opacity: active ? 1 : 0.18,
-          scale: active ? 1 : 0.94,
-          y: active ? 0 : 16,
+          opacity: active ? 1 : 0.55,
+          scale: active ? 1 : 0.98,
+          filter: active ? "blur(0px)" : "blur(4px)",
         }}
-        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
         <div
           className={`relative p-8 sm:p-12 lg:p-14 rounded-3xl border bg-card/70 backdrop-blur-xl transition-colors duration-500 ${
@@ -125,7 +124,7 @@ const ProcessSteps = () => {
           </h2>
         </motion.div>
 
-        <div className="relative max-w-5xl mx-auto">
+        <div className="relative max-w-5xl mx-auto space-y-6 lg:space-y-8">
           {/* Step progress rail */}
           <div className="hidden lg:flex flex-col gap-3 items-center absolute -left-10 top-0 h-full pt-[24vh]">
             <div className="sticky top-[24vh] flex flex-col gap-3">

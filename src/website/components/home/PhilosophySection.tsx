@@ -129,10 +129,16 @@ const MorphPanel = () => {
 };
 
 const FLOW_PATHS = [
-  "M 72 38 C 60 52, 54 68, 43 82",
-  "M 78 46 C 68 58, 62 72, 51 84",
-  "M 74 58 C 66 68, 60 76, 50 86",
+  "M 82 28 C 70 40, 58 52, 47 64",
+  "M 78 42 C 68 50, 57 58, 47 69",
+  "M 73 56 C 64 62, 55 66, 47 74",
 ];
+
+const FLOW_ENDS = [
+  [47, 64],
+  [47, 69],
+  [47, 74],
+] as const;
 
 const PhilosophySection = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -143,57 +149,6 @@ const PhilosophySection = () => {
 
   return (
     <section ref={ref} className="relative pad-section overflow-hidden border-t border-border/40">
-      {/* Flowing connector lines: from behind the visual into the
-          "Decisions, not to-do lists." card (desktop only). */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 hidden lg:block">
-        <svg
-          className="absolute inset-0 h-full w-full"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <linearGradient id="ws-flow-grad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" style={{ stopColor: "hsl(var(--periwinkle))", stopOpacity: 1 }} />
-              <stop offset="1" style={{ stopColor: "hsl(var(--primary))", stopOpacity: 1 }} />
-            </linearGradient>
-          </defs>
-          <g opacity={0.2}>
-            {FLOW_PATHS.map((d, i) => (
-              <motion.path
-                key={d}
-                d={d}
-                fill="none"
-                stroke="url(#ws-flow-grad)"
-                strokeWidth={i === 0 ? 1.6 : 1}
-                strokeLinecap="round"
-                vectorEffect="non-scaling-stroke"
-                style={{ pathLength: flowProgress }}
-              />
-            ))}
-            <motion.path
-              d={FLOW_PATHS[0]}
-              fill="none"
-              stroke="url(#ws-flow-grad)"
-              strokeWidth={0.9}
-              strokeLinecap="round"
-              strokeDasharray="3 7"
-              vectorEffect="non-scaling-stroke"
-              animate={{ strokeDashoffset: [0, -50] }}
-              transition={{ duration: 2.6, repeat: Infinity, ease: "linear" }}
-            />
-          </g>
-        </svg>
-        <motion.span
-          className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary"
-          style={{
-            left: "43%",
-            top: "82%",
-            scale: flowProgress,
-            boxShadow: "0 0 12px hsl(var(--primary) / 0.8)",
-          }}
-        />
-      </div>
-
       <div className="container-wide px-4">
         <div className="grid lg:grid-cols-2 gap-grid-lg items-center">
           <motion.div style={{ x: textX }}>
@@ -269,6 +224,68 @@ const PhilosophySection = () => {
               <MorphPanel />
             </div>
           </motion.div>
+        </div>
+
+        {/* Flowing connector lines: from behind the visual into the
+            "Decisions, not to-do lists." card (desktop only). Drawn above the
+            grid content so the connection reads, with a glow dot landing on
+            the card's right edge. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-4 top-0 bottom-0 hidden lg:block"
+        >
+          <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="ws-flow-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" style={{ stopColor: "hsl(var(--periwinkle))", stopOpacity: 1 }} />
+                <stop offset="1" style={{ stopColor: "hsl(var(--primary))", stopOpacity: 1 }} />
+              </linearGradient>
+            </defs>
+            <g opacity={0.45}>
+              {FLOW_PATHS.map((d, i) => (
+                <motion.path
+                  key={d}
+                  d={d}
+                  fill="none"
+                  stroke="url(#ws-flow-grad)"
+                  strokeWidth={i === 0 ? 2.2 : 1.4}
+                  strokeLinecap="round"
+                  vectorEffect="non-scaling-stroke"
+                  style={{ pathLength: flowProgress }}
+                />
+              ))}
+              {FLOW_ENDS.map(([cx, cy]) => (
+                <motion.circle
+                  key={`${cx}-${cy}`}
+                  cx={cx}
+                  cy={cy}
+                  r={0.55}
+                  fill="url(#ws-flow-grad)"
+                  style={{ opacity: flowProgress }}
+                />
+              ))}
+              <motion.path
+                d={FLOW_PATHS[0]}
+                fill="none"
+                stroke="url(#ws-flow-grad)"
+                strokeWidth={1.3}
+                strokeLinecap="round"
+                strokeDasharray="4 8"
+                vectorEffect="non-scaling-stroke"
+                animate={{ strokeDashoffset: [0, -50] }}
+                transition={{ duration: 2.6, repeat: Infinity, ease: "linear" }}
+              />
+            </g>
+          </svg>
+          <motion.span
+            className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary"
+            style={{
+              left: "47%",
+              top: "69%",
+              scale: flowProgress,
+              boxShadow: "0 0 12px hsl(var(--primary) / 0.8)",
+            }}
+          />
         </div>
       </div>
     </section>

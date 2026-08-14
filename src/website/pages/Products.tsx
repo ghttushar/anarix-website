@@ -329,8 +329,8 @@ const mcpTools = [
 
 function McpSection() {
   return (
-    <section className="pad-section-compact border-t border-border/40">
-      <div className="rounded-3xl border border-primary/20 bg-primary/5 p-6 sm:p-10">
+    <section className="pad-section-compact">
+      <div className="rounded-3xl border border-primary/20 bg-primary/5 p-6 sm:p-12">
         <Reveal>
           <SectionHead
             align="center"
@@ -426,10 +426,10 @@ const Products = () => {
           </motion.div>
         </div>
 
+        <McpSection />
         <PlatformSection />
         <JivaSection />
         <SignalsSection />
-        <McpSection />
 
         <LeadCaptureBand
           eyebrow="See it on your data"
