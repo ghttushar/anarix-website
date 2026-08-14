@@ -37,8 +37,9 @@ const ListingSpotlight = () => {
     return () => cancelAnimationFrame(raf);
   }, [autoplay, reduceMotion]);
 
-  const fixesDone = Math.round((reveal / 100) * FIXES.length);
-  const score = Math.round(41 + (reveal / 100) * 53);
+  const progress = 100 - reveal;
+  const fixesDone = Math.round((progress / 100) * FIXES.length);
+  const score = Math.round(41 + (progress / 100) * 53);
 
   return (
     <section className="relative pad-section overflow-hidden">
@@ -152,7 +153,7 @@ const ListingSpotlight = () => {
                     <Star
                       key={i}
                       className="w-4 h-4"
-                      style={{ opacity: i < 3 + Math.round((reveal / 100) * 2) ? 1 : 0.25 }}
+                      style={{ opacity: i < 3 + Math.round((progress / 100) * 2) ? 1 : 0.25 }}
                     />
                   ))}
                 </div>

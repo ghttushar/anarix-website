@@ -128,24 +128,11 @@ const MorphPanel = () => {
   );
 };
 
-const FLOW_PATHS = [
-  "M 82 28 C 70 40, 58 52, 47 64",
-  "M 78 42 C 68 50, 57 58, 47 69",
-  "M 73 56 C 64 62, 55 66, 47 74",
-];
-
-const FLOW_ENDS = [
-  [47, 64],
-  [47, 69],
-  [47, 74],
-] as const;
-
 const PhilosophySection = () => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const textX = useTransform(scrollYProgress, [0, 0.5, 1], [-20, 0, 10]);
   const animScale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.85, 1, 1, 0.9]);
-  const flowProgress = useTransform(scrollYProgress, [0.08, 0.5], [0, 1]);
 
   return (
     <section ref={ref} className="relative pad-section overflow-hidden border-t border-border/40">
@@ -191,7 +178,7 @@ const PhilosophySection = () => {
               ].map((item, i) => (
                 <motion.div
                   key={item.title}
-                  className="p-4 rounded-xl border border-border/30 bg-card/20 hover:bg-card/40 transition-colors duration-500"
+                  className="p-4 rounded-xl border border-border/30 bg-card/90 backdrop-blur-sm hover:bg-card/100 transition-colors duration-500"
                   initial={{ opacity: 0, x: -12, scale: 0.97 }}
                   whileInView={{ opacity: 1, x: 0, scale: 1 }}
                   viewport={{ once: true, margin: "-40px" }}
@@ -224,68 +211,6 @@ const PhilosophySection = () => {
               <MorphPanel />
             </div>
           </motion.div>
-        </div>
-
-        {/* Flowing connector lines: from behind the visual into the
-            "Decisions, not to-do lists." card (desktop only). Drawn above the
-            grid content so the connection reads, with a glow dot landing on
-            the card's right edge. */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-4 top-0 bottom-0 hidden lg:block"
-        >
-          <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="ws-flow-grad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" style={{ stopColor: "hsl(var(--periwinkle))", stopOpacity: 1 }} />
-                <stop offset="1" style={{ stopColor: "hsl(var(--primary))", stopOpacity: 1 }} />
-              </linearGradient>
-            </defs>
-            <g opacity={0.45}>
-              {FLOW_PATHS.map((d, i) => (
-                <motion.path
-                  key={d}
-                  d={d}
-                  fill="none"
-                  stroke="url(#ws-flow-grad)"
-                  strokeWidth={i === 0 ? 2.2 : 1.4}
-                  strokeLinecap="round"
-                  vectorEffect="non-scaling-stroke"
-                  style={{ pathLength: flowProgress }}
-                />
-              ))}
-              {FLOW_ENDS.map(([cx, cy]) => (
-                <motion.circle
-                  key={`${cx}-${cy}`}
-                  cx={cx}
-                  cy={cy}
-                  r={0.55}
-                  fill="url(#ws-flow-grad)"
-                  style={{ opacity: flowProgress }}
-                />
-              ))}
-              <motion.path
-                d={FLOW_PATHS[0]}
-                fill="none"
-                stroke="url(#ws-flow-grad)"
-                strokeWidth={1.3}
-                strokeLinecap="round"
-                strokeDasharray="4 8"
-                vectorEffect="non-scaling-stroke"
-                animate={{ strokeDashoffset: [0, -50] }}
-                transition={{ duration: 2.6, repeat: Infinity, ease: "linear" }}
-              />
-            </g>
-          </svg>
-          <motion.span
-            className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary"
-            style={{
-              left: "47%",
-              top: "69%",
-              scale: flowProgress,
-              boxShadow: "0 0 12px hsl(var(--primary) / 0.8)",
-            }}
-          />
         </div>
       </div>
     </section>

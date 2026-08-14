@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Trophy } from "lucide-react";
 import HeroDataViz from "./HeroDataViz";
 import HeroManagedStudio from "./HeroManagedStudio";
 import amazonAdsBadge from "@/assets/badges/badge-amazon-ads-verified-partner.png";
@@ -127,6 +127,19 @@ const HeroSectionNew = () => {
               style={{ height: "clamp(72px, 7vw, 104px)" }}
             />
           ))}
+        </motion.div>
+
+        {/* Achievement */}
+        <motion.div
+          className="mt-6 flex items-center gap-3"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.0, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <Trophy className="h-7 w-7 shrink-0 text-primary" />
+          <p className="text-base sm:text-lg font-bold text-foreground">
+            Finalist for Walmart Connect Partner twice 2026-2025
+          </p>
         </motion.div>
       </div>
     </section>

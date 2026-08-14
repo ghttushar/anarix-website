@@ -14,6 +14,7 @@ import {
   Cable,
   Braces,
   Lock,
+  Bot,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import PageLayout from "@/website/components/PageLayout";
@@ -23,6 +24,7 @@ import ProfitabilityDashboardMock from "@/website/components/platform/Profitabil
 import MarginWaterfallChart from "@/website/components/platform/MarginWaterfallChart";
 import CampaignTableMock from "@/website/components/platform/CampaignTableMock";
 import JivaAssistantPanel from "@/website/components/platform/JivaAssistantPanel";
+import McpFlowViz from "@/website/components/platform/McpFlowViz";
 import NextStep from "@/website/components/marketing/NextStep";
 import LeadCaptureBand from "@/website/components/lead-capture/LeadCaptureBand";
 
@@ -257,7 +259,7 @@ function SignalsSection() {
               <FileSearch className="w-3.5 h-3.5" /> Signals
             </>
           }
-          title="A day begins with a letter,"
+          title="A day begins with a brief,"
           accent="not a dashboard."
           body="Every morning, the things that deserve your attention, with the evidence, the reasoning and a confidence score behind each one."
         />
@@ -328,6 +330,29 @@ const mcpTools = [
 ];
 
 function McpSection() {
+  const mcpPillars = [
+    {
+      icon: Cable,
+      title: "Live & structured",
+      text: "Marketplace state modelled as typed tools any model can call.",
+    },
+    {
+      icon: Bot,
+      title: "Any model",
+      text: "Claude, GPT, Gemini, LLaMA, open-source - everyone speaks MCP.",
+    },
+    {
+      icon: Lock,
+      title: "Read-only by default",
+      text: "Nothing can be spent, changed or deployed without your review.",
+    },
+    {
+      icon: Braces,
+      title: "Built to answer",
+      text: "Account summaries, rule history and signals - plain, structured JSON.",
+    },
+  ];
+
   return (
     <section className="pad-section-compact">
       <div className="rounded-3xl border border-primary/20 bg-primary/5 p-6 sm:p-12">
@@ -341,9 +366,13 @@ function McpSection() {
             }
             title="Your marketplace data,"
             accent="AI ready."
-            body="Plug any model into live, structured marketplace data through Model Context Protocol. Universal, read-only by default and built to answer."
+            body="Plug into any AI and get structured marketplace data through MCP."
           />
         </Reveal>
+
+        <div className="mt-10">
+          <McpFlowViz />
+        </div>
 
         <div className="mt-10 grid sm:grid-cols-3 gap-4">
           {mcpTools.map((t, i) => (
@@ -373,6 +402,71 @@ function McpSection() {
             </motion.div>
           ))}
         </div>
+
+        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {mcpPillars.map((p, i) => (
+            <motion.div
+              key={p.title}
+              className="flex flex-col rounded-2xl border border-border/50 bg-card/80 p-5 backdrop-blur-sm"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: 0.15 + i * 0.08, ease: EASE }}
+            >
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
+                <p.icon className="h-4 w-4 text-primary" />
+              </span>
+              <p className="mt-3 text-sm font-semibold text-foreground">{p.title}</p>
+              <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{p.text}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="mt-10 mx-auto max-w-2xl overflow-hidden rounded-2xl border border-border/60 bg-card/80">
+          <div className="flex items-center justify-between border-b border-border/60 px-4 py-2.5">
+            <p className="font-mono text-xs text-muted-foreground">example · get_account_summary</p>
+            <div className="flex items-center gap-1.5" aria-hidden>
+              <span className="h-2 w-2 rounded-full bg-red-500/60" />
+              <span className="h-2 w-2 rounded-full bg-amber-500/60" />
+              <span className="h-2 w-2 rounded-full bg-green-500/60" />
+            </div>
+          </div>
+          <div className="space-y-3 p-4 sm:p-5">
+            <div className="rounded-xl bg-muted/60 px-3 py-2.5">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                Request
+              </p>
+              <p className="mt-1 font-mono text-xs text-foreground">
+                call_mcp: get_account_summary (marketplace: walmart, account: all)
+              </p>
+            </div>
+            <div className="rounded-xl bg-primary/5 px-3 py-2.5">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
+                Response
+              </p>
+              <pre className="mt-1 overflow-x-auto font-mono text-xs leading-relaxed text-foreground">
+{`{
+  "account": "us-rw-001",
+  "roas": 4.2,
+  "spend_cap": "$1,200 / day",
+  "active_rules": 17,
+  "read_only": true
+}`}
+              </pre>
+            </div>
+          </div>
+        </div>
+
+        <Reveal className="mt-10">
+          <div className="flex justify-center">
+            <Button
+              size="lg"
+              className="rounded-pill px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90 btn-shine"
+            >
+              Get Jiva MCP
+            </Button>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -397,8 +491,8 @@ const Products = () => {
               Everything <span className="text-gradient-primary">Anarix offers.</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              One platform, four ways in. The workspace, the AI operator, the daily letter and the
-              connection layer that ties them to your stack.
+              Four products. One connected platform. Your Workspace, AI operator, daily briefs,
+              and integrations - all working together in one place.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
