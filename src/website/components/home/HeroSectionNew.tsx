@@ -111,7 +111,7 @@ const HeroSectionNew = () => {
 
         {/* Official partner badges */}
         <motion.div
-          className="mt-6"
+          className="mt-6 w-fit max-w-full"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -132,8 +132,8 @@ const HeroSectionNew = () => {
             src={walmartFinalistBadge}
             alt="Walmart Connect Partner Finalist"
             loading="lazy"
-            className="mt-5 w-auto rounded-xl object-contain"
-            style={{ height: "clamp(44px, 4vw, 64px)" }}
+            className="mt-5 h-auto w-full rounded-xl object-contain"
+            style={{ aspectRatio: "3790 / 1044" }}
           />
         </motion.div>
       </div>
