@@ -186,7 +186,7 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
           >
             <h3 className="mt-3 font-display text-3xl font-semibold leading-[1.1] tracking-tight text-foreground sm:text-4xl">
               Paste one ASIN.
-              <span className="block text-primary">See what your hero image is costing you.</span>
+              <span className="block text-primary">See how your hero image is working you.</span>
             </h3>
             <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
               We grade the image, title and bullets against the rules the marketplace enforces, then
