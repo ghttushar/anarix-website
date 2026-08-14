@@ -259,7 +259,7 @@ function SignalsSection() {
           }
           title="A day begins with a letter,"
           accent="not a dashboard."
-          body="Every morning, the three things that deserve your attention, with the evidence, the reasoning and a confidence score behind each one."
+          body="Every morning, the things that deserve your attention, with the evidence, the reasoning and a confidence score behind each one."
         />
       </Reveal>
 
