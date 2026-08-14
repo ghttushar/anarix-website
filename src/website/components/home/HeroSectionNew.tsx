@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -41,19 +40,6 @@ const Channel = ({ children }: { children: string }) => (
 );
 
 const HeroSectionNew = () => {
-  const topRowRef = useRef<HTMLDivElement>(null);
-  const [topRowWidth, setTopRowWidth] = useState(0);
-
-  useEffect(() => {
-    const el = topRowRef.current;
-    if (!el) return;
-    const ro = new ResizeObserver((entries) => {
-      setTopRowWidth(entries[0].contentRect.width);
-    });
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
-
   return (
     <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden pt-24 pb-10">
       <HeroDataViz />
@@ -126,11 +112,19 @@ const HeroSectionNew = () => {
         {/* Official partner badges */}
         <motion.div
           className="mt-6"
+          style={
+            {
+              "--hero-badge-h": "clamp(72px, 7vw, 104px)",
+              "--hero-gap": "clamp(20px, 2vw, 32px)",
+              "--hero-row-w":
+                "calc(var(--hero-badge-h) * 2 + var(--hero-gap))",
+            } as React.CSSProperties
+          }
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div ref={topRowRef} className="flex flex-wrap items-center w-fit gap-5 sm:gap-8">
+          <div className="flex flex-wrap items-center w-fit gap-5 sm:gap-8">
             {topBadges.map((badge) => (
               <img
                 key={badge.alt}
@@ -138,7 +132,7 @@ const HeroSectionNew = () => {
                 alt={badge.alt}
                 loading="lazy"
                 className="w-auto rounded-xl object-contain"
-                style={{ height: "clamp(72px, 7vw, 104px)" }}
+                style={{ height: "var(--hero-badge-h)" }}
               />
             ))}
           </div>
@@ -146,8 +140,11 @@ const HeroSectionNew = () => {
             src={walmartFinalistBadge}
             alt="Walmart Connect Partner Finalist"
             loading="lazy"
-            className="mt-5 h-auto max-w-full rounded-xl object-contain"
-            style={{ width: topRowWidth || undefined, aspectRatio: "3790 / 1044" }}
+            className="mt-5 rounded-xl object-contain"
+            style={{
+              width: "var(--hero-row-w)",
+              aspectRatio: "3790 / 1044",
+            }}
           />
         </motion.div>
       </div>
