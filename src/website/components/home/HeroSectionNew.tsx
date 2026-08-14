@@ -130,7 +130,7 @@ const HeroSectionNew = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div ref={topRowRef} className="flex flex-wrap items-center gap-5 sm:gap-8">
+          <div ref={topRowRef} className="flex flex-wrap items-center w-fit gap-5 sm:gap-8">
             {topBadges.map((badge) => (
               <img
                 key={badge.alt}
