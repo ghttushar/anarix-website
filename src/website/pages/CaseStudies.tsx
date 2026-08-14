@@ -54,8 +54,8 @@ const CaseStudies = () => {
             Outcomes <span className="text-gradient-primary">on record.</span>
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Six partnerships, from starting point to strategy to result, with every figure drawn
-            from the partner&apos;s own reporting.
+            From starting point to strategy to result, with every figure drawn from the
+            partner&apos;s own reporting.
           </p>
         </motion.div>
       </div>
