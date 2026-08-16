@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { Play, Quote, Sparkles } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -94,7 +94,25 @@ const Byline = ({ person, inverted }: { person: Person; inverted?: boolean }) =>
   </div>
 );
 
-const VideoBody = ({ person }: { person: Person }) => {
+/** Slim attribution overlaid on the bottom of a video tile. */
+const OverlayByline = ({ person }: { person: Person }) => (
+  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/45 to-transparent pt-12 pb-4 px-4">
+    <div className="flex items-center gap-3">
+      <Avatar className="h-9 w-9 shrink-0 ring-2 ring-white/25">
+        <AvatarImage src={person.image} alt={person.author} className="object-cover" />
+        <AvatarFallback className="bg-gradient-to-br from-primary to-periwinkle text-primary-foreground font-bold">
+          {person.author[0]}
+        </AvatarFallback>
+      </Avatar>
+      <div className="min-w-0">
+        <div className="text-sm font-semibold text-white truncate">{person.author}</div>
+        <div className="text-xs text-white/70 truncate">{person.role}</div>
+      </div>
+    </div>
+  </div>
+);
+
+const VideoBody = ({ person, byline }: { person: Person; byline?: ReactNode }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [playing, setPlaying] = useState(false);
 
@@ -140,6 +158,7 @@ const VideoBody = ({ person }: { person: Person }) => {
       <div className="absolute top-3 left-3 px-2.5 py-1 rounded-pill bg-background/85 text-[10px] font-semibold uppercase tracking-[0.14em] text-foreground">
         Customer Story
       </div>
+      {byline}
     </div>
   );
 };
@@ -179,11 +198,11 @@ const TestimonialsWrapper = () => (
         <TrustMarquee />
       </div>
 
-      {/* Mosaic: row 1 = quote | portrait video | quote, row 2 = landscape video | portrait video.
-          Video cards lead with the quote. */}
+      {/* Mosaic: row 1 = quote | portrait | portrait | quote, row 2 = Joey split card.
+          Portrait videos are true 9:16 with a byline overlay scrim. */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
         <motion.article
-          className="relative lg:col-span-4 order-1 flex flex-col justify-center p-6 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"
+          className="relative lg:col-span-3 order-1 flex flex-col justify-center p-6 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"
           {...CARD_IN}
           transition={{ delay: 0.05, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
@@ -202,29 +221,31 @@ const TestimonialsWrapper = () => (
         </motion.article>
 
         <motion.article
-          className="lg:col-span-4 order-3 relative flex flex-col rounded-3xl border border-border shadow-medium overflow-hidden"
+          className="lg:col-span-3 order-3 relative overflow-hidden rounded-3xl border border-border shadow-medium"
           {...CARD_IN}
           transition={{ delay: 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           style={VIDEO_GRADIENT}
         >
-          <div className="p-5 flex flex-col gap-3 text-background">
-            <QuoteText
-              text={NAUSIL.quote}
-              inverted
-              className="text-sm leading-relaxed opacity-95 max-w-prose"
-              limit={140}
-            />
-            <Byline person={NAUSIL} inverted />
-          </div>
           <div className="relative" style={{ aspectRatio: "9 / 16" }}>
-            <VideoBody person={NAUSIL} />
+            <VideoBody person={NAUSIL} byline={<OverlayByline person={NAUSIL} />} />
           </div>
         </motion.article>
 
         <motion.article
-          className="relative lg:col-span-4 order-2 flex flex-col justify-center p-6 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"
+          className="lg:col-span-3 order-4 relative overflow-hidden rounded-3xl border border-border shadow-medium"
           {...CARD_IN}
           transition={{ delay: 0.15, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          style={VIDEO_GRADIENT}
+        >
+          <div className="relative" style={{ aspectRatio: "9 / 16" }}>
+            <VideoBody person={NEW_CUSTOMER} byline={<OverlayByline person={NEW_CUSTOMER} />} />
+          </div>
+        </motion.article>
+
+        <motion.article
+          className="relative lg:col-span-3 order-2 flex flex-col justify-center p-6 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"
+          {...CARD_IN}
+          transition={{ delay: 0.2, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
           <div
             className="absolute -bottom-16 -left-16 w-56 h-56 rounded-full opacity-20 pointer-events-none"
@@ -241,45 +262,21 @@ const TestimonialsWrapper = () => (
         </motion.article>
 
         <motion.article
-          className="lg:col-span-8 order-4 relative flex flex-col rounded-3xl border border-border shadow-medium overflow-hidden"
-          {...CARD_IN}
-          transition={{ delay: 0.2, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          style={VIDEO_GRADIENT}
-        >
-          <div className="p-5 flex flex-col gap-3 text-background">
-            <QuoteText
-              text={JOEY.quote}
-              inverted
-              className="text-sm leading-relaxed opacity-95 max-w-prose"
-              limit={140}
-            />
-            <Byline person={JOEY} inverted />
-          </div>
-          <div
-            className="relative flex-1 min-h-0"
-            style={{ aspectRatio: "16 / 9", maxHeight: "24rem" }}
-          >
-            <VideoBody person={JOEY} />
-          </div>
-        </motion.article>
-
-        <motion.article
-          className="lg:col-span-4 order-5 relative flex flex-col rounded-3xl border border-border shadow-medium overflow-hidden"
+          className="lg:col-span-12 order-5 relative flex flex-col lg:flex-row rounded-3xl border border-border shadow-medium overflow-hidden"
           {...CARD_IN}
           transition={{ delay: 0.25, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           style={VIDEO_GRADIENT}
         >
-          <div className="p-5 flex flex-col gap-3 text-background">
+          <div className="p-6 lg:p-8 flex flex-col justify-center gap-4 text-background lg:w-5/12">
             <QuoteText
-              text={NEW_CUSTOMER.quote}
+              text={JOEY.quote}
               inverted
-              className="text-sm leading-relaxed opacity-95 max-w-prose"
-              limit={140}
+              className="font-display text-lg sm:text-xl leading-[1.4] tracking-tight"
             />
-            <Byline person={NEW_CUSTOMER} inverted />
+            <Byline person={JOEY} inverted />
           </div>
-          <div className="relative" style={{ aspectRatio: "9 / 16" }}>
-            <VideoBody person={NEW_CUSTOMER} />
+          <div className="relative lg:w-7/12" style={{ aspectRatio: "16 / 9" }}>
+            <VideoBody person={JOEY} />
           </div>
         </motion.article>
       </div>
