@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles, Wand2, Zap } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronDown, ShieldCheck, Sparkles, Wand2, Zap } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { LISTING_INPUT_ERROR, parseListingInput } from "@/website/lib/listingInput";
+import { LISTING_INPUT_ERROR, parseListingInput, type Marketplace } from "@/website/lib/listingInput";
 
 type Step = "input" | "analyzing" | "result" | "done";
 
@@ -139,6 +139,7 @@ const ScoreDial = ({ value }: { value: number }) => {
  */
 const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
   const [step, setStep] = useState<Step>("input");
+  const [marketplace, setMarketplace] = useState<Marketplace>("amazon");
   const [asin, setAsin] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [pass, setPass] = useState(0);
@@ -185,12 +186,12 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
             transition={{ duration: 0.4, ease: EASE }}
           >
             <h3 className="mt-3 font-display text-3xl font-semibold leading-[1.1] tracking-tight text-foreground sm:text-4xl">
-              Paste one ASIN.
-              <span className="block text-primary">See how your hero image is working you.</span>
+              Your Hero Image Has 3 Seconds to Sell.
+              <span className="block text-primary">Is It Winning?</span>
             </h3>
             <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
-              We grade the image, title and bullets against the rules the marketplace enforces, then
-              rebuild the hero shot for you.
+              Get a free AI-powered audit, trained on thousands of top-converting Amazon listings, and
+              get a high-converting Hero Image generated for your product, 100% free.
             </p>
 
             <div className="mt-5 flex flex-wrap gap-2">
@@ -209,7 +210,7 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
             </div>
 
             <form
-              className="mt-7 flex flex-col gap-3 sm:flex-row"
+              className="mt-7 flex flex-col gap-3"
               onSubmit={(e) => {
                 e.preventDefault();
                 if (!parsed) {
@@ -221,7 +222,23 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
                 setStep("analyzing");
               }}
             >
-              <div className="min-w-0 flex-1">
+              <div className="flex items-stretch overflow-hidden rounded-pill border border-border bg-background shadow-sm">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMarketplace((m) => (m === "amazon" ? "walmart" : "amazon"));
+                    setAsin("");
+                    setError(null);
+                  }}
+                  className="flex items-center gap-2 border-r border-border px-4 text-sm font-medium text-foreground hover:bg-muted/40 transition-colors shrink-0"
+                >
+                  <span
+                    className={`inline-block h-2.5 w-2.5 rounded-full ${marketplace === "amazon" ? "bg-[#FF9900]" : "bg-[#0071DC]"}`}
+                  />
+                  {marketplace === "amazon" ? "Amazon" : "Walmart"}
+                  <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
+                </button>
+
                 <input
                   required
                   value={asin}
@@ -234,41 +251,50 @@ const ListingAuditFlow = ({ onComplete }: { onComplete: () => void }) => {
                   }}
                   aria-label="ASIN, Walmart item ID or product URL"
                   aria-invalid={error ? true : undefined}
-                  placeholder="B08XYZ1234, Walmart item ID or product URL"
-                  className={`${INPUT_CLASS} ${error ? "border-destructive" : ""}`}
+                  placeholder={
+                    marketplace === "amazon"
+                      ? "Enter Amazon ASIN"
+                      : "Enter Walmart Item ID"
+                  }
+                  className="flex-1 min-w-0 h-12 px-4 text-sm text-foreground bg-transparent placeholder:text-muted-foreground focus:outline-none"
                 />
-                <AnimatePresence>
-                  {error && (
-                    <motion.p
-                      className="mt-2 px-4 text-xs text-destructive"
-                      initial={{ opacity: 0, y: -4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0 }}
-                    >
-                      {error}
-                    </motion.p>
-                  )}
-                  {!error && parsed && (
-                    <motion.p
-                      className="mt-2 px-4 text-xs text-muted-foreground"
-                      initial={{ opacity: 0, y: -4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0 }}
-                    >
-                      {parsed.marketplace === "amazon" ? "Amazon" : "Walmart"} listing {parsed.id}{" "}
-                      recognised.
-                    </motion.p>
-                  )}
-                </AnimatePresence>
+
+                <Button
+                  type="submit"
+                  disabled={!parsed}
+                  className="h-12 shrink-0 bg-primary px-8 text-sm font-semibold text-primary-foreground btn-shine hover:bg-primary/90 disabled:opacity-50"
+                >
+                  Run
+                </Button>
               </div>
-              <Button
-                type="submit"
-                disabled={!parsed}
-                className="group h-11 shrink-0 rounded-pill bg-primary px-6 text-primary-foreground btn-shine hover:bg-primary/90 disabled:opacity-50"
-              >
-                Analyze my listing
-                <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </Button>
+
+              <AnimatePresence>
+                {error && (
+                  <motion.p
+                    className="px-4 text-xs text-destructive"
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    {error}
+                  </motion.p>
+                )}
+                {!error && parsed && (
+                  <motion.p
+                    className="px-4 text-xs text-muted-foreground"
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    {parsed.marketplace === "amazon" ? "Amazon" : "Walmart"} listing {parsed.id}{" "}
+                    recognised.
+                  </motion.p>
+                )}
+              </AnimatePresence>
+
+              <p className="text-center text-xs font-medium tracking-wide text-muted-foreground">
+                Free Trial. No Credit Card. Just Results.
+              </p>
             </form>
           </motion.div>
         )}
