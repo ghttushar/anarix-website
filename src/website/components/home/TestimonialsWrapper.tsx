@@ -37,6 +37,7 @@ const JAMES: Person = {
 
 const NAUSIL: Person = {
   src: nasVideo.url,
+  poster: "/testimonials/nas-poster.jpg",
   quote:
     "Working with Anarix has been a game changer. In just my second month, I've already seen a 20–22% increase in sales. They're rebuilding my website, helping grow my Amazon presence, and now expanding into Walmart and TikTok Shop.",
   author: "Nausil Zaheer (Nas)",
@@ -154,12 +155,12 @@ const VIDEO_GRADIENT = {
 };
 
 const TestimonialsWrapper = () => (
-  <section className="relative py-16 px-6 overflow-hidden">
+  <section className="relative py-20 px-6 overflow-hidden">
     <div className="absolute inset-0 bg-gradient-to-b from-accent/20 via-background to-accent/10" />
 
     <div className="relative container-wide px-4">
       <motion.div
-        className="max-w-5xl mb-6"
+        className="max-w-5xl mb-8"
         initial={{ opacity: 0, y: 14 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
@@ -174,7 +175,7 @@ const TestimonialsWrapper = () => (
         </h2>
       </motion.div>
 
-      <div className="mb-6">
+      <div className="mb-8">
         <TrustMarquee />
       </div>
 
@@ -182,7 +183,7 @@ const TestimonialsWrapper = () => (
           Video cards lead with the quote. */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
         <motion.article
-          className="relative lg:col-span-4 flex flex-col p-6 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"
+          className="relative lg:col-span-4 order-1 flex flex-col justify-center p-6 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"
           {...CARD_IN}
           transition={{ delay: 0.05, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
@@ -192,18 +193,16 @@ const TestimonialsWrapper = () => (
               background: "radial-gradient(circle, hsl(var(--primary) / 0.25), transparent 70%)",
             }}
           />
-          <Quote className="w-8 h-8 text-primary/30 mb-3" strokeWidth={1.5} />
+          <Quote className="w-10 h-10 text-primary/20 mb-3" strokeWidth={1.5} />
           <QuoteText
             text={FIRAT.quote}
             className="font-display text-lg sm:text-xl text-foreground leading-[1.4] tracking-tight mb-5"
           />
-          <div className="mt-auto">
-            <Byline person={FIRAT} />
-          </div>
+          <Byline person={FIRAT} />
         </motion.article>
 
         <motion.article
-          className="lg:col-span-4 relative flex flex-col rounded-3xl border border-border shadow-medium overflow-hidden"
+          className="lg:col-span-4 order-3 relative flex flex-col rounded-3xl border border-border shadow-medium overflow-hidden"
           {...CARD_IN}
           transition={{ delay: 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           style={VIDEO_GRADIENT}
@@ -212,7 +211,7 @@ const TestimonialsWrapper = () => (
             <QuoteText
               text={NAUSIL.quote}
               inverted
-              className="text-sm leading-[1.5] italic opacity-95"
+              className="text-sm leading-relaxed opacity-95 max-w-prose"
               limit={140}
             />
             <Byline person={NAUSIL} inverted />
@@ -223,7 +222,7 @@ const TestimonialsWrapper = () => (
         </motion.article>
 
         <motion.article
-          className="relative lg:col-span-4 flex flex-col p-6 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"
+          className="relative lg:col-span-4 order-2 flex flex-col justify-center p-6 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"
           {...CARD_IN}
           transition={{ delay: 0.15, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
@@ -233,18 +232,16 @@ const TestimonialsWrapper = () => (
               background: "radial-gradient(circle, hsl(var(--periwinkle) / 0.4), transparent 70%)",
             }}
           />
-          <Quote className="w-8 h-8 text-primary/30 mb-3" strokeWidth={1.5} />
+          <Quote className="w-10 h-10 text-primary/20 mb-3" strokeWidth={1.5} />
           <QuoteText
             text={JAMES.quote}
             className="font-display text-lg sm:text-xl text-foreground leading-[1.4] tracking-tight mb-5"
           />
-          <div className="mt-auto">
-            <Byline person={JAMES} />
-          </div>
+          <Byline person={JAMES} />
         </motion.article>
 
         <motion.article
-          className="lg:col-span-8 relative flex flex-col rounded-3xl border border-border shadow-medium overflow-hidden"
+          className="lg:col-span-8 order-4 relative flex flex-col rounded-3xl border border-border shadow-medium overflow-hidden"
           {...CARD_IN}
           transition={{ delay: 0.2, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           style={VIDEO_GRADIENT}
@@ -253,18 +250,21 @@ const TestimonialsWrapper = () => (
             <QuoteText
               text={JOEY.quote}
               inverted
-              className="text-sm leading-[1.5] italic opacity-95"
+              className="text-sm leading-relaxed opacity-95 max-w-prose"
               limit={140}
             />
             <Byline person={JOEY} inverted />
           </div>
-          <div className="relative flex-1 min-h-[12rem]">
+          <div
+            className="relative flex-1 min-h-0"
+            style={{ aspectRatio: "16 / 9", maxHeight: "24rem" }}
+          >
             <VideoBody person={JOEY} />
           </div>
         </motion.article>
 
         <motion.article
-          className="lg:col-span-4 relative flex flex-col rounded-3xl border border-border shadow-medium overflow-hidden"
+          className="lg:col-span-4 order-5 relative flex flex-col rounded-3xl border border-border shadow-medium overflow-hidden"
           {...CARD_IN}
           transition={{ delay: 0.25, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           style={VIDEO_GRADIENT}
@@ -273,7 +273,7 @@ const TestimonialsWrapper = () => (
             <QuoteText
               text={NEW_CUSTOMER.quote}
               inverted
-              className="text-sm leading-[1.5] italic opacity-95"
+              className="text-sm leading-relaxed opacity-95 max-w-prose"
               limit={140}
             />
             <Byline person={NEW_CUSTOMER} inverted />
