@@ -198,13 +198,24 @@ const TestimonialsWrapper = () => (
         <TrustMarquee />
       </div>
 
-      {/* Mosaic: row 1 = quote | portrait | portrait | quote, row 2 = Joey split card.
-          Portrait videos are true 9:16 with a byline overlay scrim. */}
+      {/* Mosaic: portrait videos flank the grid on both edges (rows 1-2),
+          two quote blocks sit on the top row and the landscape story fills row 2. */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
         <motion.article
-          className="relative lg:col-span-3 order-1 flex flex-col justify-center p-6 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"
+          className="lg:col-span-3 lg:col-start-1 lg:row-start-1 lg:row-span-2 relative overflow-hidden rounded-3xl border border-border shadow-medium min-h-[460px] lg:min-h-0"
           {...CARD_IN}
           transition={{ delay: 0.05, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          style={VIDEO_GRADIENT}
+        >
+          <div className="relative h-full min-h-[460px]">
+            <VideoBody person={NAUSIL} byline={<OverlayByline person={NAUSIL} />} />
+          </div>
+        </motion.article>
+
+        <motion.article
+          className="relative lg:col-span-3 lg:col-start-4 lg:row-start-1 flex flex-col justify-center p-6 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"
+          {...CARD_IN}
+          transition={{ delay: 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
           <div
             className="absolute -top-10 -right-10 w-40 h-40 rounded-full opacity-30 pointer-events-none"
@@ -215,37 +226,15 @@ const TestimonialsWrapper = () => (
           <Quote className="w-10 h-10 text-primary/20 mb-3" strokeWidth={1.5} />
           <QuoteText
             text={FIRAT.quote}
-            className="font-display text-lg sm:text-xl text-foreground leading-[1.4] tracking-tight mb-5"
+            className="font-display text-base sm:text-lg text-foreground leading-[1.45] tracking-tight mb-5"
           />
           <Byline person={FIRAT} />
         </motion.article>
 
         <motion.article
-          className="lg:col-span-3 order-3 relative overflow-hidden rounded-3xl border border-border shadow-medium"
-          {...CARD_IN}
-          transition={{ delay: 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          style={VIDEO_GRADIENT}
-        >
-          <div className="relative" style={{ aspectRatio: "9 / 16" }}>
-            <VideoBody person={NAUSIL} byline={<OverlayByline person={NAUSIL} />} />
-          </div>
-        </motion.article>
-
-        <motion.article
-          className="lg:col-span-3 order-4 relative overflow-hidden rounded-3xl border border-border shadow-medium"
+          className="relative lg:col-span-3 lg:col-start-7 lg:row-start-1 flex flex-col justify-center p-6 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"
           {...CARD_IN}
           transition={{ delay: 0.15, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          style={VIDEO_GRADIENT}
-        >
-          <div className="relative" style={{ aspectRatio: "9 / 16" }}>
-            <VideoBody person={NEW_CUSTOMER} byline={<OverlayByline person={NEW_CUSTOMER} />} />
-          </div>
-        </motion.article>
-
-        <motion.article
-          className="relative lg:col-span-3 order-2 flex flex-col justify-center p-6 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"
-          {...CARD_IN}
-          transition={{ delay: 0.2, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
           <div
             className="absolute -bottom-16 -left-16 w-56 h-56 rounded-full opacity-20 pointer-events-none"
@@ -256,30 +245,42 @@ const TestimonialsWrapper = () => (
           <Quote className="w-10 h-10 text-primary/20 mb-3" strokeWidth={1.5} />
           <QuoteText
             text={JAMES.quote}
-            className="font-display text-lg sm:text-xl text-foreground leading-[1.4] tracking-tight mb-5"
+            className="font-display text-base sm:text-lg text-foreground leading-[1.45] tracking-tight mb-5"
           />
           <Byline person={JAMES} />
         </motion.article>
 
         <motion.article
-          className="lg:col-span-12 order-5 relative flex flex-col lg:flex-row rounded-3xl border border-border shadow-medium overflow-hidden"
+          className="lg:col-span-3 lg:col-start-10 lg:row-start-1 lg:row-span-2 relative overflow-hidden rounded-3xl border border-border shadow-medium min-h-[460px] lg:min-h-0"
+          {...CARD_IN}
+          transition={{ delay: 0.2, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          style={VIDEO_GRADIENT}
+        >
+          <div className="relative h-full min-h-[460px]">
+            <VideoBody person={NEW_CUSTOMER} byline={<OverlayByline person={NEW_CUSTOMER} />} />
+          </div>
+        </motion.article>
+
+        <motion.article
+          className="lg:col-span-6 lg:col-start-4 lg:row-start-2 relative flex flex-col rounded-3xl border border-border shadow-medium overflow-hidden"
           {...CARD_IN}
           transition={{ delay: 0.25, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           style={VIDEO_GRADIENT}
         >
-          <div className="p-6 lg:p-8 flex flex-col justify-center gap-4 text-background lg:w-5/12">
+          <div className="p-6 flex flex-col gap-3 text-background">
             <QuoteText
               text={JOEY.quote}
               inverted
-              className="font-display text-lg sm:text-xl leading-[1.4] tracking-tight"
+              className="text-sm sm:text-base leading-relaxed opacity-95"
             />
             <Byline person={JOEY} inverted />
           </div>
-          <div className="relative lg:w-7/12" style={{ aspectRatio: "16 / 9" }}>
+          <div className="relative w-full" style={{ aspectRatio: "16 / 9" }}>
             <VideoBody person={JOEY} />
           </div>
         </motion.article>
       </div>
+
     </div>
   </section>
 );
