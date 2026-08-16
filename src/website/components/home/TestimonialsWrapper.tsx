@@ -280,7 +280,6 @@ const TestimonialsWrapper = () => (
           </div>
         </motion.article>
       </div>
-
     </div>
   </section>
 );

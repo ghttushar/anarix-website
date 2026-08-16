@@ -371,7 +371,9 @@ function McpSection() {
 
             <div className="overflow-hidden rounded-2xl border border-border/60 bg-card/80">
               <div className="flex items-center justify-between border-b border-border/60 px-4 py-2.5">
-                <p className="font-mono text-xs text-muted-foreground">example · get_account_summary</p>
+                <p className="font-mono text-xs text-muted-foreground">
+                  example · get_account_summary
+                </p>
                 <div className="flex items-center gap-1.5" aria-hidden>
                   <span className="h-2 w-2 rounded-full bg-red-500/60" />
                   <span className="h-2 w-2 rounded-full bg-amber-500/60" />
@@ -392,7 +394,7 @@ function McpSection() {
                     Response
                   </p>
                   <pre className="mt-1 overflow-x-auto font-mono text-xs leading-relaxed text-foreground">
-{`{
+                    {`{
   "account": "us-rw-001",
   "roas": 4.2,
   "spend_cap": "$1,200 / day",
@@ -440,8 +442,8 @@ const Products = () => {
               Everything <span className="text-gradient-primary">Anarix offers.</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Four products. One connected platform. Your Workspace, AI operator, daily briefs,
-              and integrations - all working together in one place.
+              Four products. One connected platform. Your Workspace, AI operator, daily briefs, and
+              integrations - all working together in one place.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
