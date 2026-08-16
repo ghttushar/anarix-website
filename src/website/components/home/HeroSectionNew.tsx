@@ -116,8 +116,7 @@ const HeroSectionNew = () => {
             {
               "--hero-badge-h": "clamp(72px, 7vw, 104px)",
               "--hero-gap": "clamp(20px, 2vw, 32px)",
-              "--hero-row-w":
-                "calc(var(--hero-badge-h) * 2 + var(--hero-gap))",
+              "--hero-row-w": "calc(var(--hero-badge-h) * 2 + var(--hero-gap))",
             } as React.CSSProperties
           }
           initial={{ opacity: 0, y: 12 }}
