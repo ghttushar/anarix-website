@@ -216,7 +216,7 @@ const TestimonialsWrapper = () => (
             />
             <Byline person={NAUSIL} inverted />
           </div>
-          <div className="relative flex-1 min-h-[22rem]">
+          <div className="relative" style={{ aspectRatio: "9 / 16" }}>
             <VideoBody person={NAUSIL} />
           </div>
         </motion.article>
@@ -278,7 +278,7 @@ const TestimonialsWrapper = () => (
             />
             <Byline person={NEW_CUSTOMER} inverted />
           </div>
-          <div className="relative flex-1 min-h-[22rem]">
+          <div className="relative" style={{ aspectRatio: "9 / 16" }}>
             <VideoBody person={NEW_CUSTOMER} />
           </div>
         </motion.article>
