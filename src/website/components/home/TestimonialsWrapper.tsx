@@ -180,60 +180,59 @@ const TestimonialsWrapper = () => (
         <TrustMarquee />
       </div>
 
-      <div className="flex flex-col gap-4">
-        {/* Row 1: portrait videos side by side */}
-        <div className="flex flex-col sm:flex-row gap-4">
-          <motion.article
-            className="w-full sm:w-1/2 relative flex flex-col overflow-hidden rounded-3xl border border-border shadow-medium"
-            {...CARD_IN}
-            transition={{ delay: 0.05, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            style={VIDEO_GRADIENT}
-          >
-            <div className="relative w-full" style={{ aspectRatio: "3 / 4" }}>
-              <VideoBody person={NAUSIL} />
-            </div>
-            <div className="p-5 flex flex-1 flex-col justify-center gap-3 text-background">
-              <QuoteText
-                text={NAUSIL.quote}
-                inverted
-                className="text-sm leading-relaxed opacity-95"
-              />
-              <Byline person={NAUSIL} inverted />
-            </div>
-          </motion.article>
-
-          <motion.article
-            className="w-full sm:w-1/2 relative flex flex-col overflow-hidden rounded-3xl border border-border shadow-medium"
-            {...CARD_IN}
-            transition={{ delay: 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            style={VIDEO_GRADIENT}
-          >
-            <div className="relative w-full" style={{ aspectRatio: "3 / 4" }}>
-              <VideoBody person={BRIANNA} />
-            </div>
-            <div className="p-5 flex flex-1 flex-col justify-center gap-3 text-background">
-              <QuoteText
-                text={BRIANNA.quote}
-                inverted
-                className="text-sm leading-relaxed opacity-95"
-              />
-              <Byline person={BRIANNA} inverted />
-            </div>
-          </motion.article>
-        </div>
-
-        {/* Row 2: Joey video full width */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4">
+        {/* Nas portrait video */}
         <motion.article
-          className="relative flex flex-col rounded-3xl border border-border shadow-medium overflow-hidden"
+          className="lg:col-span-3 relative flex flex-col overflow-hidden rounded-3xl border border-border shadow-medium"
+          {...CARD_IN}
+          transition={{ delay: 0.05, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          style={VIDEO_GRADIENT}
+        >
+          <div className="relative w-full" style={{ aspectRatio: "3 / 4" }}>
+            <VideoBody person={NAUSIL} />
+          </div>
+          <div className="p-5 flex flex-1 flex-col justify-center gap-3 text-background">
+            <QuoteText
+              text={NAUSIL.quote}
+              inverted
+              className="text-sm leading-relaxed opacity-95"
+            />
+            <Byline person={NAUSIL} inverted />
+          </div>
+        </motion.article>
+
+        {/* Brianna portrait video */}
+        <motion.article
+          className="lg:col-span-3 relative flex flex-col overflow-hidden rounded-3xl border border-border shadow-medium"
+          {...CARD_IN}
+          transition={{ delay: 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          style={VIDEO_GRADIENT}
+        >
+          <div className="relative w-full" style={{ aspectRatio: "3 / 4" }}>
+            <VideoBody person={BRIANNA} />
+          </div>
+          <div className="p-5 flex flex-1 flex-col justify-center gap-3 text-background">
+            <QuoteText
+              text={BRIANNA.quote}
+              inverted
+              className="text-sm leading-relaxed opacity-95"
+            />
+            <Byline person={BRIANNA} inverted />
+          </div>
+        </motion.article>
+
+        {/* Joey landscape video */}
+        <motion.article
+          className="lg:col-span-3 relative flex flex-col rounded-3xl border border-border shadow-medium overflow-hidden"
           {...CARD_IN}
           transition={{ delay: 0.15, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           style={VIDEO_GRADIENT}
         >
-          <div className="p-6 flex flex-col gap-3 text-background">
+          <div className="p-5 flex flex-1 flex-col justify-center gap-3 text-background">
             <QuoteText
               text={JOEY.quote}
               inverted
-              className="text-sm sm:text-base leading-relaxed opacity-95"
+              className="text-sm leading-relaxed opacity-95"
             />
             <Byline person={JOEY} inverted />
           </div>
@@ -242,11 +241,29 @@ const TestimonialsWrapper = () => (
           </div>
         </motion.article>
 
-        {/* Row 3: Firat text card full width */}
+        {/* James text card */}
         <motion.article
-          className="relative flex flex-col justify-center p-6 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"
+          className="lg:col-span-3 relative flex flex-col justify-center p-6 rounded-3xl border border-border shadow-medium overflow-hidden"
           {...CARD_IN}
           transition={{ delay: 0.2, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          style={VIDEO_GRADIENT}
+        >
+          <div className="flex flex-col gap-3 text-background">
+            <Quote className="w-10 h-10 text-background/20 mb-3" strokeWidth={1.5} />
+            <QuoteText
+              text={JAMES.quote}
+              inverted
+              className="text-sm leading-relaxed opacity-95"
+            />
+            <Byline person={JAMES} inverted />
+          </div>
+        </motion.article>
+
+        {/* Firat text card full width */}
+        <motion.article
+          className="sm:col-span-2 lg:col-span-12 relative flex flex-col justify-center p-6 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"
+          {...CARD_IN}
+          transition={{ delay: 0.25, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
           <div
             className="absolute -top-10 -right-10 w-40 h-40 rounded-full opacity-30 pointer-events-none"
@@ -260,24 +277,6 @@ const TestimonialsWrapper = () => (
             className="font-display text-base sm:text-lg text-foreground leading-[1.45] tracking-tight mb-5"
           />
           <Byline person={FIRAT} />
-        </motion.article>
-
-        {/* Row 4: James text card full width */}
-        <motion.article
-          className="relative flex flex-col justify-center p-6 rounded-3xl border border-border shadow-medium overflow-hidden"
-          {...CARD_IN}
-          transition={{ delay: 0.25, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          style={VIDEO_GRADIENT}
-        >
-          <div className="flex flex-col gap-3 text-background">
-            <Quote className="w-10 h-10 text-background/20 mb-3" strokeWidth={1.5} />
-            <QuoteText
-              text={JAMES.quote}
-              inverted
-              className="text-sm sm:text-base leading-relaxed opacity-95"
-            />
-            <Byline person={JAMES} inverted />
-          </div>
         </motion.article>
       </div>
     </div>

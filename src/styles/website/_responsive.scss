@@ -82,6 +82,7 @@
     .sm\:text-\[11px\] { font-size: 11px; }
     .sm\:text-xs { font-size: 0.75rem; line-height: 1rem; }
     .sm\:w-1\/2 { width: 50%; }
+    .sm\:col-span-2 { grid-column: span 2 / span 2; }
   }
 
   @include bp(md) {
