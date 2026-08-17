@@ -8,8 +8,6 @@ import jamesImg from "@/assets/testimonials/james.jpg";
 import nausilImg from "@/assets/testimonials/nausil.png";
 import joeyImg from "@/assets/testimonials/joey-dweck.jpg";
 import briannaImg from "@/assets/testimonials/brianna.jpg";
-import nasVideo from "../../../../public/testimonials/video.mp4.asset.json";
-import joeyVideo from "../../../../public/testimonials/joey-dweck.mp4.asset.json";
 
 interface Person {
   quote: string;
@@ -36,9 +34,10 @@ const JAMES: Person = {
   image: jamesImg,
 };
 
+const CDN = "https://cdn.anarix.ai/new-anarix-website";
+
 const NAUSIL: Person = {
-  src: nasVideo.url,
-  poster: "/testimonials/nas-poster.jpg",
+  src: `${CDN}/Karma_organics.mp4`,
   quote:
     "Working with Anarix has been a game changer. In just my second month, I've already seen a 20–22% increase in sales. They're rebuilding my website, helping grow my Amazon presence, and now expanding into Walmart and TikTok Shop.",
   author: "Nausil Zaheer (Nas)",
@@ -47,7 +46,7 @@ const NAUSIL: Person = {
 };
 
 const JOEY: Person = {
-  src: joeyVideo.url,
+  src: `${CDN}/EHD.mp4`,
   poster: "/testimonials/joey-dweck-poster.jpg",
   quote:
     "They spoke to me about more than just advertising. They looked at my business very holistically, not just the Amazon marketplace, but the entire ecosystem. I felt that they were just a part of my team right away.",
@@ -57,7 +56,7 @@ const JOEY: Person = {
 };
 
 const BRIANNA: Person = {
-  src: "/testimonials/brianna.mp4",
+  src: `${CDN}/Aquasonic.MP4`,
   poster: "/testimonials/brianna-poster.jpg",
   quote:
     "Anarix feels like an extension of our own analytics function. They help us turn granular Walmart performance data into sharper, more data-driven retail media decisions.",
@@ -160,7 +159,7 @@ const TestimonialsWrapper = () => (
   <section className="relative py-20 px-6 overflow-hidden">
     <div className="absolute inset-0 bg-gradient-to-b from-accent/20 via-background to-accent/10" />
 
-    <div className="relative container-wide px-4">
+    <div className="relative container-max px-4">
       <motion.div
         className="max-w-5xl mb-8"
         initial={{ opacity: 0, y: 14 }}
@@ -181,12 +180,12 @@ const TestimonialsWrapper = () => (
         <TrustMarquee />
       </div>
 
-      {/* Bento: portrait videos column on the left (Nas, Brianna), landscape video
-          + text quote cards on the right (Joey, Firat, James). */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-        <div className="lg:col-span-4 flex flex-col gap-4">
+      {/* Bento: Nas and Brianna portrait videos side by side (fixed width),
+          Joey + quote cards to the right (flexible, shrink first). */}
+      <div className="flex flex-col xl:flex-row gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 xl:shrink-0">
           <motion.article
-            className="order-1 relative flex flex-col overflow-hidden rounded-3xl border border-border shadow-medium"
+            className="order-1 w-full sm:w-1/2 xl:w-[360px] xl:shrink-0 relative flex flex-col overflow-hidden rounded-3xl border border-border shadow-medium"
             {...CARD_IN}
             transition={{ delay: 0.05, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             style={VIDEO_GRADIENT}
@@ -205,7 +204,7 @@ const TestimonialsWrapper = () => (
           </motion.article>
 
           <motion.article
-            className="order-2 relative flex flex-col overflow-hidden rounded-3xl border border-border shadow-medium"
+            className="order-2 w-full sm:w-1/2 xl:w-[360px] xl:shrink-0 relative flex flex-col overflow-hidden rounded-3xl border border-border shadow-medium"
             {...CARD_IN}
             transition={{ delay: 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             style={VIDEO_GRADIENT}
@@ -224,7 +223,7 @@ const TestimonialsWrapper = () => (
           </motion.article>
         </div>
 
-        <div className="lg:col-span-8 flex flex-col gap-4">
+        <div className="flex-1 min-w-0 flex flex-col gap-4">
           <motion.article
             className="order-3 relative flex flex-col rounded-3xl border border-border shadow-medium overflow-hidden"
             {...CARD_IN}

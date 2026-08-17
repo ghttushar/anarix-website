@@ -152,6 +152,7 @@
 @include bp(lg) { .website-scope .section { padding: 8rem 1.5rem; } }
 .website-scope .container-page { max-width: 80rem; margin: 0 auto; }
 .website-scope .container-wide { max-width: 88rem; margin-inline: auto; }
+.website-scope .container-max { max-width: 96rem; margin-inline: auto; }
 
 /* Spacing tokens — canonical site rhythm. */
 .website-scope .pad-section { padding-block: $pad-section; }

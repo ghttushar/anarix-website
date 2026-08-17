@@ -3,8 +3,8 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Check, Star, ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import listingBefore from "@/assets/listing/listing-before.jpg";
-import listingAfter from "@/assets/listing/listing-after.jpg";
+import listingBefore from "@/assets/listing/listing-before.png";
+import listingAfter from "@/assets/listing/listing-after.png";
 import { useLeadCapture } from "../lead-capture/LeadCaptureContext";
 
 const FIXES = [
@@ -88,16 +88,16 @@ const ListingSpotlight = () => {
                 src={listingAfter}
                 alt="Managed listing hero image: product on a clean white background"
                 loading="lazy"
-                width={1024}
-                height={1024}
+                width={1254}
+                height={1254}
                 className="absolute inset-0 h-full w-full object-cover"
               />
               <img
                 src={listingBefore}
                 alt="Self-run listing hero image: product shot on a cluttered counter"
                 loading="lazy"
-                width={1024}
-                height={1024}
+                width={1254}
+                height={1254}
                 className="absolute inset-0 h-full w-full object-cover"
                 style={{
                   clipPath: `inset(0 ${100 - reveal}% 0 0)`,
