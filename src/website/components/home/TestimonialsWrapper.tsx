@@ -1,4 +1,4 @@
-import { useRef, useState, type ReactNode } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Play, Quote, Sparkles } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -7,6 +7,7 @@ import firatImg from "@/assets/testimonials/firat.png";
 import jamesImg from "@/assets/testimonials/james.jpg";
 import nausilImg from "@/assets/testimonials/nausil.png";
 import joeyImg from "@/assets/testimonials/joey-dweck.jpg";
+import briannaImg from "@/assets/testimonials/brianna.jpg";
 import nasVideo from "../../../../public/testimonials/video.mp4.asset.json";
 import joeyVideo from "../../../../public/testimonials/joey-dweck.mp4.asset.json";
 
@@ -55,13 +56,14 @@ const JOEY: Person = {
   image: joeyImg,
 };
 
-/** Placeholder testimonial - replace src, poster, author, role, quote and image with the real upload. */
-const NEW_CUSTOMER: Person = {
+/** Placeholder video - swap src with the real upload when ready. */
+const BRIANNA: Person = {
   src: nasVideo.url,
-  quote: "Placeholder quote for the next customer story.",
-  author: "New Customer",
-  role: "Company - Role",
-  image: jamesImg,
+  quote:
+    "Anarix feels like an extension of our own analytics function. They help us turn granular Walmart performance data into sharper, more data-driven retail media decisions.",
+  author: "Brianna",
+  role: "Director Retail Marketing at Aquasonic",
+  image: briannaImg,
 };
 
 /** Full quote, no truncation, no expander. */
@@ -94,25 +96,7 @@ const Byline = ({ person, inverted }: { person: Person; inverted?: boolean }) =>
   </div>
 );
 
-/** Slim attribution overlaid on the bottom of a video tile. */
-const OverlayByline = ({ person }: { person: Person }) => (
-  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/45 to-transparent pt-12 pb-4 px-4">
-    <div className="flex items-center gap-3">
-      <Avatar className="h-9 w-9 shrink-0 ring-2 ring-white/25">
-        <AvatarImage src={person.image} alt={person.author} className="object-cover" />
-        <AvatarFallback className="bg-gradient-to-br from-primary to-periwinkle text-primary-foreground font-bold">
-          {person.author[0]}
-        </AvatarFallback>
-      </Avatar>
-      <div className="min-w-0">
-        <div className="text-sm font-semibold text-white truncate">{person.author}</div>
-        <div className="text-xs text-white/70 truncate">{person.role}</div>
-      </div>
-    </div>
-  </div>
-);
-
-const VideoBody = ({ person, byline }: { person: Person; byline?: ReactNode }) => {
+const VideoBody = ({ person }: { person: Person }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [playing, setPlaying] = useState(false);
 
@@ -158,7 +142,6 @@ const VideoBody = ({ person, byline }: { person: Person; byline?: ReactNode }) =
       <div className="absolute top-3 left-3 px-2.5 py-1 rounded-pill bg-background/85 text-[10px] font-semibold uppercase tracking-[0.14em] text-foreground">
         Customer Story
       </div>
-      {byline}
     </div>
   );
 };
@@ -198,22 +181,30 @@ const TestimonialsWrapper = () => (
         <TrustMarquee />
       </div>
 
-      {/* Mosaic: portrait videos flank the grid on both edges (rows 1-2),
-          two quote blocks sit on the top row and the landscape story fills row 2. */}
+      {/* Edge-flanked mosaic: portrait videos span both rows on the edges (video top,
+          quote + byline below), quote cards top-center, landscape story bottom-center. */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
         <motion.article
-          className="lg:col-span-3 lg:col-start-1 lg:row-start-1 lg:row-span-2 relative overflow-hidden rounded-3xl border border-border shadow-medium min-h-[460px] lg:min-h-0"
+          className="lg:col-span-3 lg:col-start-1 lg:row-start-1 lg:row-span-2 order-1 relative flex flex-col overflow-hidden rounded-3xl border border-border shadow-medium"
           {...CARD_IN}
           transition={{ delay: 0.05, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           style={VIDEO_GRADIENT}
         >
-          <div className="relative h-full min-h-[460px]">
-            <VideoBody person={NAUSIL} byline={<OverlayByline person={NAUSIL} />} />
+          <div className="relative w-full" style={{ aspectRatio: "9 / 16" }}>
+            <VideoBody person={NAUSIL} />
+          </div>
+          <div className="p-5 flex flex-1 flex-col justify-center gap-3 text-background">
+            <QuoteText
+              text={NAUSIL.quote}
+              inverted
+              className="text-sm leading-relaxed opacity-95"
+            />
+            <Byline person={NAUSIL} inverted />
           </div>
         </motion.article>
 
         <motion.article
-          className="relative lg:col-span-3 lg:col-start-4 lg:row-start-1 flex flex-col justify-center p-6 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"
+          className="relative lg:col-span-3 lg:col-start-4 lg:row-start-1 order-2 flex flex-col justify-center p-6 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"
           {...CARD_IN}
           transition={{ delay: 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
@@ -232,7 +223,7 @@ const TestimonialsWrapper = () => (
         </motion.article>
 
         <motion.article
-          className="relative lg:col-span-3 lg:col-start-7 lg:row-start-1 flex flex-col justify-center p-6 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"
+          className="relative lg:col-span-3 lg:col-start-7 lg:row-start-1 order-3 flex flex-col justify-center p-6 rounded-3xl bg-card border border-border shadow-soft overflow-hidden"
           {...CARD_IN}
           transition={{ delay: 0.15, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
@@ -251,18 +242,26 @@ const TestimonialsWrapper = () => (
         </motion.article>
 
         <motion.article
-          className="lg:col-span-3 lg:col-start-10 lg:row-start-1 lg:row-span-2 relative overflow-hidden rounded-3xl border border-border shadow-medium min-h-[460px] lg:min-h-0"
+          className="lg:col-span-3 lg:col-start-10 lg:row-start-1 lg:row-span-2 order-4 relative flex flex-col overflow-hidden rounded-3xl border border-border shadow-medium"
           {...CARD_IN}
           transition={{ delay: 0.2, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           style={VIDEO_GRADIENT}
         >
-          <div className="relative h-full min-h-[460px]">
-            <VideoBody person={NEW_CUSTOMER} byline={<OverlayByline person={NEW_CUSTOMER} />} />
+          <div className="relative w-full" style={{ aspectRatio: "9 / 16" }}>
+            <VideoBody person={BRIANNA} />
+          </div>
+          <div className="p-5 flex flex-1 flex-col justify-center gap-3 text-background">
+            <QuoteText
+              text={BRIANNA.quote}
+              inverted
+              className="text-sm leading-relaxed opacity-95"
+            />
+            <Byline person={BRIANNA} inverted />
           </div>
         </motion.article>
 
         <motion.article
-          className="lg:col-span-6 lg:col-start-4 lg:row-start-2 relative flex flex-col rounded-3xl border border-border shadow-medium overflow-hidden"
+          className="lg:col-span-6 lg:col-start-4 lg:row-start-2 order-5 relative flex flex-col rounded-3xl border border-border shadow-medium overflow-hidden"
           {...CARD_IN}
           transition={{ delay: 0.25, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           style={VIDEO_GRADIENT}
