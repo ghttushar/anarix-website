@@ -65,6 +65,8 @@ const feed = [
 
 const ROTATE_MS = 4200;
 
+const MARKETPLACES = ["Amazon", "Walmart", "Shopify"];
+
 /**
  * Hero visual: the managed account desk. One featured account with its live
  * number, the rest of the book waiting in the rail, and the night shift log
@@ -87,6 +89,7 @@ const HeroManagedStudio = () => {
   const account = accounts[featured];
   const rail = accounts.filter((_, i) => i !== featured);
   const log = [0, 1, 2].map((offset) => feed[(tick + offset) % feed.length]);
+  const pillOrder = MARKETPLACES.map((_, i) => MARKETPLACES[(i + tick) % MARKETPLACES.length]);
 
   return (
     <div className="relative">
@@ -161,9 +164,16 @@ const HeroManagedStudio = () => {
               }}
             />
 
-            <span className="absolute left-3 top-3 rounded-pill border border-border/70 bg-card/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-foreground backdrop-blur">
-              {account.channel}
-            </span>
+            <div className="absolute left-3 top-3 flex flex-wrap gap-1.5">
+              {pillOrder.map((name) => (
+                <span
+                  key={name}
+                  className="rounded-pill border border-border/70 bg-card/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-foreground backdrop-blur"
+                >
+                  {name}
+                </span>
+              ))}
+            </div>
 
             <AnimatePresence mode="wait">
               <motion.div
