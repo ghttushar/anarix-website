@@ -90,7 +90,7 @@ const ListingSpotlight = () => {
                 loading="lazy"
                 width={1254}
                 height={1254}
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-contain"
               />
               <img
                 src={listingBefore}
@@ -98,7 +98,7 @@ const ListingSpotlight = () => {
                 loading="lazy"
                 width={1254}
                 height={1254}
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-contain"
                 style={{
                   clipPath: `inset(0 ${100 - reveal}% 0 0)`,
                   filter: `saturate(0.8) contrast(0.95) blur(${(1 - reveal / 100) * 1.5}px)`,

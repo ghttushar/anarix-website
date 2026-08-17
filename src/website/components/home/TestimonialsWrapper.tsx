@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Play, Quote, Sparkles } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -95,13 +95,31 @@ const Byline = ({ person, inverted }: { person: Person; inverted?: boolean }) =>
   </div>
 );
 
-const VideoBody = ({ person }: { person: Person }) => {
+const VideoBody = ({
+  person,
+  isActive,
+  onActivate,
+  onEnded,
+}: {
+  person: Person;
+  isActive: boolean;
+  onActivate: () => void;
+  onEnded: () => void;
+}) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    if (playing && !isActive) {
+      videoRef.current?.pause();
+      setPlaying(false);
+    }
+  }, [isActive, playing]);
 
   const play = () => {
     const v = videoRef.current;
     if (!v) return;
+    onActivate();
     v.muted = false;
     v.currentTime = 0;
     v.play();
@@ -117,7 +135,10 @@ const VideoBody = ({ person }: { person: Person }) => {
         controls={playing}
         controlsList="nofullscreen"
         playsInline
-        onEnded={() => setPlaying(false)}
+        onEnded={() => {
+          setPlaying(false);
+          onEnded();
+        }}
         className="absolute inset-0 w-full h-full object-cover"
         preload="metadata"
       />
@@ -155,7 +176,13 @@ const VIDEO_GRADIENT = {
   background: "linear-gradient(140deg, hsl(var(--foreground)) 0%, hsl(var(--primary)) 100%)",
 };
 
-const TestimonialsWrapper = () => (
+const TestimonialsWrapper = () => {
+  const [activeKey, setActiveKey] = useState<string | null>(null);
+
+  const stopIfActive = (key: string) =>
+    setActiveKey((k) => (k === key ? null : k));
+
+  return (
   <section className="relative py-20 px-6 overflow-hidden">
     <div className="absolute inset-0 bg-gradient-to-b from-accent/20 via-background to-accent/10" />
 
@@ -190,7 +217,12 @@ const TestimonialsWrapper = () => (
             style={VIDEO_GRADIENT}
           >
             <div className="relative w-full" style={{ aspectRatio: "3 / 4" }}>
-              <VideoBody person={BRIANNA} />
+              <VideoBody
+                person={BRIANNA}
+                isActive={activeKey === BRIANNA.author}
+                onActivate={() => setActiveKey(BRIANNA.author)}
+                onEnded={() => stopIfActive(BRIANNA.author)}
+              />
             </div>
             <div className="p-5 flex flex-1 flex-col justify-center gap-3 text-background">
               <QuoteText
@@ -203,21 +235,24 @@ const TestimonialsWrapper = () => (
           </motion.article>
 
           <motion.article
-            className="relative flex flex-col overflow-hidden rounded-3xl border border-border shadow-medium"
+            className="relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-medium"
             {...CARD_IN}
             transition={{ delay: 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            style={VIDEO_GRADIENT}
           >
             <div className="relative w-full" style={{ aspectRatio: "3 / 4" }}>
-              <VideoBody person={NAUSIL} />
+              <VideoBody
+                person={NAUSIL}
+                isActive={activeKey === NAUSIL.author}
+                onActivate={() => setActiveKey(NAUSIL.author)}
+                onEnded={() => stopIfActive(NAUSIL.author)}
+              />
             </div>
-            <div className="p-5 flex flex-1 flex-col justify-center gap-3 text-background">
+            <div className="p-5 flex flex-1 flex-col justify-center gap-3 text-foreground">
               <QuoteText
                 text={NAUSIL.quote}
-                inverted
                 className="text-sm leading-relaxed opacity-95"
               />
-              <Byline person={NAUSIL} inverted />
+              <Byline person={NAUSIL} />
             </div>
           </motion.article>
         </div>
@@ -239,24 +274,27 @@ const TestimonialsWrapper = () => (
               <Byline person={JOEY} inverted />
             </div>
             <div className="relative w-full" style={{ aspectRatio: "16 / 9" }}>
-              <VideoBody person={JOEY} />
+              <VideoBody
+                person={JOEY}
+                isActive={activeKey === JOEY.author}
+                onActivate={() => setActiveKey(JOEY.author)}
+                onEnded={() => stopIfActive(JOEY.author)}
+              />
             </div>
           </motion.article>
 
           <motion.article
-            className="relative flex flex-col justify-center p-6 rounded-3xl border border-border shadow-medium overflow-hidden"
+            className="relative flex flex-col justify-center p-6 rounded-3xl border border-border bg-card shadow-medium overflow-hidden"
             {...CARD_IN}
             transition={{ delay: 0.2, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            style={VIDEO_GRADIENT}
           >
-            <div className="flex flex-col gap-3 text-background">
-              <Quote className="w-10 h-10 text-background/20 mb-3" strokeWidth={1.5} />
+            <div className="flex flex-col gap-3 text-foreground">
+              <Quote className="w-10 h-10 text-primary/20 mb-3" strokeWidth={1.5} />
               <QuoteText
                 text={JAMES.quote}
-                inverted
                 className="text-sm leading-relaxed opacity-95"
               />
-              <Byline person={JAMES} inverted />
+              <Byline person={JAMES} />
             </div>
           </motion.article>
         </div>
@@ -283,6 +321,7 @@ const TestimonialsWrapper = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default TestimonialsWrapper;
