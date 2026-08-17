@@ -11,7 +11,6 @@ const FIXES = [
   "Hero image on white",
   "Title within 75 characters",
   "A plus content live",
-  "Buy Box price aligned",
 ];
 
 /**
@@ -132,7 +131,7 @@ const ListingSpotlight = () => {
               <span className="absolute left-4 top-4 rounded-pill border border-border bg-card/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
                 Self-run
               </span>
-              <span className="absolute right-4 top-4 rounded-pill border border-primary/40 bg-primary/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">
+              <span className="absolute right-4 top-4 rounded-pill bg-primary px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white">
                 Anarix-run
               </span>
             </div>

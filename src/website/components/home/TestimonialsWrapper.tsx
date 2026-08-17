@@ -260,18 +260,16 @@ const TestimonialsWrapper = () => {
         {/* Right: Joey landscape + James text stacked */}
         <div className="lg:col-span-6 flex flex-col gap-4">
           <motion.article
-            className="flex-1 relative flex flex-col rounded-3xl border border-border shadow-medium overflow-hidden"
+            className="flex-1 relative flex flex-col rounded-3xl border border-border bg-card shadow-medium overflow-hidden"
             {...CARD_IN}
             transition={{ delay: 0.15, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            style={VIDEO_GRADIENT}
           >
-            <div className="p-5 flex flex-1 flex-col justify-center gap-3 text-background">
+            <div className="p-5 flex flex-1 flex-col justify-center gap-3 text-foreground">
               <QuoteText
                 text={JOEY.quote}
-                inverted
                 className="text-sm leading-relaxed opacity-95"
               />
-              <Byline person={JOEY} inverted />
+              <Byline person={JOEY} />
             </div>
             <div className="relative w-full" style={{ aspectRatio: "16 / 9" }}>
               <VideoBody
@@ -284,17 +282,19 @@ const TestimonialsWrapper = () => {
           </motion.article>
 
           <motion.article
-            className="relative flex flex-col justify-center p-6 rounded-3xl border border-border bg-card shadow-medium overflow-hidden"
+            className="relative flex flex-col justify-center p-6 rounded-3xl border border-border shadow-medium overflow-hidden"
             {...CARD_IN}
             transition={{ delay: 0.2, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            style={VIDEO_GRADIENT}
           >
-            <div className="flex flex-col gap-3 text-foreground">
-              <Quote className="w-10 h-10 text-primary/20 mb-3" strokeWidth={1.5} />
+            <div className="flex flex-col gap-3 text-background">
+              <Quote className="w-10 h-10 text-background/20 mb-3" strokeWidth={1.5} />
               <QuoteText
                 text={JAMES.quote}
+                inverted
                 className="text-sm leading-relaxed opacity-95"
               />
-              <Byline person={JAMES} />
+              <Byline person={JAMES} inverted />
             </div>
           </motion.article>
         </div>
