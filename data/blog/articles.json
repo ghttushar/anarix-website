@@ -1,0 +1,878 @@
+[
+  {
+    "id": "ed9e1dae-bb45-47e8-acbc-01a33472ee0b",
+    "previewToken": "de13d67d-f5e2-4b85-8dcd-7186a8ea455c",
+    "title": "How to Optimize an Amazon Listing for Conversion",
+    "slug": "amazon-listing-optimization",
+    "excerpt": "A practical, in-order framework for images, titles and copy that actually moves conversion rate — not just keyword density.",
+    "content": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Most Amazon sellers treat listing optimization as a one-time task. It isn't — it's an ongoing feedback loop between conversion rate, ad efficiency and organic rank."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What Is Listing Optimization?"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Listing optimization is the practice of improving every element a shopper sees before they click "
+            },
+            {
+              "type": "text",
+              "text": "Add to Cart",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": ": images, title, bullets, A+ content and reviews."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "attrs": {
+            "variant": "info"
+          },
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "A 2% lift in conversion rate on a $50 ASIN doing 1,000 sessions a month is roughly 10 extra orders — often the cheapest growth lever available."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "How to Optimize the Listing"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Work through these in order of shopper attention, not alphabetically."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Product Images"
+            }
+          ]
+        },
+        {
+          "type": "articleImage",
+          "attrs": {
+            "src": "/testimonials/joey-dweck-poster.jpg",
+            "alt": "Before and after example of an optimized Amazon main image",
+            "caption": "A clearer main image alone lifted this listing's click-through rate.",
+            "credit": "",
+            "href": "",
+            "align": "center",
+            "width": "large",
+            "layout": "between-paragraphs"
+          }
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Your main image needs to win the thumbnail battle in search results before anything else matters."
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Fill 85% of the frame on white background"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Show scale with a human hand or familiar object"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Lead the gallery with your strongest lifestyle shot second"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Product Title"
+            }
+          ]
+        },
+        {
+          "type": "articleImage",
+          "attrs": {
+            "src": "/testimonials/brianna-poster.jpg",
+            "alt": "Example seller reviewing listing analytics",
+            "caption": "",
+            "credit": "",
+            "href": "",
+            "align": "left",
+            "width": "medium",
+            "layout": "within-text"
+          }
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Front-load the keyword shoppers actually search, then the differentiator, then the pack size or variant. Keep it readable — titles are for humans first, the algorithm second."
+            }
+          ]
+        },
+        {
+          "type": "orderedList",
+          "attrs": {
+            "start": 1
+          },
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Primary keyword"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Brand name"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Key differentiator (e.g. \"Unscented\", \"12-Pack\")"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Size or variant"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The listings that convert best read like a helpful store clerk, not a keyword dump."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "horizontalRule"
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Common Mistakes"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "The same handful of mistakes show up across almost every audit we run — see our "
+            },
+            {
+              "type": "text",
+              "text": "free listing audit",
+              "marks": [
+                {
+                  "type": "link",
+                  "attrs": {
+                    "href": "/company/contact",
+                    "target": "_blank"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " if you want a second pair of eyes."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "attrs": {
+            "variant": "warning"
+          },
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Keyword-stuffed titles get flagged by Amazon's suppression bots more often than sellers expect — readability matters for compliance, not just conversion."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "heroImage": null,
+    "heroImageAlt": "",
+    "authorId": "sunil",
+    "category": "amazon",
+    "topics": [
+      "amazon",
+      "strategy"
+    ],
+    "status": "published",
+    "publishedAt": "2026-08-26T16:42:05.623Z",
+    "updatedAt": "2026-08-30T16:42:05.623Z",
+    "scheduledFor": null,
+    "seoTitle": "",
+    "metaDescription": "",
+    "canonicalUrl": "",
+    "robotsIndex": true,
+    "robotsFollow": true,
+    "ogTitle": "",
+    "ogDescription": "",
+    "ogImage": null,
+    "relatedArticles": [],
+    "relatedServices": [
+      "listing-audit"
+    ],
+    "sources": [
+      {
+        "label": "Amazon Seller Central — Listing Quality Dashboard",
+        "url": "https://sellercentral.amazon.com"
+      }
+    ],
+    "createdAt": "2026-08-26T16:42:05.623Z",
+    "lastSavedAt": "2026-08-30T16:42:05.623Z"
+  },
+  {
+    "id": "510e34c7-5273-4856-9358-7882a8e0f1ea",
+    "previewToken": "60453945-7e4f-4662-812d-0165c3afc9b0",
+    "title": "Retail Media Budgets: A Practical Allocation Framework",
+    "slug": "retail-media-budget-allocation",
+    "excerpt": "How to split spend across Sponsored Products, Brands and Display without guessing — protect, grow, harvest.",
+    "content": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Retail media budgets rarely fail because of the platform — they fail because of how they're split across it."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Start With Contribution Margin, Not ACOS"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "ACOS tells you how efficient a campaign is in isolation. It says nothing about whether that efficiency is actually profitable once fees, COGS and returns are in the picture."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "content": [
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableHeader",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Channel"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableHeader",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Typical Share"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableHeader",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Optimizes For"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableCell",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Sponsored Products"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "55–65%"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Bottom-of-funnel conversion"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableCell",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Sponsored Brands"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "15–20%"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "New-to-brand share"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "content": [
+                {
+                  "type": "tableCell",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Sponsored Display"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "10–15%"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Retargeting & defense"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "A Simple Allocation Framework"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Protect: enough spend on branded terms to defend your own listings"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Grow: a fixed test budget on new match types every month"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Harvest: scale anything already clearing your contribution-margin target"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "attrs": {
+            "variant": "tip"
+          },
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Review the split monthly, not weekly — retail media budgets need a full purchase cycle to show a real signal."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "heroImage": null,
+    "heroImageAlt": "",
+    "authorId": "anarix-team",
+    "category": "retail-media",
+    "topics": [
+      "advertising",
+      "strategy"
+    ],
+    "status": "published",
+    "publishedAt": "2026-08-29T16:42:05.623Z",
+    "updatedAt": "2026-08-29T16:42:05.623Z",
+    "scheduledFor": null,
+    "seoTitle": "",
+    "metaDescription": "",
+    "canonicalUrl": "",
+    "robotsIndex": true,
+    "robotsFollow": true,
+    "ogTitle": "",
+    "ogDescription": "",
+    "ogImage": null,
+    "relatedArticles": [],
+    "relatedServices": [
+      "platform"
+    ],
+    "sources": [],
+    "createdAt": "2026-08-29T16:42:05.623Z",
+    "lastSavedAt": "2026-08-29T16:42:05.623Z"
+  },
+  {
+    "id": "8d8b59ba-fc70-41a4-acf1-06a95945b611",
+    "previewToken": "9bad1c9c-94fc-464c-96d3-13b4a54cd11b",
+    "title": "Reading Contribution Margin Like an Operator",
+    "slug": "contribution-margin-for-operators",
+    "excerpt": "Revenue is vanity. Contribution margin per ASIN is the number that tells you if growth is actually worth having.",
+    "content": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Revenue is a vanity metric until you subtract ads, fees, and cost of goods. Contribution margin is what's left — and it's the only number that tells you whether growth is actually worth having."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "The Formula"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Contribution margin = Net Revenue − COGS − Fulfillment Fees − Advertising Spend − Returns."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "attrs": {
+            "variant": "info"
+          },
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Track it per-ASIN, not just at the account level — the account-level number hides which SKUs are quietly subsidizing the rest."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Reading It Like an Operator"
+            }
+          ]
+        },
+        {
+          "type": "orderedList",
+          "attrs": {
+            "start": 1
+          },
+          "content": [
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Rank SKUs by contribution margin dollars, not percentage"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Flag anything trending down for two consecutive weeks"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Re-check ad spend allocation against the ranked list monthly"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "A profitable SKU losing share is usually a pricing problem. A growing SKU losing margin is usually an ad-spend problem."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "heroImage": null,
+    "heroImageAlt": "",
+    "authorId": "sunil",
+    "category": "analytics",
+    "topics": [
+      "analytics",
+      "strategy"
+    ],
+    "status": "published",
+    "publishedAt": "2026-08-31T16:42:05.623Z",
+    "updatedAt": "2026-08-31T16:42:05.623Z",
+    "scheduledFor": null,
+    "seoTitle": "",
+    "metaDescription": "",
+    "canonicalUrl": "",
+    "robotsIndex": true,
+    "robotsFollow": true,
+    "ogTitle": "",
+    "ogDescription": "",
+    "ogImage": null,
+    "relatedArticles": [],
+    "relatedServices": [
+      "platform"
+    ],
+    "sources": [],
+    "createdAt": "2026-08-31T16:42:05.623Z",
+    "lastSavedAt": "2026-08-31T16:42:05.623Z"
+  }
+]
