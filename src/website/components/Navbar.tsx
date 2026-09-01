@@ -20,6 +20,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "Platform", href: "/products" },
+  { label: "Blog", href: "/blog" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Contact Us", href: "/company/contact" },
 ];
@@ -258,6 +259,13 @@ const Navbar = () => {
             Sign In
             <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
           </Link>
+          {/* Separate application (own index.html/bundle) — a hard link, not a router Link. */}
+          <a
+            href="/admin/blog"
+            className="text-xs font-medium text-muted-foreground/60 hover:text-muted-foreground transition-colors duration-200"
+          >
+            Admin
+          </a>
         </div>
 
         {/* Mobile hamburger */}
@@ -443,6 +451,9 @@ const Navbar = () => {
                 >
                   Sign In <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
+                <a href="/admin/blog" className="block px-3 py-2 text-xs text-muted-foreground/60">
+                  Admin
+                </a>
               </div>
             </div>
           </motion.div>

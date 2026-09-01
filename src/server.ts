@@ -3,6 +3,8 @@ import "./lib/error-capture";
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
 import { handleJivaRequest } from "./website/lib/jivaServer";
+import { handleBlogApiRequest } from "./lib/blog/api.server";
+import { handleSitemapRequest } from "./lib/blog/sitemap.server";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -51,6 +53,12 @@ export default {
       const url = new URL(request.url);
       if (url.pathname === "/api/jiva" && request.method === "POST") {
         return await handleJivaRequest(request);
+      }
+      if (url.pathname.startsWith("/api/blog/")) {
+        return await handleBlogApiRequest(request);
+      }
+      if (url.pathname === "/sitemap.xml") {
+        return await handleSitemapRequest();
       }
 
       const handler = await getServerEntry();

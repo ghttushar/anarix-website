@@ -37,7 +37,10 @@ export default defineConfig(({ command, mode }) => {
       : {}),
     css: { transformer: "lightningcss" },
     resolve: {
-      alias: { "@": `${process.cwd()}/src` },
+      alias: {
+        "@": `${process.cwd()}/src`,
+        "@blog-shared": `${process.cwd()}/shared/blog`,
+      },
       tsconfigPaths: true,
       dedupe: [
         "react",

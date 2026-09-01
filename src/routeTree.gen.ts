@@ -13,8 +13,13 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as CaseStudiesRouteImport } from './routes/case-studies'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
+import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 import { Route as CompanyContactRouteImport } from './routes/company.contact'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
+import { Route as BlogAuthorAuthorRouteImport } from './routes/blog/author/$author'
+import { Route as BlogCategoryCategoryRouteImport } from './routes/blog/category/$category'
+import { Route as BlogPreviewIdRouteImport } from './routes/blog/preview.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -36,6 +41,16 @@ const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
   path: '/terms-and-conditions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CompanyContactRoute = CompanyContactRouteImport.update({
   id: '/company/contact',
   path: '/company/contact',
@@ -46,22 +61,47 @@ const ProductsIndexRoute = ProductsIndexRouteImport.update({
   path: '/products/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogAuthorAuthorRoute = BlogAuthorAuthorRouteImport.update({
+  id: '/blog/author/$author',
+  path: '/blog/author/$author',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogCategoryCategoryRoute = BlogCategoryCategoryRouteImport.update({
+  id: '/blog/category/$category',
+  path: '/blog/category/$category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogPreviewIdRoute = BlogPreviewIdRouteImport.update({
+  id: '/blog/preview/$id',
+  path: '/blog/preview/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/case-studies': typeof CaseStudiesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/company/contact': typeof CompanyContactRoute
+  '/blog/': typeof BlogIndexRoute
   '/products/': typeof ProductsIndexRoute
+  '/blog/author/$author': typeof BlogAuthorAuthorRoute
+  '/blog/category/$category': typeof BlogCategoryCategoryRoute
+  '/blog/preview/$id': typeof BlogPreviewIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/case-studies': typeof CaseStudiesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/company/contact': typeof CompanyContactRoute
+  '/blog': typeof BlogIndexRoute
   '/products': typeof ProductsIndexRoute
+  '/blog/author/$author': typeof BlogAuthorAuthorRoute
+  '/blog/category/$category': typeof BlogCategoryCategoryRoute
+  '/blog/preview/$id': typeof BlogPreviewIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -69,8 +109,13 @@ export interface FileRoutesById {
   '/case-studies': typeof CaseStudiesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/company/contact': typeof CompanyContactRoute
+  '/blog/': typeof BlogIndexRoute
   '/products/': typeof ProductsIndexRoute
+  '/blog/author/$author': typeof BlogAuthorAuthorRoute
+  '/blog/category/$category': typeof BlogCategoryCategoryRoute
+  '/blog/preview/$id': typeof BlogPreviewIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -79,24 +124,39 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/privacy-policy'
     | '/terms-and-conditions'
+    | '/blog/$slug'
     | '/company/contact'
+    | '/blog/'
     | '/products/'
+    | '/blog/author/$author'
+    | '/blog/category/$category'
+    | '/blog/preview/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/case-studies'
     | '/privacy-policy'
     | '/terms-and-conditions'
+    | '/blog/$slug'
     | '/company/contact'
+    | '/blog'
     | '/products'
+    | '/blog/author/$author'
+    | '/blog/category/$category'
+    | '/blog/preview/$id'
   id:
     | '__root__'
     | '/'
     | '/case-studies'
     | '/privacy-policy'
     | '/terms-and-conditions'
+    | '/blog/$slug'
     | '/company/contact'
+    | '/blog/'
     | '/products/'
+    | '/blog/author/$author'
+    | '/blog/category/$category'
+    | '/blog/preview/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -104,8 +164,13 @@ export interface RootRouteChildren {
   CaseStudiesRoute: typeof CaseStudiesRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   CompanyContactRoute: typeof CompanyContactRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   ProductsIndexRoute: typeof ProductsIndexRoute
+  BlogAuthorAuthorRoute: typeof BlogAuthorAuthorRoute
+  BlogCategoryCategoryRoute: typeof BlogCategoryCategoryRoute
+  BlogPreviewIdRoute: typeof BlogPreviewIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -138,6 +203,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsAndConditionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/company/contact': {
       id: '/company/contact'
       path: '/company/contact'
@@ -152,6 +231,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/author/$author': {
+      id: '/blog/author/$author'
+      path: '/blog/author/$author'
+      fullPath: '/blog/author/$author'
+      preLoaderRoute: typeof BlogAuthorAuthorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/category/$category': {
+      id: '/blog/category/$category'
+      path: '/blog/category/$category'
+      fullPath: '/blog/category/$category'
+      preLoaderRoute: typeof BlogCategoryCategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/preview/$id': {
+      id: '/blog/preview/$id'
+      path: '/blog/preview/$id'
+      fullPath: '/blog/preview/$id'
+      preLoaderRoute: typeof BlogPreviewIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -160,8 +260,13 @@ const rootRouteChildren: RootRouteChildren = {
   CaseStudiesRoute: CaseStudiesRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
+  BlogSlugRoute: BlogSlugRoute,
   CompanyContactRoute: CompanyContactRoute,
+  BlogIndexRoute: BlogIndexRoute,
   ProductsIndexRoute: ProductsIndexRoute,
+  BlogAuthorAuthorRoute: BlogAuthorAuthorRoute,
+  BlogCategoryCategoryRoute: BlogCategoryCategoryRoute,
+  BlogPreviewIdRoute: BlogPreviewIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
