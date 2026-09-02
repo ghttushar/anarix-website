@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import type { Article, Author, TocItem } from "@blog-shared";
 import { categoryLabel } from "@blog-shared";
@@ -7,6 +8,7 @@ import PageLayout from "@/website/components/PageLayout";
 import { ArticleBody } from "@/website/components/blog/ArticleBody";
 import { AuthorBioCard } from "@/website/components/blog/AuthorBioCard";
 import { BlogCta } from "@/website/components/blog/BlogCta";
+import { ReadingProgress } from "@/website/components/blog/ReadingProgress";
 import { RelatedArticles } from "@/website/components/blog/RelatedArticles";
 import {
   TableOfContentsDesktop,
@@ -18,6 +20,8 @@ import {
 } from "@/website/components/blog/StructuredData";
 import { authorName, formatDate, readingTimeLabel } from "@/website/components/blog/format";
 
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 export interface BlogArticlePageProps {
   article: Article;
   authors: Author[];
@@ -26,6 +30,15 @@ export interface BlogArticlePageProps {
   toc: TocItem[];
   readingTime: number;
   isPreview?: boolean;
+}
+
+function initials(name: string): string {
+  return name
+    .split(" ")
+    .map((w) => w[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
 }
 
 export function BlogArticlePage({
@@ -43,6 +56,8 @@ export function BlogArticlePage({
 
   return (
     <PageLayout>
+      {!isPreview && <ReadingProgress />}
+
       {isPreview && (
         <div className="container-page px-6 mb-6">
           <div className="ws-callout ws-callout--warning">
@@ -79,20 +94,36 @@ export function BlogArticlePage({
           <span className="text-foreground truncate max-w-[240px]">{article.title}</span>
         </nav>
 
-        <header className="max-w-[720px] mb-10">
-          <span className="ws-eyebrow">{categoryLabel(article.category)}</span>
-          <h1 className="mt-4 font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold leading-[1.12] tracking-tight text-foreground">
+        <motion.header
+          className="max-w-[760px] mb-10"
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: EASE }}
+        >
+          <Link to={`/blog/category/${article.category}`} className="ws-eyebrow">
+            {categoryLabel(article.category)}
+          </Link>
+          <h1 className="mt-4 font-display text-3xl sm:text-4xl lg:text-5xl font-semibold leading-[1.1] tracking-tight text-foreground">
             {article.title}
           </h1>
           {article.excerpt && (
             <p className="mt-4 text-lg text-muted-foreground leading-relaxed">{article.excerpt}</p>
           )}
 
-          <div className="mt-6 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
+          <div className="mt-6 flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-sm text-muted-foreground">
             {author && (
-              <span className="text-foreground font-medium">
-                {authorName(authors, article.authorId)}
-              </span>
+              <>
+                <span className="ws-meta-avatar">
+                  {author.avatarUrl ? (
+                    <img src={author.avatarUrl} alt="" />
+                  ) : (
+                    initials(authorName(authors, article.authorId))
+                  )}
+                </span>
+                <span className="text-foreground font-medium">
+                  {authorName(authors, article.authorId)}
+                </span>
+              </>
             )}
             <span aria-hidden>·</span>
             <span>{formatDate(article.publishedAt)}</span>
@@ -105,16 +136,21 @@ export function BlogArticlePage({
             <span aria-hidden>·</span>
             <span>{readingTime} min read</span>
           </div>
-        </header>
+        </motion.header>
 
         {article.heroImage && (
-          <div className="max-w-[900px] mb-12">
+          <motion.div
+            className="max-w-[960px] mb-12"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
+          >
             <img
               src={article.heroImage.url}
               alt={article.heroImageAlt || article.title}
-              className="w-full h-auto rounded-2xl border border-border"
+              className="w-full h-auto rounded-3xl border border-border shadow-strong"
             />
-          </div>
+          </motion.div>
         )}
 
         <div className="grid lg:grid-cols-[minmax(0,1fr)_220px] gap-x-16 items-start">

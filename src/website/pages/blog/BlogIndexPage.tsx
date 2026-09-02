@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { Compass, Newspaper, Sparkles } from "lucide-react";
 import type { Article, Author } from "@blog-shared";
 
 import PageLayout from "@/website/components/PageLayout";
@@ -7,6 +9,38 @@ import { FeaturedArticleCard } from "@/website/components/blog/FeaturedArticleCa
 import { TopicNav } from "@/website/components/blog/TopicNav";
 
 const PAGE_SIZE = 6;
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+function SectionHeading({
+  icon: Icon,
+  eyebrow,
+  title,
+  accent,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  eyebrow: string;
+  title: string;
+  accent: string;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, ease: EASE }}
+      className="flex items-end justify-between gap-4 mb-7"
+    >
+      <div>
+        <span className="ws-eyebrow">
+          <Icon className="w-3.5 h-3.5" /> {eyebrow}
+        </span>
+        <h2 className="mt-3 font-display text-2xl sm:text-3xl font-semibold text-foreground tracking-tight">
+          {title} <span className="text-gradient-primary">{accent}</span>
+        </h2>
+      </div>
+    </motion.div>
+  );
+}
 
 export function BlogIndexPage({ articles, authors }: { articles: Article[]; authors: Author[] }) {
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
@@ -17,60 +51,67 @@ export function BlogIndexPage({ articles, authors }: { articles: Article[]; auth
 
   return (
     <PageLayout>
-      <section className="pt-4 pb-12 text-center">
+      <section className="ws-blog-hero pt-6 pb-14 text-center">
         <div className="container-page px-6">
-          <span className="ws-eyebrow">Blog / Insights</span>
-          <h1 className="mt-4 font-display text-4xl sm:text-5xl font-semibold tracking-tight text-foreground leading-[1.08]">
-            Profit intelligence, <span className="text-gradient-primary">field notes.</span>
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-            Practical breakdowns of Amazon, Walmart and retail media strategy, drawn from the same
-            patterns our team uses managing live ad spend and margin across hundreds of accounts.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: EASE }}
+          >
+            <span className="ws-eyebrow">
+              <Sparkles className="w-3.5 h-3.5" /> Blog / Insights
+            </span>
+            <h1 className="mt-5 font-display text-4xl sm:text-6xl font-semibold tracking-tight text-foreground leading-[1.05]">
+              Profit intelligence, <span className="text-gradient-primary">field notes.</span>
+            </h1>
+            <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground leading-relaxed">
+              Practical breakdowns of Amazon, Walmart and retail media strategy, drawn from the same
+              patterns our team uses managing live ad spend and margin across hundreds of accounts.
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {featured && (
-        <section className="container-wide px-6 mb-16">
+        <section className="container-wide px-6 mb-20">
           <FeaturedArticleCard article={featured} authors={authors} />
         </section>
       )}
 
       {latest.length > 0 && (
-        <section className="container-wide px-6 mb-16">
-          <h2 className="font-display text-2xl font-semibold text-foreground mb-6">
-            Latest Insights
-          </h2>
+        <section className="container-wide px-6 mb-20">
+          <SectionHeading
+            icon={Newspaper}
+            eyebrow="Fresh off the desk"
+            title="Latest"
+            accent="insights."
+          />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {latest.map((article) => (
-              <ArticleCard key={article.id} article={article} authors={authors} />
+            {latest.map((article, i) => (
+              <ArticleCard key={article.id} article={article} authors={authors} index={i} />
             ))}
           </div>
         </section>
       )}
 
-      <section className="container-wide px-6 mb-16">
-        <h2 className="font-display text-2xl font-semibold text-foreground mb-6">
-          Browse by Topic
-        </h2>
+      <section className="container-wide px-6 mb-20">
+        <SectionHeading icon={Compass} eyebrow="Find your lane" title="Browse by" accent="topic." />
         <TopicNav />
       </section>
 
       {more.length > 0 && (
-        <section className="container-wide px-6 mb-20">
-          <h2 className="font-display text-2xl font-semibold text-foreground mb-6">
-            More Articles
-          </h2>
+        <section className="container-wide px-6 mb-24">
+          <SectionHeading icon={Sparkles} eyebrow="Keep reading" title="More" accent="articles." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {more.slice(0, visibleCount).map((article) => (
-              <ArticleCard key={article.id} article={article} authors={authors} />
+            {more.slice(0, visibleCount).map((article, i) => (
+              <ArticleCard key={article.id} article={article} authors={authors} index={i} />
             ))}
           </div>
           {visibleCount < more.length && (
             <div className="text-center mt-10">
               <button
                 type="button"
-                className="ws-btn ws-btn--outline"
+                className="ws-btn ws-btn--outline btn-shine"
                 onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
               >
                 Load more

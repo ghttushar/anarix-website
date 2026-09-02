@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import type { Article, Author } from "@blog-shared";
 import { categoryLabel } from "@blog-shared";
 
@@ -16,24 +17,33 @@ export function BlogCategoryPage({
 }) {
   return (
     <PageLayout>
-      <section className="pt-4 pb-10 text-center">
+      <section className="ws-blog-hero pt-6 pb-12 text-center">
         <div className="container-page px-6">
-          <span className="ws-eyebrow">Topic</span>
-          <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight text-foreground">
-            {categoryLabel(category)}
-          </h1>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="ws-eyebrow">Topic</span>
+            <h1 className="mt-4 font-display text-4xl sm:text-5xl font-semibold tracking-tight text-foreground">
+              <span className="text-gradient-primary">{categoryLabel(category)}</span>
+            </h1>
+            <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
+              Every article we&apos;ve published on {categoryLabel(category)}.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      <section className="container-wide px-6 mb-10">
+      <section className="container-wide px-6 mb-12">
         <TopicNav />
       </section>
 
-      <section className="container-wide px-6 pb-20">
+      <section className="container-wide px-6 pb-24">
         {articles.length > 0 ? (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {articles.map((article) => (
-              <ArticleCard key={article.id} article={article} authors={authors} />
+            {articles.map((article, i) => (
+              <ArticleCard key={article.id} article={article} authors={authors} index={i} />
             ))}
           </div>
         ) : (
