@@ -21,7 +21,12 @@ export default defineConfig(({ command, mode }) => {
   ];
 
   if (command === "build") {
-    plugins.push(nitro({ defaultPreset: "cloudflare-module" }));
+    // Vercel always sets VERCEL=1 during its own build step, so this needs
+    // no dashboard config on that side. NITRO_PRESET (nitro's own env var)
+    // still wins if set explicitly, for any other target.
+    const preset =
+      process.env.NITRO_PRESET || (process.env.VERCEL ? "vercel" : "cloudflare-module");
+    plugins.push(nitro({ preset }));
   }
 
   plugins.push(react());
