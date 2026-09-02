@@ -19,7 +19,6 @@ import { Route as CompanyContactRouteImport } from './routes/company.contact'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as BlogAuthorAuthorRouteImport } from './routes/blog/author/$author'
 import { Route as BlogCategoryCategoryRouteImport } from './routes/blog/category/$category'
-import { Route as BlogPreviewIdRouteImport } from './routes/blog/preview.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -71,11 +70,6 @@ const BlogCategoryCategoryRoute = BlogCategoryCategoryRouteImport.update({
   path: '/blog/category/$category',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlogPreviewIdRoute = BlogPreviewIdRouteImport.update({
-  id: '/blog/preview/$id',
-  path: '/blog/preview/$id',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -88,7 +82,6 @@ export interface FileRoutesByFullPath {
   '/products/': typeof ProductsIndexRoute
   '/blog/author/$author': typeof BlogAuthorAuthorRoute
   '/blog/category/$category': typeof BlogCategoryCategoryRoute
-  '/blog/preview/$id': typeof BlogPreviewIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -101,7 +94,6 @@ export interface FileRoutesByTo {
   '/products': typeof ProductsIndexRoute
   '/blog/author/$author': typeof BlogAuthorAuthorRoute
   '/blog/category/$category': typeof BlogCategoryCategoryRoute
-  '/blog/preview/$id': typeof BlogPreviewIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -115,7 +107,6 @@ export interface FileRoutesById {
   '/products/': typeof ProductsIndexRoute
   '/blog/author/$author': typeof BlogAuthorAuthorRoute
   '/blog/category/$category': typeof BlogCategoryCategoryRoute
-  '/blog/preview/$id': typeof BlogPreviewIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -130,7 +121,6 @@ export interface FileRouteTypes {
     | '/products/'
     | '/blog/author/$author'
     | '/blog/category/$category'
-    | '/blog/preview/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -143,7 +133,6 @@ export interface FileRouteTypes {
     | '/products'
     | '/blog/author/$author'
     | '/blog/category/$category'
-    | '/blog/preview/$id'
   id:
     | '__root__'
     | '/'
@@ -156,7 +145,6 @@ export interface FileRouteTypes {
     | '/products/'
     | '/blog/author/$author'
     | '/blog/category/$category'
-    | '/blog/preview/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -170,7 +158,6 @@ export interface RootRouteChildren {
   ProductsIndexRoute: typeof ProductsIndexRoute
   BlogAuthorAuthorRoute: typeof BlogAuthorAuthorRoute
   BlogCategoryCategoryRoute: typeof BlogCategoryCategoryRoute
-  BlogPreviewIdRoute: typeof BlogPreviewIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -245,13 +232,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogCategoryCategoryRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/preview/$id': {
-      id: '/blog/preview/$id'
-      path: '/blog/preview/$id'
-      fullPath: '/blog/preview/$id'
-      preLoaderRoute: typeof BlogPreviewIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -266,7 +246,6 @@ const rootRouteChildren: RootRouteChildren = {
   ProductsIndexRoute: ProductsIndexRoute,
   BlogAuthorAuthorRoute: BlogAuthorAuthorRoute,
   BlogCategoryCategoryRoute: BlogCategoryCategoryRoute,
-  BlogPreviewIdRoute: BlogPreviewIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

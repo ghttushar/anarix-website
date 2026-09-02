@@ -137,7 +137,7 @@ function EditorWorkspace({
   }
 
   if (previewOpen) {
-    return <PreviewPane article={article} onBack={() => setPreviewOpen(false)} />;
+    return <PreviewPane article={article} authors={authors} onBack={() => setPreviewOpen(false)} />;
   }
 
   return (

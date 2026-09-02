@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { getArticlesByAuthor } from "@/lib/blog/server-fn";
+import { getArticlesByAuthor } from "@blog-shared";
 import { BlogAuthorPage } from "@/website/pages/blog/BlogAuthorPage";
 
 export const Route = createFileRoute("/blog/author/$author")({
-  loader: ({ params }) => getArticlesByAuthor({ data: params.author }),
+  loader: ({ params }) => getArticlesByAuthor(params.author),
   head: ({ loaderData, params }) => {
     const name = loaderData?.author?.name ?? "Author";
     return {

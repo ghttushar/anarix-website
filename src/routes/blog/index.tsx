@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { getBlogListingData } from "@/lib/blog/server-fn";
+import { getBlogListingData } from "@blog-shared";
 import { BlogIndexPage } from "@/website/pages/blog/BlogIndexPage";
 
 export const Route = createFileRoute("/blog/")({

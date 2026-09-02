@@ -201,18 +201,25 @@ export function BlogList() {
                         >
                           Edit
                         </button>
-                        <a
-                          className="admin-btn admin-btn--sm"
-                          href={
-                            article.status === "published"
-                              ? `/blog/${article.slug}`
-                              : `/blog/preview/${article.id}?token=${article.previewToken}`
-                          }
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          Preview
-                        </a>
+                        {article.status === "published" ? (
+                          <a
+                            className="admin-btn admin-btn--sm"
+                            href={`/blog/${article.slug}`}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            Preview
+                          </a>
+                        ) : (
+                          <button
+                            type="button"
+                            className="admin-btn admin-btn--sm"
+                            onClick={() => navigate(`edit/${article.id}`)}
+                            title="Open the editor, then use Preview there"
+                          >
+                            Preview
+                          </button>
+                        )}
                         <button
                           type="button"
                           className="admin-btn admin-btn--sm"

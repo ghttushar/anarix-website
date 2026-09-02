@@ -1,11 +1,11 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 
-import { getArticleBySlug } from "@/lib/blog/server-fn";
+import { getArticleBySlug } from "@blog-shared";
 import { BlogArticlePage } from "@/website/pages/blog/BlogArticlePage";
 
 export const Route = createFileRoute("/blog/$slug")({
-  loader: async ({ params }) => {
-    const data = await getArticleBySlug({ data: params.slug });
+  loader: ({ params }) => {
+    const data = getArticleBySlug(params.slug);
     if (!data) throw notFound();
     return data;
   },
